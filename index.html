@@ -917,36 +917,42 @@ footer{padding:3rem 0 2rem;border-top:1px solid var(--border);background:var(--s
 /* All elements visible by default — GSAP from() ONLY, no CSS opacity:0 */
 gsap.registerPlugin(ScrollTrigger);
 
-/* Reveal: fade up on scroll */
+/* Reveal: fade up on scroll — always visible if no JS */
 gsap.utils.toArray('.gs-reveal').forEach(function(el) {
-  gsap.from(el, {
-    opacity: 0,
-    y: 40,
-    duration: 0.8,
-    ease: 'power2.out',
-    scrollTrigger: {
-      trigger: el,
-      start: 'top 88%',
-      toggleActions: 'play none none none'
+  gsap.fromTo(el, 
+    {opacity: 1, y: 40},
+    {
+      opacity: 1,
+      y: 0,
+      duration: 0.8,
+      ease: 'power2.out',
+      scrollTrigger: {
+        trigger: el,
+        start: 'top 88%',
+        toggleActions: 'play none none none'
+      }
     }
-  });
+  );
 });
 
 /* Portfolio cards stagger — remove gs-reveal class to avoid double animation */
 gsap.utils.toArray('.work-card').forEach(function(card, i) {
   card.classList.remove('gs-reveal');
-  gsap.from(card, {
-    opacity: 0,
-    y: 50,
-    duration: 0.8,
-    delay: (i % 2) * 0.15,
-    ease: 'power2.out',
-    scrollTrigger: {
-      trigger: card,
-      start: 'top 90%',
-      toggleActions: 'play none none none'
+  gsap.fromTo(card,
+    {opacity: 1, y: 50},
+    {
+      opacity: 1,
+      y: 0,
+      duration: 0.8,
+      delay: (i % 2) * 0.15,
+      ease: 'power2.out',
+      scrollTrigger: {
+        trigger: card,
+        start: 'top 90%',
+        toggleActions: 'play none none none'
+      }
     }
-  });
+  );
 });
 
 /* Hero: sequential entrance (NO gs-reveal class — dedicated IDs to avoid double animation) */
