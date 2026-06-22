@@ -339,15 +339,6 @@ footer{padding:3rem 0 2rem;border-top:1px solid var(--border);background:var(--s
   .faq-item.open .faq-a{max-height:none}
 }
 
-/* ═══════════════════ FAQ ═══════════════════ */
-.faq-item{background:var(--white);border:1px solid var(--border);border-radius:var(--r-lg);margin-bottom:1rem;overflow:hidden}
-.faq-q{width:100%;display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:1.5rem;
-  background:none;border:none;font-family:var(--fd);font-size:var(--step-1);font-weight:600;text-align:left;cursor:pointer;color:var(--text)}
-.faq-q svg{width:20px;height:20px;color:var(--gold-dark);transition:transform .3s var(--ease);flex-shrink:0}
-.faq-item.open .faq-q svg{transform:rotate(180deg)}
-.faq-a{max-height:0;overflow:hidden;transition:max-height .35s var(--ease)}
-.faq-a .faq-pad{padding:0 1.5rem 1.5rem;color:var(--text-dim);line-height:1.7}
-
 /* ═══════════════════ SCROLL PROGRESS ═══════════════════ */
 .scroll-prog{position:fixed;top:0;left:0;height:2px;background:var(--gold);
   z-index:9999;width:0%;transition:width .1s}
@@ -879,51 +870,6 @@ footer{padding:3rem 0 2rem;border-top:1px solid var(--border);background:var(--s
   </div>
 </section>
 
-<!-- ═════════════ FAQ ═════════════ -->
-<section id="faq" style="background:var(--surface)">
-  <div class="container">
-    <div class="sec-label gs-reveal">Questions</div>
-    <h2 class="sec-title gs-reveal">What clients <em>usually ask</em>.</h2>
-    <div class="faq-wrap" style="max-width:760px;margin-top:3rem">
-      <div class="faq-item gs-reveal">
-        <button class="faq-q">
-          What if I don't like the mockup?
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
-        </button>
-        <div class="faq-a"><div class="faq-pad">Then you don't pay. The mockup is free and there is no obligation. We only start building after you approve the direction.</div></div>
-      </div>
-      <div class="faq-item gs-reveal">
-        <button class="faq-q">
-          Do you use WordPress or templates?
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
-        </button>
-        <div class="faq-a"><div class="faq-pad">No. Every site is hand-coded from scratch in clean HTML, CSS, and JavaScript. That means faster loading, better SEO, and no plugin bloat.</div></div>
-      </div>
-      <div class="faq-item gs-reveal">
-        <button class="faq-q">
-          How fast will my site be ready?
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
-        </button>
-        <div class="faq-a"><div class="faq-pad">You receive a free mockup within 24 hours. After approval, most sites go live in 4–5 business days. Starter sites can be ready in 48 hours.</div></div>
-      </div>
-      <div class="faq-item gs-reveal">
-        <button class="faq-q">
-          Can the site be in Greek, English, or Finnish?
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
-        </button>
-        <div class="faq-a"><div class="faq-pad">Yes. We build in the languages your customers use. Multilingual sites are available in the Business and Premium packages.</div></div>
-      </div>
-      <div class="faq-item gs-reveal">
-        <button class="faq-q">
-          What happens after launch?
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
-        </button>
-        <div class="faq-a"><div class="faq-pad">You own the site and all files. Optional maintenance includes hosting, updates, backups, and small content changes from &euro;149/month.</div></div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- ═════════════ CTA ═════════════ -->
 <section id="contact" class="cta">
   <div class="container cta-content">
@@ -1051,20 +997,6 @@ document.getElementById('burger').addEventListener('click', function(){
 });
 
 /* Marquee — duplicate for seamless loop (already done in markup) */
-
-/* FAQ accordion */
-document.querySelectorAll('.faq-q').forEach(function(btn){
-  btn.addEventListener('click', function(){
-    var item = btn.closest('.faq-item');
-    var answer = item.querySelector('.faq-a');
-    var isOpen = item.classList.contains('open');
-    document.querySelectorAll('.faq-item').forEach(function(faq){
-      faq.classList.remove('open');
-      faq.querySelector('.faq-a').style.maxHeight = null;
-    });
-    if(!isOpen){ item.classList.add('open'); answer.style.maxHeight = answer.scrollHeight + 'px'; }
-  });
-});
 </script>
 </body>
 </html>
