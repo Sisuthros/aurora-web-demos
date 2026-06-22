@@ -1,0 +1,153 @@
+/* ===== BASE ===== */
+html {
+  scroll-behavior: auto; /* Lenis handles smooth scroll */
+}
+
+body {
+  cursor: none;
+}
+
+@media (pointer: coarse) {
+  body {
+    cursor: auto;
+  }
+  #cursor {
+    display: none !important;
+  }
+}
+
+/* ===== REVEAL ANIMATIONS ===== */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+/* ===== MAGNETIC BUTTON ===== */
+.magnetic-btn {
+  position: relative;
+  display: inline-block;
+}
+
+/* ===== NAV SCROLL STATE ===== */
+nav.scrolled {
+  background: rgba(10, 10, 10, 0.9);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(201, 169, 110, 0.08);
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+/* ===== CUSTOM FONT ===== */
+@font-face {
+  font-family: 'Satoshi';
+  src: url('https://cdn.fontshare.com/wf/WF6J5YK6X3S5Q6G6K7J8L9M0N1O2P3QR-STUHROCLBF7N6UKVLYXKA6QJDFR3KNO/6F3D4E5C7B8A9012F3D4E5C7B8A9012.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ===== FILM GRAIN OVERLAY ===== */
+#grain-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9998;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+}
+
+/* ===== CUSTOM SCROLLBAR ===== */
+::-webkit-scrollbar {
+  width: 2px;
+}
+::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+::-webkit-scrollbar-thumb {
+  background: #c9a96e;
+}
+
+/* Firefox */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: #c9a96e #0a0a0a;
+}
+
+/* ===== PREFERS REDUCED MOTION ===== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/* ===== PRELOADER ===== */
+#preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  background: #0a0a0a;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+}
+#preloader-text {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: #f5f5f5;
+}
+#preloader-line {
+  width: 120px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #c9a96e, transparent);
+  transform: scaleX(0);
+  animation: preloader-draw 1.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+@keyframes preloader-draw {
+  to { transform: scaleX(1); }
+}
+#preloader.fade-out {
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  pointer-events: none;
+}
+
+/* ===== SERVICE CARD ===== */
+.service-card {
+  transform-style: preserve-3d;
+  transition: transform 0.1s ease-out, box-shadow 0.3s ease-out;
+}
+
+/* ===== IMAGE PARALLAX ===== */
+.parallax-img {
+  will-change: transform;
+}
+
+/* ===== SMOOTH TRANSITIONS ===== */
+.group img {
+  will-change: transform;
+}
+
+/* ===== GOLD LINE DRAWING ===== */
+.gold-line-draw {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #c9a96e, transparent);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 1s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.gold-line-draw.visible {
+  transform: scaleX(1);
+}

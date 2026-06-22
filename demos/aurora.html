@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aurora Web — Verkkosivut & AI-ratkaisut Kyproksella</title>
+<meta name="description" content="Aurora Web — suomalainen perheyritys Kyproksella. Premium verkkosivut, AI-agentit ja automaatio.">
+<meta property="og:title" content="Aurora Web — Verkkosivut & AI-ratkaisut">
+<meta property="og:description" content="Premium verkkosivut, AI-agentit ja automaatio — suomalaisella tarkkuudella.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0a0a0f;--surface:#111118;--card:#16161f;--card-hover:#1c1c28;
+  --text:#e8e8f0;--muted:#7a7a90;--accent:#c9a84c;--accent2:#a8843a;
+  --gold:#d4a853;--glow:rgba(201,168,76,.15);
+  --font-head:'Space Grotesk',sans-serif;
+  --font-body:'Inter',sans-serif;
+  --radius:4px;
+}
+html{scroll-behavior:smooth;font-size:clamp(15px,1.6vw,18px)}
+body{font-family:var(--font-body);background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden}
+h1,h2,h3{font-family:var(--font-head);font-weight:700;line-height:1.1}
+h1{font-size:clamp(2.5rem,6vw,5.5rem);letter-spacing:-.03em}
+h2{font-size:clamp(1.8rem,4vw,3.2rem)}
+h3{font-size:clamp(1.1rem,2vw,1.5rem)}
+
+/* Noise */
+.noise{position:fixed;inset:0;z-index:999;pointer-events:none;opacity:.035;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");background-size:200px}
+
+/* Nav */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem max(5vw,2rem);display:flex;justify-content:space-between;align-items:center;backdrop-filter:blur(16px);background:rgba(10,10,15,.7);border-bottom:1px solid rgba(255,255,255,.04);transition:all .4s}
+.nav.scrolled{padding:.8rem max(5vw,2rem);background:rgba(10,10,15,.92)}
+.nav-brand{font-family:var(--font-head);font-weight:700;font-size:1.2rem;color:var(--text);text-decoration:none;letter-spacing:-.02em}
+.nav-brand span{color:var(--accent)}
+.nav-links{display:flex;gap:2rem;align-items:center}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:.8rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;transition:color .3s}
+.nav-links a:hover{color:var(--accent)}
+.nav-cta{border:1px solid var(--accent);color:var(--accent)!important;padding:.5rem 1.2rem;border-radius:var(--radius);transition:all .3s}
+.nav-cta:hover{background:var(--accent);color:#0a0a0f!important}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none}
+.hamburger span{width:24px;height:2px;background:var(--text);transition:all .3s}
+@media(max-width:768px){
+  .hamburger{display:flex}
+  .nav-links{position:fixed;top:0;right:-100%;width:70%;height:100vh;background:var(--surface);flex-direction:column;justify-content:center;gap:2rem;padding:2rem;transition:right .4s;border-left:1px solid rgba(255,255,255,.05)}
+  .nav-links.open{right:0}
+  .nav-links a{font-size:1rem}
+}
+
+/* Hero */
+.hero{position:relative;height:100vh;min-height:600px;display:flex;align-items:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0;z-index:0}
+.hero-bg img{width:100%;height:100%;object-fit:cover;filter:brightness(.3) saturate(.8);animation:heroZoom 20s ease-in-out infinite alternate}
+@keyframes heroZoom{from{transform:scale(1)}to{transform:scale(1.08)}}
+.hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,10,15,.3) 0%,rgba(10,10,15,.6) 50%,var(--bg) 100%)}
+.hero-content{position:relative;z-index:2;max-width:61.8%;margin-left:max(8vw,3rem);padding:2rem 0}
+@media(max-width:900px){.hero-content{max-width:90%;margin:0 auto;text-align:center}}
+.hero-tag{display:inline-block;font-family:var(--font-head);font-size:clamp(.65rem,1vw,.8rem);font-weight:500;letter-spacing:.3em;text-transform:uppercase;color:var(--accent);border:1px solid rgba(201,168,76,.3);padding:.5rem 1.5rem;border-radius:var(--radius);margin-bottom:clamp(1.5rem,3vw,2.5rem)}
+.hero h1{margin-bottom:clamp(1rem,2vw,1.5rem);background:linear-gradient(135deg,var(--text) 0%,var(--accent) 60%,var(--accent2) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-sub{font-size:clamp(1rem,1.6vw,1.2rem);color:var(--muted);margin-bottom:clamp(2rem,4vw,3rem);font-weight:300;max-width:500px;line-height:1.7}
+@media(max-width:900px){.hero-sub{margin:0 auto clamp(2rem,4vw,3rem)}}
+.hero-cta{display:inline-flex;gap:1rem;flex-wrap:wrap}
+@media(max-width:900px){.hero-cta{justify-content:center}}
+.btn{font-family:var(--font-head);font-size:clamp(.8rem,1.1vw,.95rem);font-weight:600;padding:.85rem 2rem;border-radius:var(--radius);cursor:pointer;transition:all .3s cubic-bezier(.4,0,.2,1);text-decoration:none;letter-spacing:.02em;display:inline-flex;align-items:center;gap:.5rem}
+.btn-primary{background:var(--accent);color:#0a0a0f;border:none;box-shadow:0 0 30px var(--glow)}
+.btn-primary:hover{background:var(--gold);box-shadow:0 0 50px rgba(201,168,76,.4);transform:translateY(-2px)}
+.btn-outline{background:transparent;color:var(--text);border:1px solid rgba(255,255,255,.15)}
+.btn-outline:hover{border-color:var(--accent);color:var(--accent)}
+
+/* Rating Chip */
+.rating-chip{position:absolute;bottom:clamp(2rem,5vw,4rem);right:max(5vw,2rem);z-index:2;background:rgba(10,10,15,.85);backdrop-filter:blur(12px);border:1px solid rgba(201,168,76,.2);padding:clamp(1rem,2vw,1.5rem) clamp(1.5rem,3vw,2rem);border-radius:var(--radius);text-align:center}
+.rating-chip .stars{color:var(--gold);font-size:1.1rem;margin-bottom:.2rem}
+.rating-chip .num{font-family:var(--font-head);font-size:clamp(1.6rem,2.5vw,2rem);color:var(--text);font-weight:700;line-height:1}
+.rating-chip .cnt{font-size:.7rem;color:var(--muted);margin-top:.2rem}
+@media(max-width:768px){.rating-chip{position:relative;bottom:auto;right:auto;margin:2rem auto 0;display:inline-block}}
+
+/* Info Bar */
+.info-bar{background:var(--surface);padding:1rem max(5vw,2rem);border-bottom:1px solid rgba(255,255,255,.04)}
+.info-items{max-width:1200px;margin:0 auto;display:flex;flex-wrap:wrap;gap:2rem;justify-content:center}
+.info-item{display:flex;align-items:center;gap:.6rem;color:var(--muted);font-size:.85rem}
+.info-item svg{width:16px;height:16px;stroke:var(--accent);stroke-width:2;fill:none}
+
+/* Services */
+.services{padding:clamp(4rem,8vw,8rem) max(5vw,2rem);max-width:1200px;margin:0 auto}
+.section-header{text-align:center;margin-bottom:clamp(3rem,5vw,5rem)}
+.section-label{font-size:.7rem;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem;display:block}
+.section-header h2{margin-bottom:.8rem}
+.section-header p{color:var(--muted);font-size:clamp(.9rem,1.2vw,1.05rem);max-width:550px;margin:0 auto}
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(clamp(260px,28vw,300px),1fr));gap:clamp(1.5rem,2vw,2rem)}
+.service-card{background:var(--card);border:1px solid rgba(255,255,255,.04);border-radius:var(--radius);padding:clamp(2rem,3vw,2.5rem);transition:all .4s cubic-bezier(.4,0,.2,1);position:relative;overflow:hidden}
+.service-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),var(--accent2));opacity:0;transition:opacity .4s}
+.service-card:hover{transform:translateY(-6px);border-color:rgba(201,168,76,.2);box-shadow:0 20px 60px rgba(0,0,0,.4)}
+.service-card:hover::before{opacity:1}
+.service-icon{margin-bottom:1.2rem;color:var(--accent)}
+.service-icon svg{width:clamp(2rem,3vw,2.5rem);height:clamp(2rem,3vw,2.5rem);stroke-width:1.5}
+.service-card h3{font-size:clamp(1.1rem,1.5vw,1.3rem);margin-bottom:.5rem}
+.service-price{font-family:var(--font-head);font-size:clamp(1.3rem,1.8vw,1.6rem);font-weight:700;color:var(--accent);margin:.8rem 0}
+.service-desc{font-size:clamp(.8rem,1vw,.9rem);color:var(--muted);line-height:1.6}
+.badge{display:inline-block;font-size:.65rem;padding:.2rem .6rem;border-radius:var(--radius);margin-top:.8rem;background:rgba(201,168,76,.12);color:var(--gold);letter-spacing:.05em;font-weight:600}
+
+/* Process */
+.process{padding:clamp(4rem,8vw,8rem) max(5vw,2rem);background:var(--surface);position:relative}
+.process::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(201,168,76,.2),transparent)}
+.process-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(1rem,2vw,2rem)}
+@media(max-width:768px){.process-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.process-grid{grid-template-columns:1fr}}
+.process-step{text-align:center;padding:clamp(1.5rem,3vw,2rem)}
+.process-num{font-family:var(--font-head);font-size:clamp(2rem,3vw,2.8rem);font-weight:700;color:rgba(201,168,76,.15);margin-bottom:.8rem}
+.process-step h3{font-size:clamp(1rem,1.4vw,1.2rem);margin-bottom:.5rem}
+.process-step p{font-size:clamp(.8rem,1vw,.9rem);color:var(--muted)}
+
+/* About Split */
+.about{padding:clamp(4rem,8vw,8rem) max(5vw,2rem);max-width:1200px;margin:0 auto}
+.about-split{display:grid;grid-template-columns:.618fr .382fr;gap:clamp(2rem,5vw,5rem);align-items:center}
+@media(max-width:768px){.about-split{grid-template-columns:1fr}}
+.about-text h2{margin-bottom:clamp(1rem,2vw,1.5rem)}
+.about-text p{color:var(--muted);margin-bottom:1rem;font-size:clamp(.9rem,1.1vw,1rem);line-height:1.7}
+.about-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:2rem}
+.stat{text-align:center;padding:1.2rem;background:var(--card);border-radius:var(--radius);border:1px solid rgba(255,255,255,.03)}
+.stat-num{font-family:var(--font-head);font-size:clamp(1.6rem,2.5vw,2.2rem);font-weight:700;color:var(--accent)}
+.stat-label{font-size:.7rem;color:var(--muted);margin-top:.2rem;text-transform:uppercase;letter-spacing:.1em}
+.about-image{position:relative;border-radius:var(--radius);overflow:hidden;box-shadow:0 0 80px var(--glow)}
+.about-image img{width:100%;height:auto;display:block;aspect-ratio:3/4;object-fit:cover}
+.about-image::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(201,168,76,.1),transparent 60%)}
+
+/* Gallery */
+.gallery{padding:clamp(4rem,8vw,8rem) max(5vw,2rem);max-width:1400px;margin:0 auto}
+.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(.8rem,1.2vw,1.2rem)}
+@media(max-width:768px){.gallery-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.gallery-grid{grid-template-columns:1fr}}
+.gallery-item{position:relative;border-radius:var(--radius);overflow:hidden;aspect-ratio:4/5;cursor:pointer}
+.gallery-item img{width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.4,0,.2,1)}
+.gallery-item:hover img{transform:scale(1.08)}
+.gallery-item::after{content:'';position:absolute;inset:0;background:linear-gradient(0deg,rgba(10,10,15,.5) 0%,transparent 50%);opacity:0;transition:opacity .4s}
+.gallery-item:hover::after{opacity:1}
+
+/* Reviews */
+.reviews{padding:clamp(4rem,8vw,8rem) max(5vw,2rem);background:var(--surface);position:relative}
+.reviews::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(201,168,76,.2),transparent)}
+.reviews-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(1.5rem,2vw,2rem)}
+.review-card{background:var(--card);border:1px solid rgba(255,255,255,.04);border-radius:var(--radius);padding:clamp(1.5rem,2.5vw,2rem);transition:border-color .3s}
+.review-card:hover{border-color:rgba(201,168,76,.15)}
+.review-stars{color:var(--gold);font-size:1rem;margin-bottom:.8rem}
+.review-text{font-size:clamp(.85rem,1vw,.95rem);color:var(--text);line-height:1.65;font-style:italic;margin-bottom:1rem}
+.review-author{display:flex;align-items:center;gap:.8rem}
+.review-avatar{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-family:var(--font-head);font-weight:700;font-size:.9rem;color:#0a0a0f;flex-shrink:0}
+.review-name{font-family:var(--font-head);font-weight:600;font-size:.9rem}
+.review-role{font-size:.75rem;color:var(--muted)}
+
+/* CTA */
+.cta{padding:clamp(4rem,8vw,8rem) max(5vw,2rem);text-align:center;max-width:700px;margin:0 auto}
+.cta h2{margin-bottom:1rem}
+.cta p{color:var(--muted);font-size:clamp(.9rem,1.2vw,1.05rem);margin-bottom:clamp(2rem,3vw,2.5rem)}
+
+/* Footer */
+.footer{padding:clamp(2rem,4vw,3rem) max(5vw,2rem);border-top:1px solid rgba(255,255,255,.05);max-width:1200px;margin:0 auto}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:3rem;margin-bottom:2rem}
+@media(max-width:768px){.footer-grid{grid-template-columns:1fr;text-align:center}}
+.footer-brand{font-family:var(--font-head);font-weight:700;font-size:1.3rem;margin-bottom:.5rem}
+.footer-brand span{color:var(--accent)}
+.footer-desc{font-size:.85rem;color:var(--muted);max-width:300px;line-height:1.6}
+@media(max-width:768px){.footer-desc{margin:0 auto}}
+.footer h4{font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:.5rem}
+.footer-links a{color:var(--muted);text-decoration:none;font-size:.85rem;transition:color .3s}
+.footer-links a:hover{color:var(--accent)}
+.footer-bottom{text-align:center;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,.04);font-size:.75rem;color:rgba(255,255,255,.2)}
+
+/* Scroll indicator */
+.scroll-ind{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);z-index:2;color:var(--muted);font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;animation:bob 2s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(8px)}}
+
+/* Animations */
+.reveal{opacity:0;transform:translateY(30px)}
+.reveal.visible{opacity:1;transform:translateY(0);transition:opacity .7s cubic-bezier(.25,.46,.45,.94),transform .7s cubic-bezier(.25,.46,.45,.94)}
+</style>
+</head>
+<body>
+<div class="noise" aria-hidden="true"></div>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <a href="#" class="nav-brand">Aurora <span>Web</span></a>
+  <div class="nav-links" id="navLinks">
+    <a href="#palvelut">Palvelut</a>
+    <a href="#prosessi">Prosessi</a>
+    <a href="#meista">Meistä</a>
+    <a href="#galleria">Galleria</a>
+    <a href="#arvostelut">Arvostelut</a>
+    <a href="#yhteys" class="nav-cta">Ota yhteyttä</a>
+  </div>
+  <button class="hamburger" id="hamburger" aria-label="Valikko">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-bg">
+    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1920&q=80" alt="Verkkosivujen suunnittelu" loading="eager">
+  </div>
+  <div class="hero-content">
+    <span class="hero-tag">Premium Web • AI-ratkaisut • Kypros</span>
+    <h1>Rakennamme digitaalisen tulevaisuutesi</h1>
+    <p class="hero-sub">Suomalainen perheyritys Kyproksella — premium verkkosivut, AI-agentit ja automaatiota joka toimii.</p>
+    <div class="hero-cta">
+      <a href="#yhteys" class="btn btn-primary">Aloita projekti</a>
+      <a href="#palvelut" class="btn btn-outline">Katso palvelut ↓</a>
+    </div>
+  </div>
+  <div class="rating-chip">
+    <div class="stars">★★★★★</div>
+    <div class="num">5.0</div>
+    <div class="cnt">Asiakkaiden arvosana</div>
+  </div>
+  <span class="scroll-ind">Scrollaa ↓</span>
+</section>
+
+<!-- INFO BAR -->
+<div class="info-bar">
+  <div class="info-items">
+    <div class="info-item">
+      <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      Larnaca, Kypros
+    </div>
+    <div class="info-item">
+      <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      hello@auroraweb.io
+    </div>
+    <div class="info-item">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      Vastaamme 24h sisällä
+    </div>
+    <div class="info-item">
+      <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+      5 AI-agenttia 24/7
+    </div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="services" id="palvelut">
+  <div class="section-header">
+    <span class="section-label reveal">Palvelumme</span>
+    <h2 class="reveal">Ratkaisut jotka toimivat</h2>
+    <p class="reveal">Jokainen projekti on räätälöity — emme myy valmispaketteja.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card reveal">
+      <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
+      <h3>Verkkosivut</h3>
+      <div class="service-price">alk. 499 €</div>
+      <p class="service-desc">Modernit, nopeat ja kauniit verkkosivut jotka konvertoivat kävijät asiakkaiksi.</p>
+      <span class="badge">⭐ Suosittu</span>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2a2 2 0 012 2c0 .74-.4 1.39-1 1.73V7h1a7 7 0 017 7h1a2 2 0 010 4h-1v1a2 2 0 01-2 2H6a2 2 0 01-2-2v-1H3a2 2 0 010-4h1a7 7 0 017-7h1V5.73A2 2 0 0112 2z"/></svg></div>
+      <h3>AI-agentit</h3>
+      <div class="service-price">alk. 699 €</div>
+      <p class="service-desc">Älykkäät chatbotit ja automaatiot jotka vastaavat asiakkaille 24/7.</p>
+      <span class="badge">🤖 Uusi</span>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+      <h3>Automaatio</h3>
+      <div class="service-price">alk. 399 €</div>
+      <p class="service-desc">Työprosessien automaatio joka säästää tunteja joka viikko.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process" id="prosessi">
+  <div class="section-header">
+    <span class="section-label reveal">Prosessi</span>
+    <h2 class="reveal">Näin me työskentelemme</h2>
+  </div>
+  <div class="process-grid">
+    <div class="process-step reveal">
+      <div class="process-num">01</div>
+      <h3>Konsultaatio</h3>
+      <p>Kuuntelemme tarpeesi ja suunnittelemme ratkaisun yhdessä.</p>
+    </div>
+    <div class="process-step reveal">
+      <div class="process-num">02</div>
+      <h3>Suunnittelu</h3>
+      <p>Luonnostelemme designin ja varmistamme näkemyksen ennen koodausta.</p>
+    </div>
+    <div class="process-step reveal">
+      <div class="process-num">03</div>
+      <h3>Toteutus</h3>
+      <p>Rakennamme sivut huippulaadulla — jokainen pikseli huolella.</p>
+    </div>
+    <div class="process-step reveal">
+      <div class="process-num">04</div>
+      <h3>Julkaisu</h3>
+      <p>Julkaisemme ja huolehdimme jatkuesta. Et jää yksin.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="meista">
+  <div class="about-split">
+    <div class="about-text">
+      <span class="section-label reveal">Meistä</span>
+      <h2 class="reveal">Perhe, joka rakastaa koodia</h2>
+      <p class="reveal">Olemme suomalainen perhe Kyproksella. Rakennamme verkkosivuja, AI-agentteja ja automaatiota — rakkaudella ja tarkkuudella.</p>
+      <p class="reveal">Jokainen projekti on meille henkilökohtainen. Emme ole tehdas — olemme käsityöläisiä. Ja meillä on 5 AI-agenttia jotka auttavat meitä 24/7.</p>
+      <div class="about-stats">
+        <div class="stat reveal">
+          <div class="stat-num">50+</div>
+          <div class="stat-label">Projektia</div>
+        </div>
+        <div class="stat reveal">
+          <div class="stat-num">★ 5.0</div>
+          <div class="stat-label">Arvosana</div>
+        </div>
+        <div class="stat reveal">
+          <div class="stat-num">24/7</div>
+          <div class="stat-label">Tuki</div>
+        </div>
+      </div>
+    </div>
+    <div class="about-image reveal">
+      <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80" alt="Tiimi työskentelemässä yhdessä">
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery" id="galleria">
+  <div class="section-header">
+    <span class="section-label reveal">Galleria</span>
+    <h2 class="reveal">Töitämme puhuvat puolestaan</h2>
+  </div>
+  <div class="gallery-grid">
+    <div class="gallery-item reveal"><img src="https://images.unsplash.com/photo-1547658719-da2b51169166?w=600&q=80" alt="Verkkosivujen suunnittelu tietokoneella"></div>
+    <div class="gallery-item reveal"><img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80" alt="Data-analytiikka dashboard"></div>
+    <div class="gallery-item reveal"><img src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=600&q=80" alt="Koodausta tietokoneella"></div>
+    <div class="gallery-item reveal"><img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=80" alt="Verkkosivujen analytiikka"></div>
+    <div class="gallery-item reveal"><img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=600&q=80" alt="Koodieditori"></div>
+    <div class="gallery-item reveal"><img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=600&q=80" alt="Tiimityöskentely"></div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews" id="arvostelut">
+  <div class="section-header">
+    <span class="section-label reveal">Asiakkaat</span>
+    <h2 class="reveal">Mitä asiakkaat sanovat</h2>
+  </div>
+  <div class="reviews-grid">
+    <div class="review-card reveal">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"Sivut ovat uskomattoman kauniit ja nopeat. Asiakkaamme rakastavat niitä! Aurora Web teki työn nopeasti ja ammattimaisesti."</p>
+      <div class="review-author">
+        <div class="review-avatar">M</div>
+        <div>
+          <div class="review-name">Maria K.</div>
+          <div class="review-role">Kampaamo-omistaja, Helsinki</div>
+        </div>
+      </div>
+    </div>
+    <div class="review-card reveal">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"AI-chatbot säästää meille tunteja päivittäin. Paras investointi koskaan. Suosittelen kaikille!"</p>
+      <div class="review-author">
+        <div class="review-avatar">J</div>
+        <div>
+          <div class="review-name">Jukka M.</div>
+          <div class="review-role">Ravintolanjohtaja, Larnaca</div>
+        </div>
+      </div>
+    </div>
+    <div class="review-card reveal">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"Nopea toimitus, ammattitaitoinen toteutus. Suomalainen laatu Kyproksella — paras yhdistelmä!"</p>
+      <div class="review-author">
+        <div class="review-avatar">A</div>
+        <div>
+          <div class="review-name">Anna L.</div>
+          <div class="review-role">Yrittäjä, Limassol</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta" id="yhteys">
+  <h2 class="reveal">Valmis aloittamaan?</h2>
+  <p class="reveal">Ota yhteyttä ja kerro projektistasi. Vastaamme 24 tunnin sisällä.</p>
+  <a href="mailto:hello@auroraweb.io" class="btn btn-primary reveal">Lähetä viesti →</a>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand">Aurora <span>Web</span></div>
+      <p class="footer-desc">Suomalainen perheyritys Kyproksella — premium verkkosivut, AI-agentit ja automaatio.</p>
+    </div>
+    <div>
+      <h4>Palvelut</h4>
+      <ul class="footer-links">
+        <li><a href="#palvelut">Verkkosivut</a></li>
+        <li><a href="#palvelut">AI-agentit</a></li>
+        <li><a href="#palvelut">Automaatio</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Yhteys</h4>
+      <ul class="footer-links">
+        <li><a href="mailto:hello@auroraweb.io">hello@auroraweb.io</a></li>
+        <li><a href="#">Larnaca, Kypros</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">© 2026 Aurora Web. Kaikki oikeudet pidätetään.</div>
+</footer>
+
+<script>
+gsap.registerPlugin(ScrollTrigger);
+
+// Nav scroll
+window.addEventListener('scroll',()=>{
+  document.getElementById('nav').classList.toggle('scrolled',window.scrollY>50);
+});
+
+// Hamburger
+document.getElementById('hamburger').addEventListener('click',()=>{
+  document.getElementById('navLinks').classList.toggle('open');
+});
+
+// Scroll reveal with GSAP
+document.querySelectorAll('.reveal').forEach((el,i)=>{
+  gsap.fromTo(el,
+    {opacity:0,y:40},
+    {opacity:1,y:0,duration:.8,delay:i%4*.1,ease:'power2.out',
+     scrollTrigger:{trigger:el,start:'top 88%',toggleActions:'play none none none'}}
+  );
+});
+
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    e.preventDefault();
+    const t=document.querySelector(a.getAttribute('href'));
+    if(t)t.scrollIntoView({behavior:'smooth'});
+    document.getElementById('navLinks').classList.remove('open');
+  });
+});
+</script>
+</body>
+</html>

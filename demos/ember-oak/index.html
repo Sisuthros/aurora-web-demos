@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ember & Oak — Tasting Menu</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="base.css">
+  <link rel="stylesheet" href="components.css">
+  <link rel="stylesheet" href="animations.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+</head>
+<body class="grain">
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-ring" id="cursor-ring"></div>
+
+  <nav class="main-nav" id="nav">
+    <a href="#" class="logo">Ember & Oak</a>
+    <div class="nav-links">
+      <a href="#menu">Menu</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#team">Team</a>
+      <a href="#reservation" class="nav-cta">Reserve</a>
+    </div>
+  </nav>
+
+  <section class="hero" id="hero">
+    <canvas id="candle-canvas"></canvas>
+    <div class="hero-content">
+      <div class="hero-label" id="hero-label">Helsinki • Fine Dining</div>
+      <h1 class="hero-title">
+        <span class="line"><span>Ember</span></span>
+        <span class="line"><span>& Oak</span></span>
+      </h1>
+      <p class="hero-sub" id="hero-sub">Seven courses. One fire. An evening you will not forget.</p>
+      <a href="#reservation" class="cta-gold" id="hero-cta">Reserve a Table</a>
+    </div>
+  </section>
+
+  <section class="section-menu" id="menu">
+    <div class="menu-header">
+      <h2>The Menu</h2>
+      <p>Autumn tasting — 2025</p>
+    </div>
+    <div class="book-container">
+      <div class="book" id="book">
+        <div class="sheet active" data-idx="0">
+          <div class="page left">
+            <div class="page-front">
+              <div class="dish"><div class="dish-name">Wild Mushroom Consomm</div><div class="dish-desc">Porcini, black truffle, bone marrow broth.</div><div class="dish-price">I</div></div>
+              <div class="dish"><div class="dish-name">Smoked Arctic Char</div><div class="dish-desc">Birch-smoked, pickled spruce, dill oil, crispy skin.</div><div class="dish-price">II</div></div>
+              <div class="dish"><div class="dish-name">Reindeer Tartare</div><div class="dish-desc">Lingonberry, smoked egg yolk, juniper, sourdough crisp.</div><div class="dish-price">III</div></div>
+            </div>
+            <div class="page-back"><div class="back-cover-text">Ember & Oak</div></div>
+          </div>
+          <div class="page right">
+            <div class="page-front">
+              <div class="dish"><div class="dish-name">Flame-Grilled Pike Perch</div><div class="dish-desc">Brown butter, roasted celeriac, sea aster, dill emulsion.</div><div class="dish-price">IV</div></div>
+              <div class="dish"><div class="dish-name">Oak-Aged Beef Ribeye</div><div class="dish-desc">40 days dry-aged, bone marrow butter, charred onion, jus.</div><div class="dish-price">V</div></div>
+              <div class="dish"><div class="dish-name">Burnt Honey & Buckthorn</div><div class="dish-desc">Mead ice cream, caramelized rye, sea buckthorn gel.</div><div class="dish-price">VI</div></div>
+            </div>
+            <div class="page-back">
+              <div class="dish"><div class="dish-name">Petits Fours</div><div class="dish-desc">Blackcurrant, liquorice, spruce sugar.</div><div class="dish-price">VII</div></div>
+              <div class="dish"><div class="dish-name">Digestif</div><div class="dish-desc">Akvavit / Calvados / House-made birch sap liqueur.</div><div class="dish-price">VIII</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="book-controls">
+        <button class="page-btn" id="prevBtn" onclick="prevPage()">← Previous</button>
+        <span class="page-indicator" id="pageIndicator">1 / 1</span>
+        <button class="page-btn" id="nextBtn" onclick="nextPage()">Next →</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-gallery" id="gallery">
+    <h2 class="section-title">From the Kitchen</h2>
+    <div class="gallery-grid">
+      <div class="gallery-item"><img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=800" alt="Fire course"><span>Course I — Fire</span></div>
+      <div class="gallery-item"><img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=800" alt="Smoke course"><span>Course III — Smoke</span></div>
+      <div class="gallery-item"><img src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?q=80&w=800" alt="Oak course"><span>Course V — Oak</span></div>
+    </div>
+  </section>
+
+  <section class="section-team" id="team">
+    <h2 class="section-title">The Team</h2>
+    <div class="team-grid">
+      <div class="team-card"><img class="team-avatar" src="https://images.unsplash.com/photo-1583394293214-28ez97a0dc1e?q=80&w=200" alt="Chef Mikael"><h3>Chef Mikael</h3><p>Executive Chef — 15 years of Michelin experience.</p></div>
+      <div class="team-card"><img class="team-avatar" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=200" alt="Sommelier Anna"><h3>Sommelier Anna</h3><p>Curates pairing wines from Nordic terroir.</p></div>
+      <div class="team-card"><img class="team-avatar" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=200" alt="Maître Juha"><h3>Maître Juha</h3><p>Service and storytelling — the evening director.</p></div>
+    </div>
+  </section>
+
+  <section class="section-reservation" id="reservation">
+    <div class="reservation-card">
+      <h2 class="section-title">Reserve</h2>
+      <form id="reservationForm">
+        <div class="form-group">
+          <div class="field">
+            <label for="name">Name</label>
+            <input id="name" type="text" placeholder="Your name" required>
+          </div>
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" type="email" placeholder="Email address" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="field">
+            <label for="phone">Phone</label>
+            <input id="phone" type="tel" placeholder="Phone number">
+          </div>
+          <div class="field">
+            <label for="date">Date</label>
+            <input id="date" type="date" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="field">
+            <label for="guests">Guests</label>
+            <select id="guests"><option>1 Guest</option><option>2 Guests</option><option>3–4 Guests</option><option>5+ Guests</option><option>Private Dining</option></select>
+          </div>
+          <div class="field">
+            <label for="time">Time</label>
+            <select id="time"><option>Evening (18:00)</option><option>Late (20:30)</option></select>
+          </div>
+        </div>
+
+        <label class="form-label" for="requests">Special Requests</label>
+        <textarea id="requests" placeholder="Allergies, dietary restrictions, celebration..."></textarea>
+        <button type="submit" class="cta-gold">Request Reservation</button>
+      </form>
+    </div>
+  </section>
+
+  <section class="section-ambience">
+    <p class="ambience-quote">"We do not cook with fire. <em>We converse with it.</em>"</p>
+  </section>
+
+  <footer class="footer">
+    <small>Ember & Oak — Kruununhaka, Helsinki</small>
+    <small>Reservations: +358 40 123 4567</small>
+    <small>Open: Tue – Sat, 18:00–23:00</small>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

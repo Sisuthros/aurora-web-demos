@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AETHER — Sound Beyond Silence</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --void: #050508;
+      --plasma: #0a0a10;
+      --electric: #00f0ff;
+      --ember: #ff3355;
+      --ghost: rgba(255,255,255,0.7);
+    }
+    html { scrollbar-width: none; }
+    body {
+      font-family: 'Space Grotesk', sans-serif;
+      background: var(--void);
+      color: var(--ghost);
+      overflow-x: hidden;
+      cursor: none;
+    }
+    @media (pointer: coarse) { body { cursor: auto; } .cursor { display: none !important; } }
+
+    /* CURSOR */
+    .cursor {
+      position: fixed;
+      width: 8px; height: 8px;
+      background: var(--electric);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9999;
+      mix-blend-mode: difference;
+      transition: transform 0.15s ease-out;
+    }
+    .cursor-ring {
+      position: fixed;
+      width: 40px; height: 40px;
+      border: 1px solid var(--electric);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9998;
+      transform: translate(-50%, -50%);
+      transition: width 0.3s, height 0.3s, border-color 0.3s;
+    }
+    .cursor.hover .cursor-ring { width: 60px; height: 60px; border-color: var(--ember); }
+
+    /* GLITCH TEXT */
+    .glitch {
+      position: relative;
+      display: inline-block;
+    }
+    .glitch::before, .glitch::after {
+      content: attr(data-text);
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+    }
+    .glitch::before {
+      animation: glitch-1 0.3s infinite linear alternate-reverse;
+      clip-path: polygon(0 0, 100% 0, 100% 35%, 0 35%);
+      color: var(--electric);
+    }
+    .glitch::after {
+      animation: glitch-2 0.3s infinite linear alternate-reverse;
+      clip-path: polygon(0 65%, 100% 65%, 100% 100%, 0 100%);
+      color: var(--ember);
+    }
+    .glitch:hover::before, .glitch:hover::after { animation-duration: 0.1s; }
+    @keyframes glitch-1 {
+      0%, 100% { transform: translate(0); }
+      20% { transform: translate(-3px, 2px); }
+      40% { transform: translate(3px, -2px); }
+      60% { transform: translate(-2px, -1px); }
+      80% { transform: translate(2px, 1px); }
+    }
+    @keyframes glitch-2 {
+      0%, 100% { transform: translate(0); }
+      20% { transform: translate(3px, -2px); }
+      40% { transform: translate(-3px, 2px); }
+      60% { transform: translate(2px, 1px); }
+      80% { transform: translate(-2px, -1px); }
+    }
+
+    /* LAYOUT */
+    .hero {
+      position: relative;
+      width: 100vw; height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    #canvas-container {
+      position: absolute; inset: 0;
+      z-index: 0;
+    }
+    .hero-content {
+      position: relative; z-index: 1;
+      text-align: center;
+      padding: 2rem;
+    }
+    .hero-label {
+      font-size: 11px;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: var(--electric);
+      margin-bottom: 1.5rem;
+      opacity: 0;
+    }
+    .hero-title {
+      font-size: clamp(48px, 12vw, 140px);
+      font-weight: 700;
+      line-height: 0.9;
+      letter-spacing: -0.04em;
+      color: white;
+      margin-bottom: 1.5rem;
+    }
+    .hero-title .word {
+      display: inline-block;
+      overflow: hidden;
+    }
+    .hero-title .word span {
+      display: inline-block;
+      transform: translateY(120%);
+    }
+    .hero-sub {
+      font-size: clamp(14px, 1.5vw, 18px);
+      font-weight: 300;
+      color: var(--ghost);
+      max-width: 400px;
+      margin: 0 auto 2.5rem;
+      opacity: 0;
+    }
+    .cta {
+      display: inline-block;
+      padding: 16px 48px;
+      border: 1px solid var(--electric);
+      color: var(--electric);
+      font-size: 11px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      text-decoration: none;
+      background: transparent;
+      transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+      opacity: 0;
+      transform: scale(0.9);
+    }
+    .cta:hover {
+      background: var(--electric);
+      color: var(--void);
+      letter-spacing: 0.5em;
+    }
+
+    /* AUDIO VISUALIZER SECTION */
+    .section-audio {
+      position: relative;
+      padding: 120px 5vw;
+      background: var(--plasma);
+    }
+    .section-audio::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0;
+      height: 200px;
+      background: linear-gradient(to bottom, var(--void), transparent);
+      pointer-events: none;
+    }
+    .audio-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      max-width: 1200px;
+      margin: 0 auto;
+      align-items: center;
+    }
+    @media (max-width: 768px) {
+      .audio-grid { grid-template-columns: 1fr; gap: 40px; }
+    }
+    .audio-text h2 {
+      font-size: clamp(32px, 4vw, 56px);
+      font-weight: 600;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.5rem;
+    }
+    .audio-text p {
+      font-size: 16px;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 2rem;
+    }
+    .spectrum-container {
+      display: flex;
+      align-items: flex-end;
+      gap: 2px;
+      height: 200px;
+      padding: 20px;
+      background: rgba(0,0,0,0.3);
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+    .bar {
+      flex: 1;
+      background: linear-gradient(to top, var(--ember), var(--electric));
+      border-radius: 1px;
+      transition: height 0.1s ease-out;
+      min-height: 2px;
+    }
+
+    /* IMPACT SECTION */
+    .section-impact {
+      position: relative;
+      padding: 200px 5vw;
+      text-align: center;
+      overflow: hidden;
+    }
+    .impact-number {
+      font-size: clamp(80px, 15vw, 200px);
+      font-weight: 700;
+      line-height: 1;
+      background: linear-gradient(135deg, var(--electric), var(--ember));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 1rem;
+    }
+    .impact-label {
+      font-size: 12px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--ghost);
+    }
+
+    /* FOOTER */
+    .footer {
+      padding: 60px 5vw;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .footer-left {
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+    }
+    .footer-right {
+      display: flex;
+      gap: 2rem;
+    }
+    .footer-right a {
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--ghost);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    .footer-right a:hover { color: var(--electric); }
+
+    /* GRAIN */
+    .grain::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 9998;
+      opacity: 0.025;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+  </style>
+</head>
+<body class="grain">
+  <div class="cursor" id="cursor-dot"></div>
+  <div class="cursor-ring" id="cursor-ring"></div>
+
+  <section class="hero" id="hero">
+    <div id="canvas-container"></div>
+    <div class="hero-content">
+      <div class="hero-label" id="hero-label">Interactive Experience</div>
+      <h1 class="hero-title" id="hero-title">
+        <span class="word"><span>SOUND</span></span><br>
+        <span class="word"><span class="glitch" data-text="BEYOND">BEYOND</span></span><br>
+        <span class="word"><span>SILENCE</span></span>
+      </h1>
+      <p class="hero-sub" id="hero-sub">Audio-reactive WebGL particles that respond to your cursor and scroll.</p>
+      <a href="#audio" class="cta" id="hero-cta">EXPERIENCE</a>
+    </div>
+  </section>
+
+  <section class="section-audio" id="audio">
+    <div class="audio-grid">
+      <div class="audio-text">
+        <h2>Frequencies<br>made visible.</h2>
+        <p>Real-time audio spectrum visualization mapped through procedural shaders. Each bar reacts independently — no pre-rendered loops.</p>
+      </div>
+      <div class="spectrum-container" id="spectrum"></div>
+    </div>
+  </section>
+
+  <section class="section-impact">
+    <div class="impact-number" id="counter">0</div>
+    <div class="impact-label">Particles rendered at 60fps</div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-left">AETHER © 2025</div>
+    <div class="footer-right">
+      <a href="#">WEBGL</a>
+      <a href="#">SHADERS</a>
+      <a href="#">MOTION</a>
+    </div>
+  </footer>
+
+  <script>
+  // ===== CUSTOM CURSOR =====
+  const cursor = document.getElementById('cursor-dot');
+  const cursorRing = document.getElementById('cursor-ring');
+  let cx = 0, cy = 0, tx = 0, ty = 0;
+  const isTouch = window.matchMedia('(pointer: coarse)').matches;
+
+  if (!isTouch) {
+    document.addEventListener('mousemove', e => { tx = e.clientX; ty = e.clientY; });
+    function updateCursor() {
+      cx += (tx - cx) * 0.12;
+      cy += (ty - cy) * 0.12;
+      cursor.style.left = cx + 'px';
+      cursor.style.top = cy + 'px';
+      cursorRing.style.left = cx + 'px';
+      cursorRing.style.top = cy + 'px';
+      requestAnimationFrame(updateCursor);
+    }
+    updateCursor();
+
+    document.querySelectorAll('a, .glitch').forEach(el => {
+      el.addEventListener('mouseenter', () => cursorRing.parentElement?.classList.add('hover'));
+      el.addEventListener('mouseleave', () => cursorRing.parentElement?.classList.remove('hover'));
+    });
+  }
+
+  // ===== WEBGL AUDIO-REACTIVE PARTICLES =====
+  const container = document.getElementById('canvas-container');
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 100);
+  const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  renderer.setPixelRatio(Math.min(2, window.devicePixelRatio));
+  container.appendChild(renderer.domElement);
+
+  const PARTICLE_COUNT = 3000;
+  const positions = new Float32Array(PARTICLE_COUNT * 3);
+  const sizes = new Float32Array(PARTICLE_COUNT);
+  const offsets = new Float32Array(PARTICLE_COUNT);
+
+  for (let i = 0; i < PARTICLE_COUNT; i++) {
+    positions[i * 3] = (Math.random() - 0.5) * 30;
+    positions[i * 3 + 1] = (Math.random() - 0.5) * 30;
+    positions[i * 3 + 2] = (Math.random() - 0.5) * 20;
+    sizes[i] = Math.random() * 0.15 + 0.05;
+    offsets[i] = Math.random() * Math.PI * 2;
+  }
+
+  const geo = new THREE.BufferGeometry();
+  geo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+  geo.setAttribute('aSize', new THREE.BufferAttribute(sizes, 1));
+  geo.setAttribute('aOffset', new THREE.BufferAttribute(offsets, 1));
+
+  const mat = new THREE.ShaderMaterial({
+    uniforms: {
+      uTime: { value: 0 },
+      uInteract: { value: new THREE.Vector3(0, 0, 0) },
+      uColor1: { value: new THREE.Color('#00f0ff') },
+      uColor2: { value: new THREE.Color('#ff3355') }
+    },
+    vertexShader: `
+      uniform float uTime;
+      uniform vec3 uInteract;
+      attribute float aSize;
+      attribute float aOffset;
+      varying float vAlive;
+      void main() {
+        vec3 pos = position;
+        float t = uTime * 0.5 + aOffset;
+        pos.x += sin(t) * 0.3;
+        pos.y += cos(t * 0.7) * 0.3;
+        pos.z += sin(t * 0.3) * 0.2;
+        float dist = length(uInteract.xy - pos.xy);
+        if (dist < 5.0) {
+          float push = (5.0 - dist) * 0.3;
+          pos.xy += normalize(pos.xy - uInteract.xy) * push;
+          pos.z += push * 2.0;
+        }
+        vec4 mv = modelViewMatrix * vec4(pos, 1.0);
+        gl_PointSize = aSize * (200.0 / -mv.z);
+        gl_Position = projectionMatrix * mv;
+        vAlive = smoothstep(30.0, 5.0, -mv.z);
+      }
+    `,
+    fragmentShader: `
+      uniform vec3 uColor1;
+      uniform vec3 uColor2;
+      varying float vAlive;
+      void main() {
+        float d = distance(gl_PointCoord, vec2(0.5));
+        float a = smoothstep(0.5, 0.05, d) * vAlive;
+        vec3 color = mix(uColor1, uColor2, gl_PointCoord.x + gl_PointCoord.y);
+        if (a < 0.01) discard;
+        gl_FragColor = vec4(color * 1.5, a);
+      }
+    `,
+    transparent: true,
+    blending: THREE.AdditiveBlending,
+    depthWrite: false
+  });
+
+  const particles = new THREE.Points(geo, mat);
+  scene.add(particles);
+  camera.position.z = 12;
+
+  // Mouse interaction for particles
+  let mx = 0, my = 0;
+  document.addEventListener('mousemove', e => {
+    mx = (e.clientX / window.innerWidth - 0.5) * 20;
+    my = -(e.clientY / window.innerHeight - 0.5) * 20;
+  });
+
+  // Glitch post-processing via canvas overlay
+  const glitchCanvas = document.createElement('canvas');
+  const glitchCtx = glitchCanvas.getContext('2d');
+  glitchCanvas.style.cssText = 'position:fixed;inset:0;pointer-events:none;z-index:2;opacity:0;';
+  document.body.appendChild(glitchCanvas);
+  glitchCanvas.width = window.innerWidth;
+  glitchCanvas.height = window.innerHeight;
+
+  let glitchIntensity = 0;
+  window.addEventListener('scroll', () => {
+    const sc = window.scrollY / (document.body.scrollHeight - window.innerHeight);
+    glitchIntensity = Math.min(1, sc * 2);
+  });
+
+  // ===== GSAP ENTRANCE =====
+  const tl = gsap.timeline({ defaults: { ease: 'power4.out' } });
+  tl
+    .to('#hero-label', { opacity: 1, duration: 1, delay: 0.8 })
+    .to('#hero-title .word span', { y: 0, duration: 1.2, stagger: 0.1 }, '-=0.6')
+    .to('#hero-sub', { opacity: 1, duration: 1 }, '-=0.8')
+    .to('#hero-cta', { opacity: 1, scale: 1, duration: 0.8, ease: 'back.out(1.7)' }, '-=0.6');
+
+  gsap.utils.toArray('.audio-text').forEach(el => {
+    gsap.from(el, {
+      y: 60, opacity: 0, duration: 1,
+      scrollTrigger: { trigger: el, start: 'top 80%', toggleActions: 'play none none reverse' }
+    });
+  });
+
+  // Counter animation
+  const counter = document.getElementById('counter');
+  let counted = false;
+  const observer = new IntersectionObserver(([entry]) => {
+    if (entry.isIntersecting && !counted) {
+      counted = true;
+      gsap.to({ val: 0 }, {
+        val: 3000,
+        duration: 2,
+        ease: 'power2.out',
+        onUpdate: function() {
+          counter.textContent = Math.floor(this.targets()[0].val).toLocaleString();
+        }
+      });
+    }
+  }, { threshold: 0.5 });
+  observer.observe(counter);
+
+  // ===== AUDIO SPECTRUM BARS =====
+  const spectrum = document.getElementById('spectrum');
+  const barCount = 48;
+  for (let i = 0; i < barCount; i++) {
+    const bar = document.createElement('div');
+    bar.className = 'bar';
+    bar.style.height = '2px';
+    spectrum.appendChild(bar);
+  }
+
+  function animateSpectrum() {
+    const bars = document.querySelectorAll('.bar');
+    bars.forEach((bar, i) => {
+      const height = Math.random() * 180 + 2;
+      bar.style.height = height + 'px';
+      const hue = 180 + (i / barCount) * 60; // cyan to pink
+      bar.style.background = `linear-gradient(to top, hsl(${hue}, 100%, 50%), hsl(${hue + 20}, 100%, 70%))`;
+    });
+    setTimeout(animateSpectrum, 100 + Math.random() * 100);
+  }
+  animateSpectrum();
+
+  // ===== RENDER LOOP =====
+  let time = 0;
+  let running = true;
+  document.addEventListener('visibilitychange', () => running = !document.hidden);
+
+  function render() {
+    requestAnimationFrame(render);
+    if (!running) return;
+    time += 0.016;
+    mat.uniforms.uTime.value = time;
+    mat.uniforms.uInteract.value.set(mx, my, 0);
+
+    // Glitch effect
+    if (glitchIntensity > 0 && Math.random() < glitchIntensity * 0.1) {
+      glitchCanvas.style.opacity = Math.random() * 0.3;
+      glitchCtx.clearRect(0, 0, glitchCanvas.width, glitchCanvas.height);
+      const y = Math.random() * glitchCanvas.height;
+      const h = Math.random() * 20 + 5;
+      glitchCtx.fillStyle = `rgba(0, 240, 255, ${Math.random() * 0.1})`;
+      glitchCtx.fillRect(0, y, glitchCanvas.width, h);
+    } else {
+      glitchCanvas.style.opacity = 0;
+    }
+
+    particles.rotation.y += 0.0002;
+    particles.rotation.x = Math.sin(time * 0.1) * 0.05;
+    renderer.render(scene, camera);
+  }
+  render();
+
+  // ===== RESIZE =====
+  window.addEventListener('resize', () => {
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    glitchCanvas.width = window.innerWidth;
+    glitchCanvas.height = window.innerHeight;
+  });
+
+  // Smooth anchor scroll
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      document.querySelector(a.getAttribute('href'))?.scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+  </script>
+</body>
+</html>

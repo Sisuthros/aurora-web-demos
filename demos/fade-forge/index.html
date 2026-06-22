@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Fade Forge — Premium barber studio Helsinki. Where precision meets style. Varaa aikasi nyt." />
+  <meta name="theme-color" content="#0a0a0a" />
+  <meta property="og:title" content="Fade Forge — Where Precision Meets Style" />
+  <meta property="og:description" content="Premium barber studio Helsinki. Varaa aikasi." />
+  <meta property="og:type" content="website" />
+  <title>Fade Forge — Where Precision Meets Style</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            bg: '#0a0a0a',
+            surface: '#141414',
+            surfacelight: '#1a1a1a',
+            gold: '#c9a96e',
+            bronze: '#8b7355',
+            border: '#2a2a2a',
+            text: '#f5f5f5',
+            textsec: '#a0a0a0',
+          },
+          fontFamily: {
+            inter: ['Inter', 'sans-serif'],
+          },
+        },
+      },
+    }
+  </script>
+  
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  
+  <!-- GSAP plugins -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/SplitText.min.js"></script>
+  <!-- Lenis smooth scroll -->
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+  <!-- Three.js WebGL -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="bg-bg text-text font-inter antialiased overflow-x-hidden">
+
+  <!-- Preloader -->
+  <div id="preloader">
+    <div id="preloader-text">Fade Forge</div>
+    <div id="preloader-line"></div>
+  </div>
+
+  <!-- Film Grain Overlay -->
+  <div id="grain-overlay"></div>
+
+  <!-- Custom Cursor -->
+  <div id="cursor" class="fixed top-0 left-0 pointer-events-none z-[9999] mix-blend-difference">
+    <div id="cursor-dot" class="w-2 h-2 bg-gold rounded-full transition-transform duration-200 ease-out"></div>
+    <div id="cursor-ring" class="w-10 h-10 border border-gold/50 rounded-full absolute -top-4 -left-4 transition-all duration-300 ease-out opacity-0 scale-0"></div>
+  </div>
+
+  <!-- Navigation -->
+  <nav id="nav" class="fixed top-0 left-0 right-0 z-50 px-6 md:px-16 py-6 flex items-center justify-between transition-all duration-500">
+    <a href="#hero" class="text-xl font-bold tracking-tight text-text hover:text-gold transition-colors">FADE FORGE</a>
+    <div class="hidden md:flex items-center gap-10 text-sm tracking-widest uppercase text-textsec">
+      <a href="#services" class="hover:text-gold transition-colors">Palvelut</a>
+      <a href="#atmosphere" class="hover:text-gold transition-colors">Atmosfääri</a>
+      <a href="#about" class="hover:text-gold transition-colors">Meistä</a>
+      <a href="#testimonials" class="hover:text-gold transition-colors">Asiakkaat</a>
+    </div>
+    <a href="#contact" class="px-6 py-2 border border-gold text-gold text-sm tracking-widest uppercase hover:bg-gold hover:text-bg transition-all duration-300">Varaa</a>
+  </nav>
+
+  <!-- GOLD LINE (top) -->
+  <div class="fixed top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-gold/30 to-transparent z-[60]"></div>
+
+  <!-- ===== HERO ===== -->
+  <section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <!-- WebGL Particle Background -->
+    <canvas id="hero-canvas" class="absolute inset-0 z-0"></canvas>
+    
+    <!-- Subtle gradient overlay -->
+    <div class="absolute inset-0 z-[1] bg-gradient-to-b from-bg/40 via-transparent to-bg"></div>
+    
+    <!-- Content -->
+    <div class="relative z-10 text-center px-6 max-w-5xl mx-auto">
+      <p id="hero-label" class="text-gold text-xs tracking-[0.3em] uppercase mb-6 opacity-0">Helsinki • Premium Barber Studio</p>
+      <h1 id="hero-title" class="text-[clamp(56px,8vw,104px)] font-bold tracking-[-0.03em] leading-[0.95] mb-8">
+        <span class="hero-word inline-block overflow-hidden"><span class="inline-block">Where</span></span>
+        <span class="hero-word inline-block overflow-hidden"><span class="inline-block">precision</span></span><br />
+        <span class="hero-word inline-block overflow-hidden"><span class="inline-block">meets</span></span>
+        <span class="hero-word inline-block overflow-hidden text-gold"><span class="inline-block">style.</span></span>
+      </h1>
+      <p id="hero-sub" class="text-textsec text-lg md:text-xl max-w-xl mx-auto mb-10 opacity-0">Jokainen fade kertoo tarinan. Anna meidän kertoa sinun.</p>
+      <div id="hero-cta" class="opacity-0 scale-90">
+        <a href="#contact" class="inline-block px-10 py-4 border-2 border-gold text-gold text-sm tracking-[0.2em] uppercase font-medium hover:bg-gold hover:text-bg transition-all duration-500 magnetic-btn">Varaa Aika</a>
+      </div>
+    </div>
+    
+    <!-- Scroll indicator -->
+    <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-0" id="scroll-indicator">
+      <span class="text-[10px] tracking-[0.3em] uppercase text-textsec">Scroll</span>
+      <div class="w-[1px] h-8 bg-gradient-to-b from-gold to-transparent animate-pulse"></div>
+    </div>
+  </section>
+
+  <!-- ===== SERVICES ===== -->
+  <section id="services" class="py-[120px] px-6 md:px-16">
+    <div class="max-w-6xl mx-auto">
+      <div class="mb-20">
+        <p class="text-gold text-xs tracking-[0.3em] uppercase mb-4 reveal">Palvelut</p>
+        <h2 class="text-[clamp(32px,4vw,56px)] font-semibold tracking-[-0.02em] reveal">Käsityötä, ei kiirettä.</h2>
+      </div>
+      
+      <div class="grid md:grid-cols-3 gap-6">
+        <!-- Service 1 -->
+        <div class="service-card group relative bg-surface border border-border p-0 overflow-hidden reveal">
+          <div class="h-64 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?q=80&w=800&auto=format&fit=crop" alt="The Cut" class="w-full h-full object-cover transition-transform duration-[600ms] ease-out group-hover:scale-[1.04]" />
+          </div>
+          <div class="p-8">
+            <div class="flex items-baseline justify-between mb-4">
+              <h3 class="text-xl font-semibold">The Cut</h3>
+              <span class="text-gold text-sm font-medium">32€</span>
+            </div>
+            <p class="text-textsec text-sm leading-relaxed">Perusteellinen konsultaatio + leikkaus + viimeistely pesulla. 45–60 min.</p>
+          </div>
+          <div class="absolute bottom-0 left-0 h-[2px] w-0 bg-gold group-hover:w-full transition-all duration-500"></div>
+        </div>
+        
+        <!-- Service 2 -->
+        <div class="service-card group relative bg-surface border border-border p-0 overflow-hidden reveal">
+          <div class="h-64 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1503951914877-4a89a2cd68d5?q=80&w=800&auto=format&fit=crop" alt="The Shave" class="w-full h-full object-cover transition-transform duration-[600ms] ease-out group-hover:scale-[1.04]" />
+          </div>
+          <div class="p-8">
+            <div class="flex items-baseline justify-between mb-4">
+              <h3 class="text-xl font-semibold">The Shave</h3>
+              <span class="text-gold text-sm font-medium">28€</span>
+            </div>
+            <p class="text-textsec text-sm leading-relaxed">Perinteinen partaveitsi partahoito, höyry, kuuma pyyhe, öljyt. 30–45 min.</p>
+          </div>
+          <div class="absolute bottom-0 left-0 h-[2px] w-0 bg-gold group-hover:w-full transition-all duration-500"></div>
+        </div>
+        
+        <!-- Service 3 -->
+        <div class="service-card group relative bg-surface border border-border p-0 overflow-hidden reveal">
+          <div class="h-64 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1622286342621-4bd786c2447c?q=80&w=800&auto=format&fit=crop" alt="The Trim" class="w-full h-full object-cover transition-transform duration-[600ms] ease-out group-hover:scale-[1.04]" />
+          </div>
+          <div class="p-8">
+            <div class="flex items-baseline justify-between mb-4">
+              <h3 class="text-xl font-semibold">The Trim</h3>
+              <span class="text-gold text-sm font-medium">24€</span>
+            </div>
+            <p class="text-textsec text-sm leading-relaxed">Parta tai reunat. Nopea mutta huolellinen viimeistely. 20–30 min.</p>
+          </div>
+          <div class="absolute bottom-0 left-0 h-[2px] w-0 bg-gold group-hover:w-full transition-all duration-500"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ATMOSPHERE ===== -->
+  <section id="atmosphere" class="py-[120px] px-6 md:px-16 relative overflow-hidden">
+    <div class="max-w-[1400px] mx-auto">
+      <div class="flex flex-col md:flex-row md:items-end md:justify-between mb-16">
+        <div>
+          <p class="text-gold text-xs tracking-[0.3em] uppercase mb-4 reveal">Atmosfääri</p>
+          <h2 class="text-[clamp(32px,4vw,56px)] font-semibold tracking-[-0.02em] reveal">Tilassa tapahtuu jotain.</h2>
+        </div>
+        <p class="text-textsec text-lg max-w-md mt-6 md:mt-0 reveal">Tummaa puuta. Messinkiä. Musiikkia, jolla on sielu.</p>
+      </div>
+      
+      <!-- Parallax Grid -->
+      <div class="grid grid-cols-12 gap-4 md:gap-6">
+        <div class="col-span-12 md:col-span-7 reveal">
+          <div class="overflow-hidden aspect-[16/9]">
+            <img src="https://images.unsplash.com/photo-1585747860715-2ba37e788b70?q=80&w=1200&auto=format&fit=crop" alt="Barbershop interior" class="w-full h-full object-cover" />
+          </div>
+        </div>
+        <div class="col-span-12 md:col-span-5 reveal">
+          <div class="overflow-hidden aspect-[3/4]">
+            <img src="https://images.unsplash.com/photo-1603342122689-d21c0e9e2cc9?q=80&w=800&auto=format&fit=crop" alt="Barber tools" class="w-full h-full object-cover" />
+          </div>
+        </div>
+        <div class="col-span-6 md:col-span-5 reveal">
+          <div class="overflow-hidden aspect-[4/5]">
+            <img src="https://images.unsplash.com/photo-1593702295094-aea0696e76d3?q=80&w=800&auto=format&fit=crop" alt="Product shelf" class="w-full h-full object-cover" />
+          </div>
+        </div>
+        <div class="col-span-6 md:col-span-7 reveal">
+          <div class="overflow-hidden aspect-[16/10]">
+            <img src="https://images.unsplash.com/photo-1504198458649-3128b932f49e?q=80&w=1200&auto=format&fit=crop" alt="Details" class="w-full h-full object-cover" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ABOUT ===== -->
+  <section id="about" class="py-[120px] px-6 md:px-16">
+    <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+      <div class="reveal">
+        <div class="overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1622286342621-4bd786c2447c?q=80&w=800&auto=format&fit=crop" alt="Master barber" class="w-full aspect-[3/4] object-cover" />
+        </div>
+      </div>
+      <div class="reveal">
+        <p class="text-gold text-xs tracking-[0.3em] uppercase mb-4">Meistä</p>
+        <h2 class="text-[clamp(32px,4vw,48px)] font-semibold tracking-[-0.02em] mb-8 leading-tight">Jokainen fade<br />kertoo tarinan.</h2>
+        <p class="text-textsec text-lg leading-relaxed mb-8">
+          Fade Forge syntyi intohimosta yksityiskohtiin. Emme tee tilauksia — teemme taikuutta. Yli kymmenen vuoden kokemuksella olemme rakentaneet tilan, jossa miehet voivat hengähtää, vaikuttaa ja lähteä parempana versiona itsestään.
+        </p>
+        <blockquote class="border-l-2 border-gold pl-6 text-text italic text-xl">
+          "Taiden parturi ei kysy mitä haluat. Hän näyttää mitä tarvitset."
+        </blockquote>
+        <cite class="block mt-4 text-gold text-sm tracking-widest uppercase not-italic">— Erik, Master Barber</cite>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TESTIMONIALS ===== -->
+  <section id="testimonials" class="py-[120px] px-6 md:px-16 bg-surface border-y border-border">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-20">
+        <p class="text-gold text-xs tracking-[0.3em] uppercase mb-4 reveal">Asiakkaat</p>
+        <h2 class="text-[clamp(32px,4vw,56px)] font-semibold tracking-[-0.02em] reveal">Mitä miehet sanovat.</h2>
+      </div>
+      
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-bg border border-border p-8 reveal">
+          <p class="text-textsec leading-relaxed mb-6">"Ensimmäistä kertaa parturiin, jossa tunsin olevani huollettu — ei vain leikattu. Erik kiinnitti huomiota jokaiseen yksityiskohtaan."</p>
+          <p class="text-gold text-sm font-semibold">Mikko K.</p>
+          <p class="text-textsec text-xs">@mikkokayttaja</p>
+        </div>
+        <div class="bg-bg border border-border p-8 reveal">
+          <p class="text-textsec leading-relaxed mb-6">"Tila on kuin aikamatka — tummaa puuta, messinkiä, musiikkia jolla on sielu. Ja lopputulos? Joka kerta täydellinen."</p>
+          <p class="text-gold text-sm font-semibold">Juha L.</p>
+          <p class="text-textsec text-xs">@juhal</p>
+        </div>
+        <div class="bg-bg border border-border p-8 reveal">
+          <p class="text-textsec leading-relaxed mb-6">"En luottanut fadeen vuosiin. Sitten löysin Fade Forgen. Nyt en mene muualle. Tämä on oikeasti eri tasoa."</p>
+          <p class="text-gold text-sm font-semibold">Antti R.</p>
+          <p class="text-textsec text-xs">@anttirajala</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT / FOOTER ===== -->
+  <section id="contact" class="py-[120px] px-6 md:px-16 relative">
+    <div class="max-w-4xl mx-auto text-center">
+      <p class="text-gold text-xs tracking-[0.3em] uppercase mb-6 reveal">Yhteys</p>
+      <h2 class="text-[clamp(40px,6vw,80px)] font-bold tracking-[-0.03em] mb-8 reveal leading-none">Astu sisään.</h2>
+      <p class="text-textsec text-lg mb-12 max-w-lg mx-auto reveal">Fredrikinkatu 12, 00100 Helsinki. Ma–Pe 10–20, La 10–18.</p>
+      <div class="reveal">
+        <a href="mailto:hello@fadeforge.fi" class="inline-block px-12 py-5 border-2 border-gold text-gold text-sm tracking-[0.2em] uppercase font-medium hover:bg-gold hover:text-bg transition-all duration-500 magnetic-btn">Varaa Aika</a>
+      </div>
+    </div>
+    
+    <!-- Bottom line -->
+    <div class="mt-24 pt-8 border-t border-border flex flex-col md:flex-row items-center justify-between gap-4 text-textsec text-xs tracking-widest uppercase">
+      <span>© 2025 Fade Forge</span>
+      <span>Helsinki • Premium Barber Studio</span>
+    </div>
+  </section>
+
+  <script src="main.js"></script>
+</body>
+</html>

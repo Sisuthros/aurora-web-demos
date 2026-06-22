@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KAIROS — Visual Stories</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+    :root {
+      --void:#050505;
+      --silver:#c0c0c0;
+      --flash:#ffffff;
+      --shadow:#1a1a1a;
+    }
+    html { scroll-behavior:smooth; }
+    body {
+      font-family:'Inter',sans-serif;
+      background:var(--void);
+      color:var(--silver);
+      overflow-x:hidden;
+    }
+
+    /* CUSTOM CURSOR LOUPE */
+    .loupe {
+      position:fixed;
+      width:120px; height:120px;
+      border:1px solid rgba(255,255,255,.3);
+      border-radius:50%;
+      pointer-events:none;
+      z-index:9999;
+      background:rgba(0,0,0,.4);
+      backdrop-filter:blur(2px);
+      transform:translate(-50%,-50%) scale(0);
+      transition:transform .3s cubic-bezier(.22,1,.36,1);
+      overflow:hidden;
+    }
+    .loupe.active { transform:translate(-50%,-50%) scale(1); }
+    .loupe img {
+      position:absolute;
+      width:100vw; height:auto;
+      object-fit:cover;
+    }
+    .cursor-dot {
+      position:fixed; width:4px; height:4px;
+      background:var(--flash); border-radius:50%;
+      pointer-events:none; z-index:10000;
+      transform:translate(-50%,-50%);
+    }
+
+    /* NAV */
+    nav {
+      position:fixed; top:0; left:0; right:0;
+      padding:2rem 4rem;
+      display:flex; justify-content:space-between; align-items:center;
+      z-index:100;
+      mix-blend-mode:difference;
+    }
+    .logo { font-family:'Syne',sans-serif; font-weight:800; font-size:14px; letter-spacing:.3em; color:var(--flash); }
+    .nav-links { display:flex; gap:2.5rem; font-size:11px; letter-spacing:.2em; text-transform:uppercase; }
+    .nav-links a { color:var(--silver); text-decoration:none; transition:color .3s; }
+    .nav-links a:hover { color:var(--flash); }
+
+    /* HERO */
+    .hero {
+      height:100vh; width:100vw;
+      display:flex; align-items:center; justify-content:center;
+      position:relative; overflow:hidden;
+    }
+    .hero-bg {
+      position:absolute; inset:0;
+      background:url('https://images.unsplash.com/photo-1492691527719-9d801eafd7bf?q=80&w=2000') center/cover;
+      filter:brightness(.4);
+    }
+    .hero-title {
+      position:relative; z-index:2;
+      font-family:'Syne',sans-serif;
+      font-size:clamp(48px,12vw,160px);
+      font-weight:800;
+      line-height:.85;
+      letter-spacing:-.04em;
+      color:var(--flash);
+      text-align:center;
+    }
+    .hero-title .stroke {
+      -webkit-text-stroke:1px var(--silver);
+      color:transparent;
+    }
+
+    /* GALLERY — FULL SCREEN PARALLAX */
+    .gallery-wrap { position:relative; }
+    .gallery-item {
+      position:relative;
+      width:100vw; height:100vh;
+      overflow:hidden;
+      display:flex; align-items:center;
+      padding:0 10vw;
+    }
+    .gallery-item:nth-child(even) { justify-content:flex-end; }
+    .gallery-img-wrap {
+      position:absolute; inset:0;
+      overflow:hidden;
+    }
+    .gallery-img-wrap img {
+      width:100%; height:100%;
+      object-fit:cover;
+      transition:transform 1.2s cubic-bezier(.22,1,.36,1);
+    }
+    .gallery-item:hover .gallery-img-wrap img {
+      transform:scale(1.05);
+    }
+    .gallery-caption {
+      position:relative; z-index:2;
+      max-width:400px;
+    }
+    .gallery-caption h3 {
+      font-family:'Syne',sans-serif;
+      font-size:clamp(24px,3vw,40px);
+      font-weight:700;
+      margin-bottom:1rem;
+      color:var(--flash);
+    }
+    .gallery-caption p {
+      font-size:13px; line-height:1.7;
+      color:var(--silver);
+      opacity:.7;
+    }
+    .gallery-caption .year {
+      display:block; margin-top:1rem;
+      font-size:11px; letter-spacing:.3em;
+      text-transform:uppercase;
+      color:var(--silver); opacity:.5;
+    }
+
+    /* SPEED REACT — mouse velocity distorts images */
+    .velocity-distort {
+      transition:transform .15s ease-out;
+    }
+
+    /* FOOTER */
+    .footer {
+      padding:80px 5vw;
+      display:flex; justify-content:space-between;
+      border-top:1px solid var(--shadow);
+    }
+    .footer p { font-size:11px; color:var(--silver); opacity:.5; }
+
+    /* GRAIN */
+    .grain::after { content:''; position:fixed; inset:0; pointer-events:none; z-index:9998; opacity:.02; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+  </style>
+</head>
+<body class="grain">
+  <div class="loupe" id="loupe"></div>
+  <div class="cursor-dot" id="dot"></div>
+
+  <nav>
+    <div class="logo">KAIROS</div>
+    <div class="nav-links">
+      <a href="#work">Work</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+
+  <section class="hero" id="hero">
+    <div class="hero-bg"></div>
+    <h1 class="hero-title">
+      <span class="stroke">VISUAL</span><br>
+      STORIES
+    </h1>
+  </section>
+
+  <div class="gallery-wrap" id="work">
+    <div class="gallery-item">
+      <div class="gallery-img-wrap">
+        <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=1600" alt="Reykjanes" class="velocity-distort">
+      </div>
+      <div class="gallery-caption">
+        <h3>Reykjanes</h3>
+        <p>Where the North Atlantic meets volcanic stone. Shot at 3am under aurora.</p>
+        <span class="year">2024</span>
+      </div>
+    </div>
+
+    <div class="gallery-item">
+      <div class="gallery-img-wrap">
+        <img src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?q=80&w=1600" alt="Patagonia" class="velocity-distort">
+      </div>
+      <div class="gallery-caption">
+        <h3>Patagonia</h3>
+        <p>Morning fog rolling through the valley floor. One exposure, no composite.</p>
+        <span class="year">2023</span>
+      </div>
+    </div>
+
+    <div class="gallery-item">
+      <div class="gallery-img-wrap">
+        <img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?q=80&w=1600" alt="Dolomiti" class="velocity-distort">
+      </div>
+      <div class="gallery-caption">
+        <h3>Dolomiti</h3>
+        <p>Alpenglow on limestone peaks. 40mm prime, golden hour.</p>
+        <span class="year">2024</span>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer" id="contact">
+    <p>KAIROS Studio — Berlin</p>
+    <p>hello@kairos.studio</p>
+  </footer>
+
+  <script>
+  // Loupe cursor
+  const loupe = document.getElementById('loupe');
+  const dot = document.getElementById('dot');
+  let lx=0, ly=0, dx=0, dy=0, tx=0, ty=0;
+  let currentImg = null;
+
+  if(!window.matchMedia('(pointer:coarse)').matches){
+    document.addEventListener('mousemove', e=>{
+      tx=e.clientX; ty=e.clientY;
+      // Check if over image
+      const el = document.elementFromPoint(e.clientX, e.clientY);
+      const imgWrap = el?.closest('.gallery-img-wrap');
+      if(imgWrap){
+        const img = imgWrap.querySelector('img');
+        currentImg = img;
+        loupe.classList.add('active');
+      } else {
+        loupe.classList.remove('active');
+        currentImg = null;
+      }
+    });
+
+    function updateLoupe(){
+      lx += (tx-lx)*.15;
+      ly += (ty-ly)*.15;
+      dot.style.left = tx+'px'; dot.style.top = ty+'px';
+      loupe.style.left = lx+'px'; loupe.style.top = ly+'px';
+
+      if(currentImg && loupe.classList.contains('active')){
+        const rect = currentImg.getBoundingClientRect();
+        const scaleX = rect.width / 120;
+        const scaleY = rect.height / 120;
+        const offsetX = -(lx - rect.left) * 2 + 60;
+        const offsetY = -(ly - rect.top) * 2 + 60;
+        loupe.style.backgroundImage = `url(${currentImg.src})`;
+        loupe.style.backgroundSize = `${rect.width*2}px auto`;
+        loupe.style.backgroundPosition = `${offsetX}px ${offsetY}px`;
+      }
+      requestAnimationFrame(updateLoupe);
+    }
+    updateLoupe();
+  }
+
+  // Velocity distortion
+  let lastX = 0, lastY = 0, lastT = Date.now();
+  const velImages = document.querySelectorAll('.velocity-distort');
+
+  document.addEventListener('mousemove', e=>{
+    const now = Date.now();
+    const dt = now - lastT;
+    if(dt < 16) return;
+    const vx = (e.clientX - lastX) / dt;
+    const vy = (e.clientY - lastY) / dt;
+    const speed = Math.sqrt(vx*vx + vy*vy);
+    const skew = Math.min(speed * .3, 3);
+
+    velImages.forEach(img=>{
+      const rect = img.getBoundingClientRect();
+      if(e.clientY > rect.top-100 && e.clientY < rect.bottom+100){
+        img.style.transform = `scale(1.05) skewX(${vx > 0 ? skew : -skew}deg)`;
+        setTimeout(()=>img.style.transform='',150);
+      }
+    });
+
+    lastX = e.clientX; lastY = e.clientY; lastT = now;
+  });
+
+  // GSAP
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Hero parallax
+  gsap.to('.hero-bg', {
+    yPercent:30,
+    ease:'none',
+    scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:true}
+  });
+
+  // Gallery parallax
+  gsap.utils.toArray('.gallery-item').forEach(item=>{
+    gsap.fromTo(item.querySelector('img'), {yPercent:-10}, {
+      yPercent:10,
+      ease:'none',
+      scrollTrigger:{trigger:item,start:'top bottom',end:'bottom top',scrub:true}
+    });
+    gsap.from(item.querySelector('.gallery-caption'), {
+      y:60, opacity:0, duration:1,
+      scrollTrigger:{trigger:item,start:'top 70%'}
+    });
+  });
+  </script>
+</body>
+</html>

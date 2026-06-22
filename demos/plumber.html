@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ML Plumber • Larnaca — Master Plumbers Since 2000</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;family=Instrument+Sans:wght@400;500;600&amp;display=swap');
+
+        :root {
+            --gold: #C5A46E;
+        }
+
+        body {
+            font-family: 'Inter', system_ui, sans-serif;
+        }
+
+        .font-display {
+            font-family: 'Instrument Sans', 'Inter', system_ui, sans-serif;
+            font-weight: 600;
+            letter-spacing: -0.025em;
+        }
+
+        .section-title {
+            font-size: clamp(2.8rem, 6vw, 4.2rem);
+            line-height: 0.95;
+            font-weight: 600;
+            letter-spacing: -0.04em;
+        }
+
+        .nav {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .nav-scrolled {
+            background-color: rgba(10, 10, 10, 0.96);
+            backdrop-filter: blur(20px);
+            border-bottom-color: #27251f;
+        }
+
+        .premium-gold {
+            color: #C5A46E;
+        }
+
+        .service-card {
+            transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1), 
+                        box-shadow 0.4s cubic-bezier(0.23, 1, 0.32, 1),
+                        border-color 0.3s ease;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 30px 70px -15px rgb(0 0 0 / 0.3);
+            border-color: #3f3a33;
+        }
+
+        .hero-grid {
+            background-image: 
+                linear-gradient(rgba(197, 164, 110, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(197, 164, 110, 0.03) 1px, transparent 1px);
+            background-size: 80px 80px;
+        }
+
+        .stat {
+            font-variant-numeric: tabular-nums;
+        }
+
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: #C5A46E;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover:after {
+            width: 100%;
+        }
+
+        .luxury-btn {
+            transition: all 0.4s cubic-bezier(0.23, 1.0, 0.32, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .luxury-btn:hover {
+            transform: translateY(-1px);
+        }
+
+        .detail-text {
+            font-size: 0.875rem;
+            letter-spacing: 0.5px;
+        }
+
+        .work-grid {
+            background: #0a0a0a;
+        }
+    </style>
+</head>
+<body class="bg-[#0a0a0a] text-[#EDEAE5] selection:bg-[#C5A46E] selection:text-[#0a0a0a]">
+    
+    <!-- Navigation -->
+    <nav id="nav" class="nav fixed top-0 left-0 right-0 z-50 border-b border-[#27251f] bg-[#0a0a0a]/80 backdrop-blur-xl">
+        <div class="max-w-[1280px] mx-auto px-8">
+            <div class="flex items-center justify-between h-[92px]">
+                <!-- Logo -->
+                <div class="flex items-center gap-x-4">
+                    <div class="w-9 h-9 rounded-2xl bg-[#C5A46E] flex items-center justify-center">
+                        <i class="fa-solid fa-wrench text-[#0a0a0a] text-[21px]"></i>
+                    </div>
+                    <div>
+                        <div class="font-semibold text-[21px] tracking-[-0.5px]">ML Plumber</div>
+                        <div class="text-[10px] text-[#6B665C] -mt-1 tracking-[1.5px]">LARNACA • 2000</div>
+                    </div>
+                </div>
+
+                <!-- Menu -->
+                <div class="hidden md:flex items-center gap-x-9 text-[13px] font-medium tracking-[-0.2px]">
+                    <a href="#services" class="nav-link text-[#B8B3A8] hover:text-white transition-colors">Services</a>
+                    <a href="#process" class="nav-link text-[#B8B3A8] hover:text-white transition-colors">Process</a>
+                    <a href="#work" class="nav-link text-[#B8B3A8] hover:text-white transition-colors">Work</a>
+                    <a href="#about" class="nav-link text-[#B8B3A8] hover:text-white transition-colors">About</a>
+                </div>
+
+                <div class="flex items-center gap-x-4">
+                    <!-- Phone -->
+                    <a href="tel:+35799123456" 
+                       class="hidden md:flex items-center gap-x-2.5 px-6 py-3 rounded-2xl bg-[#161513] hover:bg-[#1f1d19] border border-[#27251f] text-sm font-medium transition-all active:scale-[0.985]">
+                        <i class="fa-solid fa-phone text-[#C5A46E]"></i>
+                        <span>+357 99 123 456</span>
+                    </a>
+                    
+                    <!-- CTA -->
+                    <button onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })"
+                            class="luxury-btn px-8 py-[17px] rounded-2xl bg-white text-[#0a0a0a] text-[13px] font-semibold tracking-[-0.3px] flex items-center gap-x-2.5 hover:bg-[#C5A46E] active:bg-[#B89A60]">
+                        <span>Book inspection</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <div class="pt-[92px] min-h-[100dvh] flex items-center relative border-b border-[#27251f]">
+        <div class="hero-grid absolute inset-0"></div>
+        
+        <div class="max-w-[1280px] mx-auto px-8 pt-16 pb-20 relative">
+            <div class="max-w-[620px]">
+                <!-- Badge -->
+                <div class="inline-flex items-center gap-x-3 px-5 py-2 rounded-full bg-[#161513] border border-[#27251f] mb-9">
+                    <div class="flex items-center -space-x-1">
+                        <div class="w-2.5 h-2.5 rounded-full bg-[#C5A46E]"></div>
+                        <div class="w-2.5 h-2.5 rounded-full bg-emerald-500"></div>
+                    </div>
+                    <span class="text-xs tracking-[1px] text-[#C5A46E] font-medium">26 YEARS • 4.98 AVERAGE RATING</span>
+                </div>
+
+                <h1 class="section-title tracking-[-3.2px] leading-[0.92] mb-8">
+                    Precision<br>plumbing.<br>
+                    <span class="text-[#6B665C]">No exceptions.</span>
+                </h1>
+                
+                <p class="max-w-md text-[17px] text-[#B8B3A8] mb-11 tracking-[-0.2px]">
+                    Larnaca’s most respected plumbing practice since 2000. 
+                    Advanced diagnostics. Flawless execution. 24/7 response.
+                </p>
+
+                <div class="flex flex-wrap gap-4">
+                    <button onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })"
+                            class="luxury-btn group px-10 py-5 rounded-3xl bg-white text-[#0a0a0a] font-semibold text-[15px] flex items-center gap-x-3 active:bg-[#C5A46E]">
+                        <span>Request video inspection</span>
+                        <i class="fa-solid fa-arrow-right group-hover:translate-x-0.5 transition"></i>
+                    </button>
+                    
+                    <a href="#work" 
+                       class="px-9 py-5 rounded-3xl border border-[#27251f] hover:bg-[#161513] text-[15px] font-medium flex items-center gap-x-3 transition-all active:scale-[0.985]">
+                        <span>See our work</span>
+                    </a>
+                </div>
+
+                <div class="flex items-center gap-x-10 mt-16 text-sm">
+                    <div>
+                        <div class="text-5xl font-semibold tracking-[-1.5px] stat">26</div>
+                        <div class="text-[#6B665C] mt-1 tracking-[0.5px]">YEARS</div>
+                    </div>
+                    <div class="h-9 w-px bg-[#27251f]"></div>
+                    <div>
+                        <div class="text-5xl font-semibold tracking-[-1.5px] stat">4,800+</div>
+                        <div class="text-[#6B665C] mt-1 tracking-[0.5px]">PROJECTS</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Services -->
+    <div id="services" class="max-w-[1280px] mx-auto px-8 pt-24 pb-20">
+        <div class="flex justify-between items-end mb-12">
+            <div>
+                <div class="uppercase text-xs tracking-[3px] text-[#C5A46E] mb-3">EXPERTISE</div>
+                <div class="text-[42px] tracking-[-1.8px] font-semibold">What we do best</div>
+            </div>
+            <div class="hidden md:block text-[#6B665C] max-w-[280px] text-[15px]">
+                Every project receives the same obsessive attention to detail.
+            </div>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-6">
+            <!-- Card 1 -->
+            <div class="service-card group bg-[#11110F] border border-[#27251f] rounded-3xl p-9 flex flex-col">
+                <div class="w-12 h-12 rounded-2xl bg-[#C5A46E]/10 flex items-center justify-center mb-9">
+                    <i class="fa-solid fa-video text-[#C5A46E] text-3xl"></i>
+                </div>
+                <div class="font-semibold text-[27px] tracking-[-1px] mb-4">Video Camera Diagnostics</div>
+                <div class="text-[#B8B3A8] text-[15px] leading-snug flex-1">
+                    High-resolution drain inspection. We see what others miss. 
+                    Detailed reports with video and stills included.
+                </div>
+                <div class="pt-8 mt-auto text-xs text-[#C5A46E] tracking-widest">MOST REQUESTED</div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="service-card group bg-[#11110F] border border-[#27251f] rounded-3xl p-9 flex flex-col">
+                <div class="w-12 h-12 rounded-2xl bg-emerald-500/10 flex items-center justify-center mb-9">
+                    <i class="fa-solid fa-tools text-emerald-400 text-3xl"></i>
+                </div>
+                <div class="font-semibold text-[27px] tracking-[-1px] mb-4">Complete Plumbing Systems</div>
+                <div class="text-[#B8B3A8] text-[15px] leading-snug flex-1">
+                    Full installations and renovations for villas, apartments and commercial properties. 
+                    Built to last 30+ years.
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="service-card group bg-[#11110F] border border-[#27251f] rounded-3xl p-9 flex flex-col">
+                <div class="w-12 h-12 rounded-2xl bg-blue-500/10 flex items-center justify-center mb-9">
+                    <i class="fa-solid fa-clock text-blue-400 text-3xl"></i>
+                </div>
+                <div class="font-semibold text-[27px] tracking-[-1px] mb-4">24/7 Emergency Response</div>
+                <div class="text-[#B8B3A8] text-[15px] leading-snug flex-1">
+                    Burst pipes, major blockages, no water. Our team is on the road within minutes, 
+                    any hour of the day.
+                </div>
+                <div class="mt-8 text-emerald-400 text-xs font-medium tracking-widest">AVG RESPONSE: 34 MIN</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Process -->
+    <div id="process" class="bg-[#11110F] border-y border-[#27251f] py-20">
+        <div class="max-w-[1280px] mx-auto px-8">
+            <div class="max-w-xl mb-14">
+                <div class="text-xs tracking-[3px] text-[#C5A46E] mb-3">HOW WE WORK</div>
+                <div class="text-[42px] tracking-[-1.8px] font-semibold leading-none">A clear, transparent process.</div>
+            </div>
+
+            <div class="grid md:grid-cols-4 gap-px bg-[#27251f] rounded-3xl overflow-hidden">
+                <div class="bg-[#0a0a0a] p-9">
+                    <div class="text-[#C5A46E] text-xs tracking-widest mb-4">01</div>
+                    <div class="font-semibold text-xl tracking-tight mb-3">Initial Assessment</div>
+                    <div class="text-[#6B665C] text-sm">We listen. We ask the right questions. No assumptions.</div>
+                </div>
+                <div class="bg-[#0a0a0a] p-9">
+                    <div class="text-[#C5A46E] text-xs tracking-widest mb-4">02</div>
+                    <div class="font-semibold text-xl tracking-tight mb-3">Video Diagnostics</div>
+                    <div class="text-[#6B665C] text-sm">Camera inspection with full visual report delivered same day.</div>
+                </div>
+                <div class="bg-[#0a0a0a] p-9">
+                    <div class="text-[#C5A46E] text-xs tracking-widest mb-4">03</div>
+                    <div class="font-semibold text-xl tracking-tight mb-3">Clear Quote</div>
+                    <div class="text-[#6B665C] text-sm">Fixed price. No surprises. Options explained in plain language.</div>
+                </div>
+                <div class="bg-[#0a0a0a] p-9">
+                    <div class="text-[#C5A46E] text-xs tracking-widest mb-4">04</div>
+                    <div class="font-semibold text-xl tracking-tight mb-3">Execution &amp; Handover</div>
+                    <div class="text-[#6B665C] text-sm">Clean, precise work. Full documentation and aftercare.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Work -->
+    <div id="work" class="max-w-[1280px] mx-auto px-8 py-24">
+        <div class="mb-12">
+            <div class="text-xs tracking-[3px] text-[#C5A46E] mb-3">SELECTED WORK</div>
+            <div class="text-[42px] tracking-[-1.8px] font-semibold">Recent projects in Larnaca &amp; Oroklini</div>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-6">
+            <div class="bg-[#11110F] border border-[#27251f] rounded-3xl p-9">
+                <div class="flex justify-between items-start">
+                    <div>
+                        <div class="font-semibold text-xl">Villa renovation — Oroklini</div>
+                        <div class="text-[#6B665C] mt-1">Complete re-piping + smart water system</div>
+                    </div>
+                    <div class="text-right text-xs text-[#C5A46E]">2025</div>
+                </div>
+                <div class="mt-8 pt-8 border-t border-[#27251f] text-sm text-[#B8B3A8]">
+                    “They replaced the entire system in 4 days with zero disruption to our family. 
+                    The video report they provided before starting was incredibly detailed.”
+                </div>
+                <div class="text-xs mt-6 text-[#6B665C]">— The Michaelides Family</div>
+            </div>
+
+            <div class="bg-[#11110F] border border-[#27251f] rounded-3xl p-9">
+                <div class="flex justify-between items-start">
+                    <div>
+                        <div class="font-semibold text-xl">Apartment complex — Larnaca</div>
+                        <div class="text-[#6B665C] mt-1">12-unit building • major drainage issue</div>
+                    </div>
+                    <div class="text-right text-xs text-[#C5A46E]">2024</div>
+                </div>
+                <div class="mt-8 pt-8 border-t border-[#27251f] text-sm text-[#B8B3A8]">
+                    “Found the root cause using camera inspection in under two hours. 
+                    Fixed it permanently. Other companies had been guessing for months.”
+                </div>
+                <div class="text-xs mt-6 text-[#6B665C]">— Building Management, Larnaca</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- About -->
+    <div id="about" class="border-t border-[#27251f] py-20 bg-[#11110F]">
+        <div class="max-w-[1280px] mx-auto px-8 grid md:grid-cols-12 gap-x-8 items-center">
+            <div class="md:col-span-5">
+                <div class="sticky top-8">
+                    <div class="text-xs tracking-[3px] text-[#C5A46E] mb-4">OUR PHILOSOPHY</div>
+                    <div class="text-[42px] tracking-[-1.8px] font-semibold leading-none">We don’t just fix pipes.<br>We protect homes.</div>
+                </div>
+            </div>
+            <div class="md:col-span-7 mt-10 md:mt-0 text-[#B8B3A8] text-[15px] max-w-[560px]">
+                <p class="mb-5">Founded by Michalis Louca in 2000, ML Plumber has grown into Larnaca’s most trusted name in residential and commercial plumbing — without ever sacrificing quality for volume.</p>
+                <p>We still treat every single job as if it were our own home. Because for the people who trust us, it often is.</p>
+                
+                <div class="mt-9 inline-flex items-center gap-x-4 text-sm">
+                    <div class="px-6 py-4 bg-[#0a0a0a] rounded-2xl border border-[#27251f]">
+                        <span class="font-medium text-white">Michalis Louca</span><br>
+                        <span class="text-xs text-[#6B665C]">Founder &amp; Master Plumber</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact -->
+    <div id="contact" class="max-w-[1280px] mx-auto px-8 py-24">
+        <div class="max-w-xl mx-auto text-center mb-12">
+            <div class="text-xs tracking-[3px] text-[#C5A46E] mb-3">LET’S BEGIN</div>
+            <div class="text-[42px] tracking-[-1.8px] font-semibold">Tell us what you need.</div>
+        </div>
+
+        <div class="max-w-lg mx-auto bg-[#11110F] border border-[#27251f] rounded-3xl p-10">
+            <form onsubmit="submitForm(event)">
+                <div class="grid grid-cols-2 gap-5">
+                    <div>
+                        <label class="block text-xs tracking-[1.5px] text-[#6B665C] mb-2">FIRST NAME</label>
+                        <input type="text" required class="w-full bg-[#0a0a0a] border border-[#27251f] rounded-2xl px-6 py-4 text-lg focus:border-[#C5A46E] outline-none transition" placeholder="Maria">
+                    </div>
+                    <div>
+                        <label class="block text-xs tracking-[1.5px] text-[#6B665C] mb-2">LAST NAME</label>
+                        <input type="text" required class="w-full bg-[#0a0a0a] border border-[#27251f] rounded-2xl px-6 py-4 text-lg focus:border-[#C5A46E] outline-none transition" placeholder="Georgiou">
+                    </div>
+                </div>
+                
+                <div class="mt-5">
+                    <label class="block text-xs tracking-[1.5px] text-[#6B665C] mb-2">PHONE / WHATSAPP</label>
+                    <input type="tel" required class="w-full bg-[#0a0a0a] border border-[#27251f] rounded-2xl px-6 py-4 text-lg focus:border-[#C5A46E] outline-none transition" placeholder="+357 99 123 456">
+                </div>
+                
+                <div class="mt-5">
+                    <label class="block text-xs tracking-[1.5px] text-[#6B665C] mb-2">PROJECT DETAILS</label>
+                    <textarea rows="4" required class="w-full bg-[#0a0a0a] border border-[#27251f] rounded-3xl px-6 py-5 text-lg resize-y focus:border-[#C5A46E] outline-none transition" placeholder="We need a full video inspection before purchasing a villa in Oroklini..."></textarea>
+                </div>
+                
+                <button type="submit"
+                        class="mt-6 w-full py-6 rounded-3xl bg-white text-[#0a0a0a] text-[15px] font-semibold tracking-[-0.3px] active:bg-[#C5A46E] transition-all">
+                    Request callback within 15 minutes
+                </button>
+                
+                <div class="text-center text-xs text-[#6B665C] mt-5 tracking-wider">WE TYPICALLY REPLY WITHIN MINUTES</div>
+            </form>
+        </div>
+    </div>
+
+    <footer class="border-t border-[#27251f] py-8 text-center text-xs text-[#6B665C]">
+        © ML Plumber Ltd • Larnaca, Cyprus • Established 2000 • Fully Licensed &amp; Insured
+    </footer>
+
+    <script>
+        // Navbar behavior
+        function initNav() {
+            const nav = document.getElementById('nav');
+            let lastScroll = 0;
+            
+            window.addEventListener('scroll', () => {
+                const currentScroll = window.scrollY;
+                
+                if (currentScroll > 80) {
+                    nav.classList.add('nav-scrolled');
+                } else {
+                    nav.classList.remove('nav-scrolled');
+                }
+                
+                lastScroll = currentScroll;
+            });
+        }
+        
+        function submitForm(e) {
+            e.preventDefault();
+            const btn = e.target.querySelector('button');
+            const originalText = btn.innerHTML;
+            
+            btn.innerHTML = `Request sent — we’ll call shortly`;
+            btn.disabled = true;
+            btn.style.background = '#166534';
+            btn.style.color = 'white';
+            
+            setTimeout(() => {
+                alert("Thank you. Michalis will personally call you within 15 minutes.");
+                window.location.reload();
+            }, 1600);
+        }
+        
+        function boot() {
+            initNav();
+            
+            // Subtle console signature
+            console.log('%c[ML Plumber] Premium site v2 — Built by Lumina 🤍', 'color:#6B665C; font-size: 9px');
+        }
+        
+        window.onload = boot;
+    </script>
+</body>
+</html>

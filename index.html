@@ -1,77 +1,877 @@
 <!DOCTYPE html>
-<html lang="fi">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Aurora Web — modernit nettisivut pienyrityksille</title>
-<meta name="description" content="Modernit, nopeat ja mobiiliystävälliset nettisivut suomalaisille pienyrityksille kiinteällä hinnalla. Katso esimerkit.">
-<meta name="theme-color" content="#0f1115">
+<title>Aurora Web — Bespoke Websites for Small Businesses</title>
+<meta name="description" content="Award-level custom websites for restaurants, salons, trades and wellness brands. Fixed price. 48-hour delivery. Free mockup before payment.">
+<meta property="og:title" content="Aurora Web — Bespoke Websites for Small Businesses">
+<meta property="og:description" content="Custom-designed websites that convert visitors into customers. No templates. No surprises.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://images.unsplash.com/photo-1658237416077-4f2b0cff1117?w=1200&q=80">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=Inter:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <style>
-  :root{--bg:#0f1115;--card:#171a21;--line:#262b36;--fg:#eef1f6;--muted:#9aa3b2;--accent:#7c9cff;--accent2:#b6f09c;--radius:16px}
-  *{box-sizing:border-box;margin:0;padding:0}
-  html{scroll-behavior:smooth}
-  body{background:var(--bg);color:var(--fg);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
-  .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
-  header{padding:88px 0 56px;text-align:center}
-  .brand{font-size:14px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);font-weight:600}
-  h1{font-size:clamp(2rem,5vw,3.4rem);line-height:1.1;margin:18px 0 16px;font-weight:800;letter-spacing:-.02em}
-  .lead{font-size:clamp(1rem,2.2vw,1.25rem);color:var(--muted);max-width:620px;margin:0 auto}
-  .pill{display:inline-block;margin-top:26px;padding:10px 18px;border:1px solid var(--line);border-radius:999px;color:var(--fg);font-size:.95rem;background:var(--card)}
-  .pill b{color:var(--accent2)}
-  section{padding:24px 0 64px}
-  .eyebrow{font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
-  h2{font-size:clamp(1.4rem,3vw,2rem);font-weight:800;letter-spacing:-.01em;margin-bottom:8px}
-  .sub{color:var(--muted);margin-bottom:30px;max-width:640px}
-  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px}
-  .card{display:block;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:26px;text-decoration:none;color:inherit;transition:transform .15s ease,border-color .15s ease}
-  .card:hover{transform:translateY(-4px);border-color:var(--accent)}
-  .card .tag{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);font-weight:600}
-  .card h3{font-size:1.3rem;margin:10px 0 6px;font-weight:700}
-  .card p{color:var(--muted);font-size:.95rem}
-  .card .go{margin-top:16px;font-size:.9rem;color:var(--accent2);font-weight:600}
-  .how{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:34px;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:24px}
-  .how .step b{display:block;color:var(--accent);font-size:1.6rem;margin-bottom:6px}
-  .how .step p{color:var(--muted);font-size:.95rem}
-  .cta{text-align:center;padding:64px 0 88px}
-  footer{border-top:1px solid var(--line);padding:30px 0;text-align:center;color:var(--muted);font-size:.9rem}
+/* ═══════════════════ FOUNDATION ═══════════════════ */
+:root{
+  --cream:#F8F6F2; --sand:#ECE7DD; --sand2:#E4DCCD; --surface:#F1EDE5;
+  --text:#2F3133; --text-dim:#6B6660; --muted:#8F887E;
+  --gold:#C7A76A; --gold-dark:#B09150; --gold-light:#D9BD7E;
+  --sage:#A8B3A0; --white:#FFFFFF; --border:rgba(47,49,51,.08);
+  --border2:rgba(199,167,106,.25); --shadow:0 4px 30px rgba(47,49,51,.06);
+  --shadow-lg:0 12px 50px rgba(47,49,51,.1);
+  --r:4px; --r-lg:6px; --ease:cubic-bezier(.22,1,.36,1);
+  --fd:'Bricolage Grotesque',sans-serif; --fs:'Instrument Serif',serif; --fb:'Inter',sans-serif;
+  /* Modular scale 1.250 Major Third */
+  --step--1:clamp(.8rem,.75rem + .25vw,1rem);
+  --step-0:clamp(1rem,.94rem + .31vw,1.25rem);
+  --step-1:clamp(1.25rem,1.17rem + .39vw,1.563rem);
+  --step-2:clamp(1.563rem,1.46rem + .49vw,1.953rem);
+  --step-3:clamp(1.953rem,1.83rem + .62vw,2.441rem);
+  --step-4:clamp(2.441rem,2.28rem + .77vw,3.052rem);
+  --step-5:clamp(3.052rem,2.85rem + .97vw,3.815rem);
+  --step-6:clamp(3.815rem,3.57rem + 1.21vw,4.768rem);
+  --step-7:clamp(4.768rem,4.46rem + 1.51vw,5.96rem);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+body{background:var(--cream);color:var(--text);font-family:var(--fb);font-size:var(--step-0);line-height:1.6;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+
+/* Noise overlay */
+.noise{position:fixed;inset:0;z-index:9990;pointer-events:none;opacity:.035;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size:200px}
+
+.container{max-width:1320px;margin:0 auto;padding:0 2rem}
+@media(max-width:600px){.container{padding:0 1.2rem}}
+
+/* Grid pattern */
+.grid-bg{position:absolute;inset:0;pointer-events:none;opacity:.4;
+  background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);
+  background-size:64px 64px;
+  mask-image:radial-gradient(ellipse 80% 60% at center,black 20%,transparent 75%);
+  -webkit-mask-image:radial-gradient(ellipse 80% 60% at center,black 20%,transparent 75%)}
+
+/* ═══════════════════ NAV ═══════════════════ */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.5rem 2rem;
+  display:flex;justify-content:space-between;align-items:center;
+  background:rgba(248,246,242,.8);backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--border);transition:padding .3s var(--ease)}
+.nav.scrolled{padding:1rem 2rem}
+.nav-logo{display:flex;align-items:center;gap:.5rem;font-family:var(--fd);
+  font-size:1.25rem;font-weight:600;letter-spacing:-.02em;color:var(--text)}
+.nav-logo svg{width:28px;height:28px}
+.nav-links{display:flex;gap:2rem;align-items:center}
+.nav-links a{font-size:.88rem;color:var(--text-dim);transition:color .2s;position:relative}
+.nav-links a:hover{color:var(--gold-dark)}
+.nav-cta{padding:.6rem 1.4rem;border:1px solid var(--border2);border-radius:50px;
+  color:var(--text)!important;font-size:.82rem!important;
+  transition:all .2s}
+.nav-cta:hover{background:var(--gold);border-color:var(--gold);color:var(--white)!important}
+.nav-burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:.5rem}
+.nav-burger span{width:22px;height:2px;background:var(--text);border-radius:2px;transition:transform .3s}
+@media(max-width:768px){
+  .nav-links{display:none;position:absolute;top:100%;left:0;right:0;
+    flex-direction:column;background:rgba(248,246,242,.98);backdrop-filter:blur(20px);
+    padding:1.5rem 2rem;gap:1rem;border-bottom:1px solid var(--border)}
+  .nav-links.open{display:flex}
+  .nav-burger{display:flex}
+}
+
+/* ═══════════════════ HERO ═══════════════════ */
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;
+  position:relative;overflow:hidden;padding:8rem 0 0}
+.hero-bg{position:absolute;inset:0;z-index:0;overflow:hidden}
+.hero-bg img{width:100%;height:100%;object-fit:cover;
+  animation:heroZoom 25s ease-in-out infinite alternate}
+@keyframes heroZoom{from{transform:scale(1)}to{transform:scale(1.06)}}
+.hero-bg::after{content:'';position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(248,246,242,.85) 0%,rgba(248,246,242,.6) 30%,rgba(248,246,242,.88) 70%,rgba(248,246,242,1) 100%)}
+.hero-content{position:relative;z-index:1;max-width:880px}
+.hero-tag{display:inline-flex;align-items:center;gap:.5rem;padding:.4rem 1rem;
+  border:1px solid var(--border2);border-radius:50px;font-size:.78rem;
+  color:var(--text-dim);margin-bottom:2rem;font-weight:500}
+.hero-tag svg{width:14px;height:14px;color:var(--gold-dark)}
+.hero h1{font-family:var(--fd);font-size:var(--step-6);font-weight:600;
+  line-height:1.02;letter-spacing:-.035em;margin-bottom:1.5rem;
+  background:linear-gradient(135deg,var(--text) 0%,var(--text) 50%,var(--gold-dark) 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero h1 em{font-family:var(--fs);font-style:italic;font-weight:400;
+  -webkit-text-fill-color:var(--gold)}
+.hero p.lead{font-size:var(--step-1);color:var(--text-dim);max-width:520px;
+  margin-bottom:3rem;font-weight:300;line-height:1.6}
+.hero-cta{display:flex;gap:1rem;flex-wrap:wrap;align-items:center}
+.btn{display:inline-flex;align-items:center;gap:.6rem;padding:1rem 2rem;
+  border-radius:50px;font-size:.92rem;font-weight:500;cursor:pointer;
+  border:none;transition:all .3s var(--ease)}
+.btn svg{width:18px;height:18px;transition:transform .2s}
+.btn:hover svg{transform:translateX(3px)}
+.btn-primary{background:var(--text);color:var(--cream)}
+.btn-primary:hover{background:var(--gold-dark);box-shadow:0 8px 30px rgba(176,145,80,.25);transform:translateY(-2px)}
+.btn-ghost{background:transparent;color:var(--text);border:1px solid var(--border2)}
+.btn-ghost:hover{border-color:var(--gold);background:var(--white)}
+
+/* Rating chip */
+.rating-chip{position:absolute;top:50%;right:2rem;transform:translateY(-50%);
+  display:flex;flex-direction:column;align-items:center;gap:.5rem;
+  padding:1.2rem 1.5rem;background:rgba(255,255,255,.7);backdrop-filter:blur(12px);
+  border:1px solid var(--border2);border-radius:var(--r-lg);
+  box-shadow:var(--shadow-lg);z-index:2}
+.rating-chip .stars{display:flex;gap:2px}
+.rating-chip .stars svg{width:16px;height:16px;color:var(--gold)}
+.rating-chip .score{font-family:var(--fd);font-size:1.4rem;font-weight:700;
+  color:var(--text);letter-spacing:-.02em}
+.rating-chip .label{font-size:.72rem;color:var(--muted);font-weight:500}
+@media(max-width:1024px){.rating-chip{display:none}}
+
+/* Hero stats */
+.hero-stats{display:flex;gap:3rem;margin-top:4rem;padding-top:2rem;
+  border-top:1px solid var(--border);position:relative;z-index:1;flex-wrap:wrap}
+.hero-stat .num{font-family:var(--fd);font-size:var(--step-3);font-weight:700;
+  color:var(--gold-dark);letter-spacing:-.02em;line-height:1}
+.hero-stat .lbl{font-size:var(--step--1);color:var(--muted);
+  text-transform:uppercase;letter-spacing:.05em;font-weight:500;margin-top:.3rem}
+
+/* ═══════════════════ INFO BAR ═══════════════════ */
+.info-bar{background:var(--surface);border-bottom:1px solid var(--border);padding:1.2rem 0}
+.info-bar .container{display:flex;justify-content:space-around;flex-wrap:wrap;gap:1rem}
+.info-item{display:flex;align-items:center;gap:.6rem;font-size:var(--step--1);
+  color:var(--text-dim);font-weight:500}
+.info-item svg{width:18px;height:18px;color:var(--gold-dark);flex-shrink:0}
+
+/* ═══════════════════ MARQUEE ═══════════════════ */
+.marquee{overflow:hidden;white-space:nowrap;padding:1rem 0;
+  border-bottom:1px solid var(--border);background:var(--cream)}
+.marquee-track{display:inline-flex;gap:3rem;animation:mq 35s linear infinite;align-items:center}
+.marquee-item{font-family:var(--fs);font-size:var(--step-2);font-style:italic;
+  color:var(--text-dim)}
+.marquee-sep{color:var(--gold);font-size:1rem}
+@keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ═══════════════════ SECTION SHELL ═══════════════════ */
+section{padding:7rem 0;position:relative}
+.sec-label{font-size:var(--step--1);text-transform:uppercase;letter-spacing:.15em;
+  color:var(--gold-dark);margin-bottom:1.5rem;font-weight:600;
+  display:flex;align-items:center;gap:.5rem}
+.sec-label::before{content:'';width:2rem;height:1px;background:var(--gold)}
+.sec-title{font-family:var(--fd);font-size:var(--step-5);font-weight:600;
+  line-height:1.05;letter-spacing:-.03em;max-width:780px;margin-bottom:1.5rem}
+.sec-title em{font-family:var(--fs);font-style:italic;font-weight:400;color:var(--gold)}
+.sec-desc{font-size:var(--step-1);color:var(--text-dim);max-width:500px;
+  margin-bottom:4rem;line-height:1.6;font-weight:300}
+
+/* ═══════════════════ PORTFOLIO BENTO GRID ═══════════════════ */
+.work-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:1rem}
+.work-card{position:relative;overflow:hidden;border-radius:var(--r-lg);
+  border:1px solid var(--border);background:var(--white);
+  transition:border-color .3s,box-shadow .4s var(--ease),transform .4s var(--ease);
+  display:flex;flex-direction:column}
+.work-card:hover{border-color:var(--border2);box-shadow:var(--shadow-lg);transform:translateY(-4px)}
+.work-card-img{position:relative;overflow:hidden;aspect-ratio:16/10;background:var(--sand)}
+.work-card-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s var(--ease)}
+.work-card:hover .work-card-img img{transform:scale(1.03)}
+.work-card-img::after{content:'';position:absolute;inset:0;
+  background:linear-gradient(to bottom,transparent 50%,rgba(0,0,0,.3) 100%);
+  z-index:1}
+.work-card-overlay{position:absolute;bottom:1rem;left:1rem;z-index:2;
+  display:flex;align-items:center;gap:.5rem;font-size:.75rem;
+  color:rgba(255,255,255,.9);font-weight:500;letter-spacing:.03em}
+.work-card-overlay svg{width:14px;height:14px}
+.work-card-body{padding:1.5rem 1.8rem 1.8rem}
+.work-card-cat{font-size:var(--step--1);text-transform:uppercase;letter-spacing:.1em;
+  color:var(--gold-dark);margin-bottom:.6rem;font-weight:600}
+.work-card-title{font-family:var(--fd);font-size:var(--step-2);font-weight:600;
+  letter-spacing:-.02em;margin-bottom:.4rem}
+.work-card-desc{font-size:.9rem;color:var(--text-dim);line-height:1.5}
+.work-card-link{margin-top:1rem;font-size:.82rem;color:var(--gold-dark);
+  font-weight:600;display:inline-flex;align-items:center;gap:.4rem;transition:gap .2s}
+.work-card-link svg{width:14px;height:14px}
+.work-card:hover .work-card-link{gap:.8rem}
+
+.s7{grid-column:span 7} .s5{grid-column:span 5}
+.s4{grid-column:span 4} .s8{grid-column:span 8} .s12{grid-column:span 12}
+@media(max-width:1024px){.s7,.s8,.s5{grid-column:span 6}}
+@media(max-width:700px){.s7,.s8,.s5,.s4,.s12{grid-column:span 12}}
+
+.pr7{padding-right:7px} .pl7{padding-left:7px}
+
+/* Full-width card variant */
+.work-card.wide .work-card-img{aspect-ratio:24/8}
+.work-card.wide .work-card-body{display:flex;justify-content:space-between;align-items:flex-end;gap:2rem}
+.work-card.wide .work-card-text{flex:1}
+.work-card.wide .work-card-meta{text-align:right;flex-shrink:0}
+
+/* ═══════════════════ SERVICES ═══════════════════ */
+.svc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:1rem;margin-top:2rem}
+.svc{padding:2.5rem 2rem;border:1px solid var(--border);border-radius:var(--r-lg);
+  background:var(--white);transition:all .3s var(--ease)}
+.svc:hover{border-color:var(--border2);box-shadow:var(--shadow);transform:translateY(-2px)}
+.svc-ic{width:48px;height:48px;display:flex;align-items:center;justify-content:center;
+  background:var(--surface);border:1px solid var(--border);border-radius:var(--r);
+  margin-bottom:1.2rem}
+.svc-ic svg{width:24px;height:24px;color:var(--gold-dark)}
+.svc h3{font-family:var(--fd);font-size:1.2rem;font-weight:600;margin-bottom:.5rem;letter-spacing:-.01em}
+.svc p{font-size:.88rem;color:var(--text-dim);line-height:1.6}
+.svc-badge{display:inline-block;margin-top:1rem;padding:.2rem .6rem;
+  background:var(--surface);border:1px solid var(--border);border-radius:var(--r);
+  font-size:.72rem;color:var(--muted);font-weight:500}
+
+/* ═══════════════════ PROCESS ═══════════════════ */
+.process-list{margin-top:2rem}
+.pstep{display:grid;grid-template-columns:4rem 1fr auto;gap:2rem;
+  padding:2.2rem 0;border-top:1px solid var(--border);align-items:baseline}
+.pstep:last-child{border-bottom:1px solid var(--border)}
+.pnum{font-family:var(--fd);font-size:var(--step-2);font-weight:700;
+  color:var(--gold);letter-spacing:-.02em}
+.pstep h3{font-family:var(--fd);font-size:var(--step-2);font-weight:600;
+  margin-bottom:.5rem;letter-spacing:-.01em}
+.pstep p{color:var(--text-dim);font-size:.95rem;max-width:560px;line-height:1.6}
+.ptime{font-size:.75rem;color:var(--muted);font-weight:600;
+  text-transform:uppercase;letter-spacing:.05em;white-space:nowrap}
+@media(max-width:700px){.pstep{grid-template-columns:3rem 1fr;gap:1rem}.ptime{grid-column:2;margin-top:.5rem}}
+
+/* ═══════════════════ PRICING ═══════════════════ */
+.price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-top:2rem}
+@media(max-width:900px){.price-grid{grid-template-columns:1fr;max-width:380px;margin:2rem auto 0}}
+.pcard{padding:2.5rem 2rem;border:1px solid var(--border);border-radius:var(--r-lg);
+  background:var(--white);display:flex;flex-direction:column;
+  transition:all .3s var(--ease);position:relative}
+.pcard:hover{border-color:var(--border2);box-shadow:var(--shadow-lg);transform:translateY(-4px)}
+.pcard.featured{border-color:var(--gold);background:linear-gradient(180deg,rgba(241,237,229,1),rgba(255,255,255,1))}
+.pcard .badge{position:absolute;top:1rem;right:1rem;padding:.2rem .7rem;
+  background:var(--gold);color:var(--white);border-radius:50px;
+  font-size:.7rem;font-weight:600;letter-spacing:.03em}
+.pcard h3{font-family:var(--fd);font-size:var(--step-2);font-weight:600;margin-bottom:.5rem}
+.pcard .price{font-family:var(--fd);font-size:var(--step-5);font-weight:700;
+  color:var(--text);letter-spacing:-.02em;margin:1rem 0 .3rem}
+.pcard .price small{font-size:var(--step-0);font-weight:400;color:var(--muted)}
+.pcard .pdesc{font-size:.85rem;color:var(--muted);margin-bottom:1.5rem}
+.pcard ul{list-style:none;margin-bottom:1.5rem;flex:1}
+.pcard ul li{padding:.6rem 0;font-size:.9rem;color:var(--text-dim);
+  border-bottom:1px solid var(--border);display:flex;align-items:center;gap:.6rem}
+.pcard ul li svg{width:16px;height:16px;color:var(--gold);flex-shrink:0}
+.pcard .btn{margin-top:auto;text-align:center;justify-content:center}
+
+/* ═══════════════════ TESTIMONIAL ═══════════════════ */
+.testimonial{max-width:780px;padding:3.5rem;border:1px solid var(--border);
+  border-radius:var(--r-lg);background:var(--white);box-shadow:var(--shadow);
+  margin-top:2rem}
+.testimonial-quote{font-family:var(--fs);font-size:var(--step-3);font-style:italic;
+  line-height:1.35;color:var(--text);margin-bottom:2rem}
+.testimonial-quote::before{content:'\201C';font-size:var(--step-6);color:var(--gold);
+  line-height:0;vertical-align:-0.4em;margin-right:.2em}
+.testimonial-author{display:flex;align-items:center;gap:1rem}
+.testimonial-avatar{width:52px;height:52px;border-radius:50%;
+  background:linear-gradient(135deg,var(--gold),var(--sand2));
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--fd);font-weight:600;color:var(--white);font-size:1.2rem}
+.testimonial-author .name{font-weight:600;font-size:.95rem}
+.testimonial-author .role{font-size:.82rem;color:var(--muted)}
+
+/* ═══════════════════ CTA ═══════════════════ */
+.cta{padding:8rem 0;text-align:center;position:relative;overflow:hidden}
+.cta::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  width:700px;height:700px;background:radial-gradient(circle,rgba(199,167,106,.1),transparent 60%)}
+.cta-content{position:relative;z-index:1}
+.cta h2{font-family:var(--fd);font-size:var(--step-6);font-weight:600;
+  line-height:1.02;letter-spacing:-.035em;margin-bottom:1.5rem}
+.cta h2 em{font-family:var(--fs);font-style:italic;font-weight:400;color:var(--gold)}
+.cta p{font-size:var(--step-1);color:var(--text-dim);max-width:480px;
+  margin:0 auto 3rem;font-weight:300}
+.wa-btn{display:inline-flex;align-items:center;gap:.7rem;padding:1.2rem 2.5rem;
+  background:#25d366;color:#fff;border-radius:50px;font-size:1rem;font-weight:600;
+  transition:all .3s var(--ease)}
+.wa-btn:hover{transform:translateY(-3px);box-shadow:0 12px 40px rgba(37,211,102,.3)}
+.wa-btn svg{width:20px;height:20px}
+
+/* ═══════════════════ FOOTER ═══════════════════ */
+footer{padding:3rem 0 2rem;border-top:1px solid var(--border);background:var(--surface)}
+.footer-grid{display:flex;justify-content:space-between;align-items:center;
+  flex-wrap:wrap;gap:2rem}
+.footer-logo{display:flex;align-items:center;gap:.5rem;font-family:var(--fd);
+  font-size:1.2rem;font-weight:600}
+.footer-logo svg{width:24px;height:24px}
+.footer-links{display:flex;gap:2rem}
+.footer-links a{color:var(--text-dim);font-size:.85rem;transition:color .2s}
+.footer-links a:hover{color:var(--gold-dark)}
+.footer-copy{font-size:.78rem;color:var(--muted);text-align:center;
+  width:100%;margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border)}
+
+/* ═══════════════════ SCROLL PROGRESS ═══════════════════ */
+.scroll-prog{position:fixed;top:0;left:0;height:2px;background:var(--gold);
+  z-index:9999;width:0%;transition:width .1s}
+
+/* ═══════════════════ CUSTOM CURSOR ═══════════════════ */
+.cursor{position:fixed;width:10px;height:10px;border-radius:50%;background:var(--gold);
+  pointer-events:none;mix-blend-mode:difference;z-index:10000;
+  transition:width .3s,height .3s,background .3s}
+.cursor.hover{width:44px;height:44px;background:transparent;
+  border:1.5px solid var(--gold)}
+@media(max-width:768px){.cursor{display:none}}
 </style>
 </head>
 <body>
-<header><div class="wrap">
-  <div class="brand">Aurora Web</div>
-  <h1>Modernit nettisivut pienyrityksille — kiinteällä hinnalla</h1>
-  <p class="lead">Nopea, mobiiliystävällinen ja kaunis sivu yrityksellesi. Ei tuntilaskutusta, ei kuukausia kestäviä projekteja. Katso esimerkit alta.</p>
-  <div class="pill">Valmis <b>noin viikossa</b> &middot; kiinteä hinta &middot; sisältää julkaisun</div>
-</div></header>
 
-<section class="wrap">
-  <div class="eyebrow">Esimerkkityöt</div>
-  <h2>Klikkaa ja katso — toimii puhelimella ja koneella</h2>
-  <p class="sub">Jokainen on täysi, itsenäinen sivu. Demojen kuvat ovat vielä yleisiä mallikuvia; sinun sivullesi tulevat sinun omat kuvasi ja sisältösi.</p>
-  <div class="grid">
-    <a class="card" href="putki-jarvinen.html"><div class="tag">LVI &middot; Putkityöt</div><h3>Putki-Järvinen Oy</h3><p>Päivystysputkimies-sivu: nopea yhteydenotto, palvelut, luottamus.</p><div class="go">Avaa demo →</div></a>
-    <a class="card" href="ravintola-savotta.html"><div class="tag">Ravintola</div><h3>Ravintola Savotta</h3><p>Ravintolasivu: menu, tunnelma, varaus. Houkutteleva ja selkeä.</p><div class="go">Avaa demo →</div></a>
-    <a class="card" href="kampaamo-bella.html"><div class="tag">Kampaamo &middot; Kauneus</div><h3>Kampaamo Bella</h3><p>Kampaamosivu: palvelut, hinnasto, ajanvaraus. Tyylikäs ja lämmin.</p><div class="go">Avaa demo →</div></a>
-    <a class="card" href="relove-retreats.html"><div class="tag">Hyvinvointi &middot; Retriitti</div><h3>ReLove Retreats</h3><p>Luksus-hyvinvointiretriitti: pehmeät scroll-animaatiot, Awwwards-tason design.</p><div class="go">Avaa demo →</div></a>
+<div class="noise"></div>
+<div class="scroll-prog" id="scrollProg"></div>
+<div class="cursor" id="cursor"></div>
+
+<!-- ═════════════ NAV ═════════════ -->
+<nav class="nav" id="nav">
+  <a href="#" class="nav-logo">
+    <svg viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="14" stroke="currentColor" stroke-width="2"/><path d="M8 20Q12 8 16 16T24 12" stroke="var(--gold)" stroke-width="2.5" stroke-linecap="round" fill="none"/></svg>
+    Aurora Web
+  </a>
+  <div class="nav-links" id="navLinks">
+    <a href="#work">Work</a>
+    <a href="#services">Services</a>
+    <a href="#process">Process</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#contact" class="nav-cta">Get a quote</a>
+  </div>
+  <div class="nav-burger" id="burger">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- ═════════════ HERO ═════════════ -->
+<section class="hero">
+  <div class="hero-bg">
+    <img src="https://images.unsplash.com/photo-1658237416077-4f2b0cff1117?w=1920&q=80" alt="Aegean sunset over Kos" loading="eager">
+  </div>
+  <div class="grid-bg"></div>
+  <div class="container hero-content">
+    <div class="hero-tag" id="hero-tag">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+      Available for new projects — July 2026
+    </div>
+    <h1 id="hero-title">Bespoke websites that <em>don't just look good</em> — they convert visitors into customers.</h1>
+    <p class="lead" id="hero-lead">Award-level design for small businesses. Built from scratch, no templates. Fixed price, 48-hour delivery, free mockup before you pay a cent.</p>
+    <div class="hero-cta" id="hero-cta">
+      <a href="#work" class="btn btn-primary">
+        See our work
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <a href="#contact" class="btn btn-ghost">Get a free mockup</a>
+    </div>
+    <div class="hero-stats" id="hero-stats">
+      <div class="hero-stat"><div class="num">8</div><div class="lbl">Live Demos</div></div>
+      <div class="hero-stat"><div class="num">48h</div><div class="lbl">Avg Delivery</div></div>
+      <div class="hero-stat"><div class="num">100%</div><div class="lbl">Custom Design</div></div>
+      <div class="hero-stat"><div class="num">&euro;299</div><div class="lbl">Starting Price</div></div>
+    </div>
+  </div>
+  <div class="rating-chip" id="rating-chip">
+    <div class="stars">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14l-5-4.87 6.91-1.01z"/></svg>
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14l-5-4.87 6.91-1.01z"/></svg>
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14l-5-4.87 6.91-1.01z"/></svg>
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14l-5-4.87 6.91-1.01z"/></svg>
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14l-5-4.87 6.91-1.01z"/></svg>
+    </div>
+    <div class="score">5.0</div>
+    <div class="label">Client Rating</div>
   </div>
 </section>
 
-<section class="wrap">
-  <div class="eyebrow">Miten se toimii</div>
-  <h2>Kolme askelta valmiiseen sivuun</h2><div class="sub"></div>
-  <div class="how">
-    <div class="step"><b>1</b><p>15 min puhelu — kerrot yrityksestäsi ja toiveistasi.</p></div>
-    <div class="step"><b>2</b><p>Lähetän etusivuluonnoksen — ennen kuin maksat mitään.</p></div>
-    <div class="step"><b>3</b><p>Hyväksyntä → rakennan koko sivun → julkaistaan. Kiinteä hinta.</p></div>
+<!-- ═════════════ INFO BAR ═════════════ -->
+<div class="info-bar">
+  <div class="container">
+    <div class="info-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      Helsinki · Larnaca
+    </div>
+    <div class="info-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+      48-hour delivery
+    </div>
+    <div class="info-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83 0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+      Fixed price, no surprises
+    </div>
+    <div class="info-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2.4 7.4H22l-6 4.6 2.3 7-5.9-4.4L6.5 21l2.3-7-6-4.6h7.6z"/></svg>
+      100% custom — no templates
+    </div>
+  </div>
+</div>
+
+<!-- ═════════════ MARQUEE ═════════════ -->
+<div class="marquee">
+  <div class="marquee-track">
+    <span class="marquee-item">Restaurants</span><span class="marquee-sep">✦</span>
+    <span class="marquee-item">Salons</span><span class="marquee-sep">✦</span>
+    <span class="marquee-item">Trades</span><span class="marquee-sep">✦</span>
+    <span class="marquee-item">Wellness</span><span class="marquee-sep">✦</span>
+    <span class="marquee-item">Photography</span><span class="marquee-sep">✦</span>
+    <span class="marquee-item">Real Estate</span><span class="marquee-sep">✦</span>
+    <span class="marquee-item">Fitness</span><span class="marquee-sep">✦</span>
+    <span class="marquee-item">Dental</span><span class="marquee-sep">✦</span>
+    <span class="marquee-item">Restaurants</span><span class="marquee-sep">✦</span>
+    <span class="marquee-item">Salons</span><span class="marquee-sep">✦</span>
+    <span class="marquee-item">Trades</span><span class="marquee-sep">✦</span>
+    <span class="marquee-item">Wellness</span><span class="marquee-sep">✦</span>
+    <span class="marquee-item">Photography</span><span class="marquee-sep">✦</span>
+    <span class="marquee-item">Real Estate</span><span class="marquee-sep">✦</span>
+    <span class="marquee-item">Fitness</span><span class="marquee-sep">✦</span>
+    <span class="marquee-item">Dental</span><span class="marquee-sep">✦</span>
+  </div>
+</div>
+
+<!-- ═════════════ PORTFOLIO ═════════════ -->
+<section id="work">
+  <div class="container">
+    <div class="sec-label gs-reveal">Selected Work</div>
+    <h2 class="sec-title gs-reveal">Eight demos, <em>eight distinct styles</em> — one standard of quality.</h2>
+    <p class="sec-desc gs-reveal">Every site is built from scratch. No WordPress themes, no page builders. Just clean code, thoughtful design, and pages that load fast on any device.</p>
+
+    <div class="work-grid">
+      <!-- 1. ReLove — span 7 (biggest) -->
+      <a href="demos/rellove.html" class="work-card s7">
+        <div class="work-card-img">
+          <img src="screenshots/rellove.jpg" alt="ReLove Retreats — luxury wellness site" loading="lazy">
+          <div class="work-card-overlay">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17l9.2-9.2M17 17V7H7"/></svg>
+            Kos, Greece
+          </div>
+        </div>
+        <div class="work-card-body">
+          <div class="work-card-cat">Wellness · Luxury</div>
+          <div class="work-card-title">ReLove Retreats</div>
+          <div class="work-card-desc">A luxury wellness retreat on the Greek island of Kos. Cream palette, Playfair Display serif, soft parallax animations, and a booking flow that feels like a holiday.</div>
+          <span class="work-card-link">View live demo
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </span>
+        </div>
+      </a>
+
+      <!-- 2. Fade Forge — span 5 -->
+      <a href="demos/fade-forge/index.html" class="work-card s5">
+        <div class="work-card-img">
+          <img src="screenshots/fade-forge.jpg" alt="Fade Forge — barber studio with WebGL" loading="lazy">
+          <div class="work-card-overlay">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17l9.2-9.2M17 17V7H7"/></svg>
+            Helsinki
+          </div>
+        </div>
+        <div class="work-card-body">
+          <div class="work-card-cat">Barber · Dark / Gold</div>
+          <div class="work-card-title">Fade Forge</div>
+          <div class="work-card-desc">Three.js particle effects, GSAP scroll animations, film grain overlay, and a magnetic cursor. Dark gold aesthetic with serious attitude.</div>
+          <span class="work-card-link">View demo
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </span>
+        </div>
+      </a>
+
+      <!-- 3. Nazanin — span 5 -->
+      <a href="demos/nazanin.html" class="work-card s5">
+        <div class="work-card-img">
+          <img src="screenshots/nazanin.jpg" alt="Nazanin Salonki — beauty salon" loading="lazy">
+          <div class="work-card-overlay">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17l9.2-9.2M17 17V7H7"/></svg>
+            Helsinki
+          </div>
+        </div>
+        <div class="work-card-body">
+          <div class="work-card-cat">Salon · Beauty</div>
+          <div class="work-card-title">Nazanin Salonki</div>
+          <div class="work-card-desc">Rose-gold palette with Cormorant Garamond type. Hero zoom, review highlights, elegant booking form for a premium salon experience.</div>
+          <span class="work-card-link">View demo
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </span>
+        </div>
+      </a>
+
+      <!-- 4. Ember & Oak — span 7 -->
+      <a href="demos/ember-oak/index.html" class="work-card s7">
+        <div class="work-card-img">
+          <img src="screenshots/ember-oak.jpg" alt="Ember & Oak — fine dining restaurant" loading="lazy">
+          <div class="work-card-overlay">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17l9.2-9.2M17 17V7H7"/></svg>
+            Helsinki
+          </div>
+        </div>
+        <div class="work-card-body">
+          <div class="work-card-cat">Restaurant · Fine Dining</div>
+          <div class="work-card-title">Ember &amp; Oak</div>
+          <div class="work-card-desc">Interactive tasting-menu carousel, team profiles, reservation form, and warm amber palette. A restaurant site that makes you want to book a table.</div>
+          <span class="work-card-link">View demo
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </span>
+        </div>
+      </a>
+
+      <!-- 5. ML Plumber — span 4 -->
+      <a href="demos/plumber.html" class="work-card s4">
+        <div class="work-card-img">
+          <img src="screenshots/plumber.jpg" alt="ML Plumber — trades website" loading="lazy">
+          <div class="work-card-overlay">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17l9.2-9.2M17 17V7H7"/></svg>
+            Vantaa
+          </div>
+        </div>
+        <div class="work-card-body">
+          <div class="work-card-cat">Trades · Emergency</div>
+          <div class="work-card-title">ML Plumber</div>
+          <div class="work-card-desc">A trades site done right — service grid, process steps, emergency call button, and a lead capture form that gets the phone ringing.</div>
+          <span class="work-card-link">View demo
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </span>
+        </div>
+      </a>
+
+      <!-- 6. Kairos — span 4 -->
+      <a href="demos/kairos/index.html" class="work-card s4">
+        <div class="work-card-img">
+          <img src="screenshots/kairos.jpg" alt="Kairos — photography portfolio" loading="lazy">
+          <div class="work-card-overlay">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17l9.2-9.2M17 17V7H7"/></svg>
+            Portfolio
+          </div>
+        </div>
+        <div class="work-card-body">
+          <div class="work-card-cat">Photography · Portfolio</div>
+          <div class="work-card-title">Kairos</div>
+          <div class="work-card-desc">Custom loupe cursor, full-screen parallax gallery, velocity-based distortion, and film grain. Minimalism in service of the image.</div>
+          <span class="work-card-link">View demo
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </span>
+        </div>
+      </a>
+
+      <!-- 7. Aurora — span 4 -->
+      <a href="demos/aurora.html" class="work-card s4">
+        <div class="work-card-img">
+          <img src="screenshots/aurora.jpg" alt="Aurora Web — agency page" loading="lazy">
+          <div class="work-card-overlay">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17l9.2-9.2M17 17V7H7"/></svg>
+            This site
+          </div>
+        </div>
+        <div class="work-card-body">
+          <div class="work-card-cat">Agency · Self-Brand</div>
+          <div class="work-card-title">Aurora Web</div>
+          <div class="work-card-desc">The page you're looking at right now — built with the same tools, the same standards, and the same obsession for detail.</div>
+          <span class="work-card-link">You're here
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/></svg>
+          </span>
+        </div>
+      </a>
+
+      <!-- 8. Aether — full width -->
+      <a href="demos/aether/index.html" class="work-card s12 wide">
+        <div class="work-card-img">
+          <img src="screenshots/aether.jpg" alt="Aether — experimental WebGL art" loading="lazy">
+          <div class="work-card-overlay">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17l9.2-9.2M17 17V7H7"/></svg>
+            Experimental
+          </div>
+        </div>
+        <div class="work-card-body">
+          <div class="work-card-text">
+            <div class="work-card-cat">Experimental · WebGL</div>
+            <div class="work-card-title">Aether</div>
+            <div class="work-card-desc">An audio-reactive art installation site. Cyan and ember glitch typography, WebGL particle systems, and a real-time sound visualizer. Shows what we can do when the brief says "go wild."</div>
+            <span class="work-card-link">View demo
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </span>
+          </div>
+          <div class="work-card-meta">
+            <div class="work-card-cat">Technologies</div>
+            <div style="font-size:.85rem;color:var(--text-dim);line-height:1.8">
+              Three.js · WebGL Shaders<br>Web Audio API<br>GSAP · Lenis<br>Custom GLSL
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
   </div>
 </section>
 
-<div class="cta"><div class="wrap">
-  <div class="eyebrow">Valmis aloittamaan?</div>
-  <h2>Saat oman luonnoksen ilmaiseksi</h2>
-  <p class="lead">Tee ensin etusivuluonnos ilman riskiä — maksat vasta kun olet nähnyt sen.</p>
-</div></div>
+<!-- ═════════════ SERVICES ═════════════ -->
+<section id="services" style="background:var(--surface)">
+  <div class="container">
+    <div class="sec-label gs-reveal">What We Build</div>
+    <h2 class="sec-title gs-reveal">Everything your business needs <em>to be found online</em>.</h2>
 
-<footer><div class="wrap">Aurora Web — modernit nettisivut pienyrityksille.</div></footer>
+    <div class="svc-grid">
+      <div class="svc gs-reveal">
+        <div class="svc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></div>
+        <h3>Business Website</h3>
+        <p>1–5 page custom site with mobile-first design, SEO setup, contact forms, and fast hosting. Your digital storefront.</p>
+        <span class="svc-badge">From &euro;299</span>
+      </div>
+      <div class="svc gs-reveal">
+        <div class="svc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 002-2V2M7 2v20M17 2v20M21 15V2a4 4 0 00-4 4v8a2 2 0 002 2"/></svg></div>
+        <h3>Restaurant &amp; Menu</h3>
+        <p>Interactive menu, online reservation, gallery, Instagram feed, and Google Maps directions. Built to fill tables.</p>
+        <span class="svc-badge">From &euro;699</span>
+      </div>
+      <div class="svc gs-reveal">
+        <div class="svc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" y1="4" x2="8.12" y2="15.88"/><line x1="14.47" y1="14.48" x2="20" y2="20"/><line x1="8.12" y1="8.12" x2="12" y2="12"/></svg></div>
+        <h3>Salon &amp; Booking</h3>
+        <p>Service menu, price list, online booking integration, staff profiles, and review highlights. Stylish and functional.</p>
+        <span class="svc-badge">From &euro;699</span>
+      </div>
+      <div class="svc gs-reveal">
+        <div class="svc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg></div>
+        <h3>Trades &amp; Services</h3>
+        <p>Emergency call buttons, service areas, before/after gallery, and lead-capture forms. Built to get the phone ringing.</p>
+        <span class="svc-badge">From &euro;299</span>
+      </div>
+      <div class="svc gs-reveal">
+        <div class="svc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg></div>
+        <h3>E-Commerce</h3>
+        <p>Online store with cart, checkout, payment processing, inventory management, and order tracking — all custom built.</p>
+        <span class="svc-badge">From &euro;1,499</span>
+      </div>
+      <div class="svc gs-reveal">
+        <div class="svc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M18 17V9M13 17V5M8 17v-3"/></svg></div>
+        <h3>SEO &amp; Growth</h3>
+        <p>Google Business Profile setup, local SEO, speed optimization, and monthly analytics reports. Get found by more customers.</p>
+        <span class="svc-badge">From &euro;49/mo</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════════ PROCESS ═════════════ -->
+<section id="process">
+  <div class="container">
+    <div class="sec-label gs-reveal">How It Works</div>
+    <h2 class="sec-title gs-reveal">From <em>first contact</em> to launch in four steps.</h2>
+
+    <div class="process-list">
+      <div class="pstep gs-reveal">
+        <div class="pnum">01</div>
+        <div>
+          <h3>Brief &amp; Research</h3>
+          <p>Send us a WhatsApp message or email. We research your business, competitors, and target audience. No questionnaires — just a conversation.</p>
+        </div>
+        <div class="ptime">Day 1</div>
+      </div>
+      <div class="pstep gs-reveal">
+        <div class="pnum">02</div>
+        <div>
+          <h3>Free Mockup</h3>
+          <p>We build a working mockup of your homepage within 24 hours. You see exactly what you're getting before you pay anything. No obligation.</p>
+        </div>
+        <div class="ptime">Day 1–2</div>
+      </div>
+      <div class="pstep gs-reveal">
+        <div class="pnum">03</div>
+        <div>
+          <h3>Build &amp; Refine</h3>
+          <p>Once you approve the mockup, we build the full site — pages, content, images, forms, SEO. Two rounds of revisions included.</p>
+        </div>
+        <div class="ptime">Day 2–4</div>
+      </div>
+      <div class="pstep gs-reveal">
+        <div class="pnum">04</div>
+        <div>
+          <h3>Launch</h3>
+          <p>We deploy to your domain, set up analytics, submit to Google, and hand over all files. You own everything. Optional monthly maintenance.</p>
+        </div>
+        <div class="ptime">Day 4–5</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════════ PRICING ═════════════ -->
+<section id="pricing" style="background:var(--surface)">
+  <div class="container">
+    <div class="sec-label gs-reveal">Pricing</div>
+    <h2 class="sec-title gs-reveal">Fixed price. <em>No surprises.</em></h2>
+    <p class="sec-desc gs-reveal">Pick a package, or message us for a custom quote. Payment only after you approve the mockup.</p>
+
+    <div class="price-grid">
+      <div class="pcard gs-reveal">
+        <h3>Starter</h3>
+        <div class="price">&euro;299<small> one-time</small></div>
+        <div class="pdesc">Perfect for a small business that needs to be online fast.</div>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>1-page custom website</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Mobile-first responsive design</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Contact form</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>SEO basics &amp; Google submission</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>1 round of revisions</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Delivery in 48 hours</li>
+        </ul>
+        <a href="#contact" class="btn btn-ghost">Get started</a>
+      </div>
+      <div class="pcard featured gs-reveal">
+        <span class="badge">MOST POPULAR</span>
+        <h3>Business</h3>
+        <div class="price">&euro;699<small> one-time</small></div>
+        <div class="pdesc">For businesses that want to stand out and convert.</div>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Up to 5 custom pages</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Blog or news section</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Booking / reservation system</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Google Maps &amp; directions</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Social media integration</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>3 rounds of revisions</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Delivery in 4–5 days</li>
+        </ul>
+        <a href="#contact" class="btn btn-primary">Get started
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+      <div class="pcard gs-reveal">
+        <h3>Premium</h3>
+        <div class="price">&euro;1,499<small> one-time</small></div>
+        <div class="pdesc">For ambitious brands that want the full experience.</div>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Unlimited pages</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>E-commerce / online store</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Custom animations &amp; WebGL</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Advanced SEO &amp; analytics</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>5 rounds of revisions</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>1 month free maintenance</li>
+        </ul>
+        <a href="#contact" class="btn btn-ghost">Get started</a>
+      </div>
+    </div>
+    <p style="text-align:center;margin-top:2.5rem;color:var(--muted);font-size:.85rem">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px;display:inline;vertical-align:-3px;margin-right:4px"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+      All plans include free mockup before payment · Monthly maintenance from &euro;49/mo
+    </p>
+  </div>
+</section>
+
+<!-- ═════════════ TESTIMONIAL ═════════════ -->
+<section>
+  <div class="container">
+    <div class="sec-label gs-reveal">Client Stories</div>
+    <h2 class="sec-title gs-reveal">What clients <em>actually say</em>.</h2>
+    <div class="testimonial gs-reveal">
+      <p class="testimonial-quote">The mockup landed in my inbox before I even finished my coffee. By the end of the week I had a website that looks better than my competitors who spent five times more. Aurora just gets it.</p>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar">R</div>
+        <div>
+          <div class="name">ReLove Retreats</div>
+          <div class="role">Wellness Retreat · Kos, Greece</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════════ CTA ═════════════ -->
+<section id="contact" class="cta">
+  <div class="container cta-content">
+    <h2 class="gs-reveal">Let's build <em>something</em> together.</h2>
+    <p class="gs-reveal">WhatsApp us a one-line brief about your business. We'll send you a free mockup within 24 hours — no forms, no commitment.</p>
+    <a href="https://wa.me/35679539293?text=Hi%20Aurora%20Web!%20I%20want%20a%20website%20for%20my%20business" class="wa-btn gs-reveal">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.71.306 1.263.489 1.694.625.712.227 1.362.195 1.877.118.572-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.999-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.885-9.886 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.89c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Message us on WhatsApp
+    </a>
+  </div>
+</section>
+
+<!-- ═════════════ FOOTER ═════════════ -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-logo">
+        <svg viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="14" stroke="currentColor" stroke-width="2"/><path d="M8 20Q12 8 16 16T24 12" stroke="var(--gold)" stroke-width="2.5" stroke-linecap="round" fill="none"/></svg>
+        Aurora Web
+      </div>
+      <div class="footer-links">
+        <a href="#work">Work</a>
+        <a href="#services">Services</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+    <div class="footer-copy">&copy; 2026 Aurora Web Design · Helsinki · Larnaca · Built with sisu &#10084;</div>
+  </div>
+</footer>
+
+<script>
+/* ═════════════ GSAP ANIMATIONS ═════════════ */
+/* All elements visible by default — GSAP from() ONLY, no CSS opacity:0 */
+gsap.registerPlugin(ScrollTrigger);
+
+/* Reveal: fade up on scroll */
+gsap.utils.toArray('.gs-reveal').forEach(function(el) {
+  gsap.from(el, {
+    opacity: 0,
+    y: 40,
+    duration: 0.8,
+    ease: 'power2.out',
+    scrollTrigger: {
+      trigger: el,
+      start: 'top 88%',
+      toggleActions: 'play none none none'
+    }
+  });
+});
+
+/* Hero: sequential entrance (NO gs-reveal class — dedicated IDs to avoid double animation) */
+gsap.from('#hero-tag', {opacity: 0, y: 20, duration: 0.6, delay: 0.1, ease: 'power2.out'});
+gsap.from('#hero-title', {opacity: 0, y: 30, duration: 1.0, delay: 0.2, ease: 'power3.out'});
+gsap.from('#hero-lead', {opacity: 0, y: 20, duration: 0.8, delay: 0.4, ease: 'power2.out'});
+gsap.from('#hero-cta', {opacity: 0, y: 20, duration: 0.7, delay: 0.6, ease: 'power2.out'});
+gsap.from('#hero-stats', {opacity: 0, y: 20, duration: 0.7, delay: 0.8, ease: 'power2.out'});
+gsap.from('#rating-chip', {opacity: 0, x: 30, duration: 0.8, delay: 1.0, ease: 'power2.out'});
+
+/* Portfolio cards stagger */
+gsap.utils.toArray('.work-card').forEach(function(card, i) {
+  /* Remove gs-reveal class to avoid double animation */
+  card.classList.remove('gs-reveal');
+  gsap.from(card, {
+    opacity: 0,
+    y: 50,
+    duration: 0.8,
+    delay: (i % 2) * 0.15,
+    ease: 'power2.out',
+    scrollTrigger: {
+      trigger: card,
+      start: 'top 90%',
+      toggleActions: 'play none none none'
+    }
+  });
+});
+
+/* Nav scroll state */
+const nav = document.getElementById('nav');
+const scrollProg = document.getElementById('scrollProg');
+window.addEventListener('scroll', function() {
+  const scrolled = window.scrollY;
+  const height = document.documentElement.scrollHeight - window.innerHeight;
+  if (scrolled > 50) nav.classList.add('scrolled');
+  else nav.classList.remove('scrolled');
+  scrollProg.style.width = (scrolled / height * 100) + '%';
+});
+
+/* Burger menu */
+document.getElementById('burger').addEventListener('click', function() {
+  document.getElementById('navLinks').classList.toggle('open');
+});
+
+/* Custom cursor */
+const cursor = document.getElementById('cursor');
+let cursorX = 0, cursorY = 0;
+document.addEventListener('mousemove', function(e) {
+  cursorX = e.clientX; cursorY = e.clientY;
+  cursor.style.left = cursorX + 'px';
+  cursor.style.top = cursorY + 'px';
+});
+document.querySelectorAll('a, button, .work-card, .svc').forEach(function(el) {
+  el.addEventListener('mouseenter', function() { cursor.classList.add('hover'); });
+  el.addEventListener('mouseleave', function() { cursor.classList.remove('hover'); });
+});
+
+/* Marquee — duplicate for seamless loop (already done in markup) */
+</script>
 </body>
 </html>

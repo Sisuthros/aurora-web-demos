@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nazanin Salonki — Kauneus- ja hiusstudio Helsingin keskustassa | 4.5★</title>
+<meta name="description" content="Nazanin Salonki — hiukset, sokerointi, ripset Helsingin Mechelininkadulla. 4.5★, 128 arvostelua. Avoinna joka päivä. Ammattitaitoista kauneudenhoitoa.">
+<style>
+:root {
+  --cream: #FDF8F3;
+  --warm-white: #FFFBF7;
+  --rose-gold: #C97D7D;
+  --rose-dark: #A85A5A;
+  --sage: #8FA88A;
+  --charcoal: #3C2F2F;
+  --text-muted: #7A6A6A;
+  --gold: #D4AF37;
+  --font-display: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { font-family:var(--font-body); color:var(--charcoal); background:var(--cream); line-height:1.6; -webkit-font-smoothing:antialiased; }
+body::after { content:''; position:fixed; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:9999; opacity:0.018; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='5' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E"); }
+
+.hero { position:relative; min-height:100vh; display:flex; align-items:center; background:#F5EDE4; overflow:hidden; }
+.hero-bg { position:absolute; inset:0; background:linear-gradient(135deg, rgba(60,47,47,0.55) 38.2%, rgba(60,47,47,0.2) 100%),url('https://images.unsplash.com/photo-1536520002442-39764a41e987?w=1400&q=80') center/cover no-repeat; animation:heroZoom 24s ease-in-out infinite alternate; }
+@keyframes heroZoom { from { transform:scale(1); } to { transform:scale(1.06); } }
+.hero-content { position:relative; z-index:2; max-width:38.2%; margin-left:max(5vw,2rem); padding:3rem 0; }
+@media (max-width:900px) { .hero-content { max-width:85%; } }
+.hero-flourish { font-family:var(--font-display); font-size:clamp(1rem,1.6vw,1.3rem); color:var(--rose-gold); font-style:italic; margin-bottom:clamp(0.8rem,1.5vw,1.2rem); }
+.hero h1 { font-family:'Cormorant Garamond',serif; font-size:clamp(2.8rem,7vw,5.5rem); font-weight:600; color:var(--warm-white); line-height:1.05; letter-spacing:-0.01em; margin-bottom:clamp(0.6rem,1.2vw,0.8rem); }
+.hero h1 span { color:var(--rose-gold); font-weight:300; }
+.hero-sub { font-size:clamp(1rem,1.8vw,1.25rem); color:rgba(255,251,247,0.7); font-weight:400; margin-bottom:clamp(2rem,4vw,3rem); max-width:460px; line-height:1.5; }
+.hero-services { display:flex; flex-wrap:wrap; gap:1rem; margin-bottom:clamp(1.5rem,3vw,2rem); }
+.hero-services span { font-size:0.85rem; color:var(--rose-gold); border:1px solid rgba(201,125,125,0.35); padding:0.5rem 1.2rem; border-radius:2px; font-weight:500; }
+.hero-cta { display:flex; flex-wrap:wrap; gap:1rem; }
+.btn { display:inline-flex; align-items:center; gap:0.5rem; font-family:var(--font-body); font-size:clamp(0.85rem,1.2vw,0.95rem); font-weight:600; text-decoration:none; padding:0.9rem 2rem; border-radius:3px; transition:all 0.3s cubic-bezier(0.25,0.46,0.45,0.94); }
+.btn-primary { background:var(--rose-gold); color:#fff; border:2px solid var(--rose-gold); }
+.btn-primary:hover { background:var(--rose-dark); border-color:var(--rose-dark); transform:translateY(-2px); box-shadow:0 8px 24px rgba(168,90,90,0.25); }
+.btn-outline { background:transparent; color:var(--warm-white); border:2px solid rgba(255,251,247,0.3); }
+.btn-outline:hover { border-color:var(--rose-gold); color:var(--rose-gold); }
+
+.rating-chip { position:absolute; bottom:clamp(1.5rem,4vw,3rem); right:max(5vw,2rem); z-index:2; background:rgba(60,47,47,0.85); backdrop-filter:blur(12px); border:1px solid rgba(201,125,125,0.2); padding:clamp(1rem,2vw,1.5rem) clamp(1.5rem,3vw,2rem); border-radius:4px; text-align:center; }
+.rating-chip .stars { color:var(--gold); font-size:1.2rem; margin-bottom:0.2rem; }
+.rating-chip .num { font-family:var(--font-display); font-size:clamp(1.8rem,3vw,2.4rem); color:var(--warm-white); font-weight:700; line-height:1; }
+.rating-chip .cnt { font-size:0.75rem; color:rgba(255,251,247,0.5); margin-top:0.2rem; }
+
+section { padding:clamp(3rem,8vw,6rem) max(5vw,2rem); }
+.section-inner { max-width:1100px; margin:0 auto; }
+.section-label { font-size:0.75rem; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:var(--rose-gold); margin-bottom:1rem; }
+.section-title { font-family:var(--font-display); font-size:clamp(2rem,4.5vw,3.2rem); font-weight:600; color:var(--charcoal); line-height:1.15; margin-bottom:clamp(1rem,2vw,1.5rem); }
+.section-text { font-size:clamp(0.95rem,1.3vw,1.1rem); color:var(--text-muted); max-width:600px; line-height:1.7; }
+
+.services-section { background:var(--warm-white); }
+.services-grid { display:grid; grid-template-columns:1.618fr 1fr; gap:1.5rem; margin-top:3rem; }
+@media (max-width:768px) { .services-grid { grid-template-columns:1fr; } }
+.service-card { background:#fff; border:1px solid rgba(60,47,47,0.06); padding:clamp(1.5rem,3vw,2.5rem); border-radius:4px; display:flex; flex-direction:column; align-items:flex-start; }
+.service-card.featured { border-color:rgba(201,125,125,0.2); background:#FFFBF8; }
+.service-card h3 { font-family:var(--font-display); font-size:clamp(1.3rem,2vw,1.6rem); color:var(--charcoal); margin-bottom:0.5rem; }
+.service-card .tag { font-size:0.7rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--sage); margin-bottom:0.5rem; }
+.service-price { font-family:var(--font-display); font-size:clamp(1.6rem,2.5vw,2.2rem); color:var(--rose-gold); font-weight:700; margin-bottom:0.8rem; }
+.service-desc { font-size:0.9rem; color:var(--text-muted); line-height:1.6; }
+.service-features { list-style:none; margin-top:1.2rem; display:flex; flex-direction:column; gap:0.5rem; }
+.service-features li { font-size:0.9rem; color:var(--charcoal); padding-left:1.3rem; position:relative; }
+.service-features li::before { content:'🌸'; position:absolute; left:0; font-size:0.6rem; top:0.3rem; }
+
+.reviews-section { background:var(--cream); }
+.reviews-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:1.5rem; margin-top:3rem; }
+.review-card { background:#fff; border:1px solid rgba(60,47,47,0.06); padding:clamp(1.5rem,3vw,2rem); border-radius:4px; }
+.review-card:hover { border-color:rgba(201,125,125,0.2); }
+.review-stars { color:var(--gold); font-size:1.1rem; margin-bottom:0.8rem; }
+.review-text { font-size:0.95rem; color:var(--charcoal); line-height:1.65; font-style:italic; }
+.review-author { font-size:0.8rem; color:var(--text-muted); margin-top:1rem; font-style:normal; }
+
+.hours-section { background:var(--warm-white); }
+.hours-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:0.75rem; margin-top:2.5rem; }
+.hours-row { display:flex; justify-content:space-between; padding:0.8rem 0; border-bottom:1px solid rgba(60,47,47,0.06); color:var(--text-muted); font-size:0.95rem; }
+.hours-row .day { font-weight:600; color:var(--charcoal); }
+.hours-highlight { margin-top:1.5rem; padding:1rem 1.5rem; background:rgba(201,125,125,0.06); border-left:3px solid var(--rose-gold); color:var(--charcoal); font-size:0.9rem; line-height:1.6; }
+
+.info-bar { background:var(--charcoal); padding:1.5rem max(5vw,2rem); }
+.info-items { max-width:1100px; margin:0 auto; display:flex; flex-wrap:wrap; gap:2rem; justify-content:center; }
+.info-item { display:flex; align-items:center; gap:0.6rem; color:rgba(255,251,247,0.7); font-size:0.9rem; }
+.info-item a { color:var(--rose-gold); text-decoration:none; }
+
+.cta-section { background:var(--charcoal); text-align:center; }
+.cta-section .section-label { color:var(--rose-gold); }
+.cta-section .section-title { color:var(--warm-white); }
+.cta-section .section-text { color:rgba(255,251,247,0.6); }
+
+.footer { background:#2D2020; padding:clamp(2rem,5vw,4rem) max(5vw,2rem); text-align:center; }
+.footer-brand { font-family:var(--font-display); font-size:clamp(1.4rem,2.5vw,1.8rem); color:var(--warm-white); margin-bottom:0.5rem; }
+.footer-rating { color:var(--gold); margin-bottom:1rem; }
+.footer-contact { display:flex; flex-wrap:wrap; gap:1.5rem; justify-content:center; margin:1.5rem 0; }
+.footer-contact a { color:rgba(255,251,247,0.6); text-decoration:none; font-size:0.95rem; transition:color 0.2s; }
+.footer-contact a:hover { color:var(--rose-gold); }
+.footer-disclaimer { font-size:0.75rem; color:rgba(255,251,247,0.2); margin-top:2rem; max-width:500px; margin-left:auto; margin-right:auto; line-height:1.6; }
+.contact-email { color:var(--rose-gold); text-decoration:none; }
+
+.reveal { opacity:0; transform:translateY(30px); transition:opacity 0.7s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94); }
+.reveal.visible { opacity:1; transform:translateY(0); }
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,300;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+</head>
+<body>
+
+<header class="hero">
+<div class="hero-bg"></div>
+<div class="hero-content reveal">
+<div class="hero-flourish">kauneutta & hyvinvointia</div>
+<h1>Nazanin<br><span>Salonki</span></h1>
+<div class="hero-services">
+<span>Hiukset</span><span>Sokerointi</span><span>Ripset</span>
+</div>
+<p class="hero-sub">Helsingin Mechelininkadulla — ammattitaidolla ja sydämellä. Sahar loihtii hiukset, Nazan hoitaa sokeroinnin. Tule sellaisena kuin olet, lähde kauniimpana.</p>
+<div class="hero-cta">
+<a href="tel:+358****6006" class="btn btn-primary">📞 Varaa aika</a>
+<a href="#palvelut" class="btn btn-outline">Kaikki palvelut ↓</a>
+</div>
+</div>
+<div class="rating-chip reveal">
+<div class="stars">★★★★★</div>
+<div class="num">4.5</div>
+<div class="cnt">128 arvostelua</div>
+</div>
+</header>
+
+<div class="info-bar">
+<div class="info-items">
+<div class="info-item">📍 Mechelininkatu 12-14 Nro 5, 00100 Helsinki</div>
+<div class="info-item">📞 <a href="tel:+358****6006">045 201 6006</a></div>
+<div class="info-item">🕐 Avoinna joka päivä</div>
+<div class="info-item">👩‍🎨 Sahar & Nazan</div>
+</div>
+</div>
+
+<section class="services-section" id="palvelut">
+<div class="section-inner">
+<div class="section-label reveal">Palvelumme</div>
+<h2 class="section-title reveal">Yksi studio. Kaksi osaajaa. Kaikki kauneus.</h2>
+<div class="services-grid">
+<div class="service-card featured reveal">
+<div class="tag">Sahar</div>
+<h3>Hiukset</h3>
+<div class="service-price">alk. 35 €</div>
+<p class="service-desc">Sahar tekee niin ammattitaitoista ja kaunista jälkeä, että sen huomaa — hän todella rakastaa työtään.</p>
+<ul class="service-features">
+<li>Leikkaus & muotoilu</li>
+<li>Värjäys & raidoitus</li>
+<li>Juhlakampaukset</li>
+<li>Henkilökohtainen tyylineuvonta</li>
+</ul>
+</div>
+<div class="service-card reveal">
+<div class="tag">Nazan</div>
+<h3>Sokerointi & Ripset</h3>
+<div class="service-price">alk. 25 €</div>
+<p class="service-desc">Nazan on sokeroinnin mestari — asiakkaat sanovat häntä parhaaksi missä ovat koskaan käyneet.</p>
+<ul class="service-features">
+<li>Sokerointi (koko vartalo)</li>
+<li>Ripsien värjäys</li>
+<li>Kulmien muotoilu</li>
+<li>Hellä, ammattitaitoinen ote</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+
+<section class="reviews-section" id="arviot">
+<div class="section-inner">
+<div class="section-label reveal">Rakkautta asiakkailta</div>
+<h2 class="section-title reveal">128 arvostelua. Satoja hymyjä.</h2>
+<div class="reviews-grid">
+<div class="review-card reveal"><div class="review-stars">★★★★★</div>
+<p class="review-text">"Sahar teki niin ammattitaitoista ja kaunista jälkeä hiuksille. Sen huomaa kun joku oikeesti pitää työstään! Super mukava ja nopea käynti."</p>
+<p class="review-author">— Google-arvostelu</p></div>
+<div class="review-card reveal"><div class="review-stars">★★★★★</div>
+<p class="review-text">"Olen käynyt Nazanilla sokeroinnissa muutamia vuosia ja aina saanut hyvää palvelua. Nazan on ammattitaitoinen ja aivan ihana ihminen ❤️"</p>
+<p class="review-author">— Google-arvostelu</p></div>
+<div class="review-card reveal"><div class="review-stars">★★★★★</div>
+<p class="review-text">"Paras sokerointi missä ikinä käynyt. Todella ystävällinen ja osaava palvelu. Voin suositella kaikille!"</p>
+<p class="review-author">— Google-arvostelu</p></div>
+</div>
+</div>
+</section>
+
+<section class="hours-section" id="aukiolo">
+<div class="section-inner">
+<div class="section-label reveal">Aukioloajat</div>
+<h2 class="section-title reveal">Avoinna joka päivä, pitkään</h2>
+<p class="section-text reveal">Töiden jälkeen, viikonloppuna, sunnuntaina — me olemme täällä kun sinulle sopii.</p>
+<div class="hours-grid reveal">
+<div class="hours-row"><span class="day">Ma–Pe</span><span>9–20</span></div>
+<div class="hours-row"><span class="day">Lauantai</span><span>10–20</span></div>
+<div class="hours-row"><span class="day">Sunnuntai</span><span>11–19</span></div>
+</div>
+<div class="hours-highlight reveal"><strong>Pisimmät aukioloajat keskustassa.</strong> Mechelininkatu 12-14 — helppo tulla ratikalla tai kävellen Töölöstä.</div>
+</div>
+</section>
+
+<section class="cta-section">
+<div class="section-inner reveal">
+<div class="section-label">Tule käymään</div>
+<h2 class="section-title">Sinun hetkesi on täällä</h2>
+<p class="section-text" style="margin:0 auto 2rem auto;">Oli kyseessä uusi hiustyyli, sokerointi tai ripsien laitto — Sahar ja Nazan ottavat sinut vastaan hymyillen.</p>
+<a href="tel:+358****6006" class="btn btn-primary" style="font-size:1.1rem; padding:1rem 2.5rem;">📞 045 201 6006</a>
+</div>
+</section>
+
+<footer class="footer">
+<div class="footer-brand">Nazanin Salonki</div>
+<div class="footer-rating">★★★★★ 4.5 · 128 arvostelua</div>
+<div class="footer-contact">
+<a href="tel:+358****6006">📞 045 201 6006</a>
+<span style="color:rgba(255,251,247,0.15)">|</span>
+<span style="color:rgba(255,251,247,0.5)">📍 Mechelininkatu 12-14, 00100 Helsinki</span>
+<span style="color:rgba(255,251,247,0.15)">|</span>
+<a href="mailto:info@nazaninsalonki.fi" class="contact-email">info@nazaninsalonki.fi</a>
+</div>
+<p class="footer-disclaimer">Tämä on konseptisivu Nazanin Salongille. Arvostelut ja yhteystiedot perustuvat julkisiin Google Maps -tietoihin. Tätä sivua ei ole vielä julkaistu — ota yhteyttä jos haluat sen käyttöösi.</p>
+</footer>
+
+<script>
+gsap.registerPlugin(ScrollTrigger);
+ScrollTrigger.batch('.service-card',{onEnter:b=>gsap.from(b,{opacity:0,y:40,stagger:0.15,duration:0.8,ease:'power2.out'}),start:'top 85%'});
+const o=new IntersectionObserver((e)=>{e.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:0.15,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(e=>o.observe(e));
+document.querySelector('.hero-content').classList.add('visible');
+document.querySelectorAll('a[href^="#"]').forEach(l=>l.addEventListener('click',function(e){e.preventDefault();const t=document.querySelector(this.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth'})}));
+</script>
+</body>
+</html>
