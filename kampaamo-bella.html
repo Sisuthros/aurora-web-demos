@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kampaamo Bella — Kampaamo- ja kauneuspalvelut</title>
+<meta name="description" content="Kampaamo Bella — Kampaamo- ja kauneuspalvelut. Laatua, luotettavuutta ja ammattitaitoa.">
+<meta property="og:title" content="Kampaamo Bella — Kampaamo- ja kauneuspalvelut">
+<meta property="og:description" content="Kampaamo Bella tarjoaa laadukkaita kampaamo- ja kauneuspalvelutpalveluita.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,510;14..32,590&family=Playfair+Display:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<style>
+  @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: 0.01ms !important; } }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; font-feature-settings: 'cv01','ss03'; }
+  body { font-family: var(--font-body); background: var(--bg-deepest); color: var(--text-primary); line-height: 1.6; font-weight: 300; overflow-x: hidden; }
+  ::selection { background: var(--accent); color: var(--bg-deepest); }
+    :root {
+      --bg-deepest: #1a0a08;
+      --accent: #fb923c;
+      --accent-dim: #ea580c;
+      --text-primary: #fff7ed;
+      --text-secondary: #b8a090;
+      --border-subtle: rgba(255,255,255,0.04);
+      --border-standard: rgba(255,255,255,0.06);
+      --border-visible: rgba(255,255,255,0.10);
+      --radius-sm: 6px;
+      --radius-md: 8px;
+      --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-display: 'Playfair Display', Georgia, serif;
+    }
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    height: 52px; padding: 0 2rem;
+    display: flex; justify-content: space-between; align-items: center;
+    background: rgba(8,9,10,0.88);
+    backdrop-filter: saturate(180%) blur(20px);
+    border-bottom: 1px solid var(--border-subtle);
+  }
+  .nav-logo { font-family: var(--font-display); font-size: 1.25rem; color: var(--text-primary); text-decoration: none; }
+  .nav-logo span { color: var(--accent); }
+  .nav-links { display: flex; gap: 1.5rem; list-style: none; }
+  .nav-links a { color: var(--text-secondary); text-decoration: none; font-size: 0.8rem; transition: color 0.15s; }
+  .nav-links a:hover { color: var(--text-primary); }
+  .nav-cta { background: var(--accent); color: var(--bg-deepest); padding: 0.4rem 1rem; border-radius: var(--radius-sm); font-weight: 500; font-size: 0.78rem; }
+  .hero {
+    min-height: 100vh; display: flex; flex-direction: column; justify-content: center;
+    padding: 8rem 2rem; max-width: 720px; margin: 0 auto;
+  }
+  .hero-eyebrow { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 2rem; }
+  .hero h1 { font-family: var(--font-display); font-size: clamp(2.2rem, 5vw, 3.5rem); font-weight: 400; line-height: 1.1; margin-bottom: 2rem; }
+  .hero h1 em { font-style: italic; color: var(--accent); }
+  .hero-body { font-size: 1.05rem; color: var(--text-secondary); max-width: 500px; margin-bottom: 3rem; line-height: 1.7; }
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    background: var(--accent); color: var(--bg-deepest);
+    padding: 0.7rem 1.6rem; border: none; border-radius: var(--radius-sm);
+    font-size: 0.85rem; font-weight: 500; cursor: pointer; text-decoration: none;
+    transition: background 0.15s;
+  }
+  .btn-primary:hover { background: var(--accent-dim); }
+  section { padding: 6rem 2rem; max-width: 960px; margin: 0 auto; }
+  .section-label { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 1rem; }
+  section h2 { font-family: var(--font-display); font-size: clamp(1.5rem, 3vw, 2.2rem); font-weight: 400; line-height: 1.15; margin-bottom: 2rem; }
+  section p { color: var(--text-secondary); font-size: 1rem; max-width: 680px; line-height: 1.7; }
+  .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem; margin-top: 2rem; }
+  .card {
+    background: rgba(255,255,255,0.02); border: 1px solid var(--border-standard);
+    border-radius: var(--radius-md); padding: 1.75rem;
+    transition: border-color 0.2s;
+  }
+  .card:hover { border-color: var(--border-visible); }
+  .card-icon { font-size: 1.3rem; margin-bottom: 0.75rem; display: block; }
+  .card h3 { font-size: 0.9rem; font-weight: 510; margin-bottom: 0.5rem; }
+  .card p { font-size: 0.82rem; color: var(--text-secondary); line-height: 1.55; }
+  .contact-section { text-align: center; }
+  .contact-form {
+    max-width: 440px; margin: 2rem auto 0; display: flex; flex-direction: column; gap: 0.75rem;
+  }
+  .contact-form input, .contact-form textarea {
+    background: rgba(255,255,255,0.02); border: 1px solid var(--border-standard);
+    border-radius: var(--radius-sm); padding: 0.8rem 1rem;
+    font-family: var(--font-body); font-size: 0.9rem; color: var(--text-primary); outline: none;
+  }
+  .contact-form input:focus, .contact-form textarea:focus { border-color: var(--accent); }
+  .contact-form textarea { resize: vertical; min-height: 110px; }
+  footer {
+    padding: 4rem 2rem; text-align: center; font-size: 0.75rem;
+    color: var(--text-secondary); border-top: 1px solid var(--border-subtle);
+  }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+  .fade-up { opacity: 0; animation: fadeUp 0.7s ease forwards; }
+  .fade-up:nth-child(1) { animation-delay: 0.05s; }
+  .fade-up:nth-child(2) { animation-delay: 0.12s; }
+  .fade-up:nth-child(3) { animation-delay: 0.19s; }
+  .fade-up:nth-child(4) { animation-delay: 0.26s; }
+  @media (max-width: 768px) {
+    nav { padding: 0 1rem; }
+    .nav-links a:not(.nav-cta) { display: none; }
+    .hero { padding: 6rem 1rem; }
+    section { padding: 4rem 1rem; }
+    .card-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<nav>
+  <a href="#" class="nav-logo">Kampaamo Bella<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="#palvelut">Palvelut</a></li>
+    <li><a href="#miksi-me">Miksi me</a></li>
+    <li><a href="#yhteystiedot" class="nav-cta">Ota yhteyttä</a></li>
+  </ul>
+</nav>
+<section class="hero fade-up"><div class="hero-eyebrow">Kampaamo- ja kauneuspalvelut — luotettavasti</div><h1><em>Kampaamo Bella</em><br>Sinulle,<br>juuri sinulle.</h1><p class="hero-body">Helsingin sydämessä — leikkaukset, värjäykset, hääkampaukset ja hemmotteluhoidot. Tervetuloa omana itsenäsi.</p><div class="hero-actions"><a href="#yhteystiedot" class="btn-primary">Pyydä tarjous →</a></div></section>
+<section id="palvelut"><div class="section-label">Palvelumme</div><h2>Mitä me teemme</h2><p>Tarjoamme laadukkaita kampaamo- ja kauneuspalvelutpalveluita.</p><div class="card-grid"><div class="card fade-up"><span class="card-icon">🔧</span><h3>Leikkaukset</h3><p>Naisten ja miesten hiustenleikkuu — klassikoista trendeihin.</p></div>
+<div class="card fade-up"><span class="card-icon">🔧</span><h3>Värjäykset</h3><p>Raidat, tyvivärjäykset, balayage — täydellinen sävy takuulla.</p></div>
+<div class="card fade-up"><span class="card-icon">🔧</span><h3>Hääkampaukset</h3><p>Suunnitellaan yhdessä päiväsi tärkein kampaus.</p></div>
+<div class="card fade-up"><span class="card-icon">🔧</span><h3>Hemmottelu</h3><p>Hieronta, kasvohoidot ja rentouttavat hetket.</p></div>
+</div></section>
+<section id="miksi-me"><div class="section-label">Miksi me</div><h2>Miksi valita meidät</h2><div class="card-grid"><div class="card fade-up"><span class="card-icon">★</span><h3>20v kokemus</h3><p>Palkittu kampaamo kahdenkymmenen vuoden ajalta.</p></div>
+<div class="card fade-up"><span class="card-icon">★</span><h3>Luonnonkosmetiikka</h3><p>Käytämme vain vegaanisia ja luonnonmukaisia tuotteita.</p></div>
+<div class="card fade-up"><span class="card-icon">★</span><h3>Keskeinen sijainti</h3><p>Helsingin keskustassa, helpot kulkuyhteydet.</p></div>
+</div></section>
+
+<section id="yhteystiedot" class="contact-section"><div class="section-label">Ota yhteyttä</div><h2>Pyydä tarjous.</h2><p>Soita 050-9876543 tai lähetä viesti — vastaamme 24h sisällä.</p><form class="contact-form"><input type="text" placeholder="Nimi" required><input type="email" placeholder="Sähköposti" required><textarea placeholder="Viestisi..." required></textarea><button class="btn-primary">Lähetä →</button></form></section>
+<footer><p>© 2026 Kampaamo Bella · Kampaamo- ja kauneuspalvelut · info@kampaamobella.fi</p><p style="margin-top:0.5rem;opacity:0.5">Sivun rakensi Aurora Web</p></footer>
+<script>
+document.querySelectorAll('.fade-up').forEach(function(el,i){el.style.animationDelay=(i*0.07)+'s'});
+</script>
+</body>
+</html>

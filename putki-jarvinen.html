@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Putki-Järvinen Oy — Putkityöt ja LVI-asennukset | Helsinki</title>
+<meta name="description" content="Putki-Järvinen Oy — Putkityöt ja LVI-asennukset Helsinki. Laadukkaat palvelut, ota yhteyttä!">
+<meta property="og:title" content="Putki-Järvinen Oy — Putkityöt ja LVI-asennukset">
+<meta property="og:description" content="Putki-Järvinen Oy — Putkityöt ja LVI-asennukset Helsinki. Laadukasta palvelua.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#0a0a0a">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,510;14..32,590&family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+
+    /* ═══ Global Reset & Base ═══ */
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }}
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+      font-feature-settings: 'cv01', 'cv03', 'ss03';
+    }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--bg-deepest);
+      color: var(--text-primary);
+      line-height: 1.6;
+      font-weight: 300;
+      overflow-x: hidden;
+    }
+
+    ::selection { background: var(--accent); color: var(--bg-deepest); }
+
+    /* ═══ Typography ═══ */
+    h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 400; line-height: 1.15; }
+    h1 { font-size: clamp(2.4rem, 5vw, 4rem); letter-spacing: -0.02em; }
+    h2 { font-size: clamp(1.6rem, 3.5vw, 2.4rem); letter-spacing: -0.01em; }
+    h3 { font-size: 1rem; font-weight: 510; font-family: var(--font-body); }
+
+    p { color: var(--text-secondary); font-size: 1rem; line-height: 1.7; }
+    a { color: var(--accent); text-decoration: none; transition: color 0.2s; }
+    a:hover { color: var(--accent-dim); }
+
+    /* ═══ Aurora Webnce Stepping Elevations ═══ */
+    .elevation-0 { background: var(--bg-deepest); }
+    .elevation-1 { background: var(--bg-base); }
+    .elevation-2 { background: var(--bg-raised); border: 1px solid var(--border-subtle); }
+    .elevation-3 { background: var(--bg-overlay); border: 1px solid var(--border-standard); }
+
+    /* ═══ Layout ═══ */
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+    .section { padding: 6rem 0; }
+    .section-label {
+      font-size: 0.65rem; font-weight: 500; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--accent); margin-bottom: 1.25rem;
+      display: inline-block;
+    }
+
+    /* ═══ Navigation ═══ */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      height: 56px; padding: 0 2rem;
+      display: flex; justify-content: space-between; align-items: center;
+      background: oklch(from var(--bg-deepest) l c h / 0.85);
+      backdrop-filter: saturate(180%) blur(20px);
+      -webkit-backdrop-filter: saturate(180%) blur(20px);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .nav-logo {
+      font-family: var(--font-display); font-size: 1.3rem;
+      color: var(--text-primary); text-decoration: none; font-style: italic;
+    }
+    .nav-logo .dot { color: var(--accent); font-style: normal; }
+    .nav-links { display: flex; gap: 1.5rem; list-style: none; align-items: center; }
+    .nav-links a { color: var(--text-secondary); font-size: 0.8rem; transition: color 0.15s; }
+    .nav-links a:hover { color: var(--text-primary); }
+    .nav-cta {
+      background: var(--accent); color: var(--bg-deepest);
+      padding: 0.4rem 1.1rem; border-radius: var(--radius-sm);
+      font-weight: 500; font-size: 0.78rem; text-decoration: none;
+      transition: background 0.15s;
+    }
+    .nav-cta:hover { background: var(--accent-dim); color: var(--bg-deepest); }
+
+    /* ═══ Hero ═══ */
+    .hero {
+      min-height: 100vh; display: flex; flex-direction: column; justify-content: center;
+      max-width: 780px; margin: 0 auto; padding: 8rem 2rem 6rem;
+    }
+    .hero-eyebrow { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin-bottom: 2rem; }
+    .hero h1 { margin-bottom: 2rem; }
+    .hero h1 em { font-style: italic; color: var(--accent); }
+    .hero-body { font-size: 1.08rem; color: var(--text-secondary); max-width: 520px; margin-bottom: 3rem; line-height: 1.7; }
+
+    /* ═══ Buttons (ei emojeita, ei ylikorostettuja hovereita) ═══ */
+    .btn {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.75rem 1.8rem; border: none; border-radius: var(--radius-sm);
+      font-family: var(--font-body); font-size: 0.88rem; font-weight: 500;
+      cursor: pointer; text-decoration: none; transition: all 0.2s;
+      position: relative; overflow: hidden;
+    }
+    .btn-primary { background: var(--accent); color: var(--bg-deepest); }
+    .btn-primary:hover { background: var(--accent-dim); }
+    .btn-secondary {
+      background: transparent; color: var(--text-primary);
+      border: 1px solid var(--border-visible);
+    }
+    .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
+    .btn:active { transform: scale(0.98); }
+
+    /* ═══ Card Grid (ei geneerisiä ikoneja) ═══ */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1rem; margin-top: 2.5rem;
+    }
+    .card {
+      padding: 2rem; border-radius: var(--radius-md);
+      border: 1px solid var(--border-standard);
+      background: var(--bg-raised);
+      transition: border-color 0.25s, transform 0.25s;
+      position: relative;
+    }
+    .card:hover { border-color: var(--border-visible); }
+    .card-index {
+      font-family: var(--font-mono); font-size: 0.7rem;
+      color: var(--text-muted); margin-bottom: 1rem;
+      letter-spacing: 0.1em;
+    }
+    .card h3 { margin-bottom: 0.6rem; }
+    .card p { font-size: 0.85rem; line-height: 1.6; }
+
+    /* ═══ Contact Form ═══ */
+    .contact-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;
+      max-width: 900px; margin: 0 auto;
+    }
+    .contact-info p { margin-bottom: 0.75rem; }
+    .contact-form { display: flex; flex-direction: column; gap: 0.85rem; }
+    .contact-form input, .contact-form textarea, .contact-form select {
+      background: var(--bg-raised); border: 1px solid var(--border-standard);
+      border-radius: var(--radius-sm); padding: 0.85rem 1rem;
+      font-family: var(--font-body); font-size: 0.9rem;
+      color: var(--text-primary); outline: none;
+      transition: border-color 0.2s;
+    }
+    .contact-form input:focus, .contact-form textarea:focus { border-color: var(--accent); }
+    .contact-form textarea { resize: vertical; min-height: 120px; }
+    .form-status { font-size: 0.85rem; margin-top: 0.5rem; display: none; }
+    .form-status.success { display: block; color: var(--accent); }
+    .form-status.error { display: block; color: oklch(0.65 0.20 25); }
+
+    /* ═══ Footer ═══ */
+    footer {
+      padding: 4rem 2rem; text-align: center;
+      font-size: 0.78rem; color: var(--text-muted);
+      border-top: 1px solid var(--border-subtle);
+    }
+    .footer-credit { margin-top: 0.75rem; opacity: 0.4; font-size: 0.7rem; }
+
+    /* ═══ Responsive ═══ */
+    @media (max-width: 768px) {
+      .nav { padding: 0 1rem; }
+      .nav-links a:not(.nav-cta) { display: none; }
+      .hero { padding: 6rem 1rem 4rem; }
+      .section { padding: 4rem 0; }
+      .container { padding: 0 1rem; }
+      .card-grid { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
+    }
+
+    /* ═══ DESIGN.md Semantic Tokens — Ocean Depth ═══ */
+    /* Syvänsininen, tekninen, luotettava. */
+    :root {
+      /* ── Surface ── */
+      --bg-deepest: oklch(0.10 0.04 250);
+      --bg-base: oklch(0.15 0.04 250);
+      --bg-raised: oklch(0.20 0.04 250);
+      --bg-overlay: oklch(0.25 0.04 250);
+
+      /* ── Text ── */
+      --text-primary: oklch(0.95 0.01 250);
+      --text-secondary: oklch(0.70 0.02 250);
+      --text-muted: oklch(0.50 0.02 250);
+
+      /* ── Accent ── */
+      --accent: oklch(0.70 0.15 230);
+      --accent-dim: oklch(0.55 0.12 230);
+
+      /* ── Border (Aurora Webnce Stepping) ── */
+      --border-subtle: oklch(1 0 0 / 0.04);
+      --border-standard: oklch(1 0 0 / 0.06);
+      --border-visible: oklch(1 0 0 / 0.10);
+
+      /* ── Radius ── */
+      --radius-sm: 6px;
+      --radius-md: 8px;
+      --radius-lg: 12px;
+
+      /* ── Typography ── */
+      --font-display: 'Playfair Display', Georgia, serif;
+      --font-body: 'Inter', -apple-system, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    /* ── Scrollbar (luminance stepping) ── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: oklch(0.10 0.04 250); }
+    ::-webkit-scrollbar-thumb { background: oklch(1 0 0 / 0.15); border-radius: 3px; }
+
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+    gsap.registerPlugin(ScrollTrigger);
+    gsap.from('.hero-eyebrow', { opacity: 0, y: 20, duration: 0.8, ease: 'power3.out' });
+    gsap.from('.hero h1', { opacity: 0, y: 30, duration: 0.9, ease: 'power3.out', delay: 0.1 });
+    gsap.from('.hero-body', { opacity: 0, y: 20, duration: 0.8, ease: 'power3.out', delay: 0.25 });
+    document.querySelectorAll('.card').forEach((el, i) => {
+      gsap.from(el, { scrollTrigger: { trigger: el, start: 'top 88%' }, opacity: 0, y: 30, duration: 0.6, delay: i * 0.08, ease: 'power3.out' });
+    });
+</script>
+</head>
+<body>
+
+<!-- ═══ Navigation ═══ -->
+<nav class="nav">
+  <a href="#" class="nav-logo">Putki-Järvinen Oy<span class="dot">.</span></a>
+  <ul class="nav-links">
+    <li><a href="#palvelut">Palvelut</a></li>
+    <li><a href="#miksi-me">Miksi me</a></li>
+    <li><a href='#referenssit'>Referenssit</a></li>
+    <li><a href="#yhteystiedot" class="nav-cta">Ota yhteyttä</a></li>
+  </ul>
+</nav>
+
+<!-- ═══ Hero ═══ -->
+<section class="hero">
+  <div class="hero-eyebrow">Putkityöt ja LVI-asennukset — Helsinki</div>
+  <h1><em>Putki-Järvinen</em><br>Vuotava hana?<br>Me tulemme heti.</h1>
+  <p class="hero-body">Yli 30 vuoden kokemuksella tarjoamme putkityöt, LVI-asennukset ja kylpyhuoneremontit Helsingissä ja pääkaupunkiseudulla. Päivystys 24h.</p>
+  <div>
+    <a href="#yhteystiedot" class="btn btn-primary">Pyydä tarjous</a>
+    <a href="#palvelut" class="btn btn-secondary" style="margin-left:0.75rem">Tutustu palveluihin</a>
+  </div>
+</section>
+
+    <section id="palvelut" class="section">
+      <div class="container">
+        <span class="section-label">Palvelumme</span>
+        <h2>Mitä me teemme</h2>
+        <p style="max-width:580px;margin-top:0.75rem">Tarjoamme laadukkaita putkityöt ja lvi-asennuksetpalveluita Helsinki — ammattitaidolla ja intohimolla.</p>
+        <div class="card-grid">
+            <div class="card elevation-2">
+              <div class="card-index">01</div>
+              <h3>Putkiremontit</h3>
+              <p>Kylpyhuoneet, keittiöt, viemärisaneeraukset</p>
+            </div>
+            <div class="card elevation-2">
+              <div class="card-index">02</div>
+              <h3>LVI-asennukset</h3>
+              <p>Lämpö-, vesi- ja ilmastointijärjestelmät</p>
+            </div>
+            <div class="card elevation-2">
+              <div class="card-index">03</div>
+              <h3>Päivystys 24h</h3>
+              <p>Vuotovahingot, tukokset ja kiireelliset korjaukset</p>
+            </div>
+            <div class="card elevation-2">
+              <div class="card-index">04</div>
+              <h3>Sulatukset</h3>
+              <p>Jäätyneet putket, lämmitysjärjestelmät</p>
+            </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="miksi-me" class="section">
+      <div class="container">
+        <span class="section-label">Miksi me</span>
+        <h2>Miksi valita Putki-Järvinen Oy?</h2>
+        <div class="card-grid">
+            <div class="card elevation-2">
+              <div class="card-index">01</div>
+              <h3>30v kokemus</h3>
+              <p>Kolme sukupolvea putkimiehiä — isältä pojalle vuodesta 1993.</p>
+            </div>
+            <div class="card elevation-2">
+              <div class="card-index">02</div>
+              <h3>24h päivystys</h3>
+              <p>Tulemme paikalle tunnin sisällä hätätapauksissa.</p>
+            </div>
+            <div class="card elevation-2">
+              <div class="card-index">03</div>
+              <h3>Avaimet käteen</h3>
+              <p>Suunnittelusta toteutukseen — sinun ei tarvitse huolehtia mistään.</p>
+            </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="referenssit" class="section">
+      <div class="container">
+        <span class="section-label">Referenssit</span>
+        <h2>Töitämme</h2>
+        <div class="card-grid">
+            <div class="card elevation-2">
+              <div class="card-index">01</div>
+              <h3>Tuoreimmat työt</h3>
+              <p>Seuraa somekanaviamme nähdäksesi viimeisimmät projektimme.</p>
+            </div>
+            <div class="card elevation-2">
+              <div class="card-index">02</div>
+              <h3>Asiakaspalautteet</h3>
+              <p>Tyytyväiset asiakkaamme ovat paras referenssimme — kysy lisää!</p>
+            </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="yhteystiedot" class="section">
+      <div class="container">
+        <span class="section-label">Ota yhteyttä</span>
+        <h2>Pyydä tarjous.</h2>
+        <div class="contact-grid" style="margin-top:3rem">
+          <div class="contact-info">
+            <p style="color:var(--text-primary);font-weight:500;margin-bottom:1.5rem">Ota rohkeasti yhteyttä — vastaamme 24 tunnin sisällä.</p>
+            <p><strong>Putki-Järvinen Oy</strong></p>
+            <p>Putkityöt ja LVI-asennukset</p>
+            <p>Helsinki</p>
+            <p style="margin-top:1rem">📞 040-1234567</p>
+            <p>✉️ info@putkijarvinen.fi</p>
+          </div>
+          <form class="contact-form" action="https://formspree.io/f/placeholder" method="POST">
+            <input type="text" name="nimi" placeholder="Nimesi" required>
+            <input type="email" name="email" placeholder="Sähköpostisi" required>
+            <input type="text" name="puhelin" placeholder="Puhelin (valinnainen)">
+            <select name="kiinnostus">
+              <option value="">Mistä olet kiinnostunut?</option>
+              <option value="Putkiremontit">Putkiremontit</option>
+              <option value="LVI-asennukset">LVI-asennukset</option>
+              <option value="Päivystys 24h">Päivystys 24h</option>
+              <option value="Sulatukset">Sulatukset</option>
+              <option value="muu">Muu / Yleinen tiedustelu</option>
+            </select>
+            <textarea name="viesti" placeholder="Kerro lisää tarpeestasi..." required></textarea>
+            <input type="hidden" name="_subject" value="Yhteydenotto: Putki-Järvinen Oy">
+            <button type="submit" class="btn btn-primary">Lähetä viesti</button>
+            <div class="form-status" id="form-status"></div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+
+<!-- ═══ Footer ═══ -->
+<footer>
+  <p>© 2026 Putki-Järvinen Oy &middot; Putkityöt ja LVI-asennukset &middot; Helsinki</p>
+  <p class="footer-credit">Sivun rakensi Aurora Web</p>
+</footer>
+
+</body>
+</html>
