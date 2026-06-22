@@ -102,7 +102,8 @@ a{color:inherit;text-decoration:none}
   background:linear-gradient(135deg,var(--text) 0%,var(--text) 50%,var(--gold-dark) 100%);
   -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .hero h1 em{font-family:var(--fs);font-style:italic;font-weight:400;
-  -webkit-text-fill-color:var(--gold)}
+  -webkit-text-fill-color:var(--gold-dark);
+  text-shadow:0 1px 0 rgba(248,246,242,.6)}
 .hero p.lead{font-size:var(--step-1);color:var(--text-dim);max-width:520px;
   margin-bottom:3rem;font-weight:300;line-height:1.6}
 .hero-cta{display:flex;gap:1rem;flex-wrap:wrap;align-items:center}
@@ -303,6 +304,15 @@ footer{padding:3rem 0 2rem;border-top:1px solid var(--border);background:var(--s
 .footer-copy{font-size:.78rem;color:var(--muted);text-align:center;
   width:100%;margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border)}
 
+/* ═══════════════════ FAQ ═══════════════════ */
+.faq-item{background:var(--white);border:1px solid var(--border);border-radius:var(--r-lg);margin-bottom:1rem;overflow:hidden}
+.faq-q{width:100%;display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:1.5rem;
+  background:none;border:none;font-family:var(--fd);font-size:var(--step-1);font-weight:600;text-align:left;cursor:pointer;color:var(--text)}
+.faq-q svg{width:20px;height:20px;color:var(--gold-dark);transition:transform .3s var(--ease);flex-shrink:0}
+.faq-item.open .faq-q svg{transform:rotate(180deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .35s var(--ease)}
+.faq-a .faq-pad{padding:0 1.5rem 1.5rem;color:var(--text-dim);line-height:1.7}
+
 /* ═══════════════════ SCROLL PROGRESS ═══════════════════ */
 .scroll-prog{position:fixed;top:0;left:0;height:2px;background:var(--gold);
   z-index:9999;width:0%;transition:width .1s}
@@ -349,22 +359,22 @@ footer{padding:3rem 0 2rem;border-top:1px solid var(--border);background:var(--s
   <div class="container hero-content">
     <div class="hero-tag" id="hero-tag">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-      Available for new projects — July 2026
+      Available now — free mockup in 24h
     </div>
     <h1 id="hero-title">Bespoke websites that <em>don't just look good</em> — they convert visitors into customers.</h1>
-    <p class="lead" id="hero-lead">Award-level design for small businesses. Built from scratch, no templates. Fixed price, 48-hour delivery, free mockup before you pay a cent.</p>
+    <p class="lead" id="hero-lead">Award-level design for small businesses in Cyprus, Finland, and across the EU. Built from scratch, no templates. Free mockup before you pay a cent.</p>
     <div class="hero-cta" id="hero-cta">
-      <a href="#work" class="btn btn-primary">
-        See our work
+      <a href="#contact" class="btn btn-primary">
+        Get a free mockup
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
       </a>
-      <a href="#contact" class="btn btn-ghost">Get a free mockup</a>
+      <a href="#work" class="btn btn-ghost">See our work</a>
     </div>
     <div class="hero-stats" id="hero-stats">
-      <div class="hero-stat"><div class="num">8</div><div class="lbl">Live Demos</div></div>
-      <div class="hero-stat"><div class="num">48h</div><div class="lbl">Avg Delivery</div></div>
+      <div class="hero-stat"><div class="num">10+</div><div class="lbl">Live Demos</div></div>
+      <div class="hero-stat"><div class="num">5-day</div><div class="lbl">Full Delivery</div></div>
       <div class="hero-stat"><div class="num">100%</div><div class="lbl">Custom Design</div></div>
-      <div class="hero-stat"><div class="num">&euro;299</div><div class="lbl">Starting Price</div></div>
+      <div class="hero-stat"><div class="num">&euro;699</div><div class="lbl">Starting Price</div></div>
     </div>
   </div>
   <div class="rating-chip" id="rating-chip">
@@ -605,38 +615,38 @@ footer{padding:3rem 0 2rem;border-top:1px solid var(--border);background:var(--s
       <div class="svc gs-reveal">
         <div class="svc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></div>
         <h3>Business Website</h3>
-        <p>1–5 page custom site with mobile-first design, SEO setup, contact forms, and fast hosting. Your digital storefront.</p>
-        <span class="svc-badge">From &euro;299</span>
+        <p>1–3 page custom site with mobile-first design, SEO setup, contact forms, and fast hosting. Your digital storefront.</p>
+        <span class="svc-badge">From &euro;699</span>
       </div>
       <div class="svc gs-reveal">
         <div class="svc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 002-2V2M7 2v20M17 2v20M21 15V2a4 4 0 00-4 4v8a2 2 0 002 2"/></svg></div>
         <h3>Restaurant &amp; Menu</h3>
         <p>Interactive menu, online reservation, gallery, Instagram feed, and Google Maps directions. Built to fill tables.</p>
-        <span class="svc-badge">From &euro;699</span>
+        <span class="svc-badge">From &euro;1,299</span>
       </div>
       <div class="svc gs-reveal">
         <div class="svc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" y1="4" x2="8.12" y2="15.88"/><line x1="14.47" y1="14.48" x2="20" y2="20"/><line x1="8.12" y1="8.12" x2="12" y2="12"/></svg></div>
         <h3>Salon &amp; Booking</h3>
         <p>Service menu, price list, online booking integration, staff profiles, and review highlights. Stylish and functional.</p>
-        <span class="svc-badge">From &euro;699</span>
+        <span class="svc-badge">From &euro;1,299</span>
       </div>
       <div class="svc gs-reveal">
         <div class="svc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg></div>
         <h3>Trades &amp; Services</h3>
         <p>Emergency call buttons, service areas, before/after gallery, and lead-capture forms. Built to get the phone ringing.</p>
-        <span class="svc-badge">From &euro;299</span>
+        <span class="svc-badge">From &euro;699</span>
       </div>
       <div class="svc gs-reveal">
         <div class="svc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg></div>
         <h3>E-Commerce</h3>
         <p>Online store with cart, checkout, payment processing, inventory management, and order tracking — all custom built.</p>
-        <span class="svc-badge">From &euro;1,499</span>
+        <span class="svc-badge">From &euro;2,499</span>
       </div>
       <div class="svc gs-reveal">
         <div class="svc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M18 17V9M13 17V5M8 17v-3"/></svg></div>
         <h3>SEO &amp; Growth</h3>
         <p>Google Business Profile setup, local SEO, speed optimization, and monthly analytics reports. Get found by more customers.</p>
-        <span class="svc-badge">From &euro;49/mo</span>
+        <span class="svc-badge">From &euro;149/mo</span>
       </div>
     </div>
   </div>
@@ -695,7 +705,7 @@ footer{padding:3rem 0 2rem;border-top:1px solid var(--border);background:var(--s
     <div class="price-grid">
       <div class="pcard gs-reveal">
         <h3>Starter</h3>
-        <div class="price">&euro;299<small> one-time</small></div>
+        <div class="price">&euro;699<small> one-time</small></div>
         <div class="pdesc">Perfect for a small business that needs to be online fast.</div>
         <ul>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>1-page custom website</li>
@@ -710,7 +720,7 @@ footer{padding:3rem 0 2rem;border-top:1px solid var(--border);background:var(--s
       <div class="pcard featured gs-reveal">
         <span class="badge">MOST POPULAR</span>
         <h3>Business</h3>
-        <div class="price">&euro;699<small> one-time</small></div>
+        <div class="price">&euro;1,499<small> one-time</small></div>
         <div class="pdesc">For businesses that want to stand out and convert.</div>
         <ul>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Up to 5 custom pages</li>
@@ -727,7 +737,7 @@ footer{padding:3rem 0 2rem;border-top:1px solid var(--border);background:var(--s
       </div>
       <div class="pcard gs-reveal">
         <h3>Premium</h3>
-        <div class="price">&euro;1,499<small> one-time</small></div>
+        <div class="price">&euro;2,999+<small> one-time</small></div>
         <div class="pdesc">For ambitious brands that want the full experience.</div>
         <ul>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Unlimited pages</li>
@@ -742,7 +752,7 @@ footer{padding:3rem 0 2rem;border-top:1px solid var(--border);background:var(--s
     </div>
     <p style="text-align:center;margin-top:2.5rem;color:var(--muted);font-size:.85rem">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px;display:inline;vertical-align:-3px;margin-right:4px"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
-      All plans include free mockup before payment · Monthly maintenance from &euro;49/mo
+      All plans include free mockup before payment · Optional maintenance from &euro;149/mo
     </p>
   </div>
 </section>
@@ -760,6 +770,51 @@ footer{padding:3rem 0 2rem;border-top:1px solid var(--border);background:var(--s
           <div class="name">ReLove Retreats</div>
           <div class="role">Wellness Retreat · Kos, Greece</div>
         </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════════ FAQ ═════════════ -->
+<section id="faq" style="background:var(--surface)">
+  <div class="container">
+    <div class="sec-label gs-reveal">Questions</div>
+    <h2 class="sec-title gs-reveal">What clients <em>usually ask</em>.</h2>
+    <div class="faq-wrap" style="max-width:760px;margin-top:3rem">
+      <div class="faq-item gs-reveal">
+        <button class="faq-q">
+          What if I don't like the mockup?
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="faq-a"><div class="faq-pad">Then you don't pay. The mockup is free and there is no obligation. We only start building after you approve the direction.</div></div>
+      </div>
+      <div class="faq-item gs-reveal">
+        <button class="faq-q">
+          Do you use WordPress or templates?
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="faq-a"><div class="faq-pad">No. Every site is hand-coded from scratch in clean HTML, CSS, and JavaScript. That means faster loading, better SEO, and no plugin bloat.</div></div>
+      </div>
+      <div class="faq-item gs-reveal">
+        <button class="faq-q">
+          How fast will my site be ready?
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="faq-a"><div class="faq-pad">You receive a free mockup within 24 hours. After approval, most sites go live in 4–5 business days. Starter sites can be ready in 48 hours.</div></div>
+      </div>
+      <div class="faq-item gs-reveal">
+        <button class="faq-q">
+          Can the site be in Greek, English, or Finnish?
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="faq-a"><div class="faq-pad">Yes. We build in the languages your customers use. Multilingual sites are available in the Business and Premium packages.</div></div>
+      </div>
+      <div class="faq-item gs-reveal">
+        <button class="faq-q">
+          What happens after launch?
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="faq-a"><div class="faq-pad">You own the site and all files. Optional maintenance includes hosting, updates, backups, and small content changes from &euro;149/month.</div></div>
       </div>
     </div>
   </div>
@@ -872,6 +927,20 @@ document.querySelectorAll('a, button, .work-card, .svc').forEach(function(el) {
 });
 
 /* Marquee — duplicate for seamless loop (already done in markup) */
+
+/* FAQ accordion */
+document.querySelectorAll('.faq-q').forEach(function(btn){
+  btn.addEventListener('click', function(){
+    var item = btn.closest('.faq-item');
+    var answer = item.querySelector('.faq-a');
+    var isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(function(faq){
+      faq.classList.remove('open');
+      faq.querySelector('.faq-a').style.maxHeight = null;
+    });
+    if(!isOpen){ item.classList.add('open'); answer.style.maxHeight = answer.scrollHeight + 'px'; }
+  });
+});
 </script>
 </body>
 </html>
