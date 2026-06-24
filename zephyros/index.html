@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zephyros Fish Restaurant — Larnaca, Cyprus</title>
+<meta name="description" content="Family-run Mediterranean fish taverna in Larnaca since 1976. Fresh seafood, sea views, three generations of taste. Piale Pasa 37, Larnaca, Cyprus.">
+<meta property="og:title" content="Zephyros Fish Restaurant — Larnaca">
+<meta property="og:description" content="Fresh from the sea since 1976. Mediterranean fish taverna on the Larnaca seafront.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#1B3A4B">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='28' font-size='28'>🐟</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+<script src="https://unpkg.com/lenis@latest/dist/lenis.min.js" defer></script>
+<style>
+:root {
+  --navy: #1B3A4B;
+  --navy-deep: #0F2430;
+  --cream: #F5F0E8;
+  --terracotta: #C67B5C;
+  --gold: #C9A84C;
+  --gold-light: #D4B96A;
+  --white: #FFFFFF;
+  --text: #2C2C2C;
+  --text-dim: #5A5A5A;
+  --text-light: rgba(255,255,255,.9);
+  --text-muted: rgba(255,255,255,.65);
+  --surface: #EBE4D8;
+  --glow: rgba(201,168,76,.3);
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-sans: 'Manrope', system-ui, sans-serif;
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-family:var(--font-sans);color:var(--text);background:var(--cream);-webkit-font-smoothing:antialiased}
+body{overflow-x:hidden}
+
+/* Noise overlay */
+.noise{position:fixed;inset:0;z-index:999;pointer-events:none;opacity:.03;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size:200px}
+
+/* Nav */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.25rem 2rem;display:flex;justify-content:space-between;align-items:center;transition:all .4s}
+.nav.scrolled{background:rgba(245,240,232,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);box-shadow:0 1px 0 rgba(0,0,0,.06);padding:.75rem 2rem}
+.nav-brand{font-family:var(--font-serif);font-size:1.4rem;font-weight:700;color:var(--white);letter-spacing:-.02em;text-decoration:none;transition:color .4s}
+.nav.scrolled .nav-brand{color:var(--navy)}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{text-decoration:none;color:var(--text-light);font-size:.9rem;font-weight:500;transition:color .3s;letter-spacing:.02em}
+.nav.scrolled .nav-links a{color:var(--text-dim)}
+.nav-links a:hover{color:var(--gold)}
+.nav-cta{background:var(--gold);color:var(--navy)!important;padding:.5rem 1.25rem;border-radius:4px;font-weight:600!important;transition:all .3s!important}
+.nav-cta:hover{background:var(--gold-light);box-shadow:0 0 20px var(--glow)}
+
+/* Hero */
+.hero{position:relative;height:100vh;min-height:600px;display:flex;align-items:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0}
+.hero-bg img{width:100%;height:100%;object-fit:cover;animation:heroZoom 20s ease-in-out infinite alternate}
+@keyframes heroZoom{from{transform:scale(1)}to{transform:scale(1.06)}}
+.hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(15,36,48,.82) 0%,rgba(15,36,48,.65) 40%,rgba(15,36,48,.78) 100%)}
+.hero-content{position:relative;z-index:2;max-width:800px;margin:0 auto;text-align:center;padding:2rem}
+.hero-tag{display:inline-block;font-family:var(--font-sans);font-size:.75rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem;padding:.4rem 1rem;border:1px solid rgba(201,168,76,.3);border-radius:4px}
+.hero-content h1{font-family:var(--font-serif);font-size:clamp(2.8rem,5vw,5rem);font-weight:700;color:var(--white);line-height:1.1;margin-bottom:1.25rem;letter-spacing:-.02em}
+.hero-content h1 span{color:var(--gold);font-style:italic}
+.hero-sub{font-size:clamp(1rem,1.5vw,1.2rem);color:var(--text-muted);margin-bottom:2.5rem;line-height:1.6;max-width:500px;margin-left:auto;margin-right:auto}
+.hero-cta{display:inline-flex;gap:1rem;flex-wrap:wrap;justify-content:center}
+.btn-primary{display:inline-flex;align-items:center;gap:.5rem;padding:.85rem 2rem;background:var(--gold);color:var(--navy);font-weight:600;font-size:.95rem;border-radius:4px;text-decoration:none;letter-spacing:.02em;transition:all .3s;box-shadow:0 0 30px var(--glow)}
+.btn-primary:hover{background:var(--gold-light);box-shadow:0 0 50px rgba(201,168,76,.5);transform:translateY(-1px)}
+.btn-ghost{display:inline-flex;align-items:center;gap:.5rem;padding:.85rem 2rem;background:transparent;color:var(--white);font-weight:500;font-size:.95rem;border-radius:4px;text-decoration:none;border:1px solid rgba(255,255,255,.25);letter-spacing:.02em;transition:all .3s}
+.btn-ghost:hover{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.4)}
+
+/* Rating chip */
+.rating-chip{position:absolute;bottom:2.5rem;right:2rem;z-index:3;display:flex;align-items:center;gap:.6rem;background:rgba(15,36,48,.8);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);padding:.6rem 1rem;border-radius:8px;border:1px solid rgba(201,168,76,.25)}
+.rating-chip svg{width:18px;height:18px;fill:var(--gold)}
+.rating-chip span{color:var(--white);font-size:.85rem;font-weight:600}
+.rating-chip small{color:var(--text-muted);font-size:.75rem;font-weight:400}
+
+/* Section common */
+section{padding:5rem 2rem}
+.section-label{display:block;font-family:var(--font-sans);font-size:.7rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--terracotta);margin-bottom:.75rem}
+.section-heading{font-family:var(--font-serif);font-size:clamp(2rem,3.5vw,3rem);font-weight:700;color:var(--navy);margin-bottom:1rem;letter-spacing:-.01em}
+.section-sub{font-size:1.05rem;color:var(--text-dim);max-width:550px;line-height:1.7}
+
+.container{max-width:1200px;margin:0 auto}
+
+/* Story section */
+#story{background:var(--white)}
+.story-grid{display:grid;grid-template-columns:.618fr .382fr;gap:4rem;align-items:center;margin-top:3rem}
+.story-image{position:relative;border-radius:6px;overflow:hidden;aspect-ratio:4/3}
+.story-image img{width:100%;height:100%;object-fit:cover}
+.story-image::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(27,58,75,.3),transparent)}
+.story-text p{font-size:1.05rem;line-height:1.8;color:var(--text-dim);margin-bottom:1.25rem}
+.story-stats{display:flex;gap:3rem;margin-top:2rem}
+.stat-number{font-family:var(--font-serif);font-size:2.5rem;font-weight:700;color:var(--terracotta)}
+.stat-label{font-size:.8rem;color:var(--text-dim);text-transform:uppercase;letter-spacing:.1em;margin-top:.25rem}
+
+/* Menu */
+#menu{background:var(--cream)}
+.menu-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;margin-top:3rem}
+.menu-card{background:var(--white);border-radius:6px;overflow:hidden;transition:all .4s;box-shadow:0 2px 12px rgba(0,0,0,.04)}
+.menu-card:hover{transform:translateY(-6px);box-shadow:0 12px 32px rgba(0,0,0,.1)}
+.menu-card-img{aspect-ratio:3/2;overflow:hidden}
+.menu-card-img img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.menu-card:hover .menu-card-img img{transform:scale(1.05)}
+.menu-card-body{padding:1.5rem}
+.menu-card-body h3{font-family:var(--font-serif);font-size:1.3rem;color:var(--navy);margin-bottom:.5rem}
+.menu-card-body p{font-size:.9rem;color:var(--text-dim);line-height:1.6}
+.menu-card-body .price{display:inline-block;margin-top:1rem;font-weight:700;color:var(--terracotta);font-size:1.1rem}
+
+/* Gallery */
+#gallery{background:var(--navy-deep)}
+#gallery .section-label{color:var(--gold)}
+#gallery .section-heading{color:var(--white)}
+#gallery .section-sub{color:var(--text-muted)}
+.gallery-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;margin-top:3rem}
+.gallery-item{border-radius:6px;overflow:hidden;aspect-ratio:4/3}
+.gallery-item img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.gallery-item:hover img{transform:scale(1.04)}
+
+/* Visit */
+#visit{background:var(--white)}
+.visit-grid{display:grid;grid-template-columns:.5fr .5fr;gap:4rem;margin-top:3rem}
+.visit-info h3{font-family:var(--font-serif);font-size:1.3rem;color:var(--navy);margin-bottom:.75rem}
+.visit-info p,.visit-info li{font-size:.95rem;color:var(--text-dim);line-height:1.8}
+.visit-info ul{list-style:none;margin-top:.5rem}
+.visit-info li{display:flex;align-items:flex-start;gap:.75rem;margin-bottom:.6rem}
+.visit-info li svg{flex-shrink:0;width:16px;height:16px;margin-top:4px;fill:var(--terracotta)}
+.hours-table{width:100%;border-collapse:collapse;margin-top:1rem}
+.hours-table td{padding:.5rem 0;font-size:.9rem;color:var(--text-dim);border-bottom:1px solid var(--surface)}
+.hours-table td:last-child{text-align:right;font-weight:500;color:var(--text)}
+.visit-map{border-radius:6px;overflow:hidden;aspect-ratio:4/3}
+.visit-map img{width:100%;height:100%;object-fit:cover}
+
+/* CTA */
+#cta{background:var(--cream);text-align:center}
+.cta-box{max-width:650px;margin:0 auto;padding:3rem;background:var(--white);border-radius:6px;box-shadow:0 4px 24px rgba(0,0,0,.04)}
+.cta-box h2{font-family:var(--font-serif);font-size:2rem;color:var(--navy);margin-bottom:1rem}
+.cta-box p{color:var(--text-dim);margin-bottom:2rem;line-height:1.7}
+
+/* Footer */
+.footer{background:var(--navy-deep);color:var(--text-muted);padding:3rem 2rem 2rem}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:3rem;max-width:1200px;margin:0 auto}
+.footer-brand{font-family:var(--font-serif);font-size:1.4rem;font-weight:700;color:var(--white);margin-bottom:1rem}
+.footer p{font-size:.9rem;line-height:1.7}
+.footer h4{color:var(--white);font-size:.8rem;text-transform:uppercase;letter-spacing:.12em;margin-bottom:1rem}
+.footer a{color:var(--text-muted);text-decoration:none;font-size:.9rem;transition:color .3s;display:block;margin-bottom:.5rem}
+.footer a:hover{color:var(--gold)}
+.footer-bottom{max-width:1200px;margin:2rem auto 0;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,.08);display:flex;justify-content:space-between;font-size:.8rem}
+.footer-credit{color:var(--gold);font-weight:500}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .nav{padding:1rem 1.25rem}
+  .nav.scrolled{padding:.6rem 1.25rem}
+  .nav-links{display:none}
+  .nav.scrolled .nav-links{display:none}
+  section{padding:3rem 1.25rem}
+  .story-grid{grid-template-columns:1fr;gap:2rem}
+  .story-stats{gap:2rem}
+  .menu-grid{grid-template-columns:1fr;gap:1rem}
+  .gallery-grid{grid-template-columns:1fr}
+  .visit-grid{grid-template-columns:1fr;gap:2rem}
+  .footer-grid{grid-template-columns:1fr;gap:2rem}
+  .cta-box{padding:2rem 1.5rem}
+  .rating-chip{bottom:1rem;right:1rem}
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .hero-bg img{animation:none}
+  *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
+}
+</style>
+</head>
+<body>
+<div class="noise"></div>
+
+<nav class="nav" id="nav">
+  <a href="#" class="nav-brand">Zephyros</a>
+  <ul class="nav-links">
+    <li><a href="#story">Our Story</a></li>
+    <li><a href="#menu">Menu</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#visit">Visit Us</a></li>
+    <li><a href="tel:+35724657198" class="nav-cta">Book a Table</a></li>
+  </ul>
+</nav>
+
+<section class="hero" id="hero">
+  <div class="hero-bg">
+    <img src="https://images.unsplash.com/photo-1533105079780-92b9be482077?w=1920&q=80" alt="Mediterranean coastline at dusk" loading="eager">
+  </div>
+  <div class="hero-content">
+    <span class="hero-tag gs-reveal">Fresh from the sea since 1976</span>
+    <h1 class="gs-reveal">Where Larnaca<br>comes for <span>fish</span></h1>
+    <p class="hero-sub gs-reveal">Three generations of Mediterranean taste, right where the fishing boats dock. Fish Meze, sea views, and genuine Cypriot hospitality.</p>
+    <div class="hero-cta gs-reveal">
+      <a href="tel:+35724657198" class="btn-primary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.1 2h3a2 2 0 012 1.72c.127.96.362 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        Book a Table
+      </a>
+      <a href="#menu" class="btn-ghost">Explore Menu</a>
+    </div>
+  </div>
+  <div class="rating-chip">
+    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+    <span>4.0</span>
+    <small>1199+ reviews</small>
+  </div>
+</section>
+
+<section id="story">
+  <div class="container">
+    <span class="section-label gs-reveal">Our Story</span>
+    <h2 class="section-heading gs-reveal">Three generations of taste</h2>
+    <div class="story-grid">
+      <div class="story-text gs-reveal">
+        <p>In 1976, Andreas opened a small fish taverna on the Larnaca seafront. The fishing boats docked steps away, and the day's catch went straight from net to grill. Word spread — locals came for the Fish Meze, tourists stayed for the sunset.</p>
+        <p>Today, the third generation runs Zephyros. The boats still dock outside. The fish is still fresh. The meze still brings people together. Some things don't need to change.</p>
+        <div class="story-stats">
+          <div><div class="stat-number">1976</div><div class="stat-label">Established</div></div>
+          <div><div class="stat-number">3</div><div class="stat-label">Generations</div></div>
+          <div><div class="stat-number">1199+</div><div class="stat-label">Reviews</div></div>
+        </div>
+      </div>
+      <div class="story-image gs-reveal">
+        <img src="https://images.unsplash.com/photo-1495567720989-cebdbdd97913?w=800&q=80" alt="Mediterranean sunset over the sea" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="menu">
+  <div class="container">
+    <span class="section-label gs-reveal">Our Menu</span>
+    <h2 class="section-heading gs-reveal">Fresh from the Med</h2>
+    <p class="section-sub gs-reveal">Every dish starts with fish delivered daily by the boats you can see from your table. Full bar available — wine, cocktails, Cypriot spirits.</p>
+    <div class="menu-grid">
+      <div class="menu-card gs-reveal">
+        <div class="menu-card-img"><img src="https://images.unsplash.com/photo-1559847844-5315695dadae?w=600&q=80" alt="Fish meze platter" loading="lazy"></div>
+        <div class="menu-card-body">
+          <h3>Fish Meze</h3>
+          <p>Our signature. A generous platter of the day's freshest catch — grilled octopus, calamari, white fish, prawns, and seasonal sides.</p>
+          <span class="price">From €22</span>
+        </div>
+      </div>
+      <div class="menu-card gs-reveal">
+        <div class="menu-card-img"><img src="https://images.unsplash.com/photo-1536678376914-345cc693a19b?w=600&q=80" alt="Greek hilltop sea view" loading="lazy"></div>
+        <div class="menu-card-body">
+          <h3>Swordfish</h3>
+          <p>Grilled over charcoal, served with ladolemono sauce, roasted vegetables, and our signature herb-seasoned chips.</p>
+          <span class="price">From €18</span>
+        </div>
+      </div>
+      <div class="menu-card gs-reveal">
+        <div class="menu-card-img"><img src="https://images.unsplash.com/photo-1537905569824-f89f14cceb68?w=600&q=80" alt="Gentle waves on beach" loading="lazy"></div>
+        <div class="menu-card-body">
+          <h3>Greek Salad</h3>
+          <p>Cypriot tomatoes, cucumber, green pepper, Kalamata olives, barrel-aged feta, oregano, and extra virgin olive oil.</p>
+          <span class="price">From €9</span>
+        </div>
+      </div>
+      <div class="menu-card gs-reveal">
+        <div class="menu-card-img"><img src="https://images.unsplash.com/photo-1559847844-5315695dadae?w=600&q=80" alt="Seafood platter" loading="lazy"></div>
+        <div class="menu-card-body">
+          <h3>Sweetened Fruits</h3>
+          <p>Seasonal Cypriot fruits preserved in syrup — the traditional way to end a Mediterranean meal. With Greek coffee.</p>
+          <span class="price">From €6</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="gallery">
+  <div class="container">
+    <span class="section-label gs-reveal">Gallery</span>
+    <h2 class="section-heading gs-reveal">Dine by the sea</h2>
+    <p class="section-sub gs-reveal">Outdoor seating with uninterrupted views of the Mediterranean. Sunset dinners, family gatherings, and the sound of waves.</p>
+    <div class="gallery-grid">
+      <div class="gallery-item gs-reveal"><img src="https://images.unsplash.com/photo-1533105079780-92b9be482077?w=800&q=80" alt="Coastal view" loading="lazy"></div>
+      <div class="gallery-item gs-reveal"><img src="https://images.unsplash.com/photo-1495567720989-cebdbdd97913?w=800&q=80" alt="Sunset dining" loading="lazy"></div>
+      <div class="gallery-item gs-reveal"><img src="https://images.unsplash.com/photo-1559847844-5315695dadae?w=800&q=80" alt="Fresh seafood" loading="lazy"></div>
+      <div class="gallery-item gs-reveal"><img src="https://images.unsplash.com/photo-1537905569824-f89f14cceb68?w=800&q=80" alt="Beach view" loading="lazy"></div>
+    </div>
+  </div>
+</section>
+
+<section id="visit">
+  <div class="container">
+    <span class="section-label gs-reveal">Visit Us</span>
+    <h2 class="section-heading gs-reveal">Right by the fishing port</h2>
+    <div class="visit-grid">
+      <div class="visit-info gs-reveal">
+        <h3>Find Us</h3>
+        <p>Piale Pasa 37<br>Larnaca 6027, Cyprus</p>
+        <p style="margin-top:1rem"><strong>Phone:</strong> <a href="tel:+35724657198" style="color:var(--terracotta);text-decoration:none">+357 24 657198</a></p>
+        
+        <h3 style="margin-top:2rem">Opening Hours</h3>
+        <table class="hours-table">
+          <tr><td>Monday</td><td>11:30 – 22:30</td></tr>
+          <tr><td>Tuesday</td><td>11:30 – 00:00</td></tr>
+          <tr><td>Wednesday</td><td>11:30 – 22:30</td></tr>
+          <tr><td>Thursday</td><td>11:30 – 23:00</td></tr>
+          <tr><td>Friday</td><td>11:30 – 22:30</td></tr>
+          <tr><td>Saturday</td><td>11:30 – 22:30</td></tr>
+          <tr><td>Sunday</td><td>11:30 – 22:30</td></tr>
+        </table>
+
+        <h3 style="margin-top:2rem">Amenities</h3>
+        <ul>
+          <li><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>Outdoor sea-view seating</li>
+          <li><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>Wheelchair accessible</li>
+          <li><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>Free parking</li>
+          <li><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>Credit cards accepted</li>
+          <li><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>Takeaway & delivery</li>
+        </ul>
+      </div>
+      <div class="visit-map gs-reveal">
+        <img src="https://images.unsplash.com/photo-1533105079780-92b9be482077?w=800&q=80" alt="Larnaca seafront" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="cta">
+  <div class="container">
+    <div class="cta-box gs-reveal">
+      <span class="section-label">Reservations</span>
+      <h2>Join us for dinner tonight</h2>
+      <p>Fresh fish, sea breeze, and three generations of hospitality. Call us to book your table — dinner reservations recommended.</p>
+      <a href="tel:+35724657198" class="btn-primary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.1 2h3a2 2 0 012 1.72c.127.96.362 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        +357 24 657198
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand">Zephyros</div>
+      <p>Family-run fish restaurant on the Larnaca seafront. Fresh from the sea since 1976.</p>
+    </div>
+    <div>
+      <h4>Quick Links</h4>
+      <a href="#story">Our Story</a>
+      <a href="#menu">Menu</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#visit">Visit Us</a>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <p>Piale Pasa 37<br>Larnaca 6027, Cyprus</p>
+      <a href="tel:+35724657198">+357 24 657198</a>
+      <p style="margin-top:.5rem">Open daily<br>11:30 – 22:30</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2026 Zephyros Fish Restaurant. All rights reserved.</span>
+    <span class="footer-credit">Designed by Aurora Web</span>
+  </div>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  // Lenis smooth scroll
+  if (typeof Lenis !== 'undefined') {
+    const lenis = new Lenis();
+    lenis.on('scroll', ScrollTrigger.update);
+    gsap.ticker.add((time) => { lenis.raf(time * 1000); });
+    gsap.ticker.lagSmoothing(0);
+  }
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Nav scroll state
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 50);
+  });
+
+  // GSAP reveal animations
+  document.querySelectorAll('.gs-reveal').forEach((el, i) => {
+    gsap.from(el, {
+      opacity: 0,
+      y: 40,
+      duration: 0.6,
+      delay: (i % 4) * 0.08,
+      ease: 'power2.out',
+      scrollTrigger: {
+        trigger: el,
+        start: 'top 88%',
+        toggleActions: 'play none none none'
+      }
+    });
+  });
+
+  // Stagger hero content
+  const heroReveals = document.querySelectorAll('.hero .gs-reveal');
+  heroReveals.forEach((el, i) => {
+    gsap.from(el, {
+      opacity: 0,
+      y: 30,
+      duration: 0.8,
+      delay: i * 0.15,
+      ease: 'power3.out'
+    });
+  });
+});
+</script>
+</body>
+</html>
