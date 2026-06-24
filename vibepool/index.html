@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VibePool — Human-Centered AI</title>
+<meta name="description" content="Clarity before scale. We help leaders cut through AI noise and turn intent into focused, human-centered solutions that deliver real results. Based in Óbidos, Portugal.">
+<meta property="og:title" content="VibePool — Human-Centered AI">
+<meta property="og:description" content="Clarity before scale. AI strategy, design, and implementation with purpose.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#0A0A0A">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='14' fill='%23D4A853'/><text y='22' x='16' text-anchor='middle' font-size='14' fill='%230A0A0A' font-weight='bold'>V</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+<style>
+:root {
+  --bg: #0A0A0A;
+  --bg-elevated: #141414;
+  --bg-card: #1A1A1A;
+  --gold: #D4A853;
+  --gold-dim: rgba(212,168,83,.15);
+  --text: #F0EDE8;
+  --text-dim: #8A8782;
+  --text-muted: #5A5754;
+  --border: rgba(255,255,255,.06);
+  --font-display: 'Space Grotesk', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+  --radius: 6px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-family:var(--font-body);color:var(--text);background:var(--bg);-webkit-font-smoothing:antialiased}
+body{overflow-x:hidden}
+
+/* Noise */
+.noise{position:fixed;inset:0;z-index:999;pointer-events:none;opacity:.025;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size:200px}
+
+/* Nav */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.25rem 2.5rem;display:flex;justify-content:space-between;align-items:center;transition:all .4s}
+.nav.scrolled{background:rgba(10,10,10,.92);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:.8rem 2.5rem}
+.nav-brand{font-family:var(--font-display);font-size:1.3rem;font-weight:700;color:var(--text);letter-spacing:-.02em;text-decoration:none;display:flex;align-items:center;gap:.5rem}
+.nav-brand span{color:var(--gold)}
+.nav-links{display:flex;gap:2.5rem;list-style:none;align-items:center}
+.nav-links a{text-decoration:none;color:var(--text-dim);font-size:.85rem;font-weight:500;transition:color .3s}
+.nav-links a:hover{color:var(--text)}
+.nav-cta{background:var(--gold);color:var(--bg)!important;padding:.55rem 1.4rem;border-radius:var(--radius);font-weight:600!important;font-size:.85rem!important;transition:all .3s}
+.nav-cta:hover{background:#E0B960;box-shadow:0 0 24px rgba(212,168,83,.3)}
+
+/* Hero */
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0}
+.hero-gradient{position:absolute;inset:0;background:radial-gradient(ellipse at 30% 20%,rgba(212,168,83,.08) 0%,transparent 60%),radial-gradient(ellipse at 80% 60%,rgba(180,140,60,.04) 0%,transparent 50%)}
+.hero-lines{position:absolute;inset:0;opacity:.03;background-image:linear-gradient(rgba(255,255,255,.5) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.5) 1px,transparent 1px);background-size:60px 60px}
+.hero-content{position:relative;z-index:2;max-width:900px;margin:0 auto;text-align:center;padding:2rem}
+.hero-tag{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--font-display);font-size:.7rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:2rem}
+.hero-tag::before{content:'';width:24px;height:1px;background:var(--gold);opacity:.4}
+.hero-content h1{font-family:var(--font-display);font-size:clamp(3rem,6vw,5.5rem);font-weight:700;color:var(--text);line-height:1.05;margin-bottom:1.5rem;letter-spacing:-.03em}
+.hero-content h1 em{font-style:italic;color:var(--gold)}
+.hero-sub{font-size:clamp(1rem,1.3vw,1.15rem);color:var(--text-dim);margin-bottom:3rem;line-height:1.7;max-width:550px;margin-left:auto;margin-right:auto}
+.hero-cta{display:inline-flex;gap:1rem;flex-wrap:wrap;justify-content:center}
+.btn-primary{display:inline-flex;align-items:center;gap:.5rem;padding:.9rem 2.2rem;background:var(--gold);color:var(--bg);font-weight:600;font-size:.95rem;border-radius:var(--radius);text-decoration:none;transition:all .3s;box-shadow:0 0 30px rgba(212,168,83,.2)}
+.btn-primary:hover{background:#E0B960;box-shadow:0 0 50px rgba(212,168,83,.35);transform:translateY(-1px)}
+.btn-ghost{display:inline-flex;align-items:center;gap:.5rem;padding:.9rem 2.2rem;background:transparent;color:var(--text);font-weight:500;font-size:.95rem;border-radius:var(--radius);text-decoration:none;border:1px solid rgba(255,255,255,.15);transition:all .3s}
+.btn-ghost:hover{background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.25)}
+
+/* Sections */
+section{padding:6rem 2.5rem}
+.container{max-width:1200px;margin:0 auto}
+.section-label{display:block;font-family:var(--font-display);font-size:.7rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem}
+.section-heading{font-family:var(--font-display);font-size:clamp(2rem,3.5vw,3rem);font-weight:700;color:var(--text);margin-bottom:1rem;letter-spacing:-.02em;line-height:1.15}
+.section-sub{font-size:1.05rem;color:var(--text-dim);max-width:580px;line-height:1.7;margin-bottom:3rem}
+
+/* Services grid */
+#services{background:var(--bg-elevated)}
+.services-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem}
+.service-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:2.5rem;transition:all .4s;position:relative;overflow:hidden}
+.service-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:0;transition:opacity .4s}
+.service-card:hover::before{opacity:1}
+.service-card:hover{border-color:rgba(212,168,83,.25);transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,.4)}
+.service-icon{width:40px;height:40px;border-radius:8px;background:var(--gold-dim);display:flex;align-items:center;justify-content:center;margin-bottom:1.5rem;color:var(--gold);font-size:1.1rem}
+.service-card h3{font-family:var(--font-display);font-size:1.2rem;font-weight:600;color:var(--text);margin-bottom:.75rem}
+.service-card p{font-size:.9rem;color:var(--text-dim);line-height:1.7}
+
+/* Principles */
+.principles-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1.5rem;counter-reset:principle}
+.principle-card{text-align:center;padding:2rem 1.5rem}
+.principle-num{font-family:var(--font-display);font-size:.7rem;font-weight:700;color:var(--gold);letter-spacing:.12em;margin-bottom:1rem}
+.principle-card h3{font-family:var(--font-display);font-size:1rem;font-weight:600;color:var(--text);margin-bottom:.5rem}
+.principle-card p{font-size:.8rem;color:var(--text-muted);line-height:1.6}
+
+/* Origin */
+#origin{background:var(--bg-elevated)}
+.origin-grid{display:grid;grid-template-columns:.55fr .45fr;gap:5rem;align-items:center}
+.origin-text p{font-size:1.05rem;line-height:1.8;color:var(--text-dim);margin-bottom:1.25rem}
+.origin-image{aspect-ratio:16/10;border-radius:var(--radius);overflow:hidden;background:linear-gradient(135deg,rgba(212,168,83,.08),rgba(180,140,60,.03));display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:4rem;color:var(--gold);opacity:.3}
+
+/* Journal */
+.journal-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.journal-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:2rem;transition:all .3s;text-decoration:none;display:block}
+.journal-card:hover{border-color:rgba(212,168,83,.25);transform:translateY(-3px)}
+.journal-card .cat{font-size:.7rem;font-weight:600;color:var(--gold);text-transform:uppercase;letter-spacing:.1em;margin-bottom:1rem}
+.journal-card h3{font-family:var(--font-display);font-size:1.1rem;font-weight:600;color:var(--text);margin-bottom:.75rem;line-height:1.4}
+.journal-card p{font-size:.85rem;color:var(--text-dim);line-height:1.6}
+
+/* CTA */
+#cta{text-align:center;background:linear-gradient(180deg,var(--bg) 0%,var(--bg-elevated) 100%)}
+.cta-box{max-width:700px;margin:0 auto}
+.cta-box h2{font-family:var(--font-display);font-size:2.5rem;font-weight:700;color:var(--text);margin-bottom:1rem;letter-spacing:-.02em}
+.cta-box p{color:var(--text-dim);font-size:1.05rem;margin-bottom:2rem;line-height:1.7}
+.cta-buttons{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+
+/* Footer */
+.footer{background:var(--bg-elevated);border-top:1px solid var(--border);padding:3rem 2.5rem 2rem}
+.footer-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr;gap:4rem}
+.footer-brand{font-family:var(--font-display);font-size:1.3rem;font-weight:700;color:var(--text);margin-bottom:.75rem}
+.footer p{font-size:.85rem;color:var(--text-dim);line-height:1.7}
+.footer h4{font-size:.7rem;font-weight:600;color:var(--text-muted);text-transform:uppercase;letter-spacing:.12em;margin-bottom:1rem}
+.footer a{display:block;color:var(--text-dim);text-decoration:none;font-size:.85rem;margin-bottom:.5rem;transition:color .3s}
+.footer a:hover{color:var(--text)}
+.footer-bottom{max-width:1200px;margin:2.5rem auto 0;padding-top:1.5rem;border-top:1px solid var(--border);display:flex;justify-content:space-between;font-size:.8rem;color:var(--text-muted)}
+.footer-credit{color:var(--gold);font-weight:500}
+
+@media (max-width: 768px) {
+  .nav{padding:1rem 1.25rem}
+  .nav-links{display:none}
+  section{padding:3rem 1.25rem}
+  .services-grid{grid-template-columns:1fr}
+  .principles-grid{grid-template-columns:1fr;gap:.5rem}
+  .origin-grid{grid-template-columns:1fr;gap:2rem}
+  .journal-grid{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr;gap:2rem}
+  .service-card{padding:1.5rem}
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
+}
+</style>
+</head>
+<body>
+<div class="noise"></div>
+
+<nav class="nav" id="nav">
+  <a href="#" class="nav-brand">Vibe<span>Pool</span></a>
+  <ul class="nav-links">
+    <li><a href="#services">What We Do</a></li>
+    <li><a href="#principles">How We Work</a></li>
+    <li><a href="#origin">Origins</a></li>
+    <li><a href="#journal">Journal</a></li>
+    <li><a href="#cta" class="nav-cta">Start the conversation</a></li>
+  </ul>
+</nav>
+
+<section class="hero" id="hero">
+  <div class="hero-bg">
+    <div class="hero-gradient"></div>
+    <div class="hero-lines"></div>
+  </div>
+  <div class="hero-content">
+    <span class="hero-tag gs-reveal">AI with Intention</span>
+    <h1 class="gs-reveal">Clarity <em>before</em> scale.</h1>
+    <p class="hero-sub gs-reveal">We help leaders cut through AI noise and turn intent into focused, human-centered solutions that deliver real results.</p>
+    <div class="hero-cta gs-reveal">
+      <a href="#cta" class="btn-primary">Start the conversation</a>
+      <a href="#services" class="btn-ghost">Explore what we do</a>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="container">
+    <span class="section-label gs-reveal">What We Do</span>
+    <h2 class="section-heading gs-reveal">Four ways we create value</h2>
+    <p class="section-sub gs-reveal">From strategy to implementation, we bring clarity to every stage of the AI journey.</p>
+    <div class="services-grid">
+      <div class="service-card gs-reveal">
+        <div class="service-icon">🔍</div>
+        <h3>AI Clarity, Strategy &amp; Learning</h3>
+        <p>Leadership clarity on what AI means for your organisation, where to focus, and how to build understanding that sticks.</p>
+      </div>
+      <div class="service-card gs-reveal">
+        <div class="service-icon">🎯</div>
+        <h3>Human-Centered AI Design &amp; Implementation</h3>
+        <p>Practical systems designed around people — built to be used, not just deployed.</p>
+      </div>
+      <div class="service-card gs-reveal">
+        <div class="service-icon">🌱</div>
+        <h3>Leadership &amp; Adoption Enablement</h3>
+        <p>Building the culture, trust, and capability for AI to become part of how your organisation works.</p>
+      </div>
+      <div class="service-card gs-reveal">
+        <div class="service-icon">🌐</div>
+        <h3>AI Ecosystem &amp; Expert Deployment</h3>
+        <p>Curated senior practitioners deployed under VibePool governance, extending your capacity without compromising quality.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="principles">
+  <div class="container">
+    <span class="section-label gs-reveal">How We Work</span>
+    <h2 class="section-heading gs-reveal">Principles that guide every engagement</h2>
+    <p class="section-sub gs-reveal">We believe the best AI work starts with restraint, not enthusiasm.</p>
+    <div class="principles-grid">
+      <div class="principle-card gs-reveal">
+        <div class="principle-num">01</div>
+        <h3>Less is more</h3>
+        <p>We start with the smallest thing that creates value.</p>
+      </div>
+      <div class="principle-card gs-reveal">
+        <div class="principle-num">02</div>
+        <h3>Human-centered</h3>
+        <p>Every solution is designed for the people who will use it.</p>
+      </div>
+      <div class="principle-card gs-reveal">
+        <div class="principle-num">03</div>
+        <h3>Ethics as foundation</h3>
+        <p>Responsibility isn't a feature — it's the foundation.</p>
+      </div>
+      <div class="principle-card gs-reveal">
+        <div class="principle-num">04</div>
+        <h3>Clarity over speed</h3>
+        <p>Understanding the problem before building the solution.</p>
+      </div>
+      <div class="principle-card gs-reveal">
+        <div class="principle-num">05</div>
+        <h3>Accountability</h3>
+        <p>We stand behind every recommendation and every deployment.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="origin">
+  <div class="container">
+    <div class="origin-grid">
+      <div class="origin-text gs-reveal">
+        <span class="section-label">Our Origins</span>
+        <h2 class="section-heading">From Óbidos to the world</h2>
+        <p>VibePool was founded in Óbidos, Portugal — a place where history meets innovation, and where taking time to think clearly has always been valued.</p>
+        <p>From this intentional starting point, we work with organisations globally. Our perspective remains grounded: technology should serve human purpose, not the other way around.</p>
+        <p>We bring a European sensibility to AI — one that prioritises ethics, sustainability, and long-term thinking alongside technical excellence.</p>
+      </div>
+      <div class="origin-image gs-reveal">Ó</div>
+    </div>
+  </div>
+</section>
+
+<section id="journal">
+  <div class="container">
+    <span class="section-label gs-reveal">Journal</span>
+    <h2 class="section-heading gs-reveal">Thinking out loud</h2>
+    <p class="section-sub gs-reveal">Practical reflections on human-centred AI and conscious leadership.</p>
+    <div class="journal-grid">
+      <a href="#" class="journal-card gs-reveal">
+        <div class="cat">Human-Centred AI</div>
+        <h3>Why Human-Centred AI Matters More Than Ever</h3>
+        <p>As AI capabilities accelerate, keeping humans at the center isn't just ethical — it's strategic.</p>
+      </a>
+      <a href="#" class="journal-card gs-reveal">
+        <div class="cat">Human-Centred AI</div>
+        <h3>Designing AI That Understands Human Context</h3>
+        <p>Context-aware systems that adapt to how people actually work, not how we wish they worked.</p>
+      </a>
+      <a href="#" class="journal-card gs-reveal">
+        <div class="cat">Ethical &amp; Responsible AI</div>
+        <h3>The Ethics of AI Implementation</h3>
+        <p>A practical framework for organisations navigating the ethical dimensions of AI deployment.</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section id="cta">
+  <div class="container">
+    <div class="cta-box gs-reveal">
+      <span class="section-label">Let's Talk</span>
+      <h2>Ready for clarity?</h2>
+      <p>Whether you're exploring AI strategy, building internal capability, or deploying production systems — we start every engagement the same way: by listening.</p>
+      <div class="cta-buttons">
+        <a href="#" class="btn-primary">Start the conversation</a>
+        <a href="#" class="btn-ghost">Join the ecosystem</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand">VibePool</div>
+      <p>Human-centered AI agency. Clarity before scale. Based in Óbidos, Portugal — working globally.</p>
+    </div>
+    <div>
+      <h4>Navigate</h4>
+      <a href="#services">What We Do</a>
+      <a href="#principles">How We Work</a>
+      <a href="#origin">Origins</a>
+      <a href="#journal">Journal</a>
+    </div>
+    <div>
+      <h4>Connect</h4>
+      <a href="#">Contact</a>
+      <a href="#">LinkedIn</a>
+      <a href="#">Instagram</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2026 VibePool. All rights reserved.</span>
+    <span class="footer-credit">Redesigned by Aurora Web</span>
+  </div>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Nav scroll
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 50);
+  });
+
+  // Reveal animations
+  document.querySelectorAll('.gs-reveal').forEach((el, i) => {
+    gsap.from(el, {
+      opacity: 0, y: 40,
+      duration: 0.6,
+      delay: (i % 4) * 0.06,
+      ease: 'power2.out',
+      scrollTrigger: {
+        trigger: el,
+        start: 'top 88%',
+        toggleActions: 'play none none none'
+      }
+    });
+  });
+
+  // Hero stagger
+  document.querySelectorAll('.hero .gs-reveal').forEach((el, i) => {
+    gsap.from(el, {
+      opacity: 0, y: 30,
+      duration: 0.8,
+      delay: i * 0.15,
+      ease: 'power3.out'
+    });
+  });
+});
+</script>
+</body>
+</html>
