@@ -3,125 +3,142 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>VibePool — Human-Centered AI</title>
-<meta name="description" content="Clarity before scale. We help leaders cut through AI noise and turn intent into focused, human-centered solutions that deliver real results. Based in Óbidos, Portugal.">
+<title>VibePool — Human-Centered AI | Clarity Before Scale</title>
+<meta name="description" content="Clarity before scale. We help leaders cut through AI noise and turn intent into focused, human-centered solutions. Based in Óbidos, Portugal.">
 <meta property="og:title" content="VibePool — Human-Centered AI">
 <meta property="og:description" content="Clarity before scale. AI strategy, design, and implementation with purpose.">
 <meta property="og:type" content="website">
-<meta name="theme-color" content="#0A0A0A">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='14' fill='%23D4A853'/><text y='22' x='16' text-anchor='middle' font-size='14' fill='%230A0A0A' font-weight='bold'>V</text></svg>">
+<meta name="theme-color" content="#F8F6F2">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect rx='6' width='32' height='32' fill='%23C7A76A'/><text y='23' x='16' text-anchor='middle' font-size='16' font-weight='bold' fill='%23F8F6F2'>V</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+<script src="https://unpkg.com/lenis@latest/dist/lenis.min.js" defer></script>
 <style>
 :root {
-  --bg: #0A0A0A;
-  --bg-elevated: #141414;
-  --bg-card: #1A1A1A;
-  --gold: #D4A853;
-  --gold-dim: rgba(212,168,83,.15);
-  --text: #F0EDE8;
-  --text-dim: #8A8782;
-  --text-muted: #5A5754;
-  --border: rgba(255,255,255,.06);
+  --cream: #F8F6F2;
+  --sand: #E8E2D8;
+  --charcoal: #2F3133;
+  --text: #2F3133;
+  --text-dim: #6B6A67;
+  --gold: #C7A76A;
+  --gold-dim: rgba(199,167,106,.15);
+  --sage: #A8B3A0;
+  --white: #FFFFFF;
+  --surface: #F0ECE5;
+  --border: rgba(0,0,0,.06);
+  --glow: rgba(199,167,106,.3);
   --font-display: 'Space Grotesk', system-ui, sans-serif;
   --font-body: 'Inter', system-ui, sans-serif;
-  --radius: 6px;
+  --radius: 4px;
+  --radius-card: 6px;
 }
+
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;font-family:var(--font-body);color:var(--text);background:var(--bg);-webkit-font-smoothing:antialiased}
+html{scroll-behavior:smooth;font-family:var(--font-body);color:var(--text);background:var(--cream);-webkit-font-smoothing:antialiased}
 body{overflow-x:hidden}
 
-/* Noise */
-.noise{position:fixed;inset:0;z-index:999;pointer-events:none;opacity:.025;
+.noise{position:fixed;inset:0;z-index:999;pointer-events:none;opacity:.03;
   background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   background-size:200px}
 
-/* Nav */
 .nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.25rem 2.5rem;display:flex;justify-content:space-between;align-items:center;transition:all .4s}
-.nav.scrolled{background:rgba(10,10,10,.92);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:.8rem 2.5rem}
-.nav-brand{font-family:var(--font-display);font-size:1.3rem;font-weight:700;color:var(--text);letter-spacing:-.02em;text-decoration:none;display:flex;align-items:center;gap:.5rem}
+.nav.scrolled{background:rgba(248,246,242,.94);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);box-shadow:0 1px 0 var(--border);padding:.8rem 2.5rem}
+.nav-brand{font-family:var(--font-display);font-size:1.3rem;font-weight:700;color:var(--charcoal);letter-spacing:-.02em;text-decoration:none}
 .nav-brand span{color:var(--gold)}
-.nav-links{display:flex;gap:2.5rem;list-style:none;align-items:center}
+.nav-links{display:flex;gap:2.2rem;list-style:none;align-items:center}
 .nav-links a{text-decoration:none;color:var(--text-dim);font-size:.85rem;font-weight:500;transition:color .3s}
-.nav-links a:hover{color:var(--text)}
-.nav-cta{background:var(--gold);color:var(--bg)!important;padding:.55rem 1.4rem;border-radius:var(--radius);font-weight:600!important;font-size:.85rem!important;transition:all .3s}
-.nav-cta:hover{background:#E0B960;box-shadow:0 0 24px rgba(212,168,83,.3)}
+.nav-links a:hover{color:var(--charcoal)}
+.nav-cta{background:var(--gold);color:var(--white)!important;padding:.55rem 1.4rem;border-radius:var(--radius);font-weight:600!important;transition:all .3s;box-shadow:0 0 20px var(--glow)}
+.nav-cta:hover{background:#B8944D;box-shadow:0 0 30px var(--glow)}
 
-/* Hero */
-.hero{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden}
+.hero{position:relative;height:100vh;min-height:650px;display:flex;align-items:center;overflow:hidden}
 .hero-bg{position:absolute;inset:0}
-.hero-gradient{position:absolute;inset:0;background:radial-gradient(ellipse at 30% 20%,rgba(212,168,83,.08) 0%,transparent 60%),radial-gradient(ellipse at 80% 60%,rgba(180,140,60,.04) 0%,transparent 50%)}
-.hero-lines{position:absolute;inset:0;opacity:.03;background-image:linear-gradient(rgba(255,255,255,.5) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.5) 1px,transparent 1px);background-size:60px 60px}
-.hero-content{position:relative;z-index:2;max-width:900px;margin:0 auto;text-align:center;padding:2rem}
-.hero-tag{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--font-display);font-size:.7rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:2rem}
-.hero-tag::before{content:'';width:24px;height:1px;background:var(--gold);opacity:.4}
-.hero-content h1{font-family:var(--font-display);font-size:clamp(3rem,6vw,5.5rem);font-weight:700;color:var(--text);line-height:1.05;margin-bottom:1.5rem;letter-spacing:-.03em}
-.hero-content h1 em{font-style:italic;color:var(--gold)}
-.hero-sub{font-size:clamp(1rem,1.3vw,1.15rem);color:var(--text-dim);margin-bottom:3rem;line-height:1.7;max-width:550px;margin-left:auto;margin-right:auto}
+.hero-bg img{width:100%;height:100%;object-fit:cover;animation:heroZoom 20s ease-in-out infinite alternate}
+@keyframes heroZoom{from{transform:scale(1)}to{transform:scale(1.06)}}
+.hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(47,49,51,.72) 0%,rgba(47,49,51,.45) 45%,rgba(47,49,51,.6) 100%)}
+.hero-content{position:relative;z-index:2;max-width:850px;margin:0 auto;text-align:center;padding:2rem}
+.hero-tag{display:inline-block;font-family:var(--font-display);font-size:.7rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem;padding:.35rem 1rem;border:1px solid rgba(199,167,106,.3);border-radius:var(--radius)}
+.hero-content h1{font-family:var(--font-display);font-size:clamp(2.8rem, 5.5vw, 5rem);font-weight:700;color:var(--white);line-height:1.08;margin-bottom:1.25rem;letter-spacing:-.03em}
+.hero-content h1 em{font-style:italic;background:linear-gradient(135deg,var(--gold) 0%,#E0C78A 60%,var(--white) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-sub{font-size:clamp(1rem, 1.3vw, 1.15rem);color:rgba(255,255,255,.75);margin-bottom:2.5rem;line-height:1.7;max-width:530px;margin-left:auto;margin-right:auto}
 .hero-cta{display:inline-flex;gap:1rem;flex-wrap:wrap;justify-content:center}
-.btn-primary{display:inline-flex;align-items:center;gap:.5rem;padding:.9rem 2.2rem;background:var(--gold);color:var(--bg);font-weight:600;font-size:.95rem;border-radius:var(--radius);text-decoration:none;transition:all .3s;box-shadow:0 0 30px rgba(212,168,83,.2)}
-.btn-primary:hover{background:#E0B960;box-shadow:0 0 50px rgba(212,168,83,.35);transform:translateY(-1px)}
-.btn-ghost{display:inline-flex;align-items:center;gap:.5rem;padding:.9rem 2.2rem;background:transparent;color:var(--text);font-weight:500;font-size:.95rem;border-radius:var(--radius);text-decoration:none;border:1px solid rgba(255,255,255,.15);transition:all .3s}
-.btn-ghost:hover{background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.25)}
+.btn-primary{display:inline-flex;align-items:center;gap:.5rem;padding:.9rem 2.2rem;background:var(--gold);color:var(--white);font-weight:600;font-size:.95rem;border-radius:var(--radius);text-decoration:none;transition:all .3s;box-shadow:0 0 30px var(--glow)}
+.btn-primary:hover{background:#B8944D;box-shadow:0 0 50px rgba(199,167,106,.45);transform:translateY(-1px)}
+.btn-ghost{display:inline-flex;align-items:center;gap:.5rem;padding:.9rem 2.2rem;background:transparent;color:var(--white);font-weight:500;font-size:.95rem;border-radius:var(--radius);text-decoration:none;border:1px solid rgba(255,255,255,.25);transition:all .3s}
+.btn-ghost:hover{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.4)}
 
-/* Sections */
-section{padding:6rem 2.5rem}
+.rating-chip{position:absolute;bottom:2.5rem;right:2rem;z-index:3;display:flex;align-items:center;gap:.5rem;background:rgba(47,49,51,.8);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);padding:.55rem .9rem;border-radius:8px;border:1px solid rgba(199,167,106,.2)}
+.rating-chip svg{width:14px;height:14px;fill:var(--gold)}
+.rating-chip span{color:var(--white);font-size:.8rem;font-weight:600}
+.rating-chip small{color:rgba(255,255,255,.55);font-size:.7rem}
+
+section{padding:5rem 2.5rem}
 .container{max-width:1200px;margin:0 auto}
-.section-label{display:block;font-family:var(--font-display);font-size:.7rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem}
-.section-heading{font-family:var(--font-display);font-size:clamp(2rem,3.5vw,3rem);font-weight:700;color:var(--text);margin-bottom:1rem;letter-spacing:-.02em;line-height:1.15}
+.section-label{display:block;font-family:var(--font-display);font-size:.7rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:.75rem}
+.section-heading{font-family:var(--font-display);font-size:clamp(2rem, 3.5vw, 2.8rem);font-weight:700;color:var(--charcoal);margin-bottom:1rem;letter-spacing:-.02em;line-height:1.15}
 .section-sub{font-size:1.05rem;color:var(--text-dim);max-width:580px;line-height:1.7;margin-bottom:3rem}
 
-/* Services grid */
-#services{background:var(--bg-elevated)}
+#services{background:var(--white)}
 .services-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem}
-.service-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:2.5rem;transition:all .4s;position:relative;overflow:hidden}
+.service-card{background:var(--cream);border:1px solid var(--border);border-radius:var(--radius-card);padding:2.5rem;transition:all .4s;position:relative;overflow:hidden}
 .service-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:0;transition:opacity .4s}
 .service-card:hover::before{opacity:1}
-.service-card:hover{border-color:rgba(212,168,83,.25);transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,.4)}
-.service-icon{width:40px;height:40px;border-radius:8px;background:var(--gold-dim);display:flex;align-items:center;justify-content:center;margin-bottom:1.5rem;color:var(--gold);font-size:1.1rem}
-.service-card h3{font-family:var(--font-display);font-size:1.2rem;font-weight:600;color:var(--text);margin-bottom:.75rem}
+.service-card:hover{transform:translateY(-4px);box-shadow:0 12px 36px rgba(0,0,0,.06);border-color:rgba(199,167,106,.2)}
+.service-icon{width:44px;height:44px;border-radius:8px;background:var(--gold-dim);display:flex;align-items:center;justify-content:center;margin-bottom:1.5rem}
+.service-icon svg{width:20px;height:20px;stroke:var(--gold);fill:none;stroke-width:2}
+.service-card h3{font-family:var(--font-display);font-size:1.15rem;font-weight:600;color:var(--charcoal);margin-bottom:.6rem}
 .service-card p{font-size:.9rem;color:var(--text-dim);line-height:1.7}
 
-/* Principles */
-.principles-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1.5rem;counter-reset:principle}
-.principle-card{text-align:center;padding:2rem 1.5rem}
-.principle-num{font-family:var(--font-display);font-size:.7rem;font-weight:700;color:var(--gold);letter-spacing:.12em;margin-bottom:1rem}
-.principle-card h3{font-family:var(--font-display);font-size:1rem;font-weight:600;color:var(--text);margin-bottom:.5rem}
-.principle-card p{font-size:.8rem;color:var(--text-muted);line-height:1.6}
+#principles{background:var(--cream)}
+.principles-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1rem}
+.principle-card{text-align:center;padding:2rem 1rem}
+.principle-num{font-family:var(--font-display);font-size:.65rem;font-weight:700;color:var(--gold);letter-spacing:.12em;margin-bottom:.75rem}
+.principle-card h3{font-family:var(--font-display);font-size:.95rem;font-weight:600;color:var(--charcoal);margin-bottom:.4rem}
+.principle-card p{font-size:.8rem;color:var(--text-dim);line-height:1.6}
 
-/* Origin */
-#origin{background:var(--bg-elevated)}
-.origin-grid{display:grid;grid-template-columns:.55fr .45fr;gap:5rem;align-items:center}
+#origin{background:var(--white)}
+.origin-grid{display:grid;grid-template-columns:.618fr .382fr;gap:4rem;align-items:center}
 .origin-text p{font-size:1.05rem;line-height:1.8;color:var(--text-dim);margin-bottom:1.25rem}
-.origin-image{aspect-ratio:16/10;border-radius:var(--radius);overflow:hidden;background:linear-gradient(135deg,rgba(212,168,83,.08),rgba(180,140,60,.03));display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:4rem;color:var(--gold);opacity:.3}
+.origin-image{border-radius:var(--radius-card);overflow:hidden;aspect-ratio:4/3}
+.origin-image img{width:100%;height:100%;object-fit:cover}
 
-/* Journal */
+#ecosystem{background:var(--cream)}
+.ecosystem-grid{display:grid;grid-template-columns:.382fr .618fr;gap:4rem;align-items:center}
+.ecosystem-image{border-radius:var(--radius-card);overflow:hidden;aspect-ratio:3/4;order:-1}
+.ecosystem-image img{width:100%;height:100%;object-fit:cover}
+.ecosystem-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2rem}
+.eco-stat{text-align:center}
+.eco-num{font-family:var(--font-display);font-size:2rem;font-weight:700;color:var(--gold)}
+.eco-label{font-size:.75rem;color:var(--text-dim);text-transform:uppercase;letter-spacing:.08em;margin-top:.3rem}
+
+#journal{background:var(--white)}
 .journal-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
-.journal-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:2rem;transition:all .3s;text-decoration:none;display:block}
-.journal-card:hover{border-color:rgba(212,168,83,.25);transform:translateY(-3px)}
-.journal-card .cat{font-size:.7rem;font-weight:600;color:var(--gold);text-transform:uppercase;letter-spacing:.1em;margin-bottom:1rem}
-.journal-card h3{font-family:var(--font-display);font-size:1.1rem;font-weight:600;color:var(--text);margin-bottom:.75rem;line-height:1.4}
+.journal-card{background:var(--cream);border:1px solid var(--border);border-radius:var(--radius-card);padding:2rem;text-decoration:none;transition:all .3s;display:block}
+.journal-card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,.05);border-color:rgba(199,167,106,.2)}
+.journal-card .cat{font-size:.65rem;font-weight:600;color:var(--gold);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.75rem}
+.journal-card h3{font-family:var(--font-display);font-size:1.05rem;font-weight:600;color:var(--charcoal);margin-bottom:.5rem;line-height:1.4}
 .journal-card p{font-size:.85rem;color:var(--text-dim);line-height:1.6}
 
-/* CTA */
-#cta{text-align:center;background:linear-gradient(180deg,var(--bg) 0%,var(--bg-elevated) 100%)}
-.cta-box{max-width:700px;margin:0 auto}
-.cta-box h2{font-family:var(--font-display);font-size:2.5rem;font-weight:700;color:var(--text);margin-bottom:1rem;letter-spacing:-.02em}
-.cta-box p{color:var(--text-dim);font-size:1.05rem;margin-bottom:2rem;line-height:1.7}
+#cta{text-align:center;position:relative;overflow:hidden}
+.cta-bg{position:absolute;inset:0}
+.cta-bg img{width:100%;height:100%;object-fit:cover}
+.cta-bg::after{content:'';position:absolute;inset:0;background:rgba(47,49,51,.8)}
+.cta-content{position:relative;z-index:2;max-width:650px;margin:0 auto;padding:4rem 2rem}
+.cta-content h2{font-family:var(--font-display);font-size:2.5rem;font-weight:700;color:var(--white);margin-bottom:1rem;letter-spacing:-.02em}
+.cta-content p{color:rgba(255,255,255,.7);font-size:1.05rem;margin-bottom:2rem;line-height:1.7}
 .cta-buttons{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
 
-/* Footer */
-.footer{background:var(--bg-elevated);border-top:1px solid var(--border);padding:3rem 2.5rem 2rem}
+.footer{background:var(--charcoal);color:rgba(255,255,255,.6);padding:3rem 2.5rem 2rem}
 .footer-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr;gap:4rem}
-.footer-brand{font-family:var(--font-display);font-size:1.3rem;font-weight:700;color:var(--text);margin-bottom:.75rem}
-.footer p{font-size:.85rem;color:var(--text-dim);line-height:1.7}
-.footer h4{font-size:.7rem;font-weight:600;color:var(--text-muted);text-transform:uppercase;letter-spacing:.12em;margin-bottom:1rem}
-.footer a{display:block;color:var(--text-dim);text-decoration:none;font-size:.85rem;margin-bottom:.5rem;transition:color .3s}
-.footer a:hover{color:var(--text)}
-.footer-bottom{max-width:1200px;margin:2.5rem auto 0;padding-top:1.5rem;border-top:1px solid var(--border);display:flex;justify-content:space-between;font-size:.8rem;color:var(--text-muted)}
+.footer-brand{font-family:var(--font-display);font-size:1.3rem;font-weight:700;color:var(--white);margin-bottom:.75rem}
+.footer p{font-size:.85rem;line-height:1.7}
+.footer h4{font-size:.7rem;font-weight:600;color:rgba(255,255,255,.35);text-transform:uppercase;letter-spacing:.12em;margin-bottom:1rem}
+.footer a{display:block;color:rgba(255,255,255,.5);text-decoration:none;font-size:.85rem;margin-bottom:.5rem;transition:color .3s}
+.footer a:hover{color:var(--gold)}
+.footer-bottom{max-width:1200px;margin:2.5rem auto 0;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,.08);display:flex;justify-content:space-between;font-size:.8rem}
 .footer-credit{color:var(--gold);font-weight:500}
 
 @media (max-width: 768px) {
@@ -129,14 +146,17 @@ section{padding:6rem 2.5rem}
   .nav-links{display:none}
   section{padding:3rem 1.25rem}
   .services-grid{grid-template-columns:1fr}
-  .principles-grid{grid-template-columns:1fr;gap:.5rem}
-  .origin-grid{grid-template-columns:1fr;gap:2rem}
+  .principles-grid{grid-template-columns:1fr;gap:.25rem}
+  .origin-grid,.ecosystem-grid{grid-template-columns:1fr;gap:2rem}
+  .ecosystem-image{order:0}
   .journal-grid{grid-template-columns:1fr}
   .footer-grid{grid-template-columns:1fr;gap:2rem}
-  .service-card{padding:1.5rem}
+  .ecosystem-stats{grid-template-columns:repeat(3,1fr);gap:.75rem}
+  .service-card{padding:1.8rem}
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .hero-bg img{animation:none}
   *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
 }
 </style>
@@ -150,6 +170,7 @@ section{padding:6rem 2.5rem}
     <li><a href="#services">What We Do</a></li>
     <li><a href="#principles">How We Work</a></li>
     <li><a href="#origin">Origins</a></li>
+    <li><a href="#ecosystem">Ecosystem</a></li>
     <li><a href="#journal">Journal</a></li>
     <li><a href="#cta" class="nav-cta">Start the conversation</a></li>
   </ul>
@@ -157,8 +178,7 @@ section{padding:6rem 2.5rem}
 
 <section class="hero" id="hero">
   <div class="hero-bg">
-    <div class="hero-gradient"></div>
-    <div class="hero-lines"></div>
+    <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=1920&q=80" alt="Technology and innovation concept" loading="eager">
   </div>
   <div class="hero-content">
     <span class="hero-tag gs-reveal">AI with Intention</span>
@@ -169,31 +189,53 @@ section{padding:6rem 2.5rem}
       <a href="#services" class="btn-ghost">Explore what we do</a>
     </div>
   </div>
+  <div class="rating-chip">
+    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+    <span>Trusted globally</span>
+    <small>Óbidos, Portugal</small>
+  </div>
 </section>
+
+<div style="background:var(--white);border-bottom:1px solid var(--border);padding:1.5rem 2.5rem">
+  <div class="container" style="display:flex;gap:3rem;justify-content:center;flex-wrap:wrap">
+    <span style="display:flex;align-items:center;gap:.5rem;font-size:.85rem;color:var(--text-dim)">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><circle cx="12" cy="10" r="3"/><path d="M12 21.7C17.3 17 20 13 20 10a8 8 0 10-16 0c0 3 2.7 7 8 11.7z"/></svg>
+      Óbidos, Portugal — working globally
+    </span>
+    <span style="display:flex;align-items:center;gap:.5rem;font-size:.85rem;color:var(--text-dim)">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+      Strategy · Design · Implementation
+    </span>
+    <span style="display:flex;align-items:center;gap:.5rem;font-size:.85rem;color:var(--text-dim)">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/></svg>
+      Enterprise & scale-up trusted
+    </span>
+  </div>
+</div>
 
 <section id="services">
   <div class="container">
     <span class="section-label gs-reveal">What We Do</span>
     <h2 class="section-heading gs-reveal">Four ways we create value</h2>
-    <p class="section-sub gs-reveal">From strategy to implementation, we bring clarity to every stage of the AI journey.</p>
+    <p class="section-sub gs-reveal">From strategy to implementation, we bring clarity to every stage of the AI journey — always with humans at the center.</p>
     <div class="services-grid">
       <div class="service-card gs-reveal">
-        <div class="service-icon">🔍</div>
+        <div class="service-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
         <h3>AI Clarity, Strategy &amp; Learning</h3>
         <p>Leadership clarity on what AI means for your organisation, where to focus, and how to build understanding that sticks.</p>
       </div>
       <div class="service-card gs-reveal">
-        <div class="service-icon">🎯</div>
+        <div class="service-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="12" cy="12" r="3"/><line x1="3" y1="9" x2="21" y2="9"/></svg></div>
         <h3>Human-Centered AI Design &amp; Implementation</h3>
         <p>Practical systems designed around people — built to be used, not just deployed.</p>
       </div>
       <div class="service-card gs-reveal">
-        <div class="service-icon">🌱</div>
+        <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div>
         <h3>Leadership &amp; Adoption Enablement</h3>
         <p>Building the culture, trust, and capability for AI to become part of how your organisation works.</p>
       </div>
       <div class="service-card gs-reveal">
-        <div class="service-icon">🌐</div>
+        <div class="service-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg></div>
         <h3>AI Ecosystem &amp; Expert Deployment</h3>
         <p>Curated senior practitioners deployed under VibePool governance, extending your capacity without compromising quality.</p>
       </div>
@@ -220,17 +262,17 @@ section{padding:6rem 2.5rem}
       <div class="principle-card gs-reveal">
         <div class="principle-num">03</div>
         <h3>Ethics as foundation</h3>
-        <p>Responsibility isn't a feature — it's the foundation.</p>
+        <p>Responsibility isn't a feature — it's where we start.</p>
       </div>
       <div class="principle-card gs-reveal">
         <div class="principle-num">04</div>
         <h3>Clarity over speed</h3>
-        <p>Understanding the problem before building the solution.</p>
+        <p>Understanding before building. Always.</p>
       </div>
       <div class="principle-card gs-reveal">
         <div class="principle-num">05</div>
         <h3>Accountability</h3>
-        <p>We stand behind every recommendation and every deployment.</p>
+        <p>We stand behind every recommendation and deployment.</p>
       </div>
     </div>
   </div>
@@ -242,11 +284,33 @@ section{padding:6rem 2.5rem}
       <div class="origin-text gs-reveal">
         <span class="section-label">Our Origins</span>
         <h2 class="section-heading">From Óbidos to the world</h2>
-        <p>VibePool was founded in Óbidos, Portugal — a place where history meets innovation, and where taking time to think clearly has always been valued.</p>
-        <p>From this intentional starting point, we work with organisations globally. Our perspective remains grounded: technology should serve human purpose, not the other way around.</p>
-        <p>We bring a European sensibility to AI — one that prioritises ethics, sustainability, and long-term thinking alongside technical excellence.</p>
+        <p>VibePool was founded in Óbidos, Portugal — a medieval town where history meets innovation, and where taking time to think clearly has always been valued. The castle walls that have stood for centuries remind us: what lasts is built with intention.</p>
+        <p>We bring a European sensibility to AI — one that prioritises ethics, sustainability, and long-term thinking alongside technical excellence. Technology should serve human purpose, not the other way around.</p>
       </div>
-      <div class="origin-image gs-reveal">Ó</div>
+      <div class="origin-image gs-reveal">
+        <img src="https://images.unsplash.com/photo-1533105079780-92b9be482077?w=800&q=80" alt="Mediterranean coastline" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="ecosystem">
+  <div class="container">
+    <div class="ecosystem-grid">
+      <div class="ecosystem-text gs-reveal">
+        <span class="section-label">Our Ecosystem</span>
+        <h2 class="section-heading">A network of exceptional practitioners</h2>
+        <p>Behind every VibePool engagement is a curated community of senior AI professionals — strategists, developers, designers, and educators who share a commitment to craft, ethics, and impact.</p>
+        <p>This isn't a marketplace or a staffing agency. It's a selective ecosystem where autonomy meets accountability.</p>
+        <div class="ecosystem-stats">
+          <div class="eco-stat"><div class="eco-num">200+</div><div class="eco-label">Practitioners</div></div>
+          <div class="eco-stat"><div class="eco-num">12</div><div class="eco-label">Countries</div></div>
+          <div class="eco-stat"><div class="eco-num">100%</div><div class="eco-label">Remote-First</div></div>
+        </div>
+      </div>
+      <div class="ecosystem-image gs-reveal">
+        <img src="https://images.unsplash.com/photo-1495567720989-cebdbdd97913?w=800&q=80" alt="Dramatic Mediterranean sunset" loading="lazy">
+      </div>
     </div>
   </div>
 </section>
@@ -263,29 +327,30 @@ section{padding:6rem 2.5rem}
         <p>As AI capabilities accelerate, keeping humans at the center isn't just ethical — it's strategic.</p>
       </a>
       <a href="#" class="journal-card gs-reveal">
-        <div class="cat">Human-Centred AI</div>
+        <div class="cat">Design</div>
         <h3>Designing AI That Understands Human Context</h3>
         <p>Context-aware systems that adapt to how people actually work, not how we wish they worked.</p>
       </a>
       <a href="#" class="journal-card gs-reveal">
-        <div class="cat">Ethical &amp; Responsible AI</div>
-        <h3>The Ethics of AI Implementation</h3>
-        <p>A practical framework for organisations navigating the ethical dimensions of AI deployment.</p>
+        <div class="cat">Ethics</div>
+        <h3>The Ethics of AI Implementation: A Practical Framework</h3>
+        <p>Navigate the ethical dimensions of AI deployment with a framework built for real organisations.</p>
       </a>
     </div>
   </div>
 </section>
 
 <section id="cta">
-  <div class="container">
-    <div class="cta-box gs-reveal">
-      <span class="section-label">Let's Talk</span>
-      <h2>Ready for clarity?</h2>
-      <p>Whether you're exploring AI strategy, building internal capability, or deploying production systems — we start every engagement the same way: by listening.</p>
-      <div class="cta-buttons">
-        <a href="#" class="btn-primary">Start the conversation</a>
-        <a href="#" class="btn-ghost">Join the ecosystem</a>
-      </div>
+  <div class="cta-bg">
+    <img src="https://images.unsplash.com/photo-1536678376914-345cc693a19b?w=1920&q=80" alt="Hilltop sea view" loading="lazy">
+  </div>
+  <div class="cta-content gs-reveal">
+    <span class="section-label">Let's Talk</span>
+    <h2>Ready for clarity?</h2>
+    <p>Whether you're exploring AI strategy, building internal capability, or deploying production systems — we start every engagement the same way: by listening.</p>
+    <div class="cta-buttons">
+      <a href="#" class="btn-primary">Start the conversation</a>
+      <a href="#" class="btn-ghost">Join the ecosystem</a>
     </div>
   </div>
 </section>
@@ -301,6 +366,7 @@ section{padding:6rem 2.5rem}
       <a href="#services">What We Do</a>
       <a href="#principles">How We Work</a>
       <a href="#origin">Origins</a>
+      <a href="#ecosystem">Ecosystem</a>
       <a href="#journal">Journal</a>
     </div>
     <div>
@@ -318,15 +384,20 @@ section{padding:6rem 2.5rem}
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
+  if (typeof Lenis !== 'undefined') {
+    const lenis = new Lenis();
+    lenis.on('scroll', ScrollTrigger.update);
+    gsap.ticker.add((time) => { lenis.raf(time * 1000); });
+    gsap.ticker.lagSmoothing(0);
+  }
+
   gsap.registerPlugin(ScrollTrigger);
 
-  // Nav scroll
   const nav = document.getElementById('nav');
   window.addEventListener('scroll', () => {
     nav.classList.toggle('scrolled', window.scrollY > 50);
   });
 
-  // Reveal animations
   document.querySelectorAll('.gs-reveal').forEach((el, i) => {
     gsap.from(el, {
       opacity: 0, y: 40,
@@ -341,7 +412,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Hero stagger
   document.querySelectorAll('.hero .gs-reveal').forEach((el, i) => {
     gsap.from(el, {
       opacity: 0, y: 30,
