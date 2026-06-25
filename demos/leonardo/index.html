@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Leonardo Boutique Hotel — Larnaca</title>
+<meta name="description" content="Leonardo Boutique Hotel — an intimate 42-suite hotel in the heart of Larnaca. Direct bookings, no commission.">
+<style>
+:root {
+  --cream: #F8F6F2;
+  --charcoal: #2F3133;
+  --gold: #C7A76A;
+  --gold-dim: #A88A4E;
+  --text: #2F3133;
+  --text-dim: #6B6D70;
+  --surface: #FFFFFF;
+  --border: #E8E5DF;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:'Space Grotesk',system-ui,sans-serif;background:var(--cream);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased}
+
+/* Noise overlay */
+.noise{position:fixed;inset:0;z-index:999;pointer-events:none;opacity:.025;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size:200px}
+
+/* Nav */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.5rem 4rem;display:flex;justify-content:space-between;align-items:center;transition:all .4s ease}
+.nav.scrolled{background:rgba(248,246,242,.92);backdrop-filter:blur(20px);padding:1rem 4rem;box-shadow:0 1px 0 var(--border)}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:rgba(255,255,255,.9);transition:color .4s;text-decoration:none;letter-spacing:.02em}
+.nav.scrolled .nav-logo{color:var(--charcoal)}
+.nav-links{display:flex;gap:2.5rem;list-style:none}
+.nav-links a{color:rgba(255,255,255,.75);text-decoration:none;font-size:.85rem;letter-spacing:.04em;transition:color .3s}
+.nav.scrolled .nav-links a{color:var(--text-dim)}
+.nav-links a:hover{color:var(--gold)}
+
+/* Hero */
+.hero{height:100vh;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0}
+.hero-bg img{width:100%;height:100%;object-fit:cover;animation:heroZoom 20s ease-in-out infinite alternate}
+@keyframes heroZoom{from{transform:scale(1)}to{transform:scale(1.06)}}
+.hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(15,15,15,.45) 0%,rgba(15,15,15,.2) 50%,rgba(15,15,15,.55) 100%)}
+.hero-content{position:relative;z-index:2;text-align:center;max-width:700px;padding:0 2rem}
+.hero-tag{display:inline-block;font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem;border:1px solid rgba(199,167,106,.4);padding:.4rem 1.2rem;border-radius:2px}
+.hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.8rem,4.5vw+1rem,5rem);color:#fff;line-height:1.08;margin-bottom:1.2rem;font-weight:400;letter-spacing:-.01em}
+.hero-sub{font-size:1.05rem;color:rgba(255,255,255,.7);margin-bottom:2.5rem;line-height:1.7;max-width:480px;margin-left:auto;margin-right:auto}
+.hero-cta{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.btn-primary{background:var(--gold);color:#fff;border:none;padding:.9rem 2.2rem;font-size:.85rem;letter-spacing:.05em;cursor:pointer;border-radius:2px;transition:all .3s;text-decoration:none;display:inline-block;box-shadow:0 0 30px rgba(199,167,106,.25)}
+.btn-primary:hover{background:var(--gold-dim);box-shadow:0 0 45px rgba(199,167,106,.4);transform:translateY(-1px)}
+.btn-ghost{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.3);padding:.85rem 2rem;font-size:.85rem;letter-spacing:.05em;cursor:pointer;border-radius:2px;transition:all .3s;text-decoration:none}
+.btn-ghost:hover{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.5)}
+
+/* Rating chip */
+.rating-chip{position:absolute;bottom:3rem;right:3rem;z-index:3;background:rgba(255,255,255,.1);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.15);border-radius:4px;padding:.8rem 1.4rem;display:flex;align-items:center;gap:.6rem}
+.rating-stars{color:var(--gold);font-size:1.1rem;letter-spacing:2px}
+.rating-text{color:rgba(255,255,255,.8);font-size:.75rem}
+
+/* Info bar */
+.info-bar{display:grid;grid-template-columns:repeat(3,1fr);max-width:960px;margin:-3rem auto 0;position:relative;z-index:10;background:var(--surface);border-radius:4px;box-shadow:0 2px 20px rgba(0,0,0,.06);padding:2rem;gap:1.5rem}
+.info-item{text-align:center}
+.info-item svg{width:20px;height:20px;color:var(--gold);margin-bottom:.5rem}
+.info-label{font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:var(--text-dim);margin-bottom:.3rem}
+.info-value{font-size:.9rem;color:var(--text);font-weight:500}
+
+/* Sections */
+.section{padding:7rem 2rem;max-width:1100px;margin:0 auto}
+.section-label{font-size:.65rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;text-align:center}
+.section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,3vw+.8rem,3rem);text-align:center;color:var(--charcoal);margin-bottom:1rem;font-weight:400;line-height:1.2}
+.section-sub{text-align:center;color:var(--text-dim);max-width:500px;margin:0 auto 4rem;font-size:.95rem;line-height:1.7}
+
+/* Suites grid */
+.suites{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
+.suite-card{background:var(--surface);border-radius:4px;overflow:hidden;transition:transform .3s,box-shadow .3s;border:1px solid var(--border)}
+.suite-card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,.08)}
+.suite-img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block}
+.suite-body{padding:1.5rem}
+.suite-type{font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:.4rem}
+.suite-name{font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:var(--charcoal);margin-bottom:.4rem}
+.suite-desc{font-size:.85rem;color:var(--text-dim);line-height:1.6;margin-bottom:1rem}
+.suite-footer{display:flex;justify-content:space-between;align-items:center}
+.suite-price{font-size:1.1rem;color:var(--charcoal);font-weight:500}
+.suite-price span{font-size:.7rem;color:var(--text-dim);font-weight:400}
+.suite-btn{background:transparent;border:1px solid var(--charcoal);color:var(--charcoal);padding:.5rem 1.2rem;font-size:.75rem;letter-spacing:.05em;cursor:pointer;border-radius:2px;transition:all .3s}
+.suite-btn:hover{background:var(--charcoal);color:#fff}
+
+/* About — golden ratio */
+.about{display:grid;grid-template-columns:.618fr .382fr;gap:4rem;align-items:center}
+.about-img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:4px}
+.about-content h3{font-family:'Cormorant Garamond',serif;font-size:2rem;margin-bottom:1.5rem;font-weight:400;line-height:1.2}
+.about-content p{color:var(--text-dim);line-height:1.8;margin-bottom:1rem;font-size:.95rem}
+.about-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2rem}
+.stat-number{font-family:'Cormorant Garamond',serif;font-size:2.2rem;color:var(--gold)}
+.stat-label{font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;color:var(--text-dim);margin-top:.3rem}
+
+/* Gallery */
+.gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+.gallery-grid img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:2px;transition:transform .4s}
+.gallery-grid img:hover{transform:scale(1.03)}
+
+/* Reviews */
+.reviews-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
+.review-card{background:var(--surface);padding:2rem;border-radius:4px;border:1px solid var(--border)}
+.review-stars{color:var(--gold);font-size:1rem;margin-bottom:1rem;letter-spacing:2px}
+.review-text{color:var(--text);font-size:.9rem;line-height:1.7;margin-bottom:1.2rem;font-style:italic}
+.review-author{font-size:.8rem;color:var(--text-dim);font-weight:500}
+
+/* CTA */
+.cta{text-align:center;background:var(--charcoal);padding:7rem 2rem;color:#fff}
+.cta .section-label{color:var(--gold)}
+.cta .section-title{color:#fff}
+.cta .section-sub{color:rgba(255,255,255,.6)}
+.cta .btn-primary{font-size:.9rem;padding:1rem 2.8rem}
+
+/* Footer */
+.footer{display:grid;grid-template-columns:1fr 1fr 1fr;gap:3rem;max-width:1100px;margin:0 auto;padding:5rem 2rem;font-size:.85rem;color:var(--text-dim)}
+.footer h4{font-family:'Cormorant Garamond',serif;font-size:1.2rem;color:var(--charcoal);margin-bottom:1.2rem}
+.footer a{color:var(--text-dim);text-decoration:none;display:block;margin-bottom:.5rem;transition:color .3s}
+.footer a:hover{color:var(--gold)}
+
+/* Mobile */
+@media(max-width:768px){
+  .nav{padding:1rem 1.5rem}
+  .nav-links{display:none}
+  .hero h1{font-size:2.2rem}
+  .suites{grid-template-columns:1fr}
+  .about{grid-template-columns:1fr}
+  .gallery-grid{grid-template-columns:repeat(2,1fr)}
+  .reviews-grid{grid-template-columns:1fr}
+  .footer{grid-template-columns:1fr}
+  .info-bar{grid-template-columns:1fr;margin:-2rem 1rem 0;padding:1.5rem}
+  .section{padding:4rem 1.5rem}
+  .rating-chip{right:1rem;bottom:1.5rem}
+}
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Space+Grotesk:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="noise"></div>
+
+<nav class="nav" id="nav">
+  <a href="#" class="nav-logo">Leonardo</a>
+  <ul class="nav-links">
+    <li><a href="#suites">Suites</a></li>
+    <li><a href="#about">Our Story</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#contact">Reserve</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hero-bg">
+    <img src="https://images.pexels.com/photos/14547145/pexels-photo-14547145.jpeg?w=1920" alt="Boutique hotel suite with Mediterranean view" loading="eager">
+  </div>
+  <div class="hero-content">
+    <span class="hero-tag">Larnaca · Cyprus</span>
+    <h1>Where the coast<br>forgets time</h1>
+    <p class="hero-sub">Forty-two suites above the Mediterranean. Direct bookings, no commission. The intimacy of a private residence with the grace of a fine hotel.</p>
+    <div class="hero-cta">
+      <a href="#suites" class="btn-primary">View Suites</a>
+      <a href="#contact" class="btn-ghost">Inquire</a>
+    </div>
+  </div>
+  <div class="rating-chip">
+    <span class="rating-stars">★★★★★</span>
+    <span class="rating-text">4.9 · 680+ reviews</span>
+  </div>
+</section>
+
+<div class="info-bar">
+  <div class="info-item">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+    <div class="info-label">Location</div>
+    <div class="info-value">Finikoudes Beach, Larnaca</div>
+  </div>
+  <div class="info-item">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+    <div class="info-label">Season</div>
+    <div class="info-value">Open year-round</div>
+  </div>
+  <div class="info-item">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+    <div class="info-label">Direct Booking</div>
+    <div class="info-value">Save 18% vs Booking.com</div>
+  </div>
+</div>
+
+<section class="section" id="suites">
+  <div class="section-label">Accommodation</div>
+  <h2 class="section-title">Our Suites</h2>
+  <p class="section-sub">Each suite is a study in restraint. No excess, no clutter — just space, light, and the rhythm of the sea.</p>
+  <div class="suites">
+    <div class="suite-card">
+      <div class="suite-body">
+        <div class="suite-type">Garden</div>
+        <div class="suite-name">Suite Garden</div>
+        <div class="suite-desc">Sea view · 48m² · King bed · Private terrace overlooking the Mediterranean garden.</div>
+        <div class="suite-footer">
+          <div class="suite-price">€280<span>/night</span></div>
+          <button class="suite-btn">Reserve</button>
+        </div>
+      </div>
+    </div>
+    <div class="suite-card">
+      <div class="suite-body">
+        <div class="suite-type">Sea</div>
+        <div class="suite-name">Suite Sea Loft</div>
+        <div class="suite-desc">Panoramic view · 62m² · King bed · Floor-to-ceiling windows. The coastline as your wallpaper.</div>
+        <div class="suite-footer">
+          <div class="suite-price">€420<span>/night</span></div>
+          <button class="suite-btn">Reserve</button>
+        </div>
+      </div>
+    </div>
+    <div class="suite-card">
+      <div class="suite-body">
+        <div class="suite-type">Cliff</div>
+        <div class="suite-name">Suite Cliff</div>
+        <div class="suite-desc">Private pool · 70m² · King bed · Infinity plunge pool. The hotel's signature suite.</div>
+        <div class="suite-footer">
+          <div class="suite-price">€620<span>/night</span></div>
+          <button class="suite-btn">Reserve</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="about">
+  <div class="about">
+    <div class="about-content">
+      <div class="section-label" style="text-align:left">Our Story</div>
+      <h3>A meditation on<br>Mediterranean light</h3>
+      <p>Leonardo was not designed — it was distilled. We removed everything that didn't belong: the lobby muzak, the buffet queues, the generic "hospitality" that feels like no one's home.</p>
+      <p>What remains: 42 suites, a private garden, and the conviction that a hotel should be more like a friend's beautiful house than a corporate machine.</p>
+      <div class="about-stats">
+        <div><div class="stat-number">42</div><div class="stat-label">Suites</div></div>
+        <div><div class="stat-number">4.9</div><div class="stat-label">Rating</div></div>
+        <div><div class="stat-number">680+</div><div class="stat-label">Reviews</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="gallery">
+  <div class="section-label">Gallery</div>
+  <h2 class="section-title">The Light</h2>
+  <p class="section-sub">Cyprus has 340 days of sun. We designed every window, terrace, and shadow to honor it.</p>
+  <div class="gallery-grid">
+    <img src="https://images.pexels.com/photos/5461604/pexels-photo-5461604.jpeg?w=600" alt="Pool terrace at Leonardo" loading="lazy">
+    <img src="https://images.pexels.com/photos/5379175/pexels-photo-5379175.jpeg?w=600" alt="Garden suite interior" loading="lazy">
+    <img src="https://images.pexels.com/photos/14547138/pexels-photo-14547138.jpeg?w=600" alt="Rooftop terrace with sea view" loading="lazy">
+    <img src="https://images.pexels.com/photos/14750392/pexels-photo-14750392.jpeg?w=600" alt="Sea view from suite" loading="lazy">
+  </div>
+</section>
+
+<section class="section" id="reviews">
+  <div class="section-label">Guest Voices</div>
+  <h2 class="section-title">What They Say</h2>
+  <p class="section-sub">680+ reviews. 4.9 stars. Not because we asked — because they meant it.</p>
+  <div class="reviews-grid">
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <div class="review-text">"This is not a hotel. It's a feeling. We booked through a friend's recommendation and stayed an extra week. The Garden Suite — no words."</div>
+      <div class="review-author">Elena M. · Athens</div>
+    </div>
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <div class="review-text">"Direct booking saved us €180 compared to Booking.com. The Sea Loft is worth every cent — the sunrise alone would cost more at any gallery."</div>
+      <div class="review-author">Marcus T. · Stockholm</div>
+    </div>
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <div class="review-text">"Came for business, extended for pleasure. The restraint in the design makes you breathe differently. I wrote half my book here."</div>
+      <div class="review-author">Sarah K. · London</div>
+    </div>
+  </div>
+</section>
+
+<section class="cta" id="contact">
+  <div class="section-label">Reservations</div>
+  <h2 class="section-title">Direct. Simple. Yours.</h2>
+  <p class="section-sub">Book directly and save 18% versus platform commissions. Every reservation includes breakfast on the terrace and a Cyprus welcome.</p>
+  <a href="#" class="btn-primary">Reserve Your Suite</a>
+</section>
+
+<footer class="footer">
+  <div>
+    <h4>Leonardo</h4>
+    <p>A boutique hotel in Larnaca, Cyprus.<br>42 suites. Zero clichés.</p>
+  </div>
+  <div>
+    <h4>Contact</h4>
+    <a href="#">Finikoudes Beach, Larnaca</a>
+    <a href="#">+357 24 000000</a>
+    <a href="#">hello@leonardohotel.com.cy</a>
+  </div>
+  <div>
+    <h4>Follow</h4>
+    <a href="#">Instagram</a>
+    <a href="#">Google Maps</a>
+    <a href="#">Booking.com</a>
+  </div>
+</footer>
+
+<script>
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 50);
+});
+
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    const t = document.querySelector(a.getAttribute('href'));
+    if (t) t.scrollIntoView({behavior:'smooth'});
+  });
+});
+</script>
+<style>
+#aw-demo-badge{position:fixed;bottom:16px;left:50%;transform:translateX(-50%);z-index:99999;background:rgba(20,14,8,.92);color:#E8B96A;font-family:system-ui,sans-serif;font-size:13px;font-weight:600;letter-spacing:.04em;padding:9px 18px;border-radius:999px;border:1px solid rgba(232,185,106,.4);box-shadow:0 6px 24px rgba(0,0,0,.35);display:flex;align-items:center;gap:8px;backdrop-filter:blur(8px)}
+#aw-demo-badge b{color:#fff}#aw-demo-badge a{color:#E8B96A;text-decoration:underline}
+#aw-demo-wm{position:fixed;inset:0;z-index:99998;pointer-events:none}
+#aw-demo-wm span{position:absolute;top:18%;left:50%;transform:translate(-50%,-50%) rotate(-22deg);font-family:system-ui,sans-serif;font-size:5vw;font-weight:800;color:rgba(255,255,255,.07);white-space:nowrap;letter-spacing:.1em}
+@media print{body{display:none!important}}
+</style>
+<div id="aw-demo-wm"><span>DEMO — AURORA WEB</span></div>
+<div id="aw-demo-badge">Demo · Aurora Web · προεπισκόπηση · <a href="#">επικοινωνία</a></div>
+</body>
+</html>
