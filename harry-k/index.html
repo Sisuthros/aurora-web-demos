@@ -286,16 +286,64 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:999;o
     </div>
   </div>
 </section>
-
+<!-- ═══ BOOKING SYSTEM ═══ -->
 <section class="booking" id="book">
   <div class="section" style="background:transparent;padding-top:7rem;padding-bottom:7rem;">
     <div class="section-label">Book Your Visit</div>
     <h2>Ready for the chair?</h2>
     <p class="section-sub">One booking at a time — because you deserve full attention.</p>
-    <div style="text-align:center;margin-top:2rem;">
-      <a href="tel:+357********" class="btn btn-primary" style="font-size:1rem;padding:1rem 3rem;">📞 Call to Book</a>
+    
+    <div id="booking-app" style="max-width:700px;margin:2rem auto 0;">
+      <!-- Step 1: Service -->
+      <div id="step-service">
+        <h3 style="font-size:1.1rem;color:var(--accent);margin-bottom:1.5rem;text-align:center;font-family:var(--font-body);font-weight:400;letter-spacing:.06em;text-transform:uppercase;">1. Select Service</h3>
+        <div style="display:flex;flex-direction:column;gap:.6rem;" id="service-list"></div>
+      </div>
+      
+      <!-- Step 2: Date -->
+      <div id="step-date" style="display:none;">
+        <h3 style="font-size:1.1rem;color:var(--accent);margin-bottom:1.5rem;text-align:center;font-family:var(--font-body);font-weight:400;letter-spacing:.06em;text-transform:uppercase;">2. Choose Date</h3>
+        <div id="calendar" style="display:grid;grid-template-columns:repeat(7,1fr);gap:4px;text-align:center;"></div>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;">
+          <button onclick="changeMonth(-1)" style="background:var(--card);border:1px solid var(--border);color:var(--text);padding:.5rem 1rem;border-radius:2px;cursor:pointer;font-family:var(--font-body);">←</button>
+          <span id="month-label" style="font-family:var(--font-display);font-size:1.1rem;color:var(--accent);"></span>
+          <button onclick="changeMonth(1)" style="background:var(--card);border:1px solid var(--border);color:var(--text);padding:.5rem 1rem;border-radius:2px;cursor:pointer;font-family:var(--font-body);">→</button>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:2px;text-align:center;margin-bottom:4px;">
+          <span style="font-size:.65rem;color:var(--text2);text-transform:uppercase;">Mon</span><span style="font-size:.65rem;color:var(--text2);text-transform:uppercase;">Tue</span><span style="font-size:.65rem;color:var(--text2);text-transform:uppercase;">Wed</span><span style="font-size:.65rem;color:var(--text2);text-transform:uppercase;">Thu</span><span style="font-size:.65rem;color:var(--text2);text-transform:uppercase;">Fri</span><span style="font-size:.65rem;color:var(--text2);text-transform:uppercase;">Sat</span><span style="font-size:.65rem;color:var(--text2);text-transform:uppercase;">Sun</span>
+        </div>
+        <button onclick="prevStep()" style="background:none;border:none;color:var(--text2);cursor:pointer;font-family:var(--font-body);font-size:.8rem;margin-top:1rem;text-decoration:underline;">← Back to services</button>
+      </div>
+      
+      <!-- Step 3: Time -->
+      <div id="step-time" style="display:none;">
+        <h3 style="font-size:1.1rem;color:var(--accent);margin-bottom:1.5rem;text-align:center;font-family:var(--font-body);font-weight:400;letter-spacing:.06em;text-transform:uppercase;">3. Pick Time</h3>
+        <div id="time-slots" style="display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem;"></div>
+        <button onclick="goToStep('step-date')" style="background:none;border:none;color:var(--text2);cursor:pointer;font-family:var(--font-body);font-size:.8rem;margin-top:1rem;text-decoration:underline;">← Back to dates</button>
+      </div>
+      
+      <!-- Step 4: Contact -->
+      <div id="step-contact" style="display:none;">
+        <h3 style="font-size:1.1rem;color:var(--accent);margin-bottom:1.5rem;text-align:center;font-family:var(--font-body);font-weight:400;letter-spacing:.06em;text-transform:uppercase;">4. Your Details</h3>
+        <div style="display:flex;flex-direction:column;gap:1rem;max-width:400px;margin:0 auto;">
+          <input id="book-name" placeholder="Your name" style="background:var(--card);border:1px solid var(--border);color:var(--text);padding:.85rem 1rem;border-radius:2px;font-family:var(--font-body);font-size:.9rem;outline:none;transition:border-color .3s;">
+          <input id="book-phone" placeholder="Phone number" type="tel" style="background:var(--card);border:1px solid var(--border);color:var(--text);padding:.85rem 1rem;border-radius:2px;font-family:var(--font-body);font-size:.9rem;outline:none;transition:border-color .3s;">
+          <input id="book-email" placeholder="Email (optional)" type="email" style="background:var(--card);border:1px solid var(--border);color:var(--text);padding:.85rem 1rem;border-radius:2px;font-family:var(--font-body);font-size:.9rem;outline:none;transition:border-color .3s;">
+          <textarea id="book-note" placeholder="Any notes for Harry? (optional)" rows="2" style="background:var(--card);border:1px solid var(--border);color:var(--text);padding:.85rem 1rem;border-radius:2px;font-family:var(--font-body);font-size:.9rem;outline:none;resize:vertical;transition:border-color .3s;"></textarea>
+          <button onclick="confirmBooking()" class="btn btn-primary" style="font-size:.9rem;padding:.9rem;width:100%;text-align:center;">Confirm Booking →</button>
+        </div>
+        <button onclick="goToStep('step-time')" style="background:none;border:none;color:var(--text2);cursor:pointer;font-family:var(--font-body);font-size:.8rem;margin-top:1rem;text-decoration:underline;display:block;text-align:center;width:100%;">← Back to times</button>
+      </div>
+      
+      <!-- Step 5: Confirmed -->
+      <div id="step-done" style="display:none;text-align:center;padding:3rem 1rem;">
+        <div style="font-size:3rem;margin-bottom:1rem;">✅</div>
+        <h3 style="font-family:var(--font-display);font-size:2rem;color:var(--accent);margin-bottom:.5rem;">You're booked!</h3>
+        <p id="confirm-msg" style="color:var(--text2);margin-bottom:1.5rem;"></p>
+        <p style="color:var(--text2);font-size:.8rem;">Harry will confirm your appointment. See you soon.</p>
+        <button onclick="resetBooking()" class="btn btn-ghost" style="margin-top:1.5rem;">Book another →</button>
+      </div>
     </div>
-    <p style="color:var(--text2);font-size:.8rem;margin-top:1.5rem;text-align:center;">Or message us on social media. Walk-ins welcome when the chair is free.</p>
   </div>
 </section>
 
@@ -356,6 +404,77 @@ document.addEventListener('DOMContentLoaded',function(){
   ScrollTrigger.create({start:'top -80',onEnter:function(){nav.classList.add('scrolled')},onLeaveBack:function(){nav.classList.remove('scrolled')}});
   window.addEventListener('load',function(){ScrollTrigger.refresh()});setTimeout(function(){ScrollTrigger.refresh()},1200);
   setTimeout(function(){document.querySelectorAll('[data-reveal],.svc-card,.review-card').forEach(function(el){if(parseFloat(getComputedStyle(el).opacity)<0.3){try{gsap.killTweensOf(el)}catch(e){}el.style.setProperty('opacity','1','important');el.style.setProperty('transform','none','important')}})},3500);
+
+  // ═══ BOOKING SYSTEM ═══
+  var services=[{name:'The Signature Cut',price:'€30',dur:45},{name:'The Royal Shave',price:'€25',dur:30},{name:'Beard Sculpt',price:'€20',dur:25},{name:'The Full Experience',price:'€60',dur:90}];
+  var selService=null,selDate=null,selTime=null;
+  var calYear,calMonth,currentStep='step-service';
+  
+  function goToStep(id){document.querySelectorAll('#booking-app > div').forEach(function(d){d.style.display='none'});document.getElementById(id).style.display='block';currentStep=id;}
+  function prevStep(){if(currentStep==='step-date')goToStep('step-service');else if(currentStep==='step-time')goToStep('step-date');}
+  
+  // Render services
+  var sl=document.getElementById('service-list');
+  services.forEach(function(s,i){
+    var d=document.createElement('div');
+    d.style.cssText='background:var(--card);border:1px solid rgba(255,255,255,.03);border-radius:4px;padding:1.2rem 1.5rem;cursor:pointer;transition:all .35s cubic-bezier(.16,1,.3,1);display:flex;justify-content:space-between;align-items:center;';
+    d.innerHTML='<div><span style="font-family:var(--font-display);font-size:1.1rem;">'+s.name+'</span><span style="color:var(--text2);font-size:.75rem;margin-left:.8rem;">'+s.dur+' min</span></div><span style="font-family:var(--font-display);font-size:1.2rem;color:var(--accent);">'+s.price+'</span>';
+    d.onmouseenter=function(){this.style.borderColor='rgba(212,167,84,.3)';this.style.transform='translateX(4px)';};
+    d.onmouseleave=function(){if(selService!==i){this.style.borderColor='rgba(255,255,255,.03)';this.style.transform='';}};
+    d.onclick=function(){selService=i;goToStep('step-date');renderCalendar();[].forEach.call(sl.children,function(c,j){c.style.borderColor=j===i?'rgba(212,167,84,.5)':'rgba(255,255,255,.03)';c.style.transform=j===i?'translateX(4px)':'';c.style.boxShadow=j===i?'0 0 30px rgba(212,167,84,.08)':'none';});};
+    sl.appendChild(d);
+  });
+  
+  // Calendar
+  var now=new Date();calYear=now.getFullYear();calMonth=now.getMonth();
+  function renderCalendar(){
+    document.getElementById('month-label').textContent=new Date(calYear,calMonth).toLocaleDateString('en',{month:'long',year:'numeric'});
+    var cal=document.getElementById('calendar'),first=new Date(calYear,calMonth,1),last=new Date(calYear,calMonth+1,0);
+    cal.innerHTML='';
+    // Empty cells before first day (Mon=0...Sun=6, but our grid starts Mon)
+    var startDay=(first.getDay()+6)%7;
+    for(var i=0;i<startDay;i++){cal.appendChild(document.createElement('div'));}
+    for(var d=1;d<=last.getDate();d++){
+      var cell=document.createElement('div');
+      var date=new Date(calYear,calMonth,d),dayOfWeek=date.getDay();
+      cell.textContent=d;
+      cell.style.cssText='padding:.55rem;border-radius:2px;font-size:.85rem;cursor:pointer;transition:all .25s;font-family:var(--font-body);color:var(--text);';
+      // Disable Sundays and past dates
+      var today=new Date();today.setHours(0,0,0,0);
+      if(dayOfWeek===0||date<today){cell.style.color='var(--border)';cell.style.cursor='not-allowed';}
+      else if(selDate&&selDate.getTime()===date.getTime()){cell.style.background='var(--accent)';cell.style.color='#0C0A09';cell.style.fontWeight='500';}
+      else{cell.onmouseenter=function(){if(this.style.cursor!=='not-allowed')this.style.background='var(--card)';};cell.onmouseleave=function(){if(this.style.cursor!=='not-allowed'&&(!selDate||this.textContent!=selDate.getDate()))this.style.background='';};cell.onclick=function(){if(this.style.cursor==='not-allowed')return;selDate=date;selTime=null;renderCalendar();goToStep('step-time');renderTimes();};}
+      cal.appendChild(cell);
+    }
+  }
+  function changeMonth(d){calMonth+=d;if(calMonth<0){calMonth=11;calYear--;}if(calMonth>11){calMonth=0;calYear++;}renderCalendar();}
+  
+  // Time slots
+  function renderTimes(){
+    var ts=document.getElementById('time-slots'),dur=services[selService].dur,times=[];
+    for(var h=9;h<18;h++){for(var m=0;m<60;m+=30){if(h===12&&m===30)continue;if(h===17&&m>0)continue;if(selDate&&selDate.getDay()===6&&h>=15)continue;times.push(String(h).padStart(2,'0')+':'+String(m).padStart(2,'0'));}}
+    ts.innerHTML='';
+    times.forEach(function(t){
+      var b=document.createElement('button');
+      b.textContent=t;b.style.cssText='background:var(--card);border:1px solid var(--border);color:var(--text);padding:.6rem;border-radius:2px;cursor:pointer;font-family:var(--font-body);font-size:.85rem;transition:all .3s;';
+      if(selTime===t){b.style.background='var(--accent)';b.style.color='#0C0A09';b.style.borderColor='var(--accent)';}
+      b.onmouseenter=function(){if(selTime!==t){this.style.borderColor='rgba(212,167,84,.3)';}};
+      b.onmouseleave=function(){if(selTime!==t){this.style.borderColor='var(--border)';}};
+      b.onclick=function(){selTime=t;[].forEach.call(ts.children,function(c){c.style.background='var(--card)';c.style.color='var(--text)';c.style.borderColor='var(--border)';});b.style.background='var(--accent)';b.style.color='#0C0A09';b.style.borderColor='var(--accent)';goToStep('step-contact');};
+      ts.appendChild(b);
+    });
+  }
+  
+  window.confirmBooking=function(){
+    var name=document.getElementById('book-name').value.trim();
+    if(!name){document.getElementById('book-name').style.borderColor='#C0392B';return;}
+    document.getElementById('confirm-msg').textContent=services[selService].name+' on '+selDate.toLocaleDateString('en',{weekday:'long',month:'long',day:'numeric'})+' at '+selTime+'.';
+    goToStep('step-done');
+  };
+  window.resetBooking=function(){selService=null;selDate=null;selTime=null;document.getElementById('book-name').value='';document.getElementById('book-phone').value='';document.getElementById('book-email').value='';document.getElementById('book-note').value='';goToStep('step-service');[].forEach.call(sl.children,function(c){c.style.borderColor='rgba(255,255,255,.03)';c.style.transform='';c.style.boxShadow='none';});};
+  
+  window.changeMonth=changeMonth;window.prevStep=prevStep;window.goToStep=goToStep;
+  renderCalendar();
 });
 </script>
 </body>
