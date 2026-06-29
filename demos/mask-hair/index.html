@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Mask Hair Salon — Limassol Style</title>
+<meta name="description" content="Mask Hair Salon — 520 reviews ★. Limassol's premier hair salon. Cuts, color, styling, treatments.">
+<meta name="theme-color" content="#1A1510">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<style>
+:root{--gold:#C8A052;--bg:#0F0D0B;--surface:#1A1612;--text:#EDE8E0;--text-dim:#A09888;--white:#FFFFFF;--radius:4px;--font-h:'Playfair Display',serif;--font-b:'DM Sans',sans-serif}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}body{font-family:var(--font-b);background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden}
+.noise{position:fixed;inset:0;z-index:999;pointer-events:none;opacity:.025;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.7' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.4rem 3rem;display:flex;justify-content:space-between;align-items:center;transition:all .4s}
+.nav.scrolled{background:rgba(15,13,11,.94);backdrop-filter:blur(20px);padding:.7rem 3rem}
+.nav-logo{font-family:var(--font-h);font-size:1.4rem;font-weight:700;color:var(--white);text-decoration:none}.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{text-decoration:none;color:rgba(255,255,255,.65);font-size:.82rem;font-weight:500;text-transform:uppercase;letter-spacing:.04em}
+.nav-links a:hover{color:var(--gold)}.nav-cta{background:var(--gold);color:var(--bg)!important;padding:.5rem 1.2rem;border-radius:var(--radius);font-weight:600}
+.hero{position:relative;height:100vh;display:flex;align-items:flex-end}
+.hero-bg{position:absolute;inset:0}.hero-bg img{width:100%;height:100%;object-fit:cover;animation:heroZoom 20s infinite alternate}
+@keyframes heroZoom{from{transform:scale(1)}to{transform:scale(1.05)}}
+.hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(15,13,11,.75) 0%,rgba(15,13,11,.2) 50%,rgba(15,13,11,.4) 100%)}
+.hero-content{position:relative;z-index:2;padding:0 3rem 5rem;max-width:600px}
+.hero-tag{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;font-weight:600}
+.hero-content h1{font-family:var(--font-h);font-size:clamp(2.5rem,5vw,4.5rem);line-height:1.04;color:var(--white);margin-bottom:1rem;font-weight:700}
+.hero-content h1 em{font-style:italic;color:var(--gold)}
+.hero-sub{font-size:1rem;color:rgba(255,255,255,.55);max-width:420px;line-height:1.7;margin-bottom:1.8rem}
+.btn-primary{display:inline-block;background:var(--gold);color:var(--bg);padding:.85rem 2rem;border-radius:var(--radius);text-decoration:none;font-weight:700;font-size:.9rem;box-shadow:0 0 30px rgba(200,160,82,.15)}
+.btn-ghost{display:inline-block;border:1px solid rgba(255,255,255,.2);color:var(--white);padding:.8rem 1.8rem;border-radius:var(--radius);text-decoration:none;font-weight:500;font-size:.85rem}
+.rating-chip{position:absolute;top:3rem;right:2rem;z-index:2;background:rgba(255,255,255,.06);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.1);border-radius:var(--radius);padding:.7rem 1.2rem;display:flex;align-items:center;gap:.5rem}
+.rating-chip .stars{color:var(--gold);font-size:.85rem}.rating-chip .count{color:rgba(255,255,255,.6);font-size:.75rem}
+.rating-chip .count span{font-weight:700;color:var(--white);font-size:.9rem}
+.info-bar{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--surface);max-width:900px;margin:-3rem auto 0;position:relative;z-index:3;border-radius:var(--radius);overflow:hidden}
+.info-item{background:#1E1A16;padding:1.3rem 1rem;text-align:center;font-size:.85rem;font-weight:600;color:var(--text)}
+section{padding:5rem 3rem}.section-label{display:block;font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:.7rem;font-weight:600}
+.section-heading{font-family:var(--font-h);font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:700;margin-bottom:.8rem;line-height:1.2}
+.section-sub{color:var(--text-dim);max-width:480px;font-size:1rem;line-height:1.7}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;max-width:900px;margin:3rem auto 0}
+.service-card{background:var(--surface);padding:2rem 1.5rem;border-radius:var(--radius);border:1px solid rgba(255,255,255,.04);text-align:center;transition:all .3s}
+.service-card:hover{border-color:var(--gold);transform:translateY(-4px)}
+.service-emoji{font-size:2rem;margin-bottom:.6rem}.service-card h3{font-family:var(--font-h);font-size:1.15rem;margin-bottom:.4rem;color:var(--white)}
+.service-card p{color:var(--text-dim);font-size:.85rem}.service-price{font-family:var(--font-h);font-size:1.2rem;color:var(--gold);margin-top:.6rem;font-weight:700}
+.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.8rem;max-width:900px;margin:3rem auto 0}
+.gallery-item{aspect-ratio:4/5;border-radius:var(--radius);overflow:hidden}
+.gallery-item img{width:100%;height:100%;object-fit:cover;transition:transform .5s}.gallery-item:hover img{transform:scale(1.06)}
+.cta-section{text-align:center;padding:6rem 2rem;background:var(--surface)}
+.cta-section .section-heading{color:var(--white)}.cta-section .section-sub{color:var(--text-dim);margin:0 auto 1.5rem}
+.footer{background:#0A0806;padding:3rem 3rem 1.5rem;color:rgba(255,255,255,.25);font-size:.8rem}
+@media(max-width:768px){.nav{padding:1rem 1.2rem}.nav-links{display:none}section{padding:3rem 1.2rem}.hero-content{padding:0 1.2rem 3rem}.services-grid,.gallery-grid{grid-template-columns:1fr}.info-bar{grid-template-columns:repeat(2,1fr)}}
+.gs-reveal{opacity:1}
+</style>
+</head>
+<body>
+<div class="noise"></div>
+<nav class="nav" id="nav"><a href="#" class="nav-logo">MASK</a><ul class="nav-links"><li><a href="#services">Services</a></li><li><a href="#gallery">Gallery</a></li><li><a href="#contact" class="nav-cta">Book</a></li></ul></nav>
+
+<section class="hero">
+  <div class="hero-bg"><img src="https://images.pexels.com/photos/3993449/pexels-photo-3993449.jpeg?w=1920" alt="Hair salon" loading="eager"></div>
+  <div class="hero-content">
+    <span class="hero-tag gs-reveal">Limassol, Cyprus</span>
+    <h1 class="gs-reveal">Style that <em>speaks</em> for itself</h1>
+    <p class="hero-sub gs-reveal">520 reviews ★. Precision cuts, masterful color, and a team that listens.</p>
+    <div class="gs-reveal" style="display:flex;gap:.8rem"><a href="#contact" class="btn-primary">Book Now</a><a href="#services" class="btn-ghost">Our Services</a></div>
+  </div>
+  <div class="rating-chip"><span class="stars">★★★★★</span><span class="count"><span>520</span> reviews</span></div>
+</section>
+
+<div class="info-bar"><div class="info-item">📍 Limassol Center</div><div class="info-item">🕐 Tue–Sat 9–19</div><div class="info-item">✂️ 8 Stylists</div><div class="info-item">💇 520+ Reviews</div></div>
+
+<section id="services">
+  <span class="section-label gs-reveal">Services</span>
+  <h2 class="section-heading gs-reveal">Crafted for <em style="color:var(--gold);font-style:italic">you</em></h2>
+  <p class="section-sub gs-reveal">Every head is different. We start every appointment with a consultation — because great hair begins with listening.</p>
+  <div class="services-grid">
+    <div class="service-card gs-reveal"><div class="service-emoji">✂️</div><h3>Precision Cut</h3><p>Tailored to your face shape, hair type, and lifestyle.</p><div class="service-price">€45+</div></div>
+    <div class="service-card gs-reveal"><div class="service-emoji">🎨</div><h3>Master Color</h3><p>Balayage, highlights, full color — using organic dyes.</p><div class="service-price">€85+</div></div>
+    <div class="service-card gs-reveal"><div class="service-emoji">✨</div><h3>Full Treatment</h3><p>Cut + color + deep conditioning. The complete refresh.</p><div class="service-price">€120+</div></div>
+  </div>
+</section>
+
+<section id="gallery">
+  <span class="section-label gs-reveal">Gallery</span>
+  <h2 class="section-heading gs-reveal">Our <em style="color:var(--gold);font-style:italic">work</em></h2>
+  <div class="gallery-grid">
+    <div class="gallery-item gs-reveal"><img src="https://images.pexels.com/photos/3268729/pexels-photo-3268729.jpeg?w=600" alt="Hair" loading="lazy"></div>
+    <div class="gallery-item gs-reveal"><img src="https://images.pexels.com/photos/7691530/pexels-photo-7691530.jpeg?w=600" alt="Style" loading="lazy"></div>
+    <div class="gallery-item gs-reveal"><img src="https://images.pexels.com/photos/3993449/pexels-photo-3993449.jpeg?w=600" alt="Salon" loading="lazy"></div>
+  </div>
+</section>
+
+<section class="cta-section" id="contact">
+  <span class="section-label gs-reveal" style="color:var(--gold)">Book Now</span>
+  <h2 class="section-heading gs-reveal">Ready for <em style="color:var(--gold);font-style:italic">a change?</em></h2>
+  <p class="section-sub gs-reveal">Call or message — we'll find the perfect time for you.</p>
+  <div class="gs-reveal"><a href="tel:+357****0123" class="btn-primary">Call to Book</a> <a href="https://wa.me/35799123456" class="btn-ghost">WhatsApp</a></div>
+</section>
+
+<footer class="footer"><div style="max-width:900px;margin:0 auto;display:flex;justify-content:space-between"><div><strong style="color:var(--gold);font-family:var(--font-h)">MASK Hair Salon</strong><br>Limassol, Cyprus</div><div>© 2026 Mask Hair Salon</div></div></footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+<script>document.addEventListener('DOMContentLoaded',()=>{if(typeof gsap==='undefined')return;gsap.registerPlugin(ScrollTrigger);gsap.utils.toArray('.gs-reveal').forEach(el=>{gsap.from(el,{opacity:0,y:28,duration:.8,ease:'power2.out',scrollTrigger:{trigger:el,start:'top 92%'}})});gsap.fromTo('#nav',{y:-80,opacity:0},{y:0,opacity:1,duration:1});window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',window.scrollY>50)})});</script>
+</body>
+</html>

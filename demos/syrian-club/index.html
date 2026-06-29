@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Syrian Club — Nicosia Authentic Dining</title>
+<meta name="description" content="Syrian Club Nicosia — 997 reviews ★. Authentic Syrian cuisine in the heart of Cyprus. Family recipes, warm hospitality.">
+<meta name="theme-color" content="#C44536">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<style>
+:root{--terracotta:#C44536;--gold:#D4A04A;--cream:#FAF5F0;--surface:#FFFBF7;--text:#2C2018;--text-dim:#7A6A5A;--white:#FFF;--radius:4px;--font-h:'Playfair Display',serif;--font-b:'DM Sans',sans-serif}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}body{font-family:var(--font-b);background:var(--cream);color:var(--text);line-height:1.6;overflow-x:hidden}
+.noise{position:fixed;inset:0;z-index:999;pointer-events:none;opacity:.02;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.7' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.4rem 3rem;display:flex;justify-content:space-between;align-items:center;transition:all .4s}
+.nav.scrolled{background:rgba(250,245,240,.94);backdrop-filter:blur(20px);padding:.7rem 3rem;box-shadow:0 1px 0 rgba(0,0,0,.04)}
+.nav-logo{font-family:var(--font-h);font-size:1.4rem;font-weight:700;color:#fff;text-decoration:none;transition:color .4s}
+.nav.scrolled .nav-logo{color:var(--text)}.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{text-decoration:none;color:rgba(255,255,255,.75);font-size:.82rem;font-weight:500;text-transform:uppercase;letter-spacing:.04em;transition:color .3s}
+.nav.scrolled .nav-links a{color:var(--text-dim)}.nav-links a:hover{color:var(--terracotta)}
+.nav-cta{background:var(--terracotta);color:#fff!important;padding:.5rem 1.2rem;border-radius:var(--radius);font-weight:600}
+.hero{position:relative;height:100vh;display:flex;align-items:flex-end}
+.hero-bg{position:absolute;inset:0}.hero-bg img{width:100%;height:100%;object-fit:cover;animation:heroZoom 20s infinite alternate}
+@keyframes heroZoom{from{transform:scale(1)}to{transform:scale(1.05)}}
+.hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(28,16,10,.7) 0%,rgba(28,16,10,.15) 50%,rgba(28,16,10,.3) 100%)}
+.hero-content{position:relative;z-index:2;padding:0 3rem 5rem;max-width:620px}
+.hero-tag{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;font-weight:600}
+.hero-content h1{font-family:var(--font-h);font-size:clamp(2.5rem,5vw,4.3rem);line-height:1.04;color:#fff;margin-bottom:1rem;font-weight:700}
+.hero-content h1 em{font-style:italic;color:var(--terracotta)}.hero-sub{font-size:1rem;color:rgba(255,255,255,.52);max-width:440px;line-height:1.7;margin-bottom:1.8rem}
+.hero-cta{display:flex;gap:.8rem;flex-wrap:wrap}
+.btn-primary{display:inline-block;background:var(--terracotta);color:#fff;padding:.85rem 2rem;border-radius:var(--radius);text-decoration:none;font-weight:600;font-size:.9rem;box-shadow:0 0 25px rgba(196,69,54,.15);transition:all .3s}
+.btn-primary:hover{transform:translateY(-1px);box-shadow:0 0 40px rgba(196,69,54,.3)}
+.btn-ghost{display:inline-block;border:1px solid rgba(255,255,255,.25);color:#fff;padding:.8rem 1.8rem;border-radius:var(--radius);text-decoration:none;font-weight:500;font-size:.85rem}
+.rating-chip{position:absolute;top:3rem;right:2rem;z-index:2;background:rgba(255,255,255,.1);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.12);border-radius:var(--radius);padding:.7rem 1.2rem;display:flex;align-items:center;gap:.5rem}
+.rating-chip .stars{color:var(--gold);font-size:.85rem}.rating-chip .count{color:rgba(255,255,255,.6);font-size:.75rem}
+.rating-chip .count span{font-weight:700;color:#fff;font-size:.9rem}
+.info-bar{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:#E8DDD0;max-width:950px;margin:-3rem auto 0;position:relative;z-index:3;border-radius:var(--radius);overflow:hidden}
+.info-item{background:var(--white);padding:1.3rem 1rem;text-align:center;font-size:.85rem;font-weight:600}
+section{padding:5rem 3rem}.section-label{display:block;font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--terracotta);margin-bottom:.7rem;font-weight:600}
+.section-heading{font-family:var(--font-h);font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:700;margin-bottom:.8rem;line-height:1.2}
+.section-sub{color:var(--text-dim);max-width:480px;font-size:1rem;line-height:1.7}
+.menu-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;max-width:950px;margin:3rem auto 0}
+.menu-card{background:var(--surface);padding:2rem 1.5rem;border-radius:var(--radius);border:1px solid rgba(0,0,0,.04);text-align:center;transition:all .3s}
+.menu-card:hover{box-shadow:0 12px 30px rgba(0,0,0,.04);transform:translateY(-4px)}
+.menu-icon{font-size:2rem;margin-bottom:.6rem}.menu-card h3{font-family:var(--font-h);font-size:1.15rem;margin-bottom:.4rem}
+.menu-card p{color:var(--text-dim);font-size:.85rem}.menu-price{font-family:var(--font-h);font-size:1.2rem;color:var(--terracotta);margin-top:.6rem;font-weight:700}
+.gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:.8rem;max-width:950px;margin:3rem auto 0}
+.gallery-item{aspect-ratio:4/5;border-radius:var(--radius);overflow:hidden}.gallery-item img{width:100%;height:100%;object-fit:cover;transition:transform .5s}.gallery-item:hover img{transform:scale(1.06)}
+.reviews-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;max-width:950px;margin:3rem auto 0}
+.review-card{background:var(--surface);padding:1.5rem;border-radius:var(--radius);border:1px solid rgba(0,0,0,.04)}
+.review-stars{color:var(--gold);font-size:.8rem;margin-bottom:.6rem}.review-text{font-size:.9rem;line-height:1.7;font-style:italic;margin-bottom:.8rem}.review-author{font-weight:600;font-size:.8rem}
+.cta-section{text-align:center;padding:6rem 2rem;background:linear-gradient(135deg,#2C2018,#1A1008);color:#fff}
+.cta-section .section-heading{color:#fff}.cta-section .section-sub{color:rgba(255,255,255,.5);margin:0 auto 1.5rem}
+.footer{background:#1A1008;padding:3rem 3rem 1.5rem;color:rgba(255,255,255,.3);font-size:.8rem}
+@media(max-width:768px){.nav{padding:1rem 1.2rem}.nav-links{display:none}section{padding:3rem 1.2rem}.hero-content{padding:0 1.2rem 3rem}.menu-grid,.reviews-grid{grid-template-columns:1fr}.gallery-grid{grid-template-columns:repeat(2,1fr)}.info-bar{grid-template-columns:repeat(2,1fr)}}
+.gs-reveal{opacity:1}
+</style>
+</head>
+<body>
+<div class="noise"></div>
+<nav class="nav" id="nav"><a href="#" class="nav-logo">Syrian Club</a><ul class="nav-links"><li><a href="#menu">Menu</a></li><li><a href="#gallery">Gallery</a></li><li><a href="#reviews">Reviews</a></li><li><a href="#contact" class="nav-cta">Reserve</a></li></ul></nav>
+
+<section class="hero">
+  <div class="hero-bg"><img src="https://images.pexels.com/photos/958545/pexels-photo-958545.jpeg?w=1920" alt="Restaurant" loading="eager"></div>
+  <div class="hero-content">
+    <span class="hero-tag gs-reveal">Nicosia, Cyprus</span>
+    <h1 class="gs-reveal">A <em>taste</em> of Damascus in the heart of Cyprus</h1>
+    <p class="hero-sub gs-reveal">997 reviews ★. Family recipes passed down three generations. Authentic Syrian cuisine, warm hospitality, unforgettable flavors.</p>
+    <div class="hero-cta gs-reveal"><a href="#contact" class="btn-primary">Reserve a Table</a><a href="#menu" class="btn-ghost">Our Menu</a></div>
+  </div>
+  <div class="rating-chip"><span class="stars">★★★★★</span><span class="count"><span>997</span> reviews</span></div>
+</section>
+
+<div class="info-bar"><div class="info-item">📍 Nicosia Center</div><div class="info-item">🕐 12:00 – 23:00</div><div class="info-item">👨‍👩‍👧 Family Run</div><div class="info-item">🥇 997 Reviews</div></div>
+
+<section id="menu">
+  <span class="section-label gs-reveal">Our Menu</span>
+  <h2 class="section-heading gs-reveal">Flavors from <em style="color:var(--terracotta);font-style:italic">home</em></h2>
+  <p class="section-sub gs-reveal">Every dish is made from scratch — the way grandmother taught us. Fresh ingredients, slow cooking, big flavors.</p>
+  <div class="menu-grid">
+    <div class="menu-card gs-reveal"><div class="menu-icon">🥙</div><h3>Mezze Feast</h3><p>Hummus, baba ganoush, falafel, tabbouleh, fresh pita — the full spread for sharing.</p><div class="menu-price">€18 pp</div></div>
+    <div class="menu-card gs-reveal"><div class="menu-icon">🥩</div><h3>Grilled Specialties</h3><p>Lamb kebabs, shish taouk, and mixed grills over charcoal. Served with saffron rice.</p><div class="menu-price">from €15</div></div>
+    <div class="menu-card gs-reveal"><div class="menu-icon">🍯</div><h3>Homemade Desserts</h3><p>Baklava, knafeh, and rosewater puddings. Made fresh every morning.</p><div class="menu-price">from €6</div></div>
+  </div>
+</section>
+
+<section id="gallery">
+  <span class="section-label gs-reveal">Gallery</span>
+  <h2 class="section-heading gs-reveal">Inside <em style="color:var(--terracotta);font-style:italic">our kitchen</em></h2>
+  <div class="gallery-grid">
+    <div class="gallery-item gs-reveal"><img src="https://images.pexels.com/photos/262978/pexels-photo-262978.jpeg?w=600" alt="Restaurant interior" loading="lazy"></div>
+    <div class="gallery-item gs-reveal"><img src="https://images.pexels.com/photos/941861/pexels-photo-941861.jpeg?w=600" alt="Food" loading="lazy"></div>
+    <div class="gallery-item gs-reveal"><img src="https://images.pexels.com/photos/1267320/pexels-photo-1267320.jpeg?w=600" alt="Dining" loading="lazy"></div>
+    <div class="gallery-item gs-reveal"><img src="https://images.pexels.com/photos/674574/pexels-photo-674574.jpeg?w=600" alt="Mezze" loading="lazy"></div>
+  </div>
+</section>
+
+<section id="reviews">
+  <span class="section-label gs-reveal">Reviews</span>
+  <h2 class="section-heading gs-reveal">Loved by <em style="color:var(--terracotta);font-style:italic">Nicosia</em></h2>
+  <div class="reviews-grid">
+    <div class="review-card gs-reveal"><div class="review-stars">★★★★★</div><p class="review-text">"Most authentic Syrian food I've had outside Damascus. The mezze spread is incredible — every single dish is perfect."</p><div class="review-author">Omar H.</div></div>
+    <div class="review-card gs-reveal"><div class="review-stars">★★★★★</div><p class="review-text">"Family run, and you can taste the love. The lamb kebabs are the best in Nicosia. We come every Sunday."</p><div class="review-author">Anna K.</div></div>
+    <div class="review-card gs-reveal"><div class="review-stars">★★★★★</div><p class="review-text">"997 reviews for a reason. The hospitality is unmatched — they treat you like family from the moment you walk in."</p><div class="review-author">Dimitris P.</div></div>
+  </div>
+</section>
+
+<section class="cta-section" id="contact">
+  <span class="section-label gs-reveal" style="color:var(--gold)">Reserve</span>
+  <h2 class="section-heading gs-reveal">Your table <em style="color:var(--terracotta);font-style:italic">is ready</em></h2>
+  <p class="section-sub gs-reveal">Join us for lunch or dinner. Groups welcome — call ahead for large parties.</p>
+  <div class="gs-reveal" style="display:flex;gap:.8rem;justify-content:center"><a href="tel:+357****8901" class="btn-primary">Call to Reserve</a> <a href="https://wa.me/35799123456" class="btn-ghost">WhatsApp</a></div>
+</section>
+
+<footer class="footer"><div style="max-width:950px;margin:0 auto;display:flex;justify-content:space-between"><div><strong style="color:var(--gold);font-family:var(--font-h)">Syrian Club</strong><br>Nicosia, Cyprus</div><div>© 2026 Syrian Club</div></div></footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+<script>document.addEventListener('DOMContentLoaded',()=>{if(typeof gsap==='undefined')return;gsap.registerPlugin(ScrollTrigger);gsap.utils.toArray('.gs-reveal').forEach(el=>{gsap.from(el,{opacity:0,y:28,duration:.8,ease:'power2.out',scrollTrigger:{trigger:el,start:'top 92%'}})});gsap.fromTo('#nav',{y:-80,opacity:0},{y:0,opacity:1,duration:1});window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',window.scrollY>50)})});</script>
+</body>
+</html>

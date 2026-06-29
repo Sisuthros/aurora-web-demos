@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Guaba Beach Bar — Limassol's Legendary Beachfront</title>
+<meta name="description" content="Guaba Beach Bar — 988 reviews ★. Limassol's iconic beach bar. Cocktails, sunsets, live DJs, private events.">
+<meta property="og:title" content="Guaba Beach Bar — Limassol">
+<meta property="og:description" content="988 reviews ★. Legendary beach bar on the Limassol coast.">
+<meta name="theme-color" content="#E85D2C">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<style>
+:root {
+  --sunset: #E85D2C;
+  --gold: #F4A236;
+  --sand: #E8D5B0;
+  --cream: #FFF8EC;
+  --text: #1A1510;
+  --text-dim: #5C4E3A;
+  --white: #FFFFFF;
+  --bg: #FFF8EC;
+  --glow: rgba(232,93,44,.25);
+  --radius: 4px;
+  --font-heading: 'Playfair Display', Georgia, serif;
+  --font-body: 'DM Sans', system-ui, sans-serif;
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:var(--font-body);background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+
+.noise{position:fixed;inset:0;z-index:999;pointer-events:none;opacity:.025;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.7' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.4rem 3rem;display:flex;justify-content:space-between;align-items:center;transition:all .4s}
+.nav.scrolled{background:rgba(255,248,236,.94);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);padding:.7rem 3rem;box-shadow:0 1px 0 rgba(0,0,0,.04)}
+.nav-logo{font-family:var(--font-heading);font-size:1.45rem;font-weight:700;color:var(--white);text-decoration:none;letter-spacing:-.01em;transition:color .4s}
+.nav.scrolled .nav-logo{color:var(--text)}
+.nav-links{display:flex;gap:2.2rem;list-style:none}
+.nav-links a{text-decoration:none;color:rgba(255,255,255,.8);font-size:.85rem;font-weight:500;text-transform:uppercase;letter-spacing:.04em;transition:color .3s}
+.nav.scrolled .nav-links a{color:var(--text-dim)}
+.nav-links a:hover{color:var(--sunset)}
+.nav-cta{background:var(--sunset);color:var(--white)!important;padding:.5rem 1.3rem;border-radius:var(--radius);font-weight:600!important;transition:background .3s}
+.nav-cta:hover{background:#C94A1E}
+
+.hero{position:relative;height:100vh;display:flex;align-items:flex-end}
+.hero-bg{position:absolute;inset:0}
+.hero-bg img{width:100%;height:100%;object-fit:cover;animation:heroZoom 22s ease-in-out infinite alternate}
+@keyframes heroZoom{from{transform:scale(1)}to{transform:scale(1.05)}}
+.hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(20,14,8,.7) 0%,rgba(20,14,8,.15) 50%,rgba(20,14,8,.35) 100%)}
+.hero-content{position:relative;z-index:2;padding:0 3rem 5rem;max-width:650px}
+.hero-tag{display:inline-block;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;font-weight:600}
+.hero-content h1{font-family:var(--font-heading);font-size:clamp(2.6rem,5vw,4.5rem);line-height:1.06;color:var(--white);margin-bottom:1rem;font-weight:700;letter-spacing:-.02em}
+.hero-content h1 em{font-style:italic;color:var(--sunset)}
+.hero-sub{font-size:1.1rem;color:rgba(255,255,255,.65);max-width:440px;line-height:1.7;margin-bottom:1.8rem}
+.hero-cta{display:flex;gap:.8rem;flex-wrap:wrap}
+.btn-primary{display:inline-block;background:var(--sunset);color:var(--white);padding:.9rem 2rem;border-radius:var(--radius);text-decoration:none;font-weight:600;font-size:.9rem;transition:all .3s;box-shadow:0 0 30px var(--glow)}
+.btn-primary:hover{background:#C94A1E;box-shadow:0 0 50px rgba(232,93,44,.45);transform:translateY(-1px)}
+.btn-ghost{display:inline-block;border:1px solid rgba(255,255,255,.3);color:var(--white);padding:.85rem 1.8rem;border-radius:var(--radius);text-decoration:none;font-weight:500;font-size:.85rem;transition:all .3s}
+.btn-ghost:hover{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.55)}
+.rating-chip{position:absolute;top:3rem;right:2rem;z-index:2;background:rgba(255,255,255,.1);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.15);border-radius:var(--radius);padding:.7rem 1.2rem;display:flex;align-items:center;gap:.5rem}
+.rating-chip .stars{color:var(--gold);font-size:.85rem}
+.rating-chip .count{color:rgba(255,255,255,.8);font-size:.75rem}
+.rating-chip .count span{font-weight:700;color:var(--white);font-size:.9rem}
+
+.info-bar{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--sand);max-width:1000px;margin:-3rem auto 0;position:relative;z-index:3;border-radius:var(--radius);overflow:hidden}
+.info-item{background:var(--white);padding:1.5rem 1.2rem;text-align:center}
+.info-item .value{font-size:.9rem;font-weight:600;line-height:1.4}
+
+section{padding:5rem 3rem}
+.section-label{display:block;font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--sunset);margin-bottom:.7rem;font-weight:600}
+.section-heading{font-family:var(--font-heading);font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:700;margin-bottom:.8rem;letter-spacing:-.02em;line-height:1.2}
+.section-sub{color:var(--text-dim);max-width:480px;font-size:1rem;line-height:1.7}
+
+.menu-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;max-width:1000px;margin:3rem auto 0}
+.menu-card{background:var(--white);padding:2rem 1.5rem;border-radius:var(--radius);border:1px solid rgba(0,0,0,.05);text-align:center;transition:all .3s}
+.menu-card:hover{box-shadow:0 12px 30px rgba(0,0,0,.05);transform:translateY(-4px)}
+.menu-emoji{font-size:2.2rem;margin-bottom:.8rem}
+.menu-card h3{font-family:var(--font-heading);font-size:1.2rem;margin-bottom:.4rem}
+.menu-card p{color:var(--text-dim);font-size:.85rem}
+.menu-price{font-family:var(--font-heading);font-size:1.3rem;color:var(--sunset);margin-top:.8rem;font-weight:700}
+
+.events-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2rem;max-width:1000px;margin:3rem auto 0}
+.event-card{position:relative;border-radius:var(--radius);overflow:hidden;aspect-ratio:16/11}
+.event-card img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.event-card:hover img{transform:scale(1.06)}
+.event-overlay{position:absolute;bottom:0;left:0;right:0;padding:1.5rem;background:linear-gradient(transparent,rgba(0,0,0,.75))}
+.event-overlay h3{font-family:var(--font-heading);color:var(--white);font-size:1.3rem;margin-bottom:.3rem}
+.event-overlay p{color:rgba(255,255,255,.7);font-size:.85rem}
+
+.reviews-scroll{display:flex;gap:1.2rem;overflow-x:auto;max-width:1000px;margin:3rem auto 0;padding-bottom:1rem;scrollbar-width:none}
+.review-card{background:var(--white);min-width:300px;padding:1.5rem;border-radius:var(--radius);border:1px solid rgba(0,0,0,.04);flex-shrink:0}
+.review-stars{color:var(--gold);font-size:.8rem;margin-bottom:.6rem}
+.review-text{font-size:.9rem;line-height:1.7;font-style:italic;color:var(--text);margin-bottom:.8rem}
+.review-author{font-weight:600;font-size:.8rem}
+
+.cta-section{text-align:center;padding:6rem 2rem;background:linear-gradient(135deg,#1A1510,#2C2216);position:relative;overflow:hidden}
+.cta-section .section-heading{color:var(--white)}
+.cta-section .section-sub{color:rgba(255,255,255,.5);margin:0 auto 1.5rem}
+
+.footer{background:#1A1510;padding:3rem 3rem 1.5rem;color:rgba(255,255,255,.4);font-size:.8rem}
+
+@media(max-width:768px){
+  .nav{padding:1rem 1.2rem}
+  .nav-links{display:none}
+  .hero-content{padding:0 1.2rem 3rem}
+  section{padding:3rem 1.2rem}
+  .menu-grid,.events-grid{grid-template-columns:1fr}
+  .info-bar{grid-template-columns:repeat(2,1fr)}
+  .rating-chip{top:1rem;right:1rem}
+}
+
+.gs-reveal{opacity:1}
+</style>
+</head>
+<body>
+<div class="noise"></div>
+
+<nav class="nav" id="nav">
+  <a href="#" class="nav-logo">Guaba</a>
+  <ul class="nav-links">
+    <li><a href="#menu">Menu</a></li>
+    <li><a href="#events">Events</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#contact" class="nav-cta">Reserve</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hero-bg">
+    <img src="https://images.pexels.com/photos/6621228/pexels-photo-6621228.jpeg?w=1920" alt="Beach bar sunset" loading="eager">
+  </div>
+  <div class="hero-content">
+    <span class="hero-tag gs-reveal">Limassol, Cyprus</span>
+    <h1 class="gs-reveal">Where every sunset is a <em>celebration</em></h1>
+    <p class="hero-sub gs-reveal">Legendary cocktails. World-class DJs. The best beach vibes on the Mediterranean coast.</p>
+    <div class="hero-cta gs-reveal">
+      <a href="#contact" class="btn-primary">Reserve a Table</a>
+      <a href="#menu" class="btn-ghost">See the Menu</a>
+    </div>
+  </div>
+  <div class="rating-chip">
+    <span class="stars">★★★★★</span>
+    <span class="count"><span>988</span> reviews</span>
+  </div>
+</section>
+
+<div class="info-bar">
+  <div class="info-item"><div class="value">📍 Limassol Coast</div></div>
+  <div class="info-item"><div class="value">🕐 10:00 – 02:00</div></div>
+  <div class="info-item"><div class="value">🎵 Live DJs Daily</div></div>
+  <div class="info-item"><div class="value">🍸 40+ Cocktails</div></div>
+</div>
+
+<section id="menu">
+  <span class="section-label gs-reveal">Our Menu</span>
+  <h2 class="section-heading gs-reveal">Taste the <em style="color:var(--sunset);font-style:italic">Mediterranean</em></h2>
+  <p class="section-sub gs-reveal">From crafted cocktails to fresh seafood — everything tastes better with sand between your toes.</p>
+  <div class="menu-grid">
+    <div class="menu-card gs-reveal">
+      <div class="menu-emoji">🍸</div>
+      <h3>Signature Cocktails</h3>
+      <p>Our mixologists craft 40+ unique cocktails with local Cypriot spirits and fresh tropical fruits.</p>
+      <div class="menu-price">from €9</div>
+    </div>
+    <div class="menu-card gs-reveal">
+      <div class="menu-emoji">🦐</div>
+      <h3>Seafood Grill</h3>
+      <p>Fresh-caught octopus, prawns, and seabass grilled over open flame. Served with lemon and herbs.</p>
+      <div class="menu-price">from €14</div>
+    </div>
+    <div class="menu-card gs-reveal">
+      <div class="menu-emoji">🎧</div>
+      <h3>Sundown DJ Set</h3>
+      <p>Every evening, international DJs take the decks as the sun dips into the Mediterranean.</p>
+      <div class="menu-price">Free entry</div>
+    </div>
+  </div>
+</section>
+
+<section id="events">
+  <span class="section-label gs-reveal">Events</span>
+  <h2 class="section-heading gs-reveal">What's <em style="color:var(--sunset);font-style:italic">happening</em></h2>
+  <div class="events-grid">
+    <div class="event-card gs-reveal">
+      <img src="https://images.pexels.com/photos/6621232/pexels-photo-6621232.jpeg?w=600" alt="Beach party" loading="lazy">
+      <div class="event-overlay"><h3>Sunset Sessions</h3><p>Every Friday — House & Deep</p></div>
+    </div>
+    <div class="event-card gs-reveal">
+      <img src="https://images.pexels.com/photos/7755474/pexels-photo-7755474.jpeg?w=600" alt="Private event" loading="lazy">
+      <div class="event-overlay"><h3>Private Parties</h3><p>Book the entire venue for your celebration</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="reviews">
+  <span class="section-label gs-reveal">Reviews</span>
+  <h2 class="section-heading gs-reveal">Loved by <em style="color:var(--sunset);font-style:italic">thousands</em></h2>
+  <div class="reviews-scroll">
+    <div class="review-card"><div class="review-stars">★★★★★</div><p class="review-text">"Best beach bar in Cyprus hands down. The sunset DJ sets are unreal. Been coming every summer for 5 years."</p><div class="review-author">Alex P.</div></div>
+    <div class="review-card"><div class="review-stars">★★★★★</div><p class="review-text">"Booked a private party for 40 people. Everything was perfect — food, drinks, music, service. Absolute legends."</p><div class="review-author">Sofia K.</div></div>
+    <div class="review-card"><div class="review-stars">★★★★★</div><p class="review-text">"The mojitos here are the best on the island. And the vibe? Nothing compares. Guaba is Limassol."</p><div class="review-author">Marco R.</div></div>
+  </div>
+</section>
+
+<section class="cta-section" id="contact">
+  <span class="section-label gs-reveal">Join Us</span>
+  <h2 class="section-heading gs-reveal">Ready for the <em style="color:var(--sunset);font-style:italic">best sunset?</em></h2>
+  <p class="section-sub gs-reveal">Reserve your spot now — weekends fill up fast.</p>
+  <div class="gs-reveal">
+    <a href="tel:+357****5678" class="btn-primary">Call to Reserve</a>
+    <a href="https://wa.me/35799123456" class="btn-ghost">WhatsApp</a>
+  </div>
+</section>
+
+<footer class="footer">
+  <div style="max-width:1000px;margin:0 auto;display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem">
+    <div><strong style="color:#fff;font-family:var(--font-heading)">Guaba Beach Bar</strong><br>Limassol Coast, Cyprus</div>
+    <div>© 2026 Guaba Beach Bar</div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded',()=>{
+  if(typeof gsap==='undefined')return;
+  gsap.registerPlugin(ScrollTrigger);
+  gsap.utils.toArray('.gs-reveal').forEach(el=>{
+    gsap.from(el,{opacity:0,y:28,duration:.8,ease:'power2.out',
+      scrollTrigger:{trigger:el,start:'top 92%',toggleActions:'play none none none'}});
+  });
+  gsap.fromTo('#nav',{y:-80,opacity:0},{y:0,opacity:1,duration:1,ease:'power3.out'});
+  const nav=document.getElementById('nav');
+  window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>50));
+});
+</script>
+</body>
+</html>
