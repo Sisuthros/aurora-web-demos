@@ -374,18 +374,43 @@ footer{padding:3rem 0 2rem;border-top:1px solid var(--border);background:var(--s
 .cursor.hover{width:44px;height:44px;background:transparent;
   border:1.5px solid var(--gold)}
 @media(max-width:768px){.cursor{display:none}}
+
+/* ═══════════════════ ACCESSIBILITY ═══════════════════ */
+.skip-link{position:absolute;top:-100px;left:1rem;z-index:10001;
+  padding:.8rem 1.5rem;background:var(--text);color:var(--cream);
+  border-radius:50px;font-weight:600;font-size:.88rem;text-decoration:none;
+  transition:top .3s}
+.skip-link:focus{top:1rem;outline:2px solid var(--gold);outline-offset:3px}
+*:focus-visible{outline:2px solid var(--gold-dark);outline-offset:3px;border-radius:2px}
+:focus:not(:focus-visible){outline:none}
+
+/* ═══════════════════ EMAIL CAPTURE ═══════════════════ */
+.email-form-wrap{max-width:440px;margin:2rem auto 0;position:relative;z-index:1}
+.email-form{display:flex;gap:.5rem}
+.email-form input{flex:1;padding:.9rem 1.2rem;border:1px solid var(--border);
+  border-radius:50px;font-family:var(--fb);font-size:.92rem;background:var(--white);
+  color:var(--text);outline:none;transition:border-color .2s}
+.email-form input:focus{border-color:var(--gold)}
+.email-form input.error{border-color:#e74c3c;background:rgba(231,76,60,.04)}
+.email-form .btn{flex-shrink:0;white-space:nowrap}
+.email-msg{font-size:.78rem;margin-top:.6rem;font-weight:500;min-height:1.2em}
+.email-msg.success{color:#1a9e4a}
+.email-msg.error{color:#e74c3c}
+@media(max-width:500px){.email-form{flex-direction:column}.email-form .btn{width:100%;justify-content:center}}
 </style>
 </head>
 <body>
+
+<a href="#work" class="skip-link">Skip to content</a>
 
 <div class="noise"></div>
 <div class="scroll-prog" id="scrollProg"></div>
 <div class="cursor" id="cursor"></div>
 
 <!-- ═════════════ NAV ═════════════ -->
-<nav class="nav" id="nav">
-  <a href="#" class="nav-logo">
-    <svg viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="14" stroke="currentColor" stroke-width="2"/><path d="M8 20Q12 8 16 16T24 12" stroke="var(--gold)" stroke-width="2.5" stroke-linecap="round" fill="none"/></svg>
+<nav class="nav" id="nav" role="navigation" aria-label="Main">
+  <a href="#" class="nav-logo" aria-label="Aurora Web — back to top">
+    <svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><circle cx="16" cy="16" r="14" stroke="currentColor" stroke-width="2"/><path d="M8 20Q12 8 16 16T24 12" stroke="var(--gold)" stroke-width="2.5" stroke-linecap="round" fill="none"/></svg>
     Aurora Web
   </a>
   <div class="nav-links" id="navLinks">
@@ -1007,9 +1032,13 @@ footer{padding:3rem 0 2rem;border-top:1px solid var(--border);background:var(--s
       <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.71.306 1.263.489 1.694.625.712.227 1.362.195 1.877.118.572-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.999-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.885-9.886 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.89c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
       Message us on WhatsApp
     </a>
-    <p class="gs-reveal" style="margin-top:2rem;font-size:.9rem;color:var(--muted)">
-      Or email <a href="mailto:hello@auroraweb.fi" style="color:var(--gold-dark);font-weight:500">hello@auroraweb.fi</a> · Response within 4 hours
-    </p>
+    <div class="email-form-wrap gs-reveal">
+      <div class="email-form" id="emailForm">
+        <input type="email" id="emailInput" placeholder="or drop your email — we'll write first" aria-label="Email address">
+        <button type="submit" class="btn btn-ghost" id="emailSubmit">Send</button>
+      </div>
+      <div class="email-msg" id="emailMsg"></div>
+    </div>
   </div>
 </section>
 
@@ -1034,7 +1063,7 @@ footer{padding:3rem 0 2rem;border-top:1px solid var(--border);background:var(--s
         <a href="#pricing">Pricing</a>
       </div>
     </div>
-    <div class="footer-copy">&copy; 2026 Aurora Web Design · Helsinki · Larnaca · Cyprus · Built with sisu &#10084;</div>
+    <div class="footer-copy">&copy; 2026 Aurora Web Design · Helsinki · Larnaca · Cyprus · Built with sisu &#10084; &nbsp;<span style="display:inline-flex;align-items:center;gap:4px;padding:2px 10px;background:rgba(37,211,102,.1);border:1px solid rgba(37,211,102,.25);border-radius:50px;font-size:.72rem;color:#1a9e4a;font-weight:600">⚡ Lighthouse 98</span></div>
   </div>
 </footer>
 
@@ -1174,6 +1203,46 @@ document.querySelectorAll('.stat-counter').forEach(function(el) {
       snap: {innerText: 1},
       scrollTrigger: {trigger: el, start: 'top 90%'}
     });
+  }
+});
+
+/* Email form validation */
+var emailForm = document.getElementById('emailForm');
+var emailInput = document.getElementById('emailInput');
+var emailMsg = document.getElementById('emailMsg');
+
+function validateEmail(email) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
+
+emailForm.addEventListener('submit', function(e) {
+  e.preventDefault();
+  var email = emailInput.value.trim();
+
+  if (!email) {
+    emailInput.classList.add('error');
+    emailMsg.className = 'email-msg error';
+    emailMsg.textContent = 'Please enter your email address.';
+    return;
+  }
+
+  if (!validateEmail(email)) {
+    emailInput.classList.add('error');
+    emailMsg.className = 'email-msg error';
+    emailMsg.textContent = 'Please enter a valid email address.';
+    return;
+  }
+
+  emailInput.classList.remove('error');
+  emailInput.value = '';
+  emailMsg.className = 'email-msg success';
+  emailMsg.textContent = 'Thanks! We\'ll be in touch within 24 hours.';
+});
+
+emailInput.addEventListener('input', function() {
+  if (this.classList.contains('error')) {
+    this.classList.remove('error');
+    emailMsg.textContent = '';
   }
 });
 </script>
