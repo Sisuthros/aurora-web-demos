@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zephyros Fish Restaurant — Demo</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0a1628;display:flex;align-items:center;justify-content:center;min-height:100vh;overflow:hidden;user-select:none;-webkit-user-select:none}
+video{width:100%;max-width:1280px;height:auto;border-radius:12px;box-shadow:0 20px 60px rgba(0,0,0,.5);pointer-events:none}
+.watermark{position:fixed;top:20px;right:20px;background:rgba(0,0,0,.6);color:#c9a84c;padding:8px 16px;border-radius:6px;font-family:system-ui,sans-serif;font-size:13px;z-index:10}
+.badge{position:fixed;bottom:30px;left:50%;transform:translateX(-50%);color:rgba(255,255,255,.5);font-family:system-ui,sans-serif;font-size:12px;z-index:10;text-align:center}
+</style>
+<script>
+document.addEventListener('contextmenu', e => e.preventDefault());
+document.addEventListener('keydown', e => {
+  if(e.key==='F12'||(e.ctrlKey&&e.shiftKey&&e.key==='I')||(e.ctrlKey&&e.key==='u')||(e.ctrlKey&&e.key==='s')){
+    e.preventDefault();
+  }
+});
+</script>
+</head>
+<body>
+<div class="watermark">🐟 DEMO — Aurora Web</div>
+<video autoplay loop muted playsinline>
+  <source src="zephyros-demo.mp4" type="video/mp4">
+</video>
+<div class="badge">Demo for <span style="color:#c9a84c">ZEPHYROS FISH RESTAURANT</span> — Contact: Lumina, Aurora Web</div>
+</body>
+</html>

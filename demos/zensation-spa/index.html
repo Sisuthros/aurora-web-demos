@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Zensation Spa — Limassol Luxury Wellness</title>
+<meta name="description" content="Zensation Spa — 991 reviews. Limassol's premier luxury spa. Massage, facials, body treatments. Book your escape.">
+<meta property="og:title" content="Zensation Spa — Limassol Luxury Wellness">
+<meta property="og:description" content="991 reviews ★. Limassol's premier spa experience.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#F8F3EC">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<style>
+:root {
+  --cream: #F8F3EC;
+  --gold: #C7A76A;
+  --gold-dark: #A8894A;
+  --sand: #E8DDD0;
+  --text: #2C2418;
+  --text-dim: #6B5D4E;
+  --muted: #9B8E80;
+  --white: #FFFFFF;
+  --surface: #FDFAF6;
+  --glow: rgba(199,167,106,.3);
+  --radius: 4px;
+  --font-heading: 'Playfair Display', Georgia, serif;
+  --font-body: 'Manrope', system-ui, sans-serif;
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:var(--font-body);background:var(--cream);color:var(--text);line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+
+.noise{position:fixed;inset:0;z-index:999;pointer-events:none;opacity:.03;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size:180px}
+
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.5rem 4rem;display:flex;justify-content:space-between;align-items:center;transition:all .4s ease}
+.nav.scrolled{background:rgba(248,243,236,.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);padding:.8rem 4rem;box-shadow:0 1px 0 rgba(0,0,0,.04)}
+.nav-logo{font-family:var(--font-heading);font-size:1.5rem;font-weight:700;color:var(--white);transition:color .4s;text-decoration:none;letter-spacing:-.02em}
+.nav.scrolled .nav-logo{color:var(--text)}
+.nav-links{display:flex;gap:2.5rem;list-style:none}
+.nav-links a{text-decoration:none;color:rgba(255,255,255,.78);font-size:.9rem;font-weight:500;letter-spacing:.03em;text-transform:uppercase;transition:color .3s}
+.nav.scrolled .nav-links a{color:var(--text-dim)}
+.nav-links a:hover{color:var(--gold)}
+.nav-cta{background:var(--gold);color:var(--white)!important;padding:.6rem 1.4rem;border-radius:var(--radius);font-weight:600!important;transition:background .3s}
+.nav-cta:hover{background:var(--gold-dark)}
+
+.hero{position:relative;height:100vh;display:flex;align-items:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0}
+.hero-bg img{width:100%;height:100%;object-fit:cover;animation:heroZoom 20s ease-in-out infinite alternate}
+@keyframes heroZoom{from{transform:scale(1)}to{transform:scale(1.06)}}
+.hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(28,20,10,.55) 0%,rgba(28,20,10,.25) 40%,rgba(28,20,10,.45) 100%)}
+.hero-content{position:relative;z-index:2;padding:0 4rem;max-width:700px}
+.hero-tag{display:inline-block;font-family:var(--font-body);font-size:.75rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:1.2rem;font-weight:500}
+.hero-content h1{font-family:var(--font-heading);font-size:clamp(3rem, 5vw + 1rem, 5rem);line-height:1.08;color:var(--white);margin-bottom:1.2rem;font-weight:600;letter-spacing:-.02em}
+.hero-content h1 em{font-style:italic;color:var(--gold)}
+.hero-sub{font-size:1.15rem;color:rgba(255,255,255,.72);max-width:480px;line-height:1.7;margin-bottom:2rem}
+.hero-cta{display:flex;gap:1rem;flex-wrap:wrap}
+.btn-primary{display:inline-block;background:var(--gold);color:var(--white);padding:.95rem 2.2rem;border-radius:var(--radius);text-decoration:none;font-weight:600;font-size:.95rem;letter-spacing:.02em;transition:all .3s;box-shadow:0 0 30px var(--glow);border:none;cursor:pointer}
+.btn-primary:hover{background:var(--gold-dark);box-shadow:0 0 50px rgba(199,167,106,.5);transform:translateY(-1px)}
+.btn-ghost{display:inline-block;border:1px solid rgba(255,255,255,.35);color:var(--white);padding:.9rem 2rem;border-radius:var(--radius);text-decoration:none;font-weight:500;font-size:.9rem;transition:all .3s}
+.btn-ghost:hover{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.6)}
+.rating-chip{position:absolute;bottom:3rem;right:3rem;z-index:2;background:rgba(255,255,255,.12);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.18);border-radius:var(--radius);padding:.8rem 1.4rem;display:flex;align-items:center;gap:.6rem}
+.rating-chip .stars{color:var(--gold);font-size:.9rem;letter-spacing:.1em}
+.rating-chip .count{color:rgba(255,255,255,.85);font-size:.8rem;font-weight:500}
+.rating-chip .count span{font-weight:700;color:var(--white)}
+
+.info-bar{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--sand);max-width:1100px;margin:-3rem auto 0;position:relative;z-index:3;border-radius:var(--radius);overflow:hidden}
+.info-item{background:var(--white);padding:1.8rem 1.5rem;text-align:center}
+.info-item svg{width:20px;height:20px;margin-bottom:.5rem;color:var(--gold)}
+.info-item .label{font-size:.7rem;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);font-weight:600;margin-bottom:.3rem}
+.info-item .value{font-size:.95rem;font-weight:600;color:var(--text);line-height:1.4}
+
+section{padding:6rem 4rem}
+.section-label{display:block;font-family:var(--font-body);font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:.8rem;font-weight:600}
+.section-heading{font-family:var(--font-heading);font-size:clamp(2rem,3.5vw,3rem);font-weight:600;margin-bottom:1rem;letter-spacing:-.02em;line-height:1.2}
+.section-sub{color:var(--text-dim);max-width:520px;font-size:1.05rem;line-height:1.7}
+
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;max-width:1100px;margin:3.5rem auto 0}
+.service-card{background:var(--white);padding:2.5rem 2rem;border-radius:var(--radius);border:1px solid rgba(0,0,0,.06);transition:all .4s ease}
+.service-card:hover{transform:translateY(-6px);box-shadow:0 20px 40px rgba(0,0,0,.06);border-color:var(--gold)}
+.service-icon{width:48px;height:48px;background:var(--cream);border-radius:var(--radius);display:flex;align-items:center;justify-content:center;margin-bottom:1.5rem;color:var(--gold)}
+.service-icon svg{width:22px;height:22px}
+.service-card h3{font-family:var(--font-heading);font-size:1.25rem;font-weight:600;margin-bottom:.6rem}
+.service-card p{color:var(--text-dim);font-size:.9rem;line-height:1.7;margin-bottom:1.2rem}
+.service-price{font-family:var(--font-heading);font-size:1.4rem;font-weight:700;color:var(--gold)}
+.service-price span{font-size:.8rem;font-weight:400;color:var(--muted)}
+
+.about-section{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:.618fr .382fr;gap:5rem;align-items:center}
+.about-image{position:relative;border-radius:var(--radius);overflow:hidden;aspect-ratio:4/5}
+.about-image img{width:100%;height:100%;object-fit:cover}
+.about-stats{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:2rem}
+.stat{text-align:center;padding:1.2rem}
+.stat-num{font-family:var(--font-heading);font-size:2.2rem;font-weight:700;color:var(--gold);line-height:1;margin-bottom:.3rem}
+.stat-label{font-size:.8rem;color:var(--text-dim);font-weight:500}
+
+.gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;max-width:1100px;margin:3.5rem auto 0}
+.gallery-item{aspect-ratio:4/5;border-radius:var(--radius);overflow:hidden}
+.gallery-item img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
+.gallery-item:hover img{transform:scale(1.08)}
+
+.reviews-section{background:var(--surface);margin-top:0}
+.reviews-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;max-width:1100px;margin:3.5rem auto 0}
+.review-card{background:var(--white);padding:2rem;border-radius:var(--radius);border:1px solid rgba(0,0,0,.05)}
+.review-stars{color:var(--gold);font-size:.85rem;margin-bottom:.8rem;letter-spacing:.1em}
+.review-text{color:var(--text);font-size:.95rem;line-height:1.7;font-style:italic;margin-bottom:1.2rem}
+.review-author{font-weight:600;font-size:.85rem;color:var(--text)}
+.review-date{font-size:.75rem;color:var(--muted)}
+
+.cta-section{text-align:center;padding:8rem 2rem;position:relative;background:var(--text);overflow:hidden}
+.cta-section::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.6' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");opacity:.05}
+.cta-section>*{position:relative;z-index:1}
+.cta-section .section-label{color:var(--gold)}
+.cta-section .section-heading{color:var(--white)}
+.cta-section .section-sub{color:rgba(255,255,255,.55);margin:0 auto 2rem}
+.cta-section .btn-primary{font-size:1.05rem;padding:1rem 2.8rem}
+.cta-section .btn-ghost{border-color:rgba(255,255,255,.2);color:rgba(255,255,255,.7);margin-left:1rem}
+
+.footer{background:var(--text);border-top:1px solid rgba(255,255,255,.06);padding:4rem 4rem 2rem;color:rgba(255,255,255,.45)}
+.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:3rem;max-width:1100px;margin:0 auto}
+.footer-brand{font-family:var(--font-heading);font-size:1.4rem;color:var(--white);margin-bottom:.8rem}
+.footer p{font-size:.85rem;line-height:1.8}
+.footer h4{color:var(--white);font-size:.8rem;text-transform:uppercase;letter-spacing:.1em;margin-bottom:1.2rem;font-weight:600}
+.footer a{color:rgba(255,255,255,.45);text-decoration:none;font-size:.85rem;transition:color .3s;display:block;margin-bottom:.5rem}
+.footer a:hover{color:var(--gold)}
+.footer-bottom{max-width:1100px;margin:3rem auto 0;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,.06);text-align:center;font-size:.75rem}
+
+@media(max-width:768px){
+  .nav{padding:1rem 1.5rem}
+  .nav-links{display:none}
+  .hero-content{padding:0 1.5rem}
+  section{padding:4rem 1.5rem}
+  .services-grid{grid-template-columns:1fr}
+  .reviews-grid{grid-template-columns:1fr}
+  .gallery-grid{grid-template-columns:repeat(2,1fr)}
+  .about-section{grid-template-columns:1fr;gap:2rem}
+  .info-bar{grid-template-columns:repeat(2,1fr);margin:-2rem 1.5rem 0}
+  .footer-grid{grid-template-columns:1fr 1fr}
+  .rating-chip{bottom:1.5rem;right:1.5rem;padding:.6rem 1rem}
+  .hero-cta{flex-direction:column}
+  .cta-section .btn-ghost{margin-left:0;margin-top:.8rem}
+}
+
+.gs-reveal{opacity:1}
+</style>
+</head>
+<body>
+<div class="noise"></div>
+
+<nav class="nav" id="nav">
+  <a href="#" class="nav-logo">Zensation</a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#contact" class="nav-cta">Book Now</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hero-bg">
+    <img src="https://images.pexels.com/photos/3997994/pexels-photo-3997994.jpeg?w=1920" alt="Luxury spa interior" loading="eager">
+  </div>
+  <div class="hero-content">
+    <span class="hero-tag gs-reveal">Limassol, Cyprus</span>
+    <h1 class="gs-reveal">Where <em>serenity</em> meets the Mediterranean</h1>
+    <p class="hero-sub gs-reveal">Award-winning spa treatments in the heart of Limassol. Let the sea breeze carry you to complete rejuvenation.</p>
+    <div class="hero-cta gs-reveal">
+      <a href="#contact" class="btn-primary">Book Your Escape</a>
+      <a href="#services" class="btn-ghost">Explore Treatments</a>
+    </div>
+  </div>
+  <div class="rating-chip">
+    <span class="stars">★★★★★</span>
+    <span class="count"><span>991</span> reviews</span>
+  </div>
+</section>
+
+<div class="info-bar">
+  <div class="info-item">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="10" r="3"/><path d="M12 2a8 8 0 0 0-8 8c0 5.4 8 12 8 12s8-6.6 8-12a8 8 0 0 0-8-8z"/></svg>
+    <div class="label">Location</div>
+    <div class="value">Limassol Marina</div>
+  </div>
+  <div class="info-item">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+    <div class="label">Open Daily</div>
+    <div class="value">9:00 – 21:00</div>
+  </div>
+  <div class="info-item">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+    <div class="label">Response Time</div>
+    <div class="value">Under 1 hour</div>
+  </div>
+  <div class="info-item">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+    <div class="label">Therapists</div>
+    <div class="value">12 certified</div>
+  </div>
+</div>
+
+<section id="services">
+  <span class="section-label gs-reveal">Our Treatments</span>
+  <h2 class="section-heading gs-reveal">Crafted for your <em style="color:var(--gold);font-style:italic">wellbeing</em></h2>
+  <p class="section-sub gs-reveal">Every treatment is tailored to your body's needs. From deep tissue to aromatherapy — find your perfect escape.</p>
+  <div class="services-grid">
+    <div class="service-card gs-reveal">
+      <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg></div>
+      <h3>Signature Massage</h3>
+      <p>Deep tissue and Swedish techniques combined with warm herbal compresses. Pure tension release.</p>
+      <div class="service-price">€85<span> / 60 min</span></div>
+    </div>
+    <div class="service-card gs-reveal">
+      <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
+      <h3>Luxury Facial</h3>
+      <p>Organic Mediterranean botanicals. Deep cleanse, hydration mask, and anti-aging serum.</p>
+      <div class="service-price">€95<span> / 75 min</span></div>
+    </div>
+    <div class="service-card gs-reveal">
+      <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
+      <h3>Couples Retreat</h3>
+      <p>Side-by-side massages in our private suite. Champagne, candles, and the Mediterranean sunset.</p>
+      <div class="service-price">€210<span> / 120 min</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="about-section" id="about">
+  <div class="about-image gs-reveal">
+    <img src="https://images.pexels.com/photos/7755474/pexels-photo-7755474.jpeg?w=600" alt="Spa treatment room" loading="lazy">
+  </div>
+  <div class="gs-reveal">
+    <span class="section-label">Our Story</span>
+    <h2 class="section-heading">A sanctuary by<br>the <em style="color:var(--gold);font-style:italic">sea</em></h2>
+    <p style="color:var(--text-dim);line-height:1.8;margin-bottom:1rem">Born from a passion for holistic wellness, Zensation Spa opened its doors on the Limassol waterfront in 2018. We blend ancient Cypriot healing traditions with modern therapeutic techniques.</p>
+    <p style="color:var(--text-dim);line-height:1.8">Every oil is organic. Every stone is hand-selected. Every treatment is an invitation to let go.</p>
+    <div class="about-stats">
+      <div class="stat">
+        <div class="stat-num">991</div>
+        <div class="stat-label">5★ Reviews</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">7</div>
+        <div class="stat-label">Treatment Rooms</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">12</div>
+        <div class="stat-label">Certified Therapists</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">2018</div>
+        <div class="stat-label">Established</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="gallery">
+  <span class="section-label gs-reveal">Gallery</span>
+  <h2 class="section-heading gs-reveal">Step inside our <em style="color:var(--gold);font-style:italic">world</em></h2>
+  <div class="gallery-grid">
+    <div class="gallery-item gs-reveal"><img src="https://images.pexels.com/photos/3757657/pexels-photo-3757657.jpeg?w=600" alt="Spa massage" loading="lazy"></div>
+    <div class="gallery-item gs-reveal"><img src="https://images.pexels.com/photos/275768/pexels-photo-275768.jpeg?w=600" alt="Spa candles" loading="lazy"></div>
+    <div class="gallery-item gs-reveal"><img src="https://images.pexels.com/photos/6620850/pexels-photo-6620850.jpeg?w=600" alt="Wellness" loading="lazy"></div>
+    <div class="gallery-item gs-reveal"><img src="https://images.pexels.com/photos/5069609/pexels-photo-5069609.jpeg?w=600" alt="Spa stones" loading="lazy"></div>
+  </div>
+</section>
+
+<section class="reviews-section" id="reviews">
+  <span class="section-label gs-reveal">Testimonials</span>
+  <h2 class="section-heading gs-reveal">What our <em style="color:var(--gold);font-style:italic">guests</em> say</h2>
+  <div class="reviews-grid">
+    <div class="review-card gs-reveal">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"Best spa experience in Cyprus. The deep tissue massage completely melted away months of tension. The sea view from the room was breathtaking."</p>
+      <div class="review-author">Elena K.</div>
+      <div class="review-date">2 weeks ago</div>
+    </div>
+    <div class="review-card gs-reveal">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"Booked the couples retreat for our anniversary. Champagne, oils, and the sunset over the marina. Absolutely magical. Coming back every month."</p>
+      <div class="review-author">Andreas & Maria</div>
+      <div class="review-date">1 month ago</div>
+    </div>
+    <div class="review-card gs-reveal">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"I've been to spas in Bali, Thailand, and Dubai. Zensation rivals them all. The attention to detail is extraordinary. A true gem in Limassol."</p>
+      <div class="review-author">Sarah M.</div>
+      <div class="review-date">3 weeks ago</div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section" id="contact">
+  <span class="section-label gs-reveal">Book Now</span>
+  <h2 class="section-heading gs-reveal">Ready to <em style="color:var(--gold);font-style:italic">escape?</em></h2>
+  <p class="section-sub gs-reveal">Your treatment room is waiting. Call or message — we respond in under an hour.</p>
+  <div class="gs-reveal">
+    <a href="tel:+35725123456" class="btn-primary">Call to Book</a>
+    <a href="https://wa.me/35799123456" class="btn-ghost" target="_blank" rel="noopener">WhatsApp</a>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand">Zensation Spa</div>
+      <p>Limassol Marina, Cyprus<br>Open daily 9:00 – 21:00</p>
+    </div>
+    <div>
+      <h4>Treatments</h4>
+      <a href="#services">Massage</a>
+      <a href="#services">Facials</a>
+      <a href="#services">Couples</a>
+      <a href="#services">Packages</a>
+    </div>
+    <div>
+      <h4>About</h4>
+      <a href="#about">Our Story</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#reviews">Reviews</a>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <a href="tel:+35725123456">+357 25 123456</a>
+      <a href="mailto:info@zensationspa.com">info@zensationspa.com</a>
+      <a href="https://wa.me/35799123456">WhatsApp</a>
+    </div>
+  </div>
+  <div class="footer-bottom">© 2026 Zensation Spa. All rights reserved. Made with love in Limassol.</div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded',()=>{
+  if(typeof gsap==='undefined')return;
+  gsap.registerPlugin(ScrollTrigger);
+
+  gsap.utils.toArray('.gs-reveal').forEach(el=>{
+    gsap.from(el,{opacity:0,y:32,duration:.85,ease:'power2.out',
+      scrollTrigger:{trigger:el,start:'top 90%',toggleActions:'play none none none'}});
+  });
+
+  gsap.fromTo('#nav',{y:-80,opacity:0},{y:0,opacity:1,duration:1,ease:'power3.out'});
+  gsap.fromTo('.hero-content .gs-reveal',{opacity:0,y:40},{opacity:1,y:0,duration:1,stagger:.15,ease:'power3.out',delay:.3});
+
+  const nav=document.getElementById('nav');
+  window.addEventListener('scroll',()=>{
+    nav.classList.toggle('scrolled',window.scrollY>50);
+  });
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Old Market St. — Bar Larnaca</title>
+<style>:root{--bg:#1A1816;--dark:#F0EAE0;--accent:#C8A052;--accent2:#E0C878;--text:#D8D0C4;--dim:#9B9180;--surface:#24211D;--border:#3A3530}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Source Serif 4',Georgia,serif;background:var(--bg);color:var(--text);line-height:1.7;font-size:17px}
+h1,h2,h3,.nav-logo,.stat-number{font-family:'Playfair Display',Georgia,serif}
+.nav{position:sticky;top:0;z-index:100;padding:1.2rem 3rem;display:flex;justify-content:space-between;align-items:center;background:rgba(26,24,22,.94);backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
+.nav-logo{font-size:1.3rem;color:var(--dark);text-decoration:none;font-weight:600}.nav-links{display:flex;gap:2.5rem;list-style:none}
+.nav-links a{color:var(--dim);text-decoration:none;font-size:.82rem}.nav-links a:hover{color:var(--accent)}
+.hero{height:100vh;display:flex;align-items:flex-end;position:relative;overflow:hidden;padding:0 3rem 6rem}
+.hero-bg{position:absolute;inset:0}.hero-bg img{width:100%;height:100%;object-fit:cover}
+.hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(10,8,6,.85) 0%,rgba(10,8,6,.3) 50%,rgba(10,8,6,.1) 100%)}
+.hero-content{position:relative;z-index:2;max-width:650px}
+.hero-tag{display:inline-block;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent2);margin-bottom:1rem;border-bottom:2px solid var(--accent);padding-bottom:.4rem}
+.hero h1{font-size:clamp(2.8rem,5vw+1rem,5rem);color:#fff;line-height:.98;margin-bottom:1.2rem;font-weight:600}
+.hero-sub{font-size:1.05rem;color:rgba(255,255,255,.55);margin-bottom:2.5rem;max-width:440px}
+.btn-primary{background:var(--accent);color:var(--bg);border:none;padding:.95rem 2.4rem;font-size:.85rem;letter-spacing:.04em;border-radius:3px;text-decoration:none;font-weight:600;transition:all .3s}.btn-primary:hover{background:var(--accent2);transform:translateY(-2px)}
+.rating-chip{position:absolute;top:2rem;right:3rem;z-index:3;background:rgba(255,255,255,.06);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.1);border-radius:6px;padding:.8rem 1.4rem;color:#fff}.rating-stars{color:var(--accent2);font-size:1rem}.rating-text{font-size:.72rem;opacity:.6;margin-top:.2rem}
+.section{padding:7rem 2rem;max-width:1100px;margin:0 auto}
+.section-label{font-size:.65rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem;text-align:center}
+.section-title{font-size:clamp(2.2rem,3vw+.8rem,3.2rem);text-align:center;color:var(--dark);margin-bottom:.8rem;font-weight:600;line-height:1.15}
+.section-sub{text-align:center;color:var(--dim);max-width:500px;margin:0 auto 4rem}
+.menu-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
+.menu-card{background:var(--surface);border-radius:6px;overflow:hidden;border:1px solid var(--border);transition:all .35s}
+.menu-card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(0,0,0,.3)}.menu-card:hover img{transform:scale(1.04)}
+.menu-img{width:100%;height:200px;object-fit:cover;transition:transform .5s}.menu-body{padding:1.3rem}
+.menu-tag{font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}.menu-name{font-size:1.15rem;color:var(--dark);margin:.3rem 0}.menu-desc{font-size:.82rem;color:var(--dim)}.menu-price{font-size:1rem;color:var(--accent);font-weight:600;margin-top:.8rem}
+.about-grid{display:grid;grid-template-columns:.618fr .382fr;gap:5rem;align-items:center}.about-img{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:6px}
+.about-content h3{font-size:2.2rem;color:var(--dark);margin-bottom:1.5rem;font-weight:600}.about-content p{color:var(--dim);line-height:1.8;margin-bottom:1rem}
+.about-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2.5rem}.stat-number{font-size:2.5rem;color:var(--accent);font-weight:600}.stat-label{font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;color:var(--dim)}
+.reviews-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}.review-card{background:var(--surface);padding:2rem;border-radius:6px;border:1px solid var(--border)}.review-stars{color:var(--accent);margin-bottom:1rem}.review-text{font-size:.9rem;line-height:1.7;margin-bottom:1.2rem;font-style:italic}.review-author{font-size:.78rem;color:var(--dim)}
+.cta-section{text-align:center;padding:7rem 2rem;color:#fff;position:relative;overflow:hidden}
+.cta-section::before{content:'';position:absolute;inset:0;background:url('https://images.pexels.com/photos/33999516/pexels-photo-33999516.jpeg?w=1920') center/cover}
+.cta-section::after{content:'';position:absolute;inset:0;background:rgba(10,8,6,.82)}.cta-section>*{position:relative;z-index:1}
+.cta-section .section-label{color:var(--accent2)}.cta-section .section-title{color:#fff}.cta-section .section-sub{color:rgba(255,255,255,.45)}
+.btn-white{background:#fff;color:var(--bg);padding:1rem 3rem;font-size:.9rem;letter-spacing:.04em;border-radius:3px;text-decoration:none;font-weight:600}.btn-white:hover{transform:translateY(-2px)}
+.footer{display:grid;grid-template-columns:1fr 1fr 1fr;gap:3rem;max-width:1100px;margin:0 auto;padding:5rem 2rem;font-size:.85rem;color:var(--dim)}.footer h4{font-size:1.1rem;color:var(--dark)}
+@media(max-width:768px){.nav{padding:.8rem 1.2rem}.nav-links{display:none}.hero{padding:0 1.2rem 3rem;height:90vh}.hero h1{font-size:2rem}.menu-grid{grid-template-columns:1fr}.about-grid{grid-template-columns:1fr}.reviews-grid{grid-template-columns:1fr}.footer{grid-template-columns:1fr}.section{padding:4rem 1.2rem}}</style>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet"></head>
+<body>
+<nav class="nav"><a href="#" class="nav-logo">Old Market St.</a><ul class="nav-links"><li><a href="#drinks">Drinks</a></li><li><a href="#about">About</a></li><li><a href="#visit">Visit</a></li></ul></nav>
+<section class="hero"><div class="hero-bg"><img src="https://images.pexels.com/photos/6531482/pexels-photo-6531482.jpeg?w=1920" alt="Old Market St bar"></div>
+<div class="hero-content"><span class="hero-tag">Larnaca · Old Town</span><h1>The night starts<br>on Market Street.</h1><p class="hero-sub">590 reviews. 4.6 stars. A hundred wines by the glass. A courtyard that seats forty. And a playlist that's never been streamed.</p><a href="#drinks" class="btn-primary">See Our Menu</a></div>
+<div class="rating-chip"><div class="rating-stars">★★★★★</div><div class="rating-text">4.6 · 590 reviews</div></div></section>
+<section class="section" id="drinks"><div class="section-label">Menu</div><h2 class="section-title">What we're pouring</h2>
+<div class="menu-grid">
+<div class="menu-card"><img class="menu-img" src="https://images.pexels.com/photos/6216843/pexels-photo-6216843.jpeg?w=600" alt="Wine"><div class="menu-body"><div class="menu-tag">Wine</div><div class="menu-name">Cypriot Wines</div><div class="menu-desc">Xynisteri, Maratheftiko, and Commandaria. 14 Cypriot wineries represented.</div><div class="menu-price">Glass from €5</div></div></div>
+<div class="menu-card"><div class="menu-body"><div class="menu-tag">Cocktails</div><div class="menu-name">Market St. Sour</div><div class="menu-desc">Cyprus brandy, lemon, honey from the Troodos mountains. Our signature.</div><div class="menu-price">€9</div></div></div>
+<div class="menu-card"><div class="menu-body"><div class="menu-tag">Food</div><div class="menu-name">Meze Plates</div><div class="menu-desc">Halloumi, loukaniko, olives, village bread. Designed for sharing.</div><div class="menu-price">From €7</div></div></div>
+</div></section>
+<section class="cta-section" id="visit"><div class="section-label">Tonight</div><h2 class="section-title">The courtyard is open</h2><p class="section-sub">No reservations. Find us in the old town. Follow the music.</p><a href="#" class="btn-white">Get Directions</a></section>
+<footer class="footer"><div><h4>Old Market St.</h4><p>Wine Bar · Larnaca Old Town</p></div><div><h4>Hours</h4><p>Tue–Sun: 6pm–1am</p></div><div><h4>Find Us</h4><p>★★★★★ 4.6 (590 reviews)</p></div></footer>
+<style>
+#aw-demo-badge{position:fixed;bottom:16px;left:50%;transform:translateX(-50%);z-index:99999;background:rgba(20,14,8,.92);color:#E8B96A;font-family:system-ui,sans-serif;font-size:13px;font-weight:600;letter-spacing:.04em;padding:9px 18px;border-radius:999px;border:1px solid rgba(232,185,106,.4);box-shadow:0 6px 24px rgba(0,0,0,.35);display:flex;align-items:center;gap:8px;backdrop-filter:blur(8px)}
+#aw-demo-badge b{color:#fff}#aw-demo-badge a{color:#E8B96A;text-decoration:underline}
+#aw-demo-wm{position:fixed;inset:0;z-index:99998;pointer-events:none}
+#aw-demo-wm span{position:absolute;top:18%;left:50%;transform:translate(-50%,-50%) rotate(-22deg);font-family:system-ui,sans-serif;font-size:5vw;font-weight:800;color:rgba(255,255,255,.07);white-space:nowrap;letter-spacing:.1em}
+@media print{body{display:none!important}}
+</style>
+<div id="aw-demo-wm"><span>DEMO — AURORA WEB</span></div>
+<div id="aw-demo-badge">Demo · Aurora Web · προεπισκόπηση · <a href="#">επικοινωνία</a></div>
+</body></html>

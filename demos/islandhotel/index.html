@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Island Boutique Hotel - Larnaca, Cyprus</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Source+Serif+4:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --cream: #FAF7F2;
+            --navy: #1A2430;
+            --gold: #C7A76A;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Source Serif 4', serif;
+            background-color: var(--cream);
+            color: var(--navy);
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, .logo {
+            font-family: 'Playfair Display', serif;
+            font-weight: 500;
+        }
+        
+        /* Navigation */
+        nav {
+            position: sticky;
+            top: 0;
+            background-color: var(--cream);
+            border-bottom: 1px solid rgba(26, 36, 48, 0.1);
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            color: var(--navy);
+            text-decoration: none;
+            letter-spacing: 0.05em;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--navy);
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+        
+        /* Hero */
+        .hero {
+            position: relative;
+            height: 100vh;
+            min-height: 600px;
+            background: linear-gradient(rgba(26, 36, 48, 0.4), rgba(26, 36, 48, 0.5)), url('https://images.pexels.com/photos/261102/pexels-photo-261102.jpeg?auto=compress&cs=tinysrgb&w=1920');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--cream);
+        }
+        
+        .hero-content h1 {
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            margin-bottom: 1rem;
+            line-height: 1.1;
+        }
+        
+        .hero-content p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+        
+        .social-proof {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: rgba(250, 247, 242, 0.15);
+            backdrop-filter: blur(10px);
+            padding: 0.75rem 1.5rem;
+            border-radius: 100px;
+            border: 1px solid rgba(250, 247, 242, 0.3);
+            margin-bottom: 2rem;
+        }
+        
+        .stars {
+            color: var(--gold);
+            font-size: 1.1rem;
+        }
+        
+        .rating-text {
+            font-size: 0.95rem;
+            letter-spacing: 0.02em;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background-color: var(--gold);
+            color: var(--cream);
+            text-decoration: none;
+            font-family: 'Source Serif 4', serif;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+            letter-spacing: 0.05em;
+        }
+        
+        .btn:hover {
+            background-color: var(--cream);
+            color: var(--navy);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 1px solid var(--cream);
+            color: var(--cream);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--cream);
+            color: var(--navy);
+        }
+        
+        /* Sections general */
+        section {
+            padding: 5rem 2rem;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: clamp(2rem, 3vw, 2.75rem);
+            margin-bottom: 1rem;
+            color: var(--navy);
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.1rem;
+            color: rgba(26, 36, 48, 0.7);
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* Suites */
+        .suites {
+            background-color: var(--cream);
+        }
+        
+        .suites-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+        
+        .suite-card {
+            background-color: white;
+            border: 1px solid rgba(26, 36, 48, 0.08);
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .suite-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(26, 36, 48, 0.08);
+        }
+        
+        .suite-image {
+            width: 100%;
+            height: 280px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        
+        .suite-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: var(--gold);
+            color: var(--cream);
+            padding: 0.5rem 1rem;
+            font-family: 'Source Serif 4', serif;
+            font-size: 0.9rem;
+        }
+        
+        .suite-content {
+            padding: 1.5rem 2rem 2rem;
+        }
+        
+        .suite-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .suite-content p {
+            color: rgba(26, 36, 48, 0.7);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .suite-price {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+        }
+        
+        .suite-price span {
+            font-size: 0.9rem;
+            color: rgba(26, 36, 48, 0.5);
+            font-family: 'Source Serif 4', serif;
+        }
+        
+        .suite-btn {
+            display: block;
+            width: 100%;
+            padding: 0.75rem;
+            text-align: center;
+            border: 1px solid var(--navy);
+            color: var(--navy);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .suite-btn:hover {
+            background: var(--navy);
+            color: var(--cream);
+        }
+        
+        /* About - Golden Ratio */
+        .about {
+            background-color: var(--navy);
+            color: var(--cream);
+        }
+        
+        .about .section-title {
+            color: var(--cream);
+        }
+        
+        .about .section-subtitle {
+            color: rgba(250, 247, 242, 0.7);
+        }
+        
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1.618fr 1fr; /* Golden ratio */
+            gap: 3rem;
+            align-items: center;
+        }
+        
+        .about-text h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--gold);
+        }
+        
+        .about-text p {
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: rgba(250, 247, 242, 0.85);
+        }
+        
+        .about-image {
+            width: 100%;
+            height: 500px;
+            background: linear-gradient(135deg, rgba(199, 167, 106, 0.2), rgba(26, 36, 48, 0.8));
+            border: 1px solid rgba(199, 167, 106, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .about-image::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 10px,
+                rgba(199, 167, 106, 0.05) 10px,
+                rgba(199, 167, 106, 0.05) 20px
+            );
+            animation: slide 20s linear infinite;
+        }
+        
+        @keyframes slide {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(-50px, -50px); }
+        }
+        
+        .golden-ratio-box {
+            position: absolute;
+            width: 160px;
+            height: 160px;
+            border: 2px solid var(--gold);
+            opacity: 0.3;
+        }
+        
+        .golden-ratio-box:nth-child(2) {
+            width: 100px;
+            height: 100px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-30%, -70%);
+        }
+        
+        .golden-ratio-box:nth-child(3) {
+            width: 60px;
+            height: 60px;
+            top: 50%;
+            left: 50%;
+            transform: translate(20%, -120%);
+        }
+        
+        .golden-symbol {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            color: var(--gold);
+            opacity: 0.9;
+            z-index: 2;
+        }
+        
+        /* Reviews */
+        .reviews {
+            background-color: var(--cream);
+        }
+        
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+        
+        .review-card {
+            background: white;
+            padding: 2rem;
+            border: 1px solid rgba(26, 36, 48, 0.06);
+            position: relative;
+        }
+        
+        .review-card::before {
+            content: '"';
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            color: var(--gold);
+            opacity: 0.3;
+            line-height: 1;
+            position: absolute;
+            top: 1rem;
+            left: 1.5rem;
+        }
+        
+        .review-stars {
+            color: var(--gold);
+            margin-bottom: 1rem;
+            font-size: 1rem;
+            padding-top: 2rem;
+        }
+        
+        .review-text {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: rgba(26, 36, 48, 0.85);
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+        
+        .reviewer-name {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            color: var(--navy);
+        }
+        
+        .reviewer-location {
+            font-size: 0.85rem;
+            color: rgba(26, 36, 48, 0.5);
+        }
+        
+        /* CTA */
+        .cta {
+            background-color: var(--navy);
+            color: var(--cream);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 50% 50%, rgba(199, 167, 106, 0.1) 0%, transparent 70%);
+        }
+        
+        .cta h2 {
+            font-size: clamp(2rem, 3vw, 3rem);
+            margin-bottom: 1rem;
+            position: relative;
+        }
+        
+        .cta p {
+            font-size: 1.15rem;
+            margin-bottom: 2rem;
+            color: rgba(250, 247, 242, 0.8);
+            position: relative;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            position: relative;
+            flex-wrap: wrap;
+        }
+        
+        .contact-info {
+            margin-top: 2rem;
+            font-size: 0.95rem;
+            color: rgba(250, 247, 242, 0.6);
+            position: relative;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--navy);
+            color: rgba(250, 247, 242, 0.4);
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid rgba(250, 247, 242, 0.1);
+            font-size: 0.85rem;
+        }
+        
+        /* Mobile */
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 70%;
+                height: 100vh;
+                background: var(--cream);
+                flex-direction: column;
+                padding: 5rem 2rem;
+                transition: right 0.3s;
+                box-shadow: -5px 0 30px rgba(0,0,0,0.1);
+            }
+            
+            .nav-links.active {
+                right: 0;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+                z-index: 1001;
+            }
+            
+            .suites-grid,
+            .reviews-grid,
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .about-grid {
+                gap: 2rem;
+            }
+            
+            .about-image {
+                height: 300px;
+            }
+            
+            section {
+                padding: 3rem 1.5rem;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="logo">THE ISLAND</a>
+            <button class="mobile-menu-btn" onclick="toggleMenu()">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1A2430" stroke-width="2">
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#suites">Suites</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#reviews">Reviews</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <section class="hero">
+        <div class="hero-content">
+            <div class="social-proof">
+                <span class="stars">★★★★★</span>
+                <span class="rating-text">4.7 · 380 Reviews</span>
+            </div>
+            <h1>The Island<br>Boutique Hotel</h1>
+            <p>Larnaca, Cyprus</p>
+            <a href="#suites" class="btn btn-outline">Explore Suites</a>
+        </div>
+    </section>
+    
+    <section class="suites" id="suites">
+        <div class="container">
+            <h2 class="section-title">Our Suites</h2>
+            <p class="section-subtitle">Three distinct sanctuaries designed for the discerning traveler</p>
+            <div class="suites-grid">
+                <div class="suite-card">
+                    <div class="suite-image" style="background-image: url('https://images.pexels.com/photos/164595/pexels-photo-164595.jpeg?auto=compress&cs=tinysrgb&w=800');">
+                        <span class="suite-badge">From €180</span>
+                    </div>
+                    <div class="suite-content">
+                        <h3>Garden Suite</h3>
+                        <p>Private terrace overlooking our Mediterranean gardens. King bed, rainfall shower, and morning light.</p>
+                        <div class="suite-price">€180 <span>/ night</span></div>
+                        <a href="#contact" class="suite-btn">Enquire Now</a>
+                    </div>
+                </div>
+                <div class="suite-card">
+                    <div class="suite-image" style="background-image: url('https://images.pexels.com/photos/271624/pexels-photo-271624.jpeg?auto=compress&cs=tinysrgb&w=800');">
+                        <span class="suite-badge">From €280</span>
+                    </div>
+                    <div class="suite-content">
+                        <h3>Sea Loft</h3>
+                        <p>Panoramic Larnaca Bay views from your elevated perch. Open-plan living with artisanal Cypriot details.</p>
+                        <div class="suite-price">€280 <span>/ night</span></div>
+                        <a href="#contact" class="suite-btn">Enquire Now</a>
+                    </div>
+                </div>
+                <div class="suite-card">
+                    <div class="suite-image" style="background-image: url('https://images.pexels.com/photos/1457847/pexels-photo-1457847.jpeg?auto=compress&cs=tinysrgb&w=800');">
+                        <span class="suite-badge">From €420</span>
+                    </div>
+                    <div class="suite-content">
+                        <h3>Cliff Suite</h3>
+                        <p>Our premier sanctuary. Infinity plunge pool, private butler service, and uninterrupted horizon.</p>
+                        <div class="suite-price">€420 <span>/ night</span></div>
+                        <a href="#contact" class="suite-btn">Enquire Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="about" id="about">
+        <div class="container">
+            <h2 class="section-title">Designed by Nature's Code</h2>
+            <p class="section-subtitle">Where ancient mathematics meets modern hospitality</p>
+            <div class="about-grid">
+                <div class="about-text">
+                    <h3>The Golden Ratio</h3>
+                    <p>Every space at The Island is proportioned according to the golden ratio of 1.618. From the height of our doorways to the sweep of our terraces, this divine proportion creates an innate sense of harmony that your subconscious recognizes before your eyes do.</p>
+                    <p>Built on the Larnaca coastline where Aphrodite once walked, our boutique retreat offers just twelve keys. We believe luxury is not about excess—it is about<style>
+#aw-demo-badge{position:fixed;bottom:16px;left:50%;transform:translateX(-50%);z-index:99999;background:rgba(20,14,8,.92);color:#E8B96A;font-family:system-ui,sans-serif;font-size:13px;font-weight:600;letter-spacing:.04em;padding:9px 18px;border-radius:999px;border:1px solid rgba(232,185,106,.4);box-shadow:0 6px 24px rgba(0,0,0,.35);display:flex;align-items:center;gap:8px;backdrop-filter:blur(8px)}
+#aw-demo-badge b{color:#fff}#aw-demo-badge a{color:#E8B96A;text-decoration:underline}
+#aw-demo-wm{position:fixed;inset:0;z-index:99998;pointer-events:none}
+#aw-demo-wm span{position:absolute;top:18%;left:50%;transform:translate(-50%,-50%) rotate(-22deg);font-family:system-ui,sans-serif;font-size:5vw;font-weight:800;color:rgba(255,255,255,.07);white-space:nowrap;letter-spacing:.1em}
+@media print{body{display:none!important}}
+</style>
+<div id="aw-demo-wm"><span>DEMO — AURORA WEB</span></div>
+<div id="aw-demo-badge">Demo · Aurora Web · προεπισκόπηση · <a href="#">επικοινωνία</a></div>
+</body>

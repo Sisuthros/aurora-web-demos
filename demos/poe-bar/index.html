@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Poe Bar & Restaurant — Limassol Dining & Drinks</title>
+<meta name="description" content="Poe Bar & Restaurant — 578 reviews ★. Limassol's atmospheric bar and kitchen. Craft cocktails, Mediterranean cuisine, live music.">
+<meta name="theme-color" content="#1A1510">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<style>
+:root{--rust:#C44536;--gold:#D4A24E;--bg:#1A1510;--surface:#241E18;--text:#EDE4D8;--text-dim:#A09888;--white:#FFF;--radius:4px;--font-h:'Playfair Display',serif;--font-b:'DM Sans',sans-serif}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}body{font-family:var(--font-b);background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden}
+.noise{position:fixed;inset:0;z-index:999;pointer-events:none;opacity:.022;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.4rem 3rem;display:flex;justify-content:space-between;align-items:center;transition:all .4s}
+.nav.scrolled{background:rgba(26,21,16,.94);backdrop-filter:blur(20px);padding:.7rem 3rem}
+.nav-logo{font-family:var(--font-h);font-size:1.4rem;font-weight:700;color:var(--white);text-decoration:none}.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{text-decoration:none;color:rgba(255,255,255,.62);font-size:.82rem;font-weight:500;text-transform:uppercase;letter-spacing:.04em;transition:color .3s}
+.nav-links a:hover{color:var(--gold)}.nav-cta{background:var(--rust);color:#fff!important;padding:.5rem 1.2rem;border-radius:var(--radius);font-weight:600}
+.hero{position:relative;height:100vh;display:flex;align-items:flex-end}
+.hero-bg{position:absolute;inset:0}.hero-bg img{width:100%;height:100%;object-fit:cover;animation:heroZoom 20s infinite alternate}
+@keyframes heroZoom{from{transform:scale(1)}to{transform:scale(1.05)}}
+.hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(20,14,8,.75) 0%,rgba(20,14,8,.2) 50%,rgba(20,14,8,.4) 100%)}
+.hero-content{position:relative;z-index:2;padding:0 3rem 5rem;max-width:620px}
+.hero-tag{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;font-weight:600}
+.hero-content h1{font-family:var(--font-h);font-size:clamp(2.5rem,5vw,4.5rem);line-height:1.04;color:#fff;margin-bottom:1rem;font-weight:700}
+.hero-content h1 em{font-style:italic;color:var(--rust)}.hero-sub{font-size:1rem;color:rgba(255,255,255,.52);max-width:440px;line-height:1.7;margin-bottom:1.8rem}
+.hero-cta{display:flex;gap:.8rem;flex-wrap:wrap}
+.btn-primary{display:inline-block;background:var(--rust);color:#fff;padding:.85rem 2rem;border-radius:var(--radius);text-decoration:none;font-weight:600;font-size:.9rem;box-shadow:0 0 25px rgba(196,69,54,.15);transition:all .3s}
+.btn-primary:hover{transform:translateY(-1px);box-shadow:0 0 40px rgba(196,69,54,.3)}
+.btn-ghost{display:inline-block;border:1px solid rgba(255,255,255,.22);color:#fff;padding:.8rem 1.8rem;border-radius:var(--radius);text-decoration:none;font-weight:500;font-size:.85rem;transition:all .3s}
+.btn-ghost:hover{background:rgba(255,255,255,.04)}
+.rating-chip{position:absolute;top:3rem;right:2rem;z-index:2;background:rgba(255,255,255,.06);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.1);border-radius:var(--radius);padding:.7rem 1.2rem;display:flex;align-items:center;gap:.5rem}
+.rating-chip .stars{color:var(--gold);font-size:.85rem}.rating-chip .count{color:rgba(255,255,255,.55);font-size:.75rem}
+.rating-chip .count span{font-weight:700;color:#fff;font-size:.9rem}
+.info-bar{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--surface);max-width:950px;margin:-3rem auto 0;position:relative;z-index:3;border-radius:var(--radius);overflow:hidden}
+.info-item{background:#2A221A;padding:1.3rem 1rem;text-align:center;font-size:.85rem;font-weight:600;color:var(--text)}
+section{padding:5rem 3rem}.section-label{display:block;font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:.7rem;font-weight:600}
+.section-heading{font-family:var(--font-h);font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:700;margin-bottom:.8rem;line-height:1.2}
+.section-sub{color:var(--text-dim);max-width:480px;font-size:1rem;line-height:1.7}
+.menu-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;max-width:950px;margin:3rem auto 0}
+.menu-card{background:var(--surface);padding:2rem 1.5rem;border-radius:var(--radius);border:1px solid rgba(255,255,255,.04);text-align:center;transition:all .3s}
+.menu-card:hover{border-color:var(--gold);transform:translateY(-4px)}
+.menu-icon{font-size:2rem;margin-bottom:.6rem}.menu-card h3{font-family:var(--font-h);font-size:1.15rem;margin-bottom:.4rem;color:var(--white)}
+.menu-card p{color:var(--text-dim);font-size:.85rem}.menu-price{font-family:var(--font-h);font-size:1.2rem;color:var(--gold);margin-top:.6rem;font-weight:700}
+.gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:.8rem;max-width:950px;margin:3rem auto 0}
+.gallery-item{aspect-ratio:4/5;border-radius:var(--radius);overflow:hidden}.gallery-item img{width:100%;height:100%;object-fit:cover;transition:transform .5s}.gallery-item:hover img{transform:scale(1.06)}
+.reviews-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;max-width:950px;margin:3rem auto 0}
+.review-card{background:var(--surface);padding:1.5rem;border-radius:var(--radius);border:1px solid rgba(255,255,255,.04)}
+.review-stars{color:var(--gold);font-size:.8rem;margin-bottom:.6rem}.review-text{font-size:.9rem;line-height:1.7;font-style:italic;margin-bottom:.8rem}
+.review-author{font-weight:600;font-size:.8rem}
+.cta-section{text-align:center;padding:6rem 2rem;background:var(--surface)}
+.cta-section .section-heading{color:var(--white)}.cta-section .section-sub{color:var(--text-dim);margin:0 auto 1.5rem}
+.footer{background:#0F0B08;padding:3rem 3rem 1.5rem;color:rgba(255,255,255,.25);font-size:.8rem}
+@media(max-width:768px){.nav{padding:1rem 1.2rem}.nav-links{display:none}section{padding:3rem 1.2rem}.hero-content{padding:0 1.2rem 3rem}.menu-grid,.reviews-grid{grid-template-columns:1fr}.gallery-grid{grid-template-columns:repeat(2,1fr)}.info-bar{grid-template-columns:repeat(2,1fr)}}
+.gs-reveal{opacity:1}
+</style>
+</head>
+<body>
+<div class="noise"></div>
+<nav class="nav" id="nav"><a href="#" class="nav-logo">POE</a><ul class="nav-links"><li><a href="#menu">Menu</a></li><li><a href="#gallery">Gallery</a></li><li><a href="#reviews">Reviews</a></li><li><a href="#contact" class="nav-cta">Reserve</a></li></ul></nav>
+
+<section class="hero">
+  <div class="hero-bg"><img src="https://images.pexels.com/photos/941864/pexels-photo-941864.jpeg?w=1920" alt="Restaurant interior" loading="eager"></div>
+  <div class="hero-content">
+    <span class="hero-tag gs-reveal">Limassol, Cyprus</span>
+    <h1 class="gs-reveal">Where the <em>night</em> comes alive</h1>
+    <p class="hero-sub gs-reveal">578 reviews ★. Craft cocktails, wood-fired Mediterranean cuisine, and live music. Every evening tells a different story.</p>
+    <div class="hero-cta gs-reveal"><a href="#contact" class="btn-primary">Reserve a Table</a><a href="#menu" class="btn-ghost">Our Menu</a></div>
+  </div>
+  <div class="rating-chip"><span class="stars">★★★★★</span><span class="count"><span>578</span> reviews</span></div>
+</section>
+
+<div class="info-bar"><div class="info-item">📍 Limassol Center</div><div class="info-item">🕐 18:00 – 02:00</div><div class="info-item">🍸 Craft Cocktails</div><div class="info-item">🎵 Live Music</div></div>
+
+<section id="menu">
+  <span class="section-label gs-reveal">Our Menu</span>
+  <h2 class="section-heading gs-reveal">A <em style="color:var(--rust);font-style:italic">taste</em> of the Mediterranean</h2>
+  <p class="section-sub gs-reveal">Our kitchen runs on fire, fresh ingredients, and the belief that good food deserves good company.</p>
+  <div class="menu-grid">
+    <div class="menu-card gs-reveal"><div class="menu-icon">🍸</div><h3>Signature Cocktails</h3><p>House creations using Cypriot spirits, fresh herbs, and seasonal fruits.</p><div class="menu-price">from €10</div></div>
+    <div class="menu-card gs-reveal"><div class="menu-icon">🔥</div><h3>Wood-Fired Kitchen</h3><p>Grilled octopus, lamb chops, and flatbreads from our open-fire kitchen.</p><div class="menu-price">from €16</div></div>
+    <div class="menu-card gs-reveal"><div class="menu-icon">🎵</div><h3>Live Nights</h3><p>Jazz quartets, acoustic sets, and DJ nights. Music every Thursday to Saturday.</p><div class="menu-price">Free entry</div></div>
+  </div>
+</section>
+
+<section id="gallery">
+  <span class="section-label gs-reveal">Gallery</span>
+  <h2 class="section-heading gs-reveal">Inside <em style="color:var(--rust);font-style:italic">Poe</em></h2>
+  <div class="gallery-grid">
+    <div class="gallery-item gs-reveal"><img src="https://images.pexels.com/photos/1267320/pexels-photo-1267320.jpeg?w=600" alt="Cocktails" loading="lazy"></div>
+    <div class="gallery-item gs-reveal"><img src="https://images.pexels.com/photos/2252289/pexels-photo-2252289.jpeg?w=600" alt="Food" loading="lazy"></div>
+    <div class="gallery-item gs-reveal"><img src="https://images.pexels.com/photos/776538/pexels-photo-776538.jpeg?w=600" alt="Bar" loading="lazy"></div>
+    <div class="gallery-item gs-reveal"><img src="https://images.pexels.com/photos/1307698/pexels-photo-1307698.jpeg?w=600" alt="Dining" loading="lazy"></div>
+  </div>
+</section>
+
+<section id="reviews">
+  <span class="section-label gs-reveal">Reviews</span>
+  <h2 class="section-heading gs-reveal">What our <em style="color:var(--gold);font-style:italic">guests</em> say</h2>
+  <div class="reviews-grid">
+    <div class="review-card gs-reveal"><div class="review-stars">★★★★★</div><p class="review-text">"Best bar in Limassol. The cocktails are art, the food is incredible, and the live jazz on Thursdays is magical."</p><div class="review-author">Christos D.</div></div>
+    <div class="review-card gs-reveal"><div class="review-stars">★★★★★</div><p class="review-text">"Booked Poe for my birthday dinner. 20 people, they handled everything perfectly. The wood-fired octopus is legendary."</p><div class="review-author">Elena P.</div></div>
+    <div class="review-card gs-reveal"><div class="review-stars">★★★★★</div><p class="review-text">"Atmosphere is unmatched. Dark, warm, intimate — exactly what Limassol needed. The bartenders know their craft."</p><div class="review-author">Marco V.</div></div>
+  </div>
+</section>
+
+<section class="cta-section" id="contact">
+  <span class="section-label gs-reveal" style="color:var(--gold)">Reserve</span>
+  <h2 class="section-heading gs-reveal">Your table <em style="color:var(--rust);font-style:italic">awaits</em></h2>
+  <p class="section-sub gs-reveal">Open daily from 18:00. Weekends fill up fast — book ahead.</p>
+  <div class="gs-reveal" style="display:flex;gap:.8rem;justify-content:center"><a href="tel:+357****6789" class="btn-primary">Call to Reserve</a> <a href="https://wa.me/35799123456" class="btn-ghost">WhatsApp</a></div>
+</section>
+
+<footer class="footer"><div style="max-width:950px;margin:0 auto;display:flex;justify-content:space-between"><div><strong style="color:var(--gold);font-family:var(--font-h)">Poe Bar & Restaurant</strong><br>Limassol, Cyprus</div><div>© 2026 Poe</div></div></footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+<script>document.addEventListener('DOMContentLoaded',()=>{if(typeof gsap==='undefined')return;gsap.registerPlugin(ScrollTrigger);gsap.utils.toArray('.gs-reveal').forEach(el=>{gsap.from(el,{opacity:0,y:28,duration:.8,ease:'power2.out',scrollTrigger:{trigger:el,start:'top 92%'}})});gsap.fromTo('#nav',{y:-80,opacity:0},{y:0,opacity:1,duration:1});window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',window.scrollY>50)})});</script>
+</body>
+</html>

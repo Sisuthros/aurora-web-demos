@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Dr Andreas Charalampous — Dental Clinic Limassol</title>
+<meta name="description" content="Dr Andreas Charalampous Dental Clinic — 567 reviews ★. Modern dentistry in Limassol. Implants, cosmetic, family care.">
+<meta name="theme-color" content="#F5F7FA">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700&family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<style>
+:root{--blue:#2563B0;--teal:#0891B2;--bg:#F5F7FA;--surface:#FFFFFF;--text:#1A202C;--text-dim:#5A6470;--radius:4px;--font-h:'Playfair Display',serif;--font-b:'Inter',sans-serif}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}body{font-family:var(--font-b);background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden}
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 3rem;display:flex;justify-content:space-between;align-items:center;transition:all .4s;background:rgba(255,255,255,.9);backdrop-filter:blur(20px);box-shadow:0 1px 0 rgba(0,0,0,.04)}
+.nav-logo{font-family:var(--font-h);font-size:1.2rem;font-weight:700;color:var(--text);text-decoration:none}.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{text-decoration:none;color:var(--text-dim);font-size:.82rem;font-weight:500;text-transform:uppercase;letter-spacing:.03em;transition:color .3s}
+.nav-links a:hover{color:var(--blue)}.nav-cta{background:var(--blue);color:#fff!important;padding:.5rem 1.2rem;border-radius:var(--radius);font-weight:600}
+.hero{position:relative;min-height:85vh;display:flex;align-items:center;background:linear-gradient(135deg,#EBF0F5 0%,#F5F7FA 40%,#EEF2F7 100%)}
+.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;max-width:1100px;margin:0 auto;padding:6rem 3rem 3rem;align-items:center}
+.hero-text h1{font-family:var(--font-h);font-size:clamp(2.2rem,4vw,3.8rem);line-height:1.1;font-weight:700;margin-bottom:1rem;color:var(--text)}
+.hero-text h1 em{font-style:italic;color:var(--teal)}.hero-text p{color:var(--text-dim);font-size:1.05rem;line-height:1.7;margin-bottom:1.8rem;max-width:440px}
+.hero-image{border-radius:var(--radius);overflow:hidden;aspect-ratio:4/3}.hero-image img{width:100%;height:100%;object-fit:cover}
+.btn-primary{display:inline-block;background:var(--blue);color:#fff;padding:.85rem 2rem;border-radius:var(--radius);text-decoration:none;font-weight:600;font-size:.9rem;box-shadow:0 4px 14px rgba(37,99,176,.2);transition:all .3s}
+.btn-primary:hover{transform:translateY(-1px);box-shadow:0 8px 25px rgba(37,99,176,.3)}
+.rating-chip{display:inline-flex;align-items:center;gap:.5rem;background:var(--surface);padding:.6rem 1.2rem;border-radius:var(--radius);box-shadow:0 2px 8px rgba(0,0,0,.04);margin-left:1rem;font-size:.85rem}
+.rating-chip .stars{color:#F59E0B}.rating-chip span{font-weight:700}
+
+.info-bar{display:grid;grid-template-columns:repeat(4,1fr);max-width:1000px;margin:-2rem auto 0;position:relative;z-index:3;border-radius:var(--radius);overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,.04)}
+.info-item{background:var(--surface);padding:1.5rem 1.2rem;text-align:center;font-size:.85rem;border-right:1px solid rgba(0,0,0,.04)}
+.info-item:last-child{border-right:none}.info-item strong{display:block;font-size:1.1rem;color:var(--text);margin-bottom:.2rem}.info-item span{color:var(--text-dim);font-size:.75rem}
+
+section{padding:5rem 3rem}.section-label{display:block;font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--teal);margin-bottom:.7rem;font-weight:600}
+.section-heading{font-family:var(--font-h);font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:700;margin-bottom:.8rem;line-height:1.2}
+.section-sub{color:var(--text-dim);max-width:480px;font-size:1rem;line-height:1.7}
+
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;max-width:1000px;margin:3rem auto 0}
+.service-card{background:var(--surface);padding:2rem 1.5rem;border-radius:var(--radius);border:1px solid rgba(0,0,0,.04);text-align:center;transition:all .3s}
+.service-card:hover{box-shadow:0 12px 30px rgba(0,0,0,.05);transform:translateY(-4px)}
+.service-icon{width:48px;height:48px;background:rgba(37,99,176,.06);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;font-size:1.3rem}
+.service-card h3{font-family:var(--font-h);font-size:1.15rem;margin-bottom:.5rem}.service-card p{color:var(--text-dim);font-size:.85rem;line-height:1.6}
+
+.about-grid{display:grid;grid-template-columns:.6fr .4fr;gap:4rem;max-width:1000px;margin:3rem auto 0;align-items:center}
+.about-image{border-radius:var(--radius);overflow:hidden;aspect-ratio:4/5}.about-image img{width:100%;height:100%;object-fit:cover}
+.about-text h3{font-family:var(--font-h);font-size:1.5rem;margin-bottom:1rem}.about-text p{color:var(--text-dim);line-height:1.8;margin-bottom:1rem}
+
+.reviews-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;max-width:1000px;margin:3rem auto 0}
+.review-card{background:var(--surface);padding:1.5rem;border-radius:var(--radius);border:1px solid rgba(0,0,0,.04)}
+.review-stars{color:#F59E0B;font-size:.8rem;margin-bottom:.6rem}.review-text{font-size:.9rem;line-height:1.7;font-style:italic;margin-bottom:.8rem}
+.review-author{font-weight:600;font-size:.8rem}
+
+.cta-section{text-align:center;padding:6rem 2rem;background:linear-gradient(135deg,#1A202C,#2D3748);color:#fff}
+.cta-section .section-heading{color:#fff}.cta-section .section-sub{color:rgba(255,255,255,.55);margin:0 auto 1.5rem}
+
+.footer{background:#1A202C;padding:3rem 3rem 1.5rem;color:rgba(255,255,255,.35);font-size:.8rem}
+
+@media(max-width:768px){.nav{padding:1rem 1.2rem}.nav-links{display:none}.hero-grid{grid-template-columns:1fr;padding:5rem 1.2rem 2rem;gap:2rem}section{padding:3rem 1.2rem}.services-grid,.reviews-grid{grid-template-columns:1fr}.about-grid{grid-template-columns:1fr}.info-bar{grid-template-columns:repeat(2,1fr)}}
+.gs-reveal{opacity:1}
+</style>
+</head>
+<body>
+
+<nav class="nav" id="nav"><a href="#" class="nav-logo">Dr Charalampous</a><ul class="nav-links"><li><a href="#services">Services</a></li><li><a href="#about">About</a></li><li><a href="#reviews">Reviews</a></li><li><a href="#contact" class="nav-cta">Book</a></li></ul></nav>
+
+<section class="hero">
+  <div class="hero-grid">
+    <div class="hero-text">
+      <span class="section-label gs-reveal">Limassol, Cyprus</span>
+      <h1 class="gs-reveal">Your <em>smile</em> in expert hands</h1>
+      <p class="gs-reveal">567 reviews ★. Modern dentistry with a personal touch. From routine cleanings to full smile makeovers — we care for your family like our own.</p>
+      <div class="gs-reveal"><a href="#contact" class="btn-primary">Book Appointment</a><span class="rating-chip"><span class="stars">★★★★★</span><span>567 reviews</span></span></div>
+    </div>
+    <div class="hero-image gs-reveal"><img src="https://images.pexels.com/photos/3845810/pexels-photo-3845810.jpeg?w=600" alt="Dental clinic" loading="eager"></div>
+  </div>
+</section>
+
+<div class="info-bar"><div class="info-item"><strong>📍</strong><span>Limassol Center</span></div><div class="info-item"><strong>🕐</strong><span>Mon–Fri 8–18</span></div><div class="info-item"><strong>🦷</strong><span>25+ Years</span></div><div class="info-item"><strong>⭐</strong><span>567 Reviews</span></div></div>
+
+<section id="services">
+  <span class="section-label gs-reveal">Services</span>
+  <h2 class="section-heading gs-reveal">Complete <em style="color:var(--teal);font-style:italic">dental care</em></h2>
+  <p class="section-sub gs-reveal">From preventive checkups to advanced cosmetic procedures — one clinic, one team, one standard of excellence.</p>
+  <div class="services-grid">
+    <div class="service-card gs-reveal"><div class="service-icon">🦷</div><h3>General Dentistry</h3><p>Checkups, cleanings, fillings, and preventive care for the whole family.</p></div>
+    <div class="service-card gs-reveal"><div class="service-icon">✨</div><h3>Cosmetic Dentistry</h3><p>Veneers, whitening, and smile makeovers using the latest techniques.</p></div>
+    <div class="service-card gs-reveal"><div class="service-icon">🔩</div><h3>Implantology</h3><p>Dental implants with advanced planning. Restore your smile permanently.</p></div>
+  </div>
+</section>
+
+<section id="about">
+  <span class="section-label gs-reveal">About</span>
+  <h2 class="section-heading gs-reveal">Meet <em style="color:var(--teal);font-style:italic">Dr Andreas</em></h2>
+  <div class="about-grid">
+    <div class="about-image gs-reveal"><img src="https://images.pexels.com/photos/3845555/pexels-photo-3845555.jpeg?w=600" alt="Dentist" loading="lazy"></div>
+    <div class="about-text gs-reveal">
+      <h3>25+ years of trusted care</h3>
+      <p>Dr Andreas Charalampous has been serving the Limassol community for over two decades. He combines old-school attention with modern technology — because your comfort matters as much as your results.</p>
+      <p style="color:var(--text-dim)">Graduate of Athens Dental School. Member of the Cyprus Dental Association. Continuous education in implantology and cosmetic dentistry.</p>
+    </div>
+  </div>
+</section>
+
+<section id="reviews">
+  <span class="section-label gs-reveal">Reviews</span>
+  <h2 class="section-heading gs-reveal">Trusted by <em style="color:var(--teal);font-style:italic">hundreds</em></h2>
+  <div class="reviews-grid">
+    <div class="review-card gs-reveal"><div class="review-stars">★★★★★</div><p class="review-text">"Dr Andreas is the best dentist I've ever been to. Gentle, thorough, and explains everything. My whole family goes here."</p><div class="review-author">Maria K.</div></div>
+    <div class="review-card gs-reveal"><div class="review-stars">★★★★★</div><p class="review-text">"Got my implants done here last year. The planning was meticulous, the results are perfect. Highly recommend."</p><div class="review-author">George P.</div></div>
+    <div class="review-card gs-reveal"><div class="review-stars">★★★★★</div><p class="review-text">"I used to fear dentists. Dr Andreas changed that completely. Painless, patient, and genuinely caring."</p><div class="review-author">Elena S.</div></div>
+  </div>
+</section>
+
+<section class="cta-section" id="contact">
+  <span class="section-label gs-reveal" style="color:var(--teal)">Book Now</span>
+  <h2 class="section-heading gs-reveal">Ready for a <em style="color:var(--teal);font-style:italic">healthier smile?</em></h2>
+  <p class="section-sub gs-reveal">New patients welcome. Call or message to schedule your first appointment.</p>
+  <div class="gs-reveal"><a href="tel:+357****4567" class="btn-primary">Call to Book</a></div>
+</section>
+
+<footer class="footer"><div style="max-width:1000px;margin:0 auto;display:flex;justify-content:space-between"><div><strong style="color:#fff;font-family:var(--font-h)">Dr Andreas Charalampous</strong><br>Dental Clinic — Limassol, Cyprus</div><div>© 2026</div></div></footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+<script>document.addEventListener('DOMContentLoaded',()=>{if(typeof gsap==='undefined')return;gsap.registerPlugin(ScrollTrigger);gsap.utils.toArray('.gs-reveal').forEach(el=>{gsap.from(el,{opacity:0,y:24,duration:.8,ease:'power2.out',scrollTrigger:{trigger:el,start:'top 92%'}})});gsap.fromTo('.hero-text .gs-reveal',{opacity:0,y:30},{opacity:1,y:0,duration:.8,stagger:.12,ease:'power3.out'})});</script>
+</body>
+</html>

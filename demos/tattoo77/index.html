@@ -1,0 +1,51 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Tattoo Studio 77 — Larnaca</title>
+<style>:root{--bg:#18181A;--dark:#E8E0D8;--accent:#C0392B;--accent2:#E74C3C;--text:#D0C8C0;--dim:#888078;--surface:#222124;--border:#333033}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Source Serif 4',Georgia,serif;background:var(--bg);color:var(--text);line-height:1.7;font-size:17px}
+h1,h2,h3,.nav-logo{font-family:'Playfair Display',Georgia,serif}
+.nav{position:sticky;top:0;z-index:100;padding:1.2rem 3rem;display:flex;justify-content:space-between;align-items:center;background:rgba(24,24,26,.94);backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
+.nav-logo{font-size:1.3rem;color:var(--dark);text-decoration:none;font-weight:600}.nav-links{display:flex;gap:2.5rem;list-style:none}
+.nav-links a{color:var(--dim);text-decoration:none;font-size:.82rem}.nav-links a:hover{color:var(--accent)}
+.hero{height:100vh;display:flex;align-items:flex-end;position:relative;overflow:hidden;padding:0 3rem 6rem}
+.hero-bg{position:absolute;inset:0}.hero-bg img{width:100%;height:100%;object-fit:cover;filter:brightness(.65) saturate(1.2)}
+.hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(10,8,8,.9) 0%,rgba(10,8,8,.3) 50%,transparent 100%)}
+.hero-content{position:relative;z-index:2;max-width:600px}
+.hero-tag{display:inline-block;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent2);margin-bottom:1rem;border-bottom:2px solid var(--accent);padding-bottom:.4rem}
+.hero h1{font-size:clamp(3rem,5.5vw+1rem,5.5rem);color:#fff;line-height:.98;margin-bottom:1.2rem;font-weight:600}.hero-sub{font-size:1.05rem;color:rgba(255,255,255,.5);margin-bottom:2.5rem}
+.btn-primary{background:var(--accent);color:#fff;padding:.95rem 2.4rem;font-size:.85rem;letter-spacing:.04em;border-radius:3px;text-decoration:none;font-weight:600;transition:all .3s}.btn-primary:hover{background:#a83227}
+.rating-chip{position:absolute;top:2rem;right:3rem;z-index:3;background:rgba(255,255,255,.05);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.08);border-radius:6px;padding:.8rem 1.4rem;color:#fff}.rating-stars{color:var(--accent2)}.rating-text{font-size:.72rem;opacity:.5;margin-top:.2rem}
+.section{padding:7rem 2rem;max-width:1100px;margin:0 auto}
+.section-label{font-size:.65rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem;text-align:center}
+.section-title{font-size:clamp(2.2rem,3vw+.8rem,3.2rem);text-align:center;color:var(--dark);margin-bottom:.8rem;font-weight:600}.section-sub{text-align:center;color:var(--dim);max-width:500px;margin:0 auto 4rem}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
+.card{background:var(--surface);border-radius:6px;overflow:hidden;border:1px solid var(--border);transition:all .35s}.card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(0,0,0,.5)}.card:hover .card-img{transform:scale(1.04)}
+.card-img{width:100%;height:240px;object-fit:cover;transition:transform .5s}.card-body{padding:1.3rem}.card-tag{font-size:.6rem;color:var(--accent);text-transform:uppercase}.card-name{font-size:1.15rem;color:var(--dark);margin:.3rem 0}.card-desc{font-size:.82rem;color:var(--dim)}
+.cta-section{text-align:center;padding:7rem 2rem;position:relative;overflow:hidden}
+.cta-section::before{content:'';position:absolute;inset:0;background:url('https://images.pexels.com/photos/6593432/pexels-photo-6593432.jpeg?w=1920') center/cover;filter:brightness(.25)}.cta-section::after{content:'';position:absolute;inset:0;background:rgba(10,8,8,.85)}.cta-section>*{position:relative;z-index:1}.cta-section .section-title{color:#fff}
+.btn-white{background:#fff;color:var(--bg);padding:1rem 3rem;font-size:.9rem;border-radius:3px;text-decoration:none;font-weight:600}
+.footer{display:grid;grid-template-columns:1fr 1fr;gap:3rem;max-width:1100px;margin:0 auto;padding:5rem 2rem;font-size:.85rem;color:var(--dim)}.footer h4{font-size:1.1rem;color:var(--dark)}
+@media(max-width:768px){.nav{padding:.8rem 1.2rem}.nav-links{display:none}.hero{padding:0 1.2rem 3rem;height:90vh}.hero h1{font-size:2.2rem}.grid{grid-template-columns:1fr}.footer{grid-template-columns:1fr}.section{padding:4rem 1.2rem}}</style>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet"></head>
+<body>
+<nav class="nav"><a href="#" class="nav-logo">Studio 77</a><ul class="nav-links"><li><a href="#work">Work</a></li><li><a href="#artists">Artists</a></li><li><a href="#book">Book</a></li></ul></nav>
+<section class="hero"><div class="hero-bg"><img src="https://images.pexels.com/photos/6593432/pexels-photo-6593432.jpeg?w=1920" alt="Tattoo studio"></div>
+<div class="hero-content"><span class="hero-tag">Larnaca · Since 2015</span><h1>Ink that stays<br>when everything<br>else fades.</h1><p class="hero-sub">221 reviews. 5.0 stars. Three resident artists. One rule: we don't do Pinterest copies.</p><a href="#work" class="btn-primary">See Our Work</a></div>
+<div class="rating-chip"><div class="rating-stars">★★★★★</div><div class="rating-text">5.0 · 221 reviews</div></div></section>
+<section class="section" id="work"><div class="section-label">Portfolio</div><h2 class="section-title">Recent Work</h2>
+<div class="grid">
+<div class="card"><img class="card-img" src="https://images.pexels.com/photos/6593361/pexels-photo-6593361.jpeg?w=600" alt="Tattoo art"><div class="card-body"><div class="card-tag">Blackwork</div><div class="card-name">Geometric Sleeve</div><div class="card-desc">15 hours. Single needle. Mandala precision.</div></div></div>
+<div class="card"><img class="card-img" src="https://images.pexels.com/photos/6593429/pexels-photo-6593429.jpeg?w=600" alt="Tattoo detail"><div class="card-body"><div class="card-tag">Fine Line</div><div class="card-name">Botanical Study</div><div class="card-desc">Cypriot wildflowers. Single session.</div></div></div>
+<div class="card"><div class="card-body"><div class="card-tag">Custom</div><div class="card-name">Your Design</div><div class="card-desc">Bring your idea. We'll make it permanent.</div></div></div>
+</div></section>
+<section class="cta-section" id="book"><div class="section-title">Consultations are free.<br>The ink is forever.</div><a href="#" class="btn-white">WhatsApp: Book a Consult</a></section>
+<footer class="footer"><div><h4>Tattoo Studio 77</h4><p>Custom Ink · Larnaca</p></div><div><h4>★★★★★ 5.0 (221 reviews)</h4></div></footer>
+<style>
+#aw-demo-badge{position:fixed;bottom:16px;left:50%;transform:translateX(-50%);z-index:99999;background:rgba(20,14,8,.92);color:#E8B96A;font-family:system-ui,sans-serif;font-size:13px;font-weight:600;letter-spacing:.04em;padding:9px 18px;border-radius:999px;border:1px solid rgba(232,185,106,.4);box-shadow:0 6px 24px rgba(0,0,0,.35);display:flex;align-items:center;gap:8px;backdrop-filter:blur(8px)}
+#aw-demo-badge b{color:#fff}#aw-demo-badge a{color:#E8B96A;text-decoration:underline}
+#aw-demo-wm{position:fixed;inset:0;z-index:99998;pointer-events:none}
+#aw-demo-wm span{position:absolute;top:18%;left:50%;transform:translate(-50%,-50%) rotate(-22deg);font-family:system-ui,sans-serif;font-size:5vw;font-weight:800;color:rgba(255,255,255,.07);white-space:nowrap;letter-spacing:.1em}
+@media print{body{display:none!important}}
+</style>
+<div id="aw-demo-wm"><span>DEMO — AURORA WEB</span></div>
+<div id="aw-demo-badge">Demo · Aurora Web · προεπισκόπηση · <a href="#">επικοινωνία</a></div>
+</body></html>
