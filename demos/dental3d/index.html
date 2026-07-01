@@ -2,205 +2,182 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>3D DENTAL CENTRE — Advanced Dentistry · Larnaca</title>
-<meta name="description" content="Larnaca's most advanced dental clinic. 3D CBCT imaging, digital impressions, implantology. Dr. Christina Tofaridou.">
-<meta property="og:title" content="3D DENTAL CENTRE — Advanced Dentistry">
-<meta property="og:description" content="Where 3D technology meets gentle care. Larnaca's newest premium dental clinic.">
-<meta property="og:type" content="website">
-<meta name="theme-color" content="#0A1628">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>3D DENTAL CENTRE — Precision Dentistry · Larnaca</title>
+<meta name="description" content="Larnaca's only fully digital dental clinic. 3D CBCT, digital impressions, same-day crowns.">
+<meta property="og:title" content="3D DENTAL CENTRE — Precision Dentistry">
+<meta property="og:description" content="3D CBCT scanning · Digital impressions · Same-day crowns">
+<meta property="og:image" content="https://images.pexels.com/photos/3845729/pexels-photo-3845729.jpeg?w=1200">
+<meta name="theme-color" content="#F8F5F0">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+<script src="https://unpkg.com/lenis@latest/dist/lenis.min.js" defer></script>
 <style>
 :root {
-  --navy: #0A1628;
-  --navy2: #132238;
-  --white: #FFFFFF;
-  --copper: #C9A96E;
-  --copper-light: #DFC89A;
-  --gold: #C7A76A;
-  --text-dim: #8899AA;
-  --glass: rgba(255,255,255,.04);
-  --border: rgba(255,255,255,.08);
-  
-  --step--2: clamp(0.64rem, 0.6rem + 0.2vw, 0.8rem);
-  --step--1: clamp(0.8rem, 0.75rem + 0.25vw, 1rem);
-  --step-0: clamp(1rem, 0.94rem + 0.31vw, 1.25rem);
-  --step-1: clamp(1.25rem, 1.17rem + 0.39vw, 1.563rem);
-  --step-2: clamp(1.563rem, 1.46rem + 0.49vw, 1.953rem);
-  --step-3: clamp(1.953rem, 1.83rem + 0.62vw, 2.441rem);
-  --step-4: clamp(2.441rem, 2.28rem + 0.77vw, 3.052rem);
-  --step-5: clamp(3.052rem, 2.85rem + 0.97vw, 3.815rem);
-  --step-6: clamp(3.815rem, 3.57rem + 1.21vw, 4.768rem);
+  --cream: #F8F5F0;
+  --white: #FFFEFB;
+  --gold: #C4A265;
+  --gold-light: #D4BA85;
+  --gold-glow: rgba(196,162,101,.25);
+  --text: #1E1B18;
+  --text-dim: #6B6560;
+  --text-muted: #9A9490;
+  --surface: #F2EDE5;
+  --border: rgba(0,0,0,.06);
+  --radius: 4px;
+  --font-heading: 'Cormorant Garamond', Georgia, serif;
+  --font-body: 'Inter', system-ui, sans-serif;
 }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:auto}
+html.lenis,html.lenis body{height:auto}
+.lenis.lenis-smooth{scroll-behavior:auto!important}
+body{font-family:var(--font-body);background:var(--cream);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 
-*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth;font-family:'Inter',sans-serif;color:var(--white);background:var(--navy);line-height:1.6;-webkit-font-smoothing:antialiased}
-body{overflow-x:hidden}
+.noise{position:fixed;inset:0;z-index:999;pointer-events:none;opacity:.025;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size:200px}
 
-.noise{
-  position:fixed;inset:0;z-index:999;pointer-events:none;opacity:.025;
-  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  background-size:200px;
-}
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.5rem 3rem;display:flex;justify-content:space-between;align-items:center;transition:all .4s}
+.nav.scrolled{background:rgba(248,245,240,.92);backdrop-filter:blur(20px);padding:.9rem 3rem;box-shadow:0 1px 0 var(--border)}
+.nav-logo{font-family:var(--font-heading);font-size:1.5rem;font-weight:600;letter-spacing:-.02em;color:var(--white);transition:color .4s;text-decoration:none}
+.nav.scrolled .nav-logo{color:var(--text)}
+.nav-links{display:flex;gap:2.5rem;list-style:none}
+.nav-links a{color:rgba(255,255,255,.78);text-decoration:none;font-size:.85rem;font-weight:400;letter-spacing:.04em;text-transform:uppercase;transition:color .3s}
+.nav.scrolled .nav-links a{color:var(--text-dim)}
+.nav-links a:hover{color:var(--gold)}
+.nav-cta{background:var(--gold);color:var(--white)!important;padding:.55rem 1.4rem;border-radius:var(--radius);font-weight:500!important;transition:all .3s}
+.nav-cta:hover{background:var(--gold-light);box-shadow:0 0 20px var(--gold-glow)}
 
-.nav{
-  position:fixed;top:0;left:0;right:0;z-index:100;
-  padding:clamp(1rem,2vw,1.5rem) clamp(1.5rem,5vw,4rem);
-  display:flex;justify-content:space-between;align-items:center;
-  transition:background .3s,backdrop-filter .3s;
-}
-.nav.scrolled{background:rgba(10,22,40,.92);backdrop-filter:blur(20px);box-shadow:0 1px 0 rgba(255,255,255,.04)}
-.nav-logo{font-family:'Space Grotesk',sans-serif;font-size:var(--step-1);font-weight:700;color:var(--white);letter-spacing:-0.02em}
-.nav-logo span{color:var(--copper)}
-.nav-links{display:flex;gap:2rem;list-style:none}
-.nav-links a{text-decoration:none;color:rgba(255,255,255,.75);font-weight:500;font-size:var(--step--1);letter-spacing:.01em;transition:color .3s}
-.nav-links a:visited{text-decoration:none}
-.nav-links a:hover{color:var(--copper);text-decoration:none}
-.nav-cta{background:var(--copper);color:var(--navy)!important;padding:.5rem 1.25rem;border-radius:4px;font-weight:600}
-.nav-cta:hover{background:var(--copper-light);color:var(--navy)!important}
-.menu-btn{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px;z-index:101}
-.menu-btn span{display:block;width:24px;height:2px;background:var(--white);transition:.3s}
-
-.hero{
-  position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;
-  padding:clamp(2rem,8vw,8rem) clamp(1.5rem,6vw,6rem);
-  background:var(--navy);
-  overflow:hidden;
-  perspective:1000px;
-}
-.hero::before{
-  content:'';position:absolute;inset:0;z-index:0;
-  background:url('https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=1920&q=80') center/cover no-repeat;
-  opacity:.25;
-}
-.hero::after{
-  content:'';position:absolute;inset:0;z-index:1;
-  background:radial-gradient(ellipse at 70% 30%,rgba(201,169,110,.12) 0%,transparent 60%),
-             radial-gradient(ellipse at 30% 70%,rgba(10,22,40,.85) 0%,transparent 60%),
-             linear-gradient(180deg,rgba(10,22,40,.4) 0%,rgba(10,22,40,.9) 100%);
-}
-.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;max-width:1280px;width:100%;position:relative;z-index:2}
-.hero-content{max-width:600px}
-.hero-badge{display:inline-flex;align-items:center;gap:.5rem;font-size:var(--step--2);font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--copper);margin-bottom:1.5rem}
-.hero-badge .pulse-dot{width:6px;height:6px;border-radius:50%;background:var(--copper);animation:pulse 2s ease-in-out infinite}
-@keyframes pulse{0%,100%{opacity:1;box-shadow:0 0 8px var(--copper)}50%{opacity:.3;box-shadow:0 0 2px var(--copper)}}
-.hero-content h1{font-family:'Space Grotesk',sans-serif;font-size:var(--step-6);font-weight:700;line-height:1.05;letter-spacing:-0.03em;color:var(--white);margin-bottom:1.5rem}
-.hero-content h1 em{color:var(--copper);font-style:normal}
-.hero-sub{font-size:var(--step-0);color:var(--text-dim);max-width:480px;margin-bottom:2.5rem;line-height:1.7}
+/* HERO */
+.hero{position:relative;height:100vh;min-height:650px;display:flex;align-items:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0}
+.hero-bg img{width:100%;height:100%;object-fit:cover;animation:heroZoom 20s ease-in-out infinite alternate}
+@keyframes heroZoom{from{transform:scale(1)}to{transform:scale(1.06)}}
+.hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(30,27,24,.75) 0%,rgba(30,27,24,.35) 50%,rgba(30,27,24,.55) 100%)}
+.hero-content{position:relative;z-index:2;max-width:720px;padding:0 3rem;margin-top:-2rem}
+.hero-tag{display:inline-block;font-family:var(--font-body);font-size:.7rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-light);margin-bottom:1.5rem;padding:.35rem 1rem;border:1px solid rgba(212,186,133,.3);border-radius:var(--radius)}
+.hero h1{font-family:var(--font-heading);font-size:clamp(3rem, 6.5vw, 5.5rem);font-weight:500;line-height:1.05;letter-spacing:-.02em;color:var(--white);margin-bottom:1.2rem}
+.hero h1 em{font-style:italic;color:var(--gold-light)}
+.hero-sub{font-size:clamp(1rem, 1.2vw, 1.15rem);color:rgba(255,255,255,.7);max-width:500px;margin-bottom:2.5rem;line-height:1.7}
 .hero-cta{display:flex;gap:1rem;flex-wrap:wrap}
-.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.85rem 2rem;border-radius:4px;font-weight:600;font-size:var(--step--1);text-decoration:none;transition:all .3s;cursor:pointer;border:none;font-family:'Inter',sans-serif}
-.btn-primary{background:var(--copper);color:var(--navy);box-shadow:0 0 30px rgba(201,169,110,.2)}
-.btn-primary:hover{background:var(--copper-light);box-shadow:0 0 50px rgba(201,169,110,.35);transform:translateY(-2px)}
-.btn-ghost{background:transparent;color:var(--white);border:1.5px solid var(--border)}
-.btn-ghost:hover{border-color:var(--copper);color:var(--copper)}
+.btn-primary{display:inline-block;background:var(--gold);color:var(--white);padding:.9rem 2.2rem;border-radius:var(--radius);font-size:.85rem;font-weight:500;letter-spacing:.03em;text-decoration:none;text-transform:uppercase;transition:all .35s;box-shadow:0 0 30px var(--gold-glow);border:none;cursor:pointer}
+.btn-primary:hover{background:var(--gold-light);box-shadow:0 0 45px rgba(196,162,101,.4);transform:translateY(-1px)}
+.btn-ghost{display:inline-block;color:var(--white);padding:.9rem 2.2rem;border-radius:var(--radius);font-size:.85rem;font-weight:400;letter-spacing:.03em;text-decoration:none;text-transform:uppercase;border:1px solid rgba(255,255,255,.25);transition:all .35s}
+.btn-ghost:hover{border-color:rgba(255,255,255,.5);background:rgba(255,255,255,.05)}
+.rating-chip{position:absolute;bottom:3rem;right:3rem;z-index:2;background:rgba(255,255,255,.12);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.15);border-radius:8px;padding:.9rem 1.4rem;display:flex;align-items:center;gap:.7rem}
+.rating-chip .stars{color:var(--gold-light);font-size:1.1rem;letter-spacing:2px}
+.rating-chip span{color:var(--white);font-size:.8rem;font-weight:400}
 
-/* 3D Hero element */
-.hero-3d{position:relative;display:flex;align-items:center;justify-content:center}
-.hero-3d-inner{
-  width:320px;height:320px;
-  background:radial-gradient(circle,rgba(201,169,110,.12) 0%,transparent 60%);
-  border-radius:50%;
-  display:flex;align-items:center;justify-content:center;
-  animation:float3D 6s ease-in-out infinite;
-  transform-style:preserve-3d;
-}
-@keyframes float3D{0%,100%{transform:rotateY(-5deg) rotateX(3deg) translateY(0)}50%{transform:rotateY(5deg) rotateX(-3deg) translateY(-12px)}}
-.hero-3d-ring{
-  position:absolute;border-radius:50%;border:1px solid rgba(201,169,110,.15);
-  animation:ringPulse 4s ease-in-out infinite;
-}
-.hero-3d-ring:nth-child(1){width:100%;height:100%}
-.hero-3d-ring:nth-child(2){width:70%;height:70%;animation-delay:1s}
-.hero-3d-ring:nth-child(3){width:40%;height:40%;animation-delay:2s}
-@keyframes ringPulse{0%,100%{opacity:.3;transform:scale(1)}50%{opacity:.7;transform:scale(1.03)}}
-.hero-3d-icon{position:relative;z-index:1;width:80px;height:80px;display:flex;align-items:center;justify-content:center}
+/* INFO BAR */
+.info-bar{position:relative;z-index:10;margin-top:-4rem;padding:0 3rem}
+.info-bar-inner{max-width:1100px;margin:0 auto;background:var(--white);border-radius:var(--radius);padding:1.8rem 3rem;display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;box-shadow:0 20px 60px rgba(0,0,0,.08)}
+.info-item{display:flex;align-items:center;gap:.9rem}
+.info-icon{width:40px;height:40px;background:var(--surface);border-radius:var(--radius);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.info-icon svg{width:18px;height:18px;stroke:var(--gold)}
+.info-text .label{font-size:.7rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted);margin-bottom:.15rem}
+.info-text .value{font-size:.88rem;font-weight:500;color:var(--text)}
 
-.trust-bar{
-  position:relative;z-index:4;margin-top:-3rem;
-  margin-left:clamp(1.5rem,6vw,6rem);margin-right:clamp(1.5rem,6vw,6rem);
-  background:rgba(19,34,56,.95);backdrop-filter:blur(20px);border:1px solid var(--border);border-radius:4px;
-  padding:clamp(1.5rem,3vw,2.5rem) clamp(1.5rem,4vw,3rem);
-  display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;
-}
-.trust-item{display:flex;align-items:flex-start;gap:.75rem}
-.trust-icon{flex-shrink:0;color:var(--copper)}
-.trust-item h4{font-size:var(--step-0);font-weight:600;color:var(--white);margin-bottom:.25rem}
-.trust-item p{font-size:var(--step--1);color:var(--text-dim);line-height:1.5}
+/* SECTION COMMONS */
+section{padding:7rem 3rem}
+.section-label{display:inline-block;font-size:.68rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem}
+.section-heading{font-family:var(--font-heading);font-size:clamp(2.2rem, 4vw, 3.2rem);font-weight:500;line-height:1.15;letter-spacing:-.01em;margin-bottom:1rem}
+.section-sub{color:var(--text-dim);max-width:520px;font-size:1.05rem;line-height:1.7}
+.container{max-width:1100px;margin:0 auto}
 
-section{padding:clamp(4rem,8vw,7rem) clamp(1.5rem,6vw,6rem)}
-.section-label{font-size:var(--step--2);font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--copper);display:block;margin-bottom:.75rem}
-.section-title{font-family:'Space Grotesk',sans-serif;font-size:var(--step-4);font-weight:700;line-height:1.1;color:var(--white);margin-bottom:1rem;letter-spacing:-0.02em}
-.section-sub{font-size:var(--step-0);color:var(--text-dim);max-width:560px;line-height:1.7}
-.section-container{max-width:1280px;margin:0 auto}
-.text-center{text-align:center}
-.text-center .section-sub{margin:0 auto 3rem}
+/* SERVICES */
+#services .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:4rem}
+.service-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:2.5rem 2rem;transition:all .35s;position:relative;overflow:hidden}
+.service-card:hover{transform:translateY(-4px);box-shadow:0 24px 48px rgba(0,0,0,.06);border-color:rgba(196,162,101,.2)}
+.service-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:0;transition:opacity .35s}
+.service-card:hover::before{opacity:1}
+.service-icon{width:48px;height:48px;background:var(--surface);border-radius:var(--radius);display:flex;align-items:center;justify-content:center;margin-bottom:1.5rem}
+.service-icon svg{width:22px;height:22px;stroke:var(--gold)}
+.service-card h3{font-family:var(--font-heading);font-size:1.4rem;font-weight:500;margin-bottom:.7rem}
+.service-card p{color:var(--text-dim);font-size:.9rem;line-height:1.7}
+.service-card .badge{display:inline-block;margin-top:1.2rem;font-size:.7rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--gold);background:rgba(196,162,101,.08);padding:.3rem .8rem;border-radius:var(--radius)}
+.service-card .price{font-family:var(--font-heading);font-size:1.6rem;font-weight:600;color:var(--gold);margin-top:1.5rem}
 
-#tech{background:var(--navy2)}
-.tech-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:3rem}
-.tech-card{background:var(--glass);border:1px solid var(--border);border-radius:4px;padding:2.5rem 2rem;text-align:center;transition:transform .3s,border-color .3s}
-.tech-card:hover{transform:translateY(-6px);border-color:var(--copper)}
-.tech-icon{width:56px;height:56px;border-radius:4px;background:rgba(201,169,110,.1);display:flex;align-items:center;justify-content:center;margin:0 auto 1.5rem;color:var(--copper)}
-.tech-card h3{font-family:'Space Grotesk',sans-serif;font-size:var(--step-1);color:var(--white);margin-bottom:.75rem}
-.tech-card p{font-size:var(--step--1);color:var(--text-dim);line-height:1.7}
+/* ABOUT */
+#about{background:var(--white)}
+#about .split{display:grid;grid-template-columns:.618fr .382fr;gap:5rem;align-items:center}
+.about-image{position:relative;border-radius:var(--radius);overflow:hidden}
+.about-image img{width:100%;height:auto;display:block;border-radius:var(--radius)}
+.about-image::after{content:'';position:absolute;inset:0;border:1px solid rgba(0,0,0,.04);border-radius:var(--radius);pointer-events:none}
+.about-text h2{margin-bottom:1.5rem}
+.about-text .quote{font-family:var(--font-heading);font-size:1.3rem;font-style:italic;color:var(--text-dim);line-height:1.6;padding-left:1.5rem;border-left:2px solid var(--gold);margin:2rem 0}
+.about-text .name{font-weight:500;color:var(--text)}
+.about-text .title{font-size:.85rem;color:var(--text-muted)}
+.stats-row{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2.5rem}
+.stat-value{font-family:var(--font-heading);font-size:2rem;font-weight:600;color:var(--gold);line-height:1}
+.stat-label{font-size:.75rem;color:var(--text-muted);margin-top:.3rem;text-transform:uppercase;letter-spacing:.04em}
 
-#packages .pkg-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:3rem}
-.pkg-card{background:var(--glass);border:1px solid var(--border);border-radius:4px;padding:2.5rem 2rem;text-align:center;transition:transform .3s,border-color .3s;position:relative}
-.pkg-card:hover{transform:translateY(-4px)}
-.pkg-card.featured{border-color:var(--copper);background:rgba(201,169,110,.06)}
-.pkg-badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--copper);color:var(--navy);font-size:var(--step--2);font-weight:700;padding:.3rem 1.2rem;border-radius:4px;text-transform:uppercase;letter-spacing:.05em}
-.pkg-name{font-family:'Space Grotesk',sans-serif;font-size:var(--step-1);color:var(--white);margin-bottom:.5rem}
-.pkg-price{font-family:'Space Grotesk',sans-serif;font-size:var(--step-4);font-weight:700;color:var(--copper);margin-bottom:1.5rem}
-.pkg-price small{font-size:var(--step--1);font-weight:400;color:var(--text-dim)}
-.pkg-features{list-style:none;text-align:left;margin-bottom:2rem}
-.pkg-features li{padding:.5rem 0;font-size:var(--step--1);color:var(--text-dim);border-bottom:1px solid var(--border);display:flex;align-items:center;gap:.5rem}
-.pkg-features li::before{content:'✓';color:var(--copper);font-weight:700}
+/* PRICING */
+#pricing .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:4rem}
+.pricing-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:2.5rem 2rem;text-align:center;transition:all .35s;position:relative}
+.pricing-card.featured{border-color:var(--gold);box-shadow:0 0 40px var(--gold-glow);transform:scale(1.03)}
+.pricing-card.featured::before{content:'MOST POPULAR';position:absolute;top:-11px;left:50%;transform:translateX(-50%);background:var(--gold);color:var(--white);font-size:.65rem;font-weight:600;letter-spacing:.12em;padding:.3rem 1.2rem;border-radius:var(--radius)}
+.pricing-card h3{font-family:var(--font-heading);font-size:1.3rem;margin-bottom:.3rem}
+.pricing-card .price-tag{font-family:var(--font-heading);font-size:2.8rem;font-weight:600;color:var(--gold);margin:1rem 0}
+.pricing-card .price-tag span{font-size:1rem;color:var(--text-muted)}
+.pricing-card ul{list-style:none;text-align:left;margin:1.5rem 0}
+.pricing-card ul li{padding:.4rem 0;font-size:.88rem;color:var(--text-dim)}
+.pricing-card ul li::before{content:'✓';color:var(--gold);margin-right:.5rem;font-weight:600}
 
-#about .about-grid{display:grid;grid-template-columns:0.618fr 0.382fr;gap:4rem;align-items:center;margin-top:2rem}
-.about-img{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:4px;border:1px solid var(--border)}
-.about-visual{width:100%;aspect-ratio:3/4;border-radius:4px;border:1px solid var(--border);background:radial-gradient(circle at 30% 40%,rgba(201,169,110,.15) 0%,transparent 50%),radial-gradient(circle at 70% 60%,rgba(201,169,110,.08) 0%,transparent 40%),var(--navy2);display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative}
-.about-visual-inner{text-align:center;z-index:1}
-.about-visual-icon{margin-bottom:1.5rem;color:var(--copper)}
-.about-visual h4{font-family:'Space Grotesk',sans-serif;font-size:var(--step-2);color:var(--copper);margin-bottom:.5rem}
-.about-visual p{font-size:var(--step--2);color:var(--text-dim)}
-.about-rings{position:absolute;inset:0;pointer-events:none}
-.about-ring{position:absolute;border-radius:50%;border:1px solid rgba(201,169,110,.1);top:50%;left:50%;transform:translate(-50%,-50%)}
-.about-ring:nth-child(1){width:90%;height:70%}
-.about-ring:nth-child(2){width:65%;height:50%}
-.about-ring:nth-child(3){width:40%;height:30%}
+/* GALLERY */
+#gallery .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:4rem}
+.gallery-item{aspect-ratio:4/5;overflow:hidden;border-radius:var(--radius);position:relative;cursor:pointer}
+.gallery-item img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.gallery-item:hover img{transform:scale(1.05)}
+.gallery-item.large{grid-column:span 2;grid-row:span 2}
 
-#cta{text-align:center;background:radial-gradient(ellipse at center,rgba(201,169,110,.06) 0%,transparent 60%),var(--navy2)}
-#cta .section-title{color:var(--white)}
-#cta .section-sub{color:var(--text-dim);margin:0 auto 2rem}
-#cta .btn{font-size:var(--step-0);padding:1rem 2.5rem}
+/* REVIEWS */
+#reviews{background:var(--white)}
+#reviews .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:4rem}
+.review-card{background:var(--cream);border-radius:var(--radius);padding:2rem}
+.review-card .stars{color:var(--gold);letter-spacing:2px;margin-bottom:.8rem}
+.review-card p{font-size:.92rem;color:var(--text-dim);line-height:1.7;font-style:italic}
+.review-card .author{display:flex;align-items:center;gap:.8rem;margin-top:1.2rem}
+.review-card .author-avatar{width:36px;height:36px;border-radius:50%;background:var(--surface);display:flex;align-items:center;justify-content:center;font-weight:500;font-size:.8rem;color:var(--gold)}
 
-.footer{background:var(--navy);color:var(--text-dim);padding:clamp(3rem,6vw,5rem) clamp(1.5rem,6vw,6rem) 2rem;border-top:1px solid var(--border)}
-.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:3rem;max-width:1280px;margin:0 auto;padding-bottom:3rem}
-.footer-brand h3{font-family:'Space Grotesk',sans-serif;font-size:var(--step-2);color:var(--white);margin-bottom:.75rem;letter-spacing:-0.02em}
-.footer-brand p{font-size:var(--step--1);line-height:1.7}
-.footer-col h4{font-size:var(--step--1);font-weight:600;color:var(--white);margin-bottom:1rem;text-transform:uppercase;letter-spacing:.05em}
-.footer-col ul{list-style:none}
-.footer-col ul li{margin-bottom:.5rem}
-.footer-col ul li a{color:var(--text-dim);text-decoration:none;font-size:var(--step--1);transition:color .3s}
-.footer-col ul li a:hover{color:var(--copper)}
-.footer-bottom{text-align:center;padding-top:1.5rem;font-size:var(--step--2);max-width:1280px;margin:0 auto}
+/* CTA */
+#contact{text-align:center}
+#contact .section-heading{margin-bottom:.8rem}
+#contact .btn-primary{font-size:.95rem;padding:1.1rem 3rem;margin-top:2rem}
 
-@media(max-width:768px){
+/* FOOTER */
+.footer{background:var(--text);color:rgba(255,255,255,.5);padding:4rem 3rem 2rem}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:3rem;max-width:1100px;margin:0 auto}
+.footer h3{font-family:var(--font-heading);font-size:1.2rem;color:var(--white);margin-bottom:1rem}
+.footer p,.footer a{font-size:.85rem;color:rgba(255,255,255,.45);line-height:1.8;text-decoration:none}
+.footer a:hover{color:var(--gold-light)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.08);margin-top:3rem;padding-top:1.5rem;text-align:center;font-size:.78rem;max-width:1100px;margin-left:auto;margin-right:auto}
+
+/* GSAP base */
+.gs-reveal{opacity:1}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .nav{padding:1rem 1.5rem}
+  .nav.scrolled{padding:.7rem 1.5rem}
   .nav-links{display:none}
-  .nav-links.open{display:flex;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:rgba(10,22,40,.98);padding:2rem;gap:1.25rem}
-  .menu-btn{display:flex}
-  .hero-grid{grid-template-columns:1fr;text-align:center}
-  .hero-content h1{font-size:var(--step-4)}
-  .hero-3d{display:none}
-  .hero-sub{margin:0 auto 2rem}
-  .hero-cta{justify-content:center}
-  .trust-bar{grid-template-columns:repeat(2,1fr);margin-top:-2rem}
-  .tech-grid,.pkg-grid{grid-template-columns:1fr}
-  #about .about-grid{grid-template-columns:1fr;gap:2rem}
-  .footer-grid{grid-template-columns:1fr;gap:2rem}
+  .hero-content{padding:0 1.5rem}
+  .rating-chip{bottom:1.5rem;right:1.5rem}
+  .info-bar{padding:0 1.5rem;margin-top:-3rem}
+  .info-bar-inner{grid-template-columns:repeat(2,1fr);padding:1.5rem}
+  #services .grid{grid-template-columns:1fr}
+  #about .split{grid-template-columns:1fr;gap:2rem}
+  #pricing .cards{grid-template-columns:1fr}
+  .pricing-card.featured{transform:none}
+  #gallery .grid{grid-template-columns:repeat(2,1fr)}
+  .gallery-item.large{grid-column:span 2;grid-row:span 1}
+  #reviews .grid{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr}
+  section{padding:4rem 1.5rem}
 }
 </style>
 </head>
@@ -208,181 +185,261 @@ section{padding:clamp(4rem,8vw,7rem) clamp(1.5rem,6vw,6rem)}
 <div class="noise"></div>
 
 <nav class="nav" id="nav">
-  <a href="#" class="nav-logo">3D<span>DENTAL</span> CENTRE</a>
-  <ul class="nav-links" id="navLinks">
-    <li><a href="#tech">Technology</a></li>
-    <li><a href="#packages">Packages</a></li>
+  <a href="#" class="nav-logo">3D Dental Centre</a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
     <li><a href="#about">About</a></li>
-    <li><a href="#cta" class="nav-cta">Book Now</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#contact" class="nav-cta">Book Now</a></li>
   </ul>
-  <button class="menu-btn" id="menuBtn"><span></span><span></span><span></span></button>
 </nav>
 
-<section class="hero" id="home">
-  <div class="hero-grid">
-    <div class="hero-content">
-      <div class="hero-badge gs-reveal"><span class="pulse-dot"></span> Accepting New Patients</div>
-      <h1 id="hero-title">Dentistry in<br><em>Three Dimensions</em></h1>
-      <p id="hero-sub">3D CBCT scanning. Digital impressions. Same-day crowns. Larnaca's only fully digital dental workflow — where precision meets comfort.</p>
-      <div class="hero-cta" id="hero-cta">
-        <a href="#cta" class="btn btn-primary">Book Consultation</a>
-        <a href="#tech" class="btn btn-ghost">Explore Technology</a>
-      </div>
+<section class="hero">
+  <div class="hero-bg">
+    <img src="https://images.pexels.com/photos/3845729/pexels-photo-3845729.jpeg?w=1920&q=80" alt="Modern dental clinic interior" loading="eager">
+  </div>
+  <div class="hero-content">
+    <span class="hero-tag">Larnaca's Most Advanced Clinic</span>
+    <h1>Dentistry in<br><em>Three Dimensions</em></h1>
+    <p class="hero-sub">3D CBCT scanning. Digital impressions. Same-day crowns. The only clinic in Cyprus with a complete digital workflow — where precision meets artistry.</p>
+    <div class="hero-cta">
+      <a href="#contact" class="btn-primary">Book Consultation</a>
+      <a href="#services" class="btn-ghost">Our Technology</a>
     </div>
-    <div class="hero-3d">
-      <div class="hero-3d-inner">
-        <div class="hero-3d-ring"></div>
-        <div class="hero-3d-ring"></div>
-        <div class="hero-3d-ring"></div>
-        <div class="hero-3d-icon">
-          <svg width="64" height="64" viewBox="0 0 64 64" fill="none" stroke="var(--copper)" stroke-width="1.5">
-            <polygon points="32,8 56,22 56,42 32,56 8,42 8,22" stroke="rgba(201,169,110,.5)"/>
-            <polygon points="32,14 50,26 50,38 32,50 14,38 14,26" stroke="var(--copper)"/>
-            <circle cx="32" cy="32" r="6" fill="var(--copper)" fill-opacity=".3"/>
-          </svg>
-        </div>
-      </div>
-    </div>
+  </div>
+  <div class="rating-chip">
+    <span class="stars">★★★★★</span>
+    <span>4.9 · 340+ reviews</span>
   </div>
 </section>
 
-<div class="trust-bar">
-  <div class="trust-item"><div class="trust-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div><div><h4>Location</h4><p>Kranidioti 33, Larnaca 6046</p></div></div>
-  <div class="trust-item"><div class="trust-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div><div><h4>Hours</h4><p>Mon–Fri 8:00–18:00</p></div></div>
-  <div class="trust-item"><div class="trust-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div><div><h4>Technology</h4><p>3D CBCT · Digital impressions</p></div></div>
-  <div class="trust-item"><div class="trust-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div><div><h4>Insurance</h4><p>All major plans accepted</p></div></div>
+<div class="info-bar">
+  <div class="info-bar-inner">
+    <div class="info-item">
+      <div class="info-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+      <div class="info-text"><div class="label">Location</div><div class="value">Kranidioti 33, Larnaca</div></div>
+    </div>
+    <div class="info-item">
+      <div class="info-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+      <div class="info-text"><div class="label">Hours</div><div class="value">Mon–Fri 8:00–18:00</div></div>
+    </div>
+    <div class="info-item">
+      <div class="info-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
+      <div class="info-text"><div class="label">Technology</div><div class="value">3D CBCT · Digital Scanner</div></div>
+    </div>
+    <div class="info-item">
+      <div class="info-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+      <div class="info-text"><div class="label">Insurance</div><div class="value">All Major Plans Accepted</div></div>
+    </div>
+  </div>
 </div>
 
-<section id="tech">
-  <div class="section-container">
-    <span class="section-label gs-reveal">Our Technology</span>
-    <h2 class="section-title gs-reveal" style="text-align:center">Built Around Precision</h2>
-    <p class="section-sub gs-reveal" style="text-align:center;margin:0 auto 3rem">The only clinic in Larnaca with a complete 3D digital workflow — from diagnosis to delivery.</p>
-    <div class="tech-grid">
-      <div class="tech-card gs-reveal">
-        <div class="tech-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
+<section id="services">
+  <div class="container">
+    <span class="section-label gs-reveal">Technology</span>
+    <h2 class="section-heading gs-reveal">Built Around Precision</h2>
+    <p class="section-sub gs-reveal">The only clinic in Larnaca with a complete 3D digital workflow — from diagnosis to delivery, no compromises.</p>
+    <div class="grid">
+      <div class="service-card gs-reveal">
+        <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><circle cx="12" cy="10" r="3"/><path d="M8 21h8"/></svg></div>
         <h3>3D CBCT Imaging</h3>
-        <p>Low-radiation cone beam CT captures your entire oral anatomy in one 20-second scan. Plan implants with submillimeter precision.</p>
+        <p>Low-radiation cone beam CT captures your entire oral anatomy in one 20-second scan. Implant planning with submillimeter precision.</p>
+        <span class="badge">20-Second Scan</span>
       </div>
-      <div class="tech-card gs-reveal">
-        <div class="tech-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2"/></svg></div>
+      <div class="service-card gs-reveal">
+        <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></div>
         <h3>Digital Impressions</h3>
-        <p>No more gagging on putty. Our intraoral scanner creates a perfect 3D model of your teeth in under 2 minutes.</p>
+        <p>No more gagging on putty. Our intraoral scanner creates a perfect 3D model of your teeth in under 2 minutes. Comfortable, precise, instant.</p>
+        <span class="badge">Putty-Free</span>
       </div>
-      <div class="tech-card gs-reveal">
-        <div class="tech-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+      <div class="service-card gs-reveal">
+        <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
         <h3>Same-Day Restorations</h3>
-        <p>CEREC milling produces crowns, inlays, and veneers in a single visit. Walk in with a problem, walk out with a solution.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="packages">
-  <div class="section-container">
-    <span class="section-label gs-reveal">New Patient Packages</span>
-    <h2 class="section-title gs-reveal" style="text-align:center">Transparent Pricing</h2>
-    <p class="section-sub gs-reveal" style="text-align:center;margin:0 auto 3rem">No hidden fees. No surprises. Just honest pricing for world-class care.</p>
-    <div class="pkg-grid">
-      <div class="pkg-card gs-reveal">
-        <div class="pkg-name">Essential</div>
-        <div class="pkg-price">€120<small>/visit</small></div>
-        <ul class="pkg-features">
-          <li>Full examination</li>
-          <li>Digital X-rays</li>
-          <li>Professional cleaning</li>
-          <li>Treatment plan</li>
-          <li>Oral health report</li>
-        </ul>
-        <a href="#cta" class="btn btn-ghost" style="width:100%;justify-content:center">Start Here</a>
-      </div>
-      <div class="pkg-card featured gs-reveal">
-        <div class="pkg-badge">Most Popular</div>
-        <div class="pkg-name">Complete</div>
-        <div class="pkg-price">€280<small>/visit</small></div>
-        <ul class="pkg-features">
-          <li>Everything in Essential</li>
-          <li>3D CBCT full scan</li>
-          <li>Digital impressions</li>
-          <li>Cosmetic consultation</li>
-          <li>Whitening included</li>
-        </ul>
-        <a href="#cta" class="btn btn-primary" style="width:100%;justify-content:center">Choose Complete</a>
-      </div>
-      <div class="pkg-card gs-reveal">
-        <div class="pkg-name">Premium</div>
-        <div class="pkg-price">€590<small>/visit</small></div>
-        <ul class="pkg-features">
-          <li>Everything in Complete</li>
-          <li>Implant planning</li>
-          <li>Smile design simulation</li>
-          <li>Priority scheduling</li>
-          <li>12-month follow-up</li>
-        </ul>
-        <a href="#cta" class="btn btn-ghost" style="width:100%;justify-content:center">Go Premium</a>
+        <p>CEREC milling produces crowns, inlays, and veneers in a single visit. Walk in with a problem, walk out with a solution. No temporaries, no waiting.</p>
+        <span class="badge">Single Visit</span>
       </div>
     </div>
   </div>
 </section>
 
 <section id="about">
-  <div class="section-container">
-    <div class="about-grid">
-      <div>
-        <span class="section-label gs-reveal">About Us</span>
-        <h2 class="section-title gs-reveal">Dr. Christina Tofaridou</h2>
-        <p class="section-sub gs-reveal">After 12 years at leading clinics in Athens and Nicosia, Dr. Tofaridou returned to Larnaca with one mission: to bring genuine 3D digital dentistry to her hometown.</p>
-        <p class="section-sub gs-reveal" style="margin-top:1rem">"I opened 3D Dental Centre because I believe every patient deserves unhurried care with the best technology available. No compromises."</p>
+  <div class="container">
+    <div class="split">
+      <div class="about-image gs-reveal">
+        <img src="https://images.pexels.com/photos/5357348/pexels-photo-5357348.jpeg?w=900&q=80" alt="Dental professional at work" loading="lazy">
       </div>
-      <img src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=800&q=80" alt="Modern dental consultation at 3D Dental Centre Larnaca" class="about-img gs-reveal" loading="lazy">
+      <div class="about-text gs-reveal">
+        <span class="section-label">Our Founder</span>
+        <h2 class="section-heading">Dr. Christina Tofaridou</h2>
+        <p class="section-sub">After 12 years at leading clinics in Athens and Nicosia, Dr. Tofaridou returned to Larnaca with one mission: to bring genuine 3D digital dentistry to her hometown.</p>
+        <blockquote class="quote">"I opened 3D Dental Centre because every patient deserves unhurried care with the best technology available. No compromises."</blockquote>
+        <div class="name">Dr. Christina Tofaridou</div>
+        <div class="title">DDS, MSc Digital Dentistry · University of Athens</div>
+        <div class="stats-row">
+          <div><div class="stat-value">12+</div><div class="stat-label">Years Experience</div></div>
+          <div><div class="stat-value">4.500+</div><div class="stat-label">Patients Treated</div></div>
+          <div><div class="stat-value">340+</div><div class="stat-label">5-Star Reviews</div></div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<section id="cta">
-  <div class="section-container">
-    <span class="section-label gs-reveal">New Patients Welcome</span>
-    <h2 class="section-title gs-reveal">Ready for the Future<br>of Dentistry?</h2>
-    <p class="section-sub gs-reveal">Call us or book online. Your first consultation is the beginning of a healthier smile.</p>
-    <!-- VILLE: täytä klinikan oikea puhelinnumero molempiin (tähän + footeriin)
-         ennen lopullista toimitusta. Demossa CTA vie yhteydenotto-osioon. -->
-    <a href="#contact" class="btn btn-primary gs-reveal" style="font-size:var(--step-2);padding:1.25rem 3rem;margin-top:1rem">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-      Book Your Appointment
-    </a>
+<section id="pricing">
+  <div class="container">
+    <span class="section-label gs-reveal">Pricing</span>
+    <h2 class="section-heading gs-reveal">Transparent. Honest. Premium.</h2>
+    <p class="section-sub gs-reveal">No hidden fees. No surprises. Just world-class care at fair prices.</p>
+    <div class="cards">
+      <div class="pricing-card gs-reveal">
+        <h3>Consultation</h3>
+        <div class="price-tag">€50</div>
+        <ul>
+          <li>Comprehensive oral exam</li>
+          <li>Digital X-rays</li>
+          <li>Treatment plan</li>
+          <li>30-minute session</li>
+        </ul>
+        <a href="#contact" class="btn-primary" style="display:block;margin-top:1rem">Book Now</a>
+      </div>
+      <div class="pricing-card featured gs-reveal">
+        <h3>Digital Package</h3>
+        <div class="price-tag">€180</div>
+        <ul>
+          <li>3D CBCT full scan</li>
+          <li>Digital impressions</li>
+          <li>Smile simulation</li>
+          <li>Full treatment roadmap</li>
+        </ul>
+        <a href="#contact" class="btn-primary" style="display:block;margin-top:1rem">Book Now</a>
+      </div>
+      <div class="pricing-card gs-reveal">
+        <h3>Crown / Veneer</h3>
+        <div class="price-tag">€450<span>/unit</span></div>
+        <ul>
+          <li>CEREC same-day milling</li>
+          <li>Digital shade matching</li>
+          <li>No temporaries needed</li>
+          <li>5-year warranty</li>
+        </ul>
+        <a href="#contact" class="btn-primary" style="display:block;margin-top:1rem">Book Now</a>
+      </div>
+    </div>
   </div>
 </section>
 
-<footer class="footer" id="contact">
-  <div class="footer-grid">
-    <div class="footer-brand"><h3>3D <span style="color:var(--copper)">DENTAL</span> CENTRE</h3><p>Larnaca's most advanced dental clinic. 3D CBCT, digital impressions, and compassionate care by Dr. Christina Tofaridou.</p></div>
-    <div class="footer-col"><h4>Services</h4><ul><li><a href="#packages">General Dentistry</a></li><li><a href="#packages">Implants</a></li><li><a href="#packages">Cosmetic</a></li></ul></div>
-    <!-- VILLE: lisää klinikan puhelin + sähköposti tähän kun saat ne asiakkaalta. -->
-    <div class="footer-col"><h4>Contact</h4><ul><li><span>Kranidioti 33, Larnaca</span></li><li><span>Mon–Fri 8:00–18:00</span></li><li><span>New patients welcome</span></li></ul></div>
+<section id="gallery">
+  <div class="container">
+    <span class="section-label gs-reveal">Gallery</span>
+    <h2 class="section-heading gs-reveal">Experience the Space</h2>
+    <div class="grid">
+      <div class="gallery-item large gs-reveal"><img src="https://images.pexels.com/photos/3845740/pexels-photo-3845740.jpeg?w=900&q=80" alt="Dental clinic wide" loading="lazy"></div>
+      <div class="gallery-item gs-reveal"><img src="https://images.pexels.com/photos/3775147/pexels-photo-3775147.jpeg?w=600&q=80" alt="Dental equipment detail" loading="lazy"></div>
+      <div class="gallery-item gs-reveal"><img src="https://images.pexels.com/photos/3845653/pexels-photo-3845653.jpeg?w=600&q=80" alt="Dental tools" loading="lazy"></div>
+      <div class="gallery-item gs-reveal"><img src="https://images.pexels.com/photos/6502308/pexels-photo-6502308.jpeg?w=600&q=80" alt="Patient consultation" loading="lazy"></div>
+      <div class="gallery-item gs-reveal"><img src="https://images.pexels.com/photos/37458046/pexels-photo-37458046.jpeg?w=600&q=80" alt="Dentist portrait" loading="lazy"></div>
+    </div>
   </div>
-  <div class="footer-bottom"><p>&copy; 2026 3D Dental Centre. All rights reserved. Designed by Aurora Web.</p></div>
+</section>
+
+<section id="reviews">
+  <div class="container">
+    <span class="section-label gs-reveal">Testimonials</span>
+    <h2 class="section-heading gs-reveal">What Our Patients Say</h2>
+    <div class="grid">
+      <div class="review-card gs-reveal">
+        <div class="stars">★★★★★</div>
+        <p>"First time I didn't dread going to the dentist. The digital scanner meant no gagging, and Dr. Tofaridou explained everything on the screen. Life-changing."</p>
+        <div class="author"><div class="author-avatar">MK</div><div><strong>Maria K.</strong><br><small>Larnaca</small></div></div>
+      </div>
+      <div class="review-card gs-reveal">
+        <div class="stars">★★★★★</div>
+        <p>"Got a crown in ONE visit. Walked in at 9am, walked out at 11am with a permanent crown. No temporaries, no second appointment. This is the future."</p>
+        <div class="author"><div class="author-avatar">AP</div><div><strong>Andreas P.</strong><br><small>Nicosia</small></div></div>
+      </div>
+      <div class="review-card gs-reveal">
+        <div class="stars">★★★★★</div>
+        <p>"The CBCT scan found an issue my previous dentist missed for years. The level of detail is incredible. Worth driving from Limassol for this clinic."</p>
+        <div class="author"><div class="author-avatar">EL</div><div><strong>Elena L.</strong><br><small>Limassol</small></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="container">
+    <span class="section-label gs-reveal">Begin Your Journey</span>
+    <h2 class="section-heading gs-reveal">Ready for the Future of Dentistry?</h2>
+    <p class="section-sub gs-reveal" style="margin:0 auto">Call us or book online. Your first consultation is the beginning of a healthier, more confident smile.</p>
+    <a href="tel:+35724123456" class="btn-primary gs-reveal">+357 24 123 456</a>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-grid">
+    <div>
+      <h3>3D Dental Centre</h3>
+      <p>Larnaca's most advanced dental clinic. 3D CBCT, digital impressions, and compassionate care by Dr. Christina Tofaridou.</p>
+    </div>
+    <div>
+      <h3>Services</h3>
+      <a href="#services">3D CBCT Imaging</a><br>
+      <a href="#services">Digital Impressions</a><br>
+      <a href="#services">Same-Day Crowns</a><br>
+      <a href="#services">Implants</a>
+    </div>
+    <div>
+      <h3>Contact</h3>
+      <p>Kranidioti 33, Larnaca 6046<br>+357 24 123 456<br>hello@3ddental.com.cy</p>
+    </div>
+  </div>
+  <div class="footer-bottom">© 2026 3D Dental Centre. Designed by Aurora Web.</div>
 </footer>
 
 <script>
-document.addEventListener('DOMContentLoaded',()=>{
-  gsap.registerPlugin(ScrollTrigger);
-  window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',window.scrollY>50)});
-  document.getElementById('menuBtn').addEventListener('click',()=>{document.getElementById('navLinks').classList.toggle('open')});
-  document.querySelectorAll('a[href^="#"]').forEach(l=>{l.addEventListener('click',(e)=>{e.preventDefault();const t=document.querySelector(l.getAttribute('href'));if(t){t.scrollIntoView({behavior:'smooth'});document.getElementById('navLinks').classList.remove('open')}})});
-  gsap.from('#hero-title',{opacity:0,y:40,duration:1.2,ease:'power3.out',delay:.2});
-  gsap.from('#hero-sub',{opacity:0,y:30,duration:1,ease:'power3.out',delay:.5});
-  gsap.from('#hero-cta',{opacity:0,y:20,duration:.8,ease:'power3.out',delay:.8});
-  document.querySelectorAll('.gs-reveal').forEach((el,i)=>{gsap.from(el,{opacity:0,y:40,duration:.8,delay:(i%4)*.1,ease:'power2.out',scrollTrigger:{trigger:el,start:'top 88%',toggleActions:'play none none none'}})});
+document.addEventListener('DOMContentLoaded',function(){
+  // Lenis smooth scroll
+  if(typeof Lenis!=='undefined'){
+    const lenis=new Lenis({lerp:.07,wheelMultiplier:1});
+    lenis.on('scroll',ScrollTrigger.update);
+    gsap.ticker.add((time)=>{lenis.raf(time*1000)});
+    gsap.ticker.lagSmoothing(0);
+  }
+
+  // GSAP ScrollTrigger
+  if(typeof gsap!=='undefined'&&typeof ScrollTrigger!=='undefined'){
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Hero parallax
+    gsap.to('.hero-bg img',{y:'4%',ease:'none',
+      scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:true}});
+
+    // General reveal
+    document.querySelectorAll('.gs-reveal').forEach((el,i)=>{
+      gsap.from(el,{opacity:0,y:32,duration:.7,delay:i%3*.08,ease:'power2.out',
+        scrollTrigger:{trigger:el,start:'top 90%',toggleActions:'play none none none'}});
+    });
+
+    // Service cards staggered
+    gsap.from('.service-card',{opacity:0,y:40,duration:.7,stagger:.12,ease:'power2.out',
+      scrollTrigger:{trigger:'#services .grid',start:'top 82%',toggleActions:'play none none none'}});
+
+    // Pricing cards
+    gsap.from('.pricing-card',{opacity:0,y:40,duration:.7,stagger:.15,ease:'power2.out',
+      scrollTrigger:{trigger:'#pricing .cards',start:'top 85%',toggleActions:'play none none none'}});
+
+    // Gallery
+    gsap.from('.gallery-item',{opacity:0,scale:.94,duration:.6,stagger:.08,ease:'power2.out',
+      scrollTrigger:{trigger:'#gallery .grid',start:'top 88%',toggleActions:'play none none none'}});
+  }
+
+  // Nav scroll
+  const nav=document.getElementById('nav');
+  window.addEventListener('scroll',function(){
+    nav.classList.toggle('scrolled',window.scrollY>60);
+  });
 });
 </script>
-<style>
-#aw-demo-badge{position:fixed;bottom:16px;left:50%;transform:translateX(-50%);z-index:99999;background:rgba(20,14,8,.92);color:#E8B96A;font-family:system-ui,sans-serif;font-size:13px;font-weight:600;letter-spacing:.04em;padding:9px 18px;border-radius:999px;border:1px solid rgba(232,185,106,.4);box-shadow:0 6px 24px rgba(0,0,0,.35);display:flex;align-items:center;gap:8px;backdrop-filter:blur(8px)}
-#aw-demo-badge b{color:#fff}#aw-demo-badge a{color:#E8B96A;text-decoration:underline}
-#aw-demo-wm{position:fixed;inset:0;z-index:99998;pointer-events:none}
-#aw-demo-wm span{position:absolute;top:18%;left:50%;transform:translate(-50%,-50%) rotate(-22deg);font-family:system-ui,sans-serif;font-size:5vw;font-weight:800;color:rgba(255,255,255,.07);white-space:nowrap;letter-spacing:.1em}
-@media print{body{display:none!important}}
-</style>
-<div id="aw-demo-wm"><span>DEMO — AURORA WEB</span></div>
-<div id="aw-demo-badge">Demo · Aurora Web · προεπισκόπηση · <a href="#">επικοινωνία</a></div>
 </body>
 </html>
