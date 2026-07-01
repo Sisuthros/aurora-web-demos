@@ -177,7 +177,32 @@ a{color:inherit;text-decoration:none}
 .marquee-sep svg{width:10px;height:10px;fill:var(--gold)}
 @keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
-/* ═══════════════════ SECTION SHELL ═══════════════════ */
+/* Sticky mobile CTA */
+.mobile-cta{display:none;position:fixed;bottom:0;left:0;right:0;z-index:99;
+  background:rgba(248,246,242,.96);backdrop-filter:blur(20px);
+  border-top:1px solid var(--border);padding:.8rem 1rem;
+  justify-content:center;gap:.6rem}
+.mobile-cta .btn{padding:.75rem 1.5rem;font-size:.85rem}
+@media(max-width:768px){.mobile-cta{display:flex}}
+
+/* Section alternation */
+section.alt{background:var(--white)}
+
+/* Hover enhancements */
+.work-card:hover .work-card-img img{transform:scale(1.05)}
+.btn:active{transform:scale(.97)}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;background:var(--gold);transition:width .3s}
+.nav-links a:hover::after{width:100%}
+
+/* FAQ accordion animation */
+.faq-a{max-height:0;overflow:hidden;transition:max-height .4s var(--ease)}
+.faq-a.open{max-height:300px}
+.faq-q{width:100%;text-align:left;background:none;border:none;
+  padding:1.2rem 0;display:flex;justify-content:space-between;align-items:center;
+  font-family:var(--fd);font-size:1.05rem;font-weight:500;color:var(--text);
+  cursor:pointer;border-bottom:1px solid var(--border)}
+.faq-q svg{transition:transform .3s}
+.faq-q.open svg{transform:rotate(180deg)}
 section{padding:7rem 0;position:relative}
 .sec-label{font-size:var(--step--1);text-transform:uppercase;letter-spacing:.12em;
   color:var(--gold-dark);margin-bottom:1.5rem;font-weight:700;
@@ -853,6 +878,26 @@ footer{padding:3rem 0 2rem;border-top:1px solid var(--border);background:var(--s
         </div>
       </div>
     </div>
+    <div class="testimonial gs-reveal" style="margin-top:1.5rem">
+      <p class="testimonial-quote">We needed a site in Greek, English, and Russian — fast. Aurora delivered in three days, and our Google traffic doubled in the first month. The fixed-price model meant no surprises on the invoice.</p>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar" style="background:var(--gold-light);color:var(--white)">V</div>
+        <div>
+          <div class="name">Vasiliou &amp; Co LLC</div>
+          <div class="role">Law Firm · Larnaca, Cyprus</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial gs-reveal" style="margin-top:1.5rem">
+      <p class="testimonial-quote">I was skeptical about the 'free mockup' promise — but they actually did it. The demo looked so good I approved it same day. My bookings are up 40% since launch. Best €899 I ever spent.</p>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar" style="background:var(--sage);color:var(--white)">M</div>
+        <div>
+          <div class="name">Mingle Cafe</div>
+          <div class="role">Café · Larnaca, Cyprus</div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -969,6 +1014,12 @@ footer{padding:3rem 0 2rem;border-top:1px solid var(--border);background:var(--s
 </section>
 
 <!-- ═════════════ FOOTER ═════════════ -->
+<!-- ═════════════ MOBILE CTA ═════════════ -->
+<div class="mobile-cta">
+  <a href="#contact" class="btn btn-primary" style="font-size:.82rem;padding:.7rem 1.4rem">Get a free mockup</a>
+  <a href="https://wa.me/357" class="btn btn-ghost" style="font-size:.82rem;padding:.7rem 1.4rem">WhatsApp</a>
+</div>
+
 <footer>
   <div class="container">
     <div class="footer-grid">
