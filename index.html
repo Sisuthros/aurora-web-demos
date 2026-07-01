@@ -101,7 +101,7 @@ a{color:inherit;text-decoration:none}
 .hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;
   position:relative;overflow:hidden;padding:8rem 0 0}
 .hero-bg{position:absolute;inset:0;z-index:0;overflow:hidden}
-.hero-bg video{width:100%;height:100%;object-fit:cover;
+.hero-bg img{width:100%;height:100%;object-fit:cover;
   animation:heroZoom 25s ease-in-out infinite alternate}
 @keyframes heroZoom{from{transform:scale(1)}to{transform:scale(1.06)}}
 .hero-bg::after{content:'';position:absolute;inset:0;
@@ -250,7 +250,7 @@ section{padding:7rem 0;position:relative}
 .pr7{padding-right:7px} .pl7{padding-left:7px}
 
 /* Full-width card variant */
-.work-card.wide .work-card-img{aspect-ratio:24/8}
+.work-card.wide .work-card-img{aspect-ratio:16/9}
 .work-card.wide .work-card-body{display:flex;justify-content:space-between;align-items:flex-end;gap:2rem}
 .work-card.wide .work-card-text{flex:1}
 .work-card.wide .work-card-meta{text-align:right;flex-shrink:0}
@@ -429,9 +429,7 @@ footer{padding:3rem 0 2rem;border-top:1px solid var(--border);background:var(--s
 <!-- ═════════════ HERO ═════════════ -->
 <section class="hero">
   <div class="hero-bg">
-    <video autoplay muted loop playsinline poster="https://images.pexels.com/photos/3845729/pexels-photo-3845729.jpeg?w=1920">
-      <source src="https://cdn.coverr.co/videos/coverr-dental-clinic-modern-interior-8592/1080p.mp4" type="video/mp4">
-    </video>
+    <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1920&q=80" alt="Sunrise over Mediterranean beach" style="width:100%;height:100%;object-fit:cover;animation:heroZoom 25s ease-in-out infinite alternate">
   </div>
   <div class="grid-bg"></div>
   <div class="container hero-content">
