@@ -520,7 +520,7 @@ footer{padding:3rem 0 2rem;border-top:1px solid var(--border);background:var(--s
 
     <div class="work-grid">
       <!-- 1. ReLove — span 7 (biggest) -->
-      <a href="demos/rellove.html" class="work-card s7">
+      <a href="demos/rellove.html" class="work-card s7" data-cat="wellness">
         <div class="work-card-img">
           <img src="screenshots/rellove.jpg" alt="ReLove Retreats — luxury wellness site" loading="lazy">
           <div class="work-card-overlay">
@@ -539,7 +539,7 @@ footer{padding:3rem 0 2rem;border-top:1px solid var(--border);background:var(--s
       </a>
 
       <!-- 2. Fade Forge — span 5 -->
-      <a href="demos/fade-forge/index.html" class="work-card s5">
+      <a href="demos/fade-forge/index.html" class="work-card s5" data-cat="barber">
         <div class="work-card-img">
           <img src="screenshots/fade-forge.jpg" alt="Fade Forge — barber studio with WebGL" loading="lazy">
           <div class="work-card-overlay">
@@ -558,7 +558,7 @@ footer{padding:3rem 0 2rem;border-top:1px solid var(--border);background:var(--s
       </a>
 
       <!-- 3. Nazanin — span 5 -->
-      <a href="demos/nazanin.html" class="work-card s5">
+      <a href="demos/nazanin.html" class="work-card s5" data-cat="wellness">
         <div class="work-card-img">
           <img src="screenshots/nazanin.jpg" alt="Nazanin Salonki — beauty salon" loading="lazy">
           <div class="work-card-overlay">
@@ -577,7 +577,7 @@ footer{padding:3rem 0 2rem;border-top:1px solid var(--border);background:var(--s
       </a>
 
       <!-- 4. Ember & Oak — span 7 -->
-      <a href="demos/ember-oak/index.html" class="work-card s7">
+      <a href="demos/ember-oak/index.html" class="work-card s7" data-cat="restaurant">
         <div class="work-card-img">
           <img src="screenshots/ember-oak.jpg" alt="Ember & Oak — fine dining restaurant" loading="lazy">
           <div class="work-card-overlay">
@@ -596,7 +596,7 @@ footer{padding:3rem 0 2rem;border-top:1px solid var(--border);background:var(--s
       </a>
 
       <!-- 5. ML Plumber — span 4 -->
-      <a href="demos/plumber.html" class="work-card s4">
+      <a href="demos/plumber.html" class="work-card s4" data-cat="trades">
         <div class="work-card-img">
           <img src="screenshots/plumber.jpg" alt="ML Plumber — trades website" loading="lazy">
           <div class="work-card-overlay">
@@ -615,7 +615,7 @@ footer{padding:3rem 0 2rem;border-top:1px solid var(--border);background:var(--s
       </a>
 
       <!-- 6. Kairos — span 4 -->
-      <a href="demos/kairos/index.html" class="work-card s4">
+      <a href="demos/kairos/index.html" class="work-card s4" data-cat="creative">
         <div class="work-card-img">
           <img src="screenshots/kairos.jpg" alt="Kairos — photography portfolio" loading="lazy">
           <div class="work-card-overlay">
@@ -634,7 +634,7 @@ footer{padding:3rem 0 2rem;border-top:1px solid var(--border);background:var(--s
       </a>
 
       <!-- 7. Aurora — span 4 -->
-      <a href="demos/aurora.html" class="work-card s4">
+      <a href="demos/aurora.html" class="work-card s4" data-cat="creative">
         <div class="work-card-img">
           <img src="screenshots/aurora.jpg" alt="Aurora Web — agency page" loading="lazy">
           <div class="work-card-overlay">
@@ -653,7 +653,7 @@ footer{padding:3rem 0 2rem;border-top:1px solid var(--border);background:var(--s
       </a>
 
       <!-- 8. Aether — full width -->
-      <a href="demos/aether/index.html" class="work-card s12 wide">
+      <a href="demos/aether/index.html" class="work-card s12 wide" data-cat="creative">
         <div class="work-card-img">
           <img src="screenshots/aether.jpg" alt="Aether — experimental WebGL art" loading="lazy">
           <div class="work-card-overlay">
@@ -916,16 +916,16 @@ footer{padding:3rem 0 2rem;border-top:1px solid var(--border);background:var(--s
         </p>
         <div style="display:flex;gap:2rem;margin-top:2rem;flex-wrap:wrap">
           <div>
-            <div style="font-family:var(--fd);font-size:var(--step-3);font-weight:700;color:var(--gold-dark)">8+</div>
+            <div class="stat-counter" data-target="12">0</div>
             <div style="font-size:.85rem;color:var(--muted)">Live demos</div>
           </div>
           <div>
-            <div style="font-family:var(--fd);font-size:var(--step-3);font-weight:700;color:var(--gold-dark)">3</div>
+            <div class="stat-counter" data-target="3">0</div>
             <div style="font-size:.85rem;color:var(--muted)">Languages</div>
           </div>
           <div>
-            <div style="font-family:var(--fd);font-size:var(--step-3);font-weight:700;color:var(--gold-dark)">5-day</div>
-            <div style="font-size:.85rem;color:var(--muted)">SLA</div>
+            <div class="stat-counter" data-target="100">0</div>
+            <div style="font-size:.85rem;color:var(--muted)">% on-time delivery</div>
           </div>
         </div>
       </div>
@@ -1151,6 +1151,30 @@ document.querySelectorAll('.faq-q').forEach(function(btn) {
       answer.style.maxHeight = answer.scrollHeight + 'px';
     }
   });
+});
+
+/* Portfolio filter */
+document.querySelectorAll('.work-filter button').forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    document.querySelectorAll('.work-filter button').forEach(function(b) { b.classList.remove('active'); });
+    this.classList.add('active');
+    var filter = this.dataset.filter;
+    document.querySelectorAll('.work-card').forEach(function(card) {
+      card.style.display = (filter === 'all' || card.dataset.cat === filter) ? '' : 'none';
+    });
+  });
+});
+
+/* Stat counters */
+document.querySelectorAll('.stat-counter').forEach(function(el) {
+  var target = parseInt(el.dataset.target);
+  if (target && typeof gsap !== 'undefined') {
+    gsap.fromTo(el, {innerText: 0}, {
+      innerText: target, duration: 2, ease: 'power2.out',
+      snap: {innerText: 1},
+      scrollTrigger: {trigger: el, start: 'top 90%'}
+    });
+  }
 });
 </script>
 </body>
