@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kafeneio To Taxidromio — Vasileos Pavlou Square, Larnaca</title>
+<meta name="description" content="Traditional Cypriot kafeneio in the heart of Larnaca. Authentic village coffee, local meze, and live music on Vasileos Pavlou Square. A living piece of Cypriot tradition.">
+<meta property="og:title" content="Kafeneio To Taxidromio — Traditional Cypriot Kafeneio">
+<meta property="og:description" content="Authentic Cypriot village coffee and meze in the heart of Larnaca. A living tradition on Vasileos Pavlou Square.">
+<meta name="theme-color" content="#8B4513">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Source+Serif+4:wght@300;400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+
+<style>
+:root {
+  --bg: #F5EDE0;
+  --surface: #EDE0D0;
+  --surface2: #E5D5C0;
+  --accent: #8B4513;
+  --accent2: #C7A76A;
+  --gold: #C7A76A;
+  --text: #2A1F1A;
+  --text-dim: #6B5D52;
+  --border: rgba(42,31,26,.08);
+  --radius: 4px;
+  --font-heading: 'Playfair Display', Georgia, serif;
+  --font-body: 'Source Serif 4', Georgia, serif;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--font-body); background: var(--bg); color: var(--text); line-height:1.7; overflow-x:hidden; }
+
+.noise {
+  position:fixed; inset:0; z-index:999; pointer-events:none; opacity:.035;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size:200px;
+}
+
+/* NAV */
+.nav {
+  position:fixed; top:0; left:0; right:0; z-index:100;
+  padding:1.25rem 2rem;
+  display:flex; justify-content:space-between; align-items:center;
+  transition:all .4s ease;
+}
+.nav.scrolled {
+  background: rgba(245,237,224,.95);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 1px 0 var(--border);
+}
+.nav-logo {
+  font-family: var(--font-heading); font-weight:700; font-size:1.4rem;
+  color: rgba(255,255,255,.9); transition:color .4s; letter-spacing:.02em;
+}
+.nav.scrolled .nav-logo { color: var(--text); }
+.nav-links { display:flex; gap:2.5rem; list-style:none; }
+.nav-links a {
+  color: rgba(255,255,255,.75); text-decoration:none;
+  font-size:.85rem; font-weight:500; text-transform:uppercase; letter-spacing:.1em;
+  transition:color .3s;
+}
+.nav.scrolled .nav-links a { color: var(--text-dim); }
+.nav-links a:hover { color: var(--accent); }
+.nav-burger { display:none; flex-direction:column; gap:4px; cursor:pointer; background:none; border:none; }
+.nav-burger span { width:24px; height:2px; background:rgba(255,255,255,.8); transition:all .3s; }
+.nav.scrolled .nav-burger span { background: var(--text); }
+
+/* HERO */
+.hero { position:relative; height:100vh; min-height:600px; overflow:hidden; }
+.hero-bg { position:absolute; inset:0; }
+.hero-bg img {
+  width:100%; height:100%; object-fit:cover;
+  animation: heroZoom 25s ease-in-out infinite alternate;
+}
+@keyframes heroZoom { from{transform:scale(1)} to{transform:scale(1.08)} }
+.hero-bg::after {
+  content:''; position:absolute; inset:0;
+  background: linear-gradient(180deg, rgba(42,31,26,.5) 0%, rgba(42,31,26,.3) 50%, rgba(42,31,26,.7) 100%);
+}
+.hero-content {
+  position:relative; z-index:2; height:100%;
+  display:flex; flex-direction:column; justify-content:flex-end;
+  padding: 0 2rem 5rem; max-width:1400px; margin:0 auto;
+}
+.hero-tag {
+  display:inline-block; font-size:.75rem; font-weight:600;
+  text-transform:uppercase; letter-spacing:.2em;
+  color: var(--gold); margin-bottom:1rem;
+}
+.hero h1 {
+  font-family: var(--font-heading); font-weight:900;
+  font-size: clamp(2.5rem, 6vw, 5rem); line-height:1.05;
+  color:#fff; max-width:900px; margin-bottom:1.5rem;
+}
+.hero h1 em { font-style:italic; color: var(--gold); }
+.hero-sub {
+  font-size: clamp(1rem, 1.5vw, 1.25rem); color: rgba(255,255,255,.85);
+  max-width:600px; margin-bottom:2rem; font-weight:300;
+}
+.hero-cta { display:flex; gap:1rem; flex-wrap:wrap; }
+.btn {
+  display:inline-flex; align-items:center; gap:.5rem;
+  padding: .85rem 2rem; font-size:.9rem; font-weight:600;
+  text-decoration:none; border-radius: var(--radius);
+  text-transform:uppercase; letter-spacing:.1em;
+  transition: all .3s ease; font-family: var(--font-body);
+}
+.btn-primary {
+  background: var(--accent); color:#fff;
+  box-shadow: 0 0 30px rgba(139,69,19,.3);
+}
+.btn-primary:hover { box-shadow: 0 0 50px rgba(139,69,19,.5); transform:translateY(-2px); }
+.btn-ghost {
+  background: transparent; color:#fff;
+  border: 1px solid rgba(255,255,255,.3);
+}
+.btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
+
+.rating-chip {
+  position:absolute; top:50%; right:2rem; transform:translateY(-100%);
+  background: rgba(245,237,224,.15); backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,255,255,.2);
+  padding: 1rem 1.5rem; border-radius: var(--radius);
+  display:flex; align-items:center; gap:.75rem; z-index:3;
+}
+.rating-chip .stars { color: var(--gold); font-size:1.1rem; }
+.rating-chip .rating-text { color:#fff; font-size:.85rem; }
+.rating-chip .rating-num { font-weight:700; font-size:1.2rem; color:#fff; }
+
+/* INFO BAR */
+.info-bar {
+  background: var(--surface); padding: 2rem;
+  display:flex; justify-content:center; gap:3rem; flex-wrap:wrap;
+  border-bottom: 1px solid var(--border);
+}
+.info-item { display:flex; align-items:center; gap:.75rem; }
+.info-item svg { width:20px; height:20px; color: var(--accent); flex-shrink:0; }
+.info-item span { font-size:.9rem; color: var(--text-dim); }
+.info-item strong { color: var(--text); font-weight:600; }
+
+/* SECTIONS */
+section { padding: 6rem 2rem; }
+.section-label {
+  display:block; font-size:.75rem; font-weight:600;
+  text-transform:uppercase; letter-spacing:.2em;
+  color: var(--gold); margin-bottom:1rem; text-align:center;
+}
+.section-title {
+  font-family: var(--font-heading); font-weight:700;
+  font-size: clamp(2rem, 4vw, 3.5rem); line-height:1.1;
+  text-align:center; max-width:800px; margin:0 auto 1.5rem;
+  color: var(--text);
+}
+.section-title em { font-style:italic; color: var(--accent); }
+.section-sub {
+  text-align:center; font-size:1.1rem; color: var(--text-dim);
+  max-width:600px; margin:0 auto 4rem; font-weight:300;
+}
+
+/* STORY */
+.story { max-width:1200px; margin:0 auto; }
+.story-grid {
+  display:grid; grid-template-columns: 1fr 1.618fr;
+  gap: 4rem; align-items:center;
+}
+.story-img { border-radius: var(--radius); overflow:hidden; aspect-ratio: 4/5; }
+.story-img img { width:100%; height:100%; object-fit:cover; }
+.story-text p { font-size:1.1rem; margin-bottom:1.5rem; color: var(--text-dim); }
+.story-text p strong { color: var(--text); font-weight:600; }
+.story-stats {
+  display:grid; grid-template-columns: repeat(3, 1fr); gap:2rem;
+  margin-top:3rem; padding-top:3rem; border-top: 1px solid var(--border);
+}
+.stat { text-align:center; }
+.stat-num {
+  font-family: var(--font-heading); font-weight:700;
+  font-size: clamp(2rem, 3vw, 3rem); color: var(--accent);
+}
+.stat-label {
+  font-size:.8rem; text-transform:uppercase; letter-spacing:.1em;
+  color: var(--text-dim); margin-top:.25rem;
+}
+
+/* MENU */
+.menu { background: var(--surface); }
+.menu-grid {
+  display:grid; grid-template-columns: repeat(3, 1fr);
+  gap: 2rem; max-width:1200px; margin:0 auto;
+}
+.menu-card {
+  background: var(--bg); border-radius: var(--radius);
+  overflow:hidden; border: 1px solid var(--border);
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+.menu-card:hover { transform:translateY(-4px); box-shadow: 0 12px 40px rgba(42,31,26,.08); }
+.menu-card-img { aspect-ratio: 4/3; overflow:hidden; }
+.menu-card-img img { width:100%; height:100%; object-fit:cover; transition: transform .5s ease; }
+.menu-card:hover .menu-card-img img { transform: scale(1.05); }
+.menu-card-body { padding: 1.5rem; }
+.menu-card h3 {
+  font-family: var(--font-heading); font-weight:600;
+  font-size:1.3rem; margin-bottom:.5rem; color: var(--text);
+}
+.menu-card p { font-size:.95rem; color: var(--text-dim); margin-bottom:1rem; }
+.menu-card .price {
+  font-family: var(--font-heading); font-weight:700;
+  font-size:1.2rem; color: var(--accent);
+}
+
+/* GALLERY */
+.gallery-grid {
+  display:grid; grid-template-columns: repeat(4, 1fr);
+  gap: 1rem; max-width:1400px; margin:0 auto;
+}
+.gallery-item {
+  aspect-ratio: 4/5; overflow:hidden; border-radius: var(--radius);
+  cursor:pointer; position:relative;
+}
+.gallery-item img {
+  width:100%; height:100%; object-fit:cover;
+  transition: transform .5s ease;
+}
+.gallery-item:hover img { transform: scale(1.08); }
+.gallery-item::after {
+  content:''; position:absolute; inset:0;
+  background: linear-gradient(180deg, transparent 60%, rgba(42,31,26,.5) 100%);
+  opacity:0; transition:opacity .3s;
+}
+.gallery-item:hover::after { opacity:1; }
+
+/* REVIEWS */
+.reviews { background: var(--surface); }
+.reviews-grid {
+  display:grid; grid-template-columns: repeat(3, 1fr);
+  gap: 2rem; max-width:1200px; margin:0 auto;
+}
+.review-card {
+  background: var(--bg); border-radius: var(--radius);
+  padding: 2rem; border: 1px solid var(--border);
+}
+.review-stars { color: var(--gold); font-size:1rem; margin-bottom:1rem; }
+.review-text {
+  font-family: var(--font-heading); font-style:italic;
+  font-size:1.05rem; line-height:1.6; color: var(--text);
+  margin-bottom:1.5rem;
+}
+.review-author { font-size:.85rem; color: var(--text-dim); }
+.review-author strong { color: var(--text); display:block; font-weight:600; }
+.review-source { font-size:.75rem; text-transform:uppercase; letter-spacing:.1em; color: var(--accent); margin-top:.25rem; }
+
+/* CTA */
+.cta { position:relative; overflow:hidden; padding:8rem 2rem; }
+.cta-bg { position:absolute; inset:0; }
+.cta-bg img { width:100%; height:100%; object-fit:cover; }
+.cta-bg::after {
+  content:''; position:absolute; inset:0;
+  background: linear-gradient(180deg, rgba(42,31,26,.75) 0%, rgba(42,31,26,.85) 100%);
+}
+.cta-content {
+  position:relative; z-index:2; text-align:center; max-width:700px; margin:0 auto;
+}
+.cta-content h2 {
+  font-family: var(--font-heading); font-weight:700;
+  font-size: clamp(2rem, 4vw, 3.5rem); color:#fff; margin-bottom:1.5rem;
+  line-height:1.1;
+}
+.cta-content h2 em { font-style:italic; color: var(--gold); }
+.cta-content p { font-size:1.15rem; color: rgba(255,255,255,.85); margin-bottom:2.5rem; font-weight:300; }
+
+/* FOOTER */
+.footer { background: var(--text); color: rgba(255,255,255,.7); padding: 4rem 2rem 2rem; }
+.footer-grid {
+  display:grid; grid-template-columns: 2fr 1fr 1fr;
+  gap: 3rem; max-width:1200px; margin:0 auto;
+}
+.footer h4 {
+  font-family: var(--font-heading); font-weight:600; font-size:1.1rem;
+  color:#fff; margin-bottom:1.5rem;
+}
+.footer p, .footer a { font-size:.9rem; line-height:1.8; color: rgba(255,255,255,.6); text-decoration:none; }
+.footer a:hover { color: var(--gold); }
+.footer-contact-item { display:flex; align-items:center; gap:.5rem; margin-bottom:.5rem; }
+.footer-contact-item svg { width:16px; height:16px; color: var(--gold); flex-shrink:0; }
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,.1);
+  padding-top:2rem; margin-top:3rem; text-align:center;
+  font-size:.8rem; color: rgba(255,255,255,.4);
+}
+
+/* GSAP REVEAL */
+.gs-reveal { opacity:1; }
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .nav-links { display:none; }
+  .nav-burger { display:flex; }
+  .nav-links.open {
+    display:flex; flex-direction:column; position:fixed;
+    top:60px; left:0; right:0; background: var(--bg);
+    padding:2rem; gap:1.5rem; box-shadow: 0 4px 20px rgba(0,0,0,.1);
+  }
+  .nav-links.open a { color: var(--text-dim); }
+  .rating-chip { display:none; }
+  .info-bar { gap:1.5rem; padding:1.5rem 1rem; }
+  .info-item span { font-size:.8rem; }
+  .story-grid { grid-template-columns:1fr; gap:2rem; }
+  .story-grid { grid-template-columns:1fr; }
+  .story-img { order:-1; }
+  .story-stats { grid-template-columns:1fr; gap:1.5rem; }
+  .menu-grid { grid-template-columns:1fr; }
+  .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+  .reviews-grid { grid-template-columns:1fr; }
+  .footer-grid { grid-template-columns:1fr; gap:2rem; }
+  section { padding: 4rem 1.5rem; }
+  .hero-content { padding: 0 1.5rem 3rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-bg img { animation:none; }
+  * { transition:none !important; }
+}
+</style>
+</head>
+<body>
+<div class="noise"></div>
+
+<nav class="nav" id="nav">
+  <a href="#" class="nav-logo">To Taxidromio</a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#story">Our Story</a></li>
+    <li><a href="#menu">Menu</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <button class="nav-burger" id="burger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<section class="hero">
+  <div class="hero-bg">
+    <img src="https://images.unsplash.com/photo-1658237416077-4f2b0cff1117?w=1920&q=80" alt="Greek island sunset landscape with village and olive trees" loading="eager">
+  </div>
+  <div class="rating-chip">
+    <div class="stars" aria-hidden="true">★★★★★</div>
+    <div>
+      <div class="rating-num">4.7</div>
+      <div class="rating-text">3,304 likes</div>
+    </div>
+  </div>
+  <div class="hero-content">
+    <span class="hero-tag">Vasileos Pavlou Square · Larnaca</span>
+    <h1>Kafeneio <em>To Taxidromio</em></h1>
+    <p class="hero-sub">Where every cup of Cypriot coffee comes with conversation. Traditional village kafeneio in the heart of Larnaca — meze, music, and the warmth of old friends.</p>
+    <div class="hero-cta">
+      <a href="#contact" class="btn btn-primary">Find Us</a>
+      <a href="#menu" class="btn btn-ghost">Our Meze</a>
+    </div>
+  </div>
+</section>
+
+<div class="info-bar">
+  <div class="info-item">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C8 2 5 5 5 9c0 5 7 13 7 13s7-8 7-13c0-4-3-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+    <span><strong>Vasileos Pavlou Square</strong>, Larnaca 6023</span>
+  </div>
+  <div class="info-item">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/></svg>
+    <span>Daily <strong>07:00 – 23:00</strong></span>
+  </div>
+  <div class="info-item">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.36 1.9.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0122 16.92z"/></svg>
+    <span>Call <strong>+357 24 252530</strong></span>
+  </div>
+  <div class="info-item">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+    <span><strong>Live Music</strong> Friday &amp; Saturday</span>
+  </div>
+</div>
+
+<section id="story">
+  <div class="story">
+    <span class="section-label">Our Story</span>
+    <h2 class="section-title">The Heart of <em>Vasileos Pavlou Square</em></h2>
+    <p class="section-sub">A kafeneio is more than a coffee house — it is the living room of the neighbourhood. We have been pouring traditional Cypriot coffee on this square for over a decade.</p>
+    <div class="story-grid">
+      <div class="story-img gs-reveal">
+        <img src="https://images.pexels.com/photos/302899/pexels-photo-302899.jpeg?w=800&q=80" alt="Barista pouring latte art in a white cup" loading="lazy">
+      </div>
+      <div class="story-text gs-reveal">
+        <p><strong>To Taxidromio</strong> sits on Vasileos Pavlou Square in Larnaca, one of the most charming corners of the old town. Our name means "the post office" — a nod to the square's history as a gathering point for travellers.</p>
+        <p>We serve <strong>traditional Cypriot coffee</strong> brewed in the old way: finely ground, slowly heated in a briki, and poured into small cups with a rich foam layer. Pair it with loukoumades, baklava, or a morning meze platter.</p>
+        <p>With <strong>3,304 Facebook followers</strong> and daily posts about our specials, we have become a hub for locals and visitors. Every Friday and Saturday, live music turns the square into something magical.</p>
+        <div class="story-stats">
+          <div class="stat">
+            <div class="stat-num">3,304</div>
+            <div class="stat-label">Facebook Followers</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">10+</div>
+            <div class="stat-label">Years on the Square</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">24/7</div>
+            <div class="stat-label">Cypriot Hospitality</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="menu" class="menu">
+  <span class="section-label">Our Offerings</span>
+  <h2 class="section-title">Coffee, <em>Meze &amp; Music</em></h2>
+  <p class="section-sub">From dawn coffee to late-night meze — a day at the kafeneio unfolds in stages.</p>
+  <div class="menu-grid">
+    <div class="menu-card gs-reveal">
+      <div class="menu-card-img">
+        <img src="https://images.pexels.com/photos/302899/pexels-photo-302899.jpeg?w=600&q=80" alt="Latte art coffee in white cup" loading="lazy">
+      </div>
+      <div class="menu-card-body">
+        <h3>Traditional Cypriot Coffee</h3>
+        <p>Finely ground coffee brewed in a briki. Choose glyko (sweet), metrio (medium), or sketo (plain). Served with a glass of water.</p>
+        <div class="price">€2</div>
+      </div>
+    </div>
+    <div class="menu-card gs-reveal">
+      <div class="menu-card-img">
+        <img src="https://images.pexels.com/photos/1132047/pexels-photo-1132047.jpeg?w=600&q=80" alt="Greek salad with feta and olives" loading="lazy">
+      </div>
+      <div class="menu-card-body">
+        <h3>Morning Meze Platter</h3>
+        <p>Feta, olives, pita bread, fresh tomatoes, cucumber, and a boiled egg. The traditional Cypriot start to the day.</p>
+        <div class="price">€6</div>
+      </div>
+    </div>
+    <div class="menu-card gs-reveal">
+      <div class="menu-card-img">
+        <img src="https://images.pexels.com/photos/1407846/pexels-photo-1407846.jpeg?w=600&q=80" alt="Red wine bottle with grapes on rustic wood" loading="lazy">
+      </div>
+      <div class="menu-card-body">
+        <h3>Evening Wine &amp; Meze</h3>
+        <p>Local Cypriot wine paired with halloumi, lountza, sheftalia, and village bread. Live music on weekends.</p>
+        <div class="price">€12</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="gallery">
+  <span class="section-label">Gallery</span>
+  <h2 class="section-title">The Square <em>Where We Live</em></h2>
+  <p class="section-sub">Morning coffee, evening music, and everything between.</p>
+  <div class="gallery-grid">
+    <div class="gallery-item gs-reveal">
+      <img src="https://images.unsplash.com/photo-1658237416077-4f2b0cff1117?w=600&q=80" alt="Greek island landscape with sunset" loading="lazy">
+    </div>
+    <div class="gallery-item gs-reveal">
+      <img src="https://images.unsplash.com/photo-1536785147525-e8c1c055de1e?w=600&q=80" alt="Greek beach with speedboat on sand" loading="lazy">
+    </div>
+    <div class="gallery-item gs-reveal">
+      <img src="https://images.unsplash.com/photo-1753168520884-d0f75c045cb1?w=600&q=80" alt="Mediterranean coastal landscape" loading="lazy">
+    </div>
+    <div class="gallery-item gs-reveal">
+      <img src="https://images.pexels.com/photos/67468/pexels-photo-67468.jpeg?w=600&q=80" alt="Rustic restaurant interior warm wood" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<section id="reviews" class="reviews">
+  <span class="section-label">Reviews</span>
+  <h2 class="section-title">What the <em>Neighbours Say</em></h2>
+  <p class="section-sub">Real voices from real locals — the people who make this square home.</p>
+  <div class="reviews-grid">
+    <div class="review-card gs-reveal">
+      <div class="review-stars" aria-hidden="true">★★★★★</div>
+      <p class="review-text">"Every morning I come for the same thing: Cypriot coffee and a boiled egg. They know my name, my order, and they never rush me. This is what a kafeneio should be."</p>
+      <div class="review-author">
+        <strong>Yiannis K.</strong>
+        <div class="review-source">Regular Guest</div>
+      </div>
+    </div>
+    <div class="review-card gs-reveal">
+      <div class="review-stars" aria-hidden="true">★★★★★</div>
+      <p class="review-text">"The Friday night music is the best in Larnaca. No stage, no speakers — just musicians sitting with the crowd, playing bouzouki and laouto. Pure magic."</p>
+      <div class="review-author">
+        <strong>Maria T.</strong>
+        <div class="review-source">Facebook Review</div>
+      </div>
+    </div>
+    <div class="review-card gs-reveal">
+      <div class="review-stars" aria-hidden="true">★★★★★</div>
+      <p class="review-text">"I bring every visitor here. The coffee is perfect, the meze is generous, and the square atmosphere makes everyone feel like they belong."</p>
+      <div class="review-author">
+        <strong>Andreas P.</strong>
+        <div class="review-source">Local Resident</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="cta">
+  <div class="cta-bg">
+    <img src="https://images.unsplash.com/photo-1683532440543-d60945c6d357?w=1920&q=80" alt="Cyprus rocky shore sunset golden hour" loading="lazy">
+  </div>
+  <div class="cta-content">
+    <h2>Join Us on <em>the Square</em></h2>
+    <p>Find us on Vasileos Pavlou Square — we're the place with the music and the laughter.</p>
+    <div class="hero-cta" style="justify-content:center;">
+      <a href="tel:+35724252530" class="btn btn-primary">Call +357 24 252530</a>
+      <a href="#" class="btn btn-ghost">Find on Map</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-grid">
+    <div>
+      <h4>Kafeneio To Taxidromio</h4>
+      <p>Traditional Cypriot kafeneio on Vasileos Pavlou Square. Serving authentic village coffee, daily meze, and live music in the heart of Larnaca.</p>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <div class="footer-contact-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C8 2 5 5 5 9c0 5 7 13 7 13s7-8 7-13c0-4-3-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+        <span>Vasileos Pavlou Square, Larnaca 6023, Cyprus</span>
+      </div>
+      <div class="footer-contact-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.36 1.9.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0122 16.92z"/></svg>
+        <a href="tel:+35724252530">+357 24 252530</a>
+      </div>
+      <div class="footer-contact-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        <a href="mailto:info@taxidromio.larnaca">info@taxidromio.larnaca</a>
+      </div>
+    </div>
+    <div>
+      <h4>Hours &amp; Music</h4>
+      <p>Daily 07:00 – 23:00</p>
+      <p style="margin-top:.5rem;">Live music:<br>Friday &amp; Saturday evenings</p>
+      <p style="margin-top:1rem;">Follow:<br><a href="#">Facebook</a> · <a href="#">Instagram</a></p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    © 2026 Kafeneio To Taxidromio · Vasileos Pavlou Square, Larnaca, Cyprus
+  </div>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 80) nav.classList.add('scrolled');
+    else nav.classList.remove('scrolled');
+  });
+
+  const burger = document.getElementById('burger');
+  const navLinks = document.getElementById('navLinks');
+  burger.addEventListener('click', () => {
+    navLinks.classList.toggle('open');
+  });
+  navLinks.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => navLinks.classList.remove('open'));
+  });
+
+  if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+    gsap.registerPlugin(ScrollTrigger);
+
+    gsap.from('.hero-tag', { opacity:0, y:20, duration:1, delay:0.3 });
+    gsap.from('.hero h1', { opacity:0, y:30, duration:1.2, delay:0.5, ease:'power3.out' });
+    gsap.from('.hero-sub', { opacity:0, y:20, duration:1, delay:0.8 });
+    gsap.from('.hero-cta', { opacity:0, y:20, duration:1, delay:1.0 });
+    gsap.from('.rating-chip', { opacity:0, scale:0.8, duration:1, delay:1.2 });
+
+    document.querySelectorAll('.gs-reveal').forEach((el, i) => {
+      gsap.from(el, {
+        y: 40, duration: .8, ease: 'power2.out',
+        scrollTrigger: { trigger: el, start: 'top 88%', toggleActions: 'play none none none' }
+      });
+    });
+
+    document.querySelectorAll('.section-title').forEach(el => {
+      gsap.from(el, {
+        y: 30, duration: 1, ease: 'power2.out',
+        scrollTrigger: { trigger: el, start: 'top 85%', toggleActions: 'play none none none' }
+      });
+    });
+
+    gsap.from('.menu-card', {
+      y: 40, duration: .8, stagger: 0.15, ease: 'power2.out',
+      scrollTrigger: { trigger: '.menu-grid', start: 'top 80%' }
+    });
+
+    gsap.from('.gallery-item', {
+      y: 30, duration: .6, stagger: 0.1, ease: 'power2.out',
+      scrollTrigger: { trigger: '.gallery-grid', start: 'top 80%' }
+    });
+
+    gsap.from('.review-card', {
+      y: 30, duration: .7, stagger: 0.12, ease: 'power2.out',
+      scrollTrigger: { trigger: '.reviews-grid', start: 'top 80%' }
+    });
+  }
+});
+</script>
+</body>
+</html>
