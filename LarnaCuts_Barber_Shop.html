@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LarnaCuts Barber Shop | Premium Grooming in Larnaca, Cyprus</title>
+    <meta name="description" content="LarnaCuts Barber Shop - Larnaca's finest barbershop. Expert fades, classic cuts, hot towel shaves & beard sculpting. Walk-ins welcome.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --gold: #C8A45C;
+            --gold-light: #E8C87A;
+            --gold-dark: #A07D3A;
+            --bg-dark: #0A0A0A;
+            --bg-card: #141414;
+            --bg-card-hover: #1A1A1A;
+            --bg-section: #0E0E0E;
+            --text-primary: #F5F0E8;
+            --text-secondary: #9A9590;
+            --text-muted: #5A5550;
+            --border: #222;
+            --white: #FFFFFF;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3, h4 { font-family: 'Playfair Display', serif; }
+
+        /* ═══════════ NAVIGATION ═══════════ */
+        nav {
+            position: fixed; top: 0; width: 100%; z-index: 1000;
+            background: rgba(10,10,10,0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(200,164,92,0.08);
+            transition: all 0.4s ease;
+        }
+        nav.scrolled { background: rgba(10,10,10,0.95); }
+        .nav-inner {
+            max-width: 1200px; margin: 0 auto;
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 1.2rem 2rem;
+        }
+        .nav-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem; font-weight: 700;
+            color: var(--gold);
+            text-decoration: none;
+            letter-spacing: 1px;
+        }
+        .nav-logo span { color: var(--text-primary); font-weight: 400; }
+        .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+        .nav-links a {
+            color: var(--text-secondary); text-decoration: none;
+            font-size: 0.85rem; font-weight: 500;
+            letter-spacing: 1.5px; text-transform: uppercase;
+            transition: color 0.3s;
+            position: relative;
+        }
+        .nav-links a::after {
+            content: ''; position: absolute; bottom: -4px; left: 0;
+            width: 0; height: 1px; background: var(--gold);
+            transition: width 0.3s ease;
+        }
+        .nav-links a:hover { color: var(--gold); }
+        .nav-links a:hover::after { width: 100%; }
+        .nav-cta {
+            background: var(--gold); color: var(--bg-dark) !important;
+            padding: 0.6rem 1.5rem; border-radius: 2px;
+            font-weight: 600; font-size: 0.8rem !important;
+            letter-spacing: 1.5px !important;
+            transition: all 0.3s !important;
+        }
+        .nav-cta:hover { background: var(--gold-light) !important; transform: translateY(-1px); }
+        .nav-cta::after { display: none !important; }
+        .hamburger { display: none; cursor: pointer; flex-direction: column; gap: 5px; }
+        .hamburger span { width: 24px; height: 2px; background: var(--gold); transition: all 0.3s; }
+
+        /* ═══════════ HERO ═══════════ */
+        .hero {
+            min-height: 100vh;
+            display: flex; align-items: center; justify-content: center;
+            position: relative;
+            background:
+                linear-gradient(135deg, rgba(10,10,10,0.92), rgba(10,10,10,0.7)),
+                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 900"><rect fill="%230A0A0A" width="1440" height="900"/><circle cx="720" cy="450" r="300" fill="none" stroke="%23C8A45C" stroke-width="0.3" opacity="0.15"/><circle cx="720" cy="450" r="200" fill="none" stroke="%23C8A45C" stroke-width="0.2" opacity="0.1"/></svg>');
+            background-size: cover;
+            text-align: center;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(ellipse at center, rgba(200,164,92,0.04) 0%, transparent 70%);
+        }
+        .hero-content { position: relative; z-index: 2; padding: 2rem; }
+        .hero-badge {
+            display: inline-block;
+            padding: 0.5rem 1.8rem;
+            border: 1px solid rgba(200,164,92,0.3);
+            font-size: 0.75rem; letter-spacing: 4px;
+            text-transform: uppercase; color: var(--gold);
+            margin-bottom: 2rem;
+            animation: fadeInDown 1s ease 0.2s both;
+        }
+        .hero h1 {
+            font-size: clamp(3rem, 8vw, 7rem);
+            font-weight: 700; line-height: 1.05;
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 1s ease 0.4s both;
+        }
+        .hero h1 .gold { color: var(--gold); }
+        .hero-sub {
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            color: var(--text-secondary); font-weight: 300;
+            max-width: 550px; margin: 0 auto 3rem;
+            animation: fadeInUp 1s ease 0.6s both;
+        }
+        .hero-buttons {
+            display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap;
+            animation: fadeInUp 1s ease 0.8s both;
+        }
+        .btn {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            padding: 1rem 2.5rem;
+            font-size: 0.85rem; font-weight: 600;
+            letter-spacing: 2px; text-transform: uppercase;
+            text-decoration: none; border: none; cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .btn-primary { background: var(--gold); color: var(--bg-dark); }
+        .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 10px 40px rgba(200,164,92,0.2); }
+        .btn-outline { background: transparent; color: var(--text-primary); border: 1px solid var(--text-muted); }
+        .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+        .hero-scroll {
+            position: absolute; bottom: 3rem; left: 50%; transform: translateX(-50%);
+            color: var(--text-muted); font-size: 0.7rem; letter-spacing: 3px;
+            text-transform: uppercase;
+            animation: bounce 2s infinite;
+        }
+        .hero-scroll::after {
+            content: ''; display: block; width: 1px; height: 40px;
+            background: linear-gradient(to bottom, var(--gold), transparent);
+            margin: 0.8rem auto 0;
+        }
+
+        /* ═══════════ SECTIONS ═══════════ */
+        section { padding: 7rem 2rem; }
+        .section-header { text-align: center; margin-bottom: 5rem; }
+        .section-label {
+            font-size: 0.75rem; letter-spacing: 4px;
+            text-transform: uppercase; color: var(--gold);
+            margin-bottom: 1rem;
+        }
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            font-weight: 600; margin-bottom: 1.5rem;
+        }
+        .section-desc {
+            color: var(--text-secondary); font-weight: 300;
+            max-width: 550px; margin: 0 auto;
+            font-size: 1.05rem;
+        }
+        .divider {
+            width: 60px; height: 1px;
+            background: var(--gold); margin: 1.5rem auto;
+        }
+
+        /* ═══════════ ABOUT ═══════════ */
+        .about { background: var(--bg-section); }
+        .about-grid {
+            max-width: 1100px; margin: 0 auto;
+            display: grid; grid-template-columns: 1fr 1fr;
+            gap: 5rem; align-items: center;
+        }
+        .about-image {
+            aspect-ratio: 3/4;
+            background: linear-gradient(135deg, var(--bg-card), #1C1C1C);
+            position: relative; overflow: hidden;
+            border: 1px solid var(--border);
+        }
+        .about-image::before {
+            content: '✂'; position: absolute;
+            top: 50%; left: 50%; transform: translate(-50%, -50%);
+            font-size: 6rem; opacity: 0.08;
+        }
+        .about-image::after {
+            content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+            height: 40%;
+            background: linear-gradient(to top, rgba(200,164,92,0.08), transparent);
+        }
+        .about-text h3 {
+            font-size: 2.2rem; margin-bottom: 1.5rem;
+        }
+        .about-text p {
+            color: var(--text-secondary); font-weight: 300;
+            margin-bottom: 1.5rem; font-size: 1.05rem; line-height: 1.8;
+        }
+        .about-stats {
+            display: grid; grid-template-columns: repeat(3, 1fr);
+            gap: 2rem; margin-top: 2.5rem;
+            padding-top: 2.5rem; border-top: 1px solid var(--border);
+        }
+        .stat-num {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem; color: var(--gold); font-weight: 700;
+        }
+        .stat-label { font-size: 0.8rem; color: var(--text-muted); letter-spacing: 1px; text-transform: uppercase; }
+
+        /* ═══════════ SERVICES ═══════════ */
+        .services { background: var(--bg-dark); }
+        .services-grid {
+            max-width: 1100px; margin: 0 auto;
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+        .service-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 2.5rem;
+            transition: all 0.4s ease;
+            position: relative; overflow: hidden;
+        }
+        .service-card::before {
+            content: ''; position: absolute; top: 0; left: 0;
+            width: 100%; height: 2px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+            opacity: 0; transition: opacity 0.4s;
+        }
+        .service-card:hover {
+            border-color: rgba(200,164,92,0.2);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        .service-card:hover::before { opacity: 1; }
+        .service-icon {
+            font-size: 2rem; margin-bottom: 1.5rem;
+            display: inline-block;
+        }
+        .service-card h4 {
+            font-size: 1.3rem; margin-bottom: 0.8rem;
+            font-family: 'Playfair Display', serif;
+        }
+        .service-card p {
+            color: var(--text-secondary); font-size: 0.95rem;
+            font-weight: 300; line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+        .service-price {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem; color: var(--gold);
+            font-weight: 600;
+        }
+        .service-price span {
+            font-size: 0.85rem; color: var(--text-muted);
+            font-family: 'Inter', sans-serif; font-weight: 400;
+        }
+
+        /* ═══════════ GALLERY ═══════════ */
+        .gallery { background: var(--bg-section); }
+        .gallery-grid {
+            max-width: 1200px; margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(2, 280px);
+            gap: 1rem;
+        }
+        .gallery-item {
+            position: relative; overflow: hidden;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            cursor: pointer;
+            transition: all 0.4s ease;
+        }
+        .gallery-item:hover { border-color: rgba(200,164,92,0.3); }
+        .gallery-item:nth-child(1) { grid-column: span 2; grid-row: span 2; }
+        .gallery-item::before {
+            content: attr(data-label);
+            position: absolute; bottom: 1.5rem; left: 1.5rem;
+            font-size: 0.7rem; letter-spacing: 3px;
+            text-transform: uppercase; color: var(--gold);
+            z-index: 2; opacity: 0; transform: translateY(10px);
+            transition: all 0.3s;
+        }
+        .gallery-item::after {
+            content: ''; position: absolute; inset: 0;
+            background: linear-gradient(to top, rgba(10,10,10,0.7) 0%, transparent 50%);
+            opacity: 0; transition: opacity 0.3s;
+        }
+        .gallery-item:hover::before { opacity: 1; transform: translateY(0); }
+        .gallery-item:hover::after { opacity: 1; }
+        .gallery-icon {
+            position: absolute; top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 3rem; opacity: 0.06;
+            transition: all 0.4s;
+        }
+        .gallery-item:hover .gallery-icon { opacity: 0.12; transform: translate(-50%, -50%) scale(1.1); }
+
+        /* ═══════════ TESTIMONIALS ═══════════ */
+        .testimonials { background: var(--bg-dark); }
+        .testimonials-grid {
+            max-width: 1100px; margin: 0 auto;
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        .testimonial-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 2.5rem;
+            position: relative;
+        }
+        .testimonial-card::before {
+            content: '"'; position: absolute; top: 1rem; right: 1.5rem;
+            font-family: 'Playfair Display', serif;
+            font-size: 5rem; color: var(--gold); opacity: 0.1;
+            line-height: 1;
+        }
+        .testimonial-stars { color: var(--gold); font-size: 0.9rem; letter-spacing: 2px; margin-bottom: 1.5rem; }
+        .testimonial-text {
+            color: var(--text-secondary); font-weight: 300;
+            font-style: italic; line-height: 1.8;
+            margin-bottom: 1.5rem; font-size: 1rem;
+        }
+        .testimonial-author {
+            font-weight: 600; font-size: 0.9rem;
+        }
+        .testimonial-role { font-size: 0.8rem; color: var(--text-muted); }
+
+        /* ═══════════ INFO ═══════════ */
+        .info { background: var(--bg-section); }
+        .info-grid {
+            max-width: 1100px; margin: 0 auto;
+            display: grid; grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+        .info-block {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 3rem;
+        }
+        .info-block h3 {
+            font-size: 1.5rem; margin-bottom: 2rem;
+            display: flex; align-items: center; gap: 0.8rem;
+        }
+        .info-block h3 span { font-size: 1.5rem; }
+        .hours-table { width: 100%; }
+        .hours-row {
+            display: flex; justify-content: space-between;
+            padding: 0.8rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.04);
+        }
+        .hours-row:last-child { border-bottom: none; }
+        .hours-day { color: var(--text-secondary); font-weight: 400; }
+        .hours-time { color: var(--text-primary); font-weight: 500; }
+        .hours-time.closed { color: #C85C5C; }
+        .hours-time.today {
+            color: var(--gold); font-weight: 600;
+            position: relative;
+        }
+        .hours-time.today::before {
+            content: '●'; font-size: 0.5rem;
+            position: absolute; left: -1rem; top: 50%;
+            transform: translateY(-50%);
+            color: var(--gold);
+        }
+
+        .contact-item {
+            display: flex; align-items: flex-start; gap: 1rem;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.04);
+        }
+        .contact-item:last-child { border-bottom: none; }
+        .contact-icon { font-size: 1.2rem; min-width: 2rem; text-align: center; }
+        .contact-label { font-size: 0.75rem; color: var(--text-muted); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 0.3rem; }
+        .contact-value { color: var(--text-primary); font-weight: 400; }
+        .contact-value a { color: var(--text-primary); text-decoration: none; transition: color 0.3s; }
+        .contact-value a:hover { color: var(--gold); }
+        .map-embed {
+            margin-top: 2rem; width: 100%; height: 200px;
+            background: var(--bg-dark); border: 1px solid var(--border);
+            display: flex; align-items: center; justify-content: center;
+            color: var(--text-muted); font-size: 0.85rem;
+            position: relative; overflow: hidden;
+        }
+        .map-embed::before {
+            content: ''; position: absolute; inset: 0;
+            background: radial-gradient(circle at 50% 50%, rgba(200,164,92,0.05), transparent 70%);
+        }
+
+        /* ═══════════ CTA ═══════════ */
+        .cta {
+            background: var(--bg-dark);
+            text-align: center;
+            padding: 8rem 2rem;
+            position: relative;
+        }
+        .cta::before {
+            content: ''; position: absolute; inset: 0;
+            background: radial-gradient(ellipse at center, rgba(200,164,92,0.06), transparent 60%);
+        }
+        .cta-content { position: relative; z-index: 2; }
+        .cta h2 {
+            font-size: clamp(2rem, 5vw, 4rem);
+            margin-bottom: 1.5rem;
+        }
+        .cta p {
+            color: var(--text-secondary); font-weight: 300;
+            font-size: 1.1rem; margin-bottom: 3rem;
+            max-width: 500px; margin-left: auto; margin-right: auto;
+        }
+        .cta-phone {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.5rem, 3vw, 2.2rem);
+            color: var(--gold); font-weight: 600;
+            text-decoration: none;
+            display: inline-block; margin-top: 1rem;
+            transition: all 0.3s;
+        }
+        .cta-phone:hover { transform: scale(1.05); }
+
+        /* ═══════════ FOOTER ═══════════ */
+        footer {
+            background: var(--bg-card);
+            border-top: 1px solid var(--border);
+            padding: 4rem 2rem 2rem;
+        }
+        .footer-inner {
+            max-width: 1100px; margin: 0 auto;
+            display: flex; justify-content: space-between;
+            align-items: center; flex-wrap: wrap; gap: 2rem;
+        }
+        .footer-brand {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem; color: var(--gold);
+        }
+        .footer-links { display: flex; gap: 2rem; }
+        .footer-links a {
+            color: var(--text-muted); text-decoration: none;
+            font-size: 0.8rem; letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: color 0.3s;
+        }
+        .footer-links a:hover { color: var(--gold); }
+        .footer-bottom {
+            max-width: 1100px; margin: 2rem auto 0;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: var(--text-muted); font-size: 0.8rem;
+        }
+        .footer-bottom a { color: var(--gold); text-decoration: none; }
+
+        /* ═══════════ ANIMATIONS ═══════════ */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+            40% { transform: translateX(-50%) translateY(-10px); }
+            60% { transform: translateX(-50%) translateY(-5px); }
+        }
+        .reveal {
+            opacity: 0; transform: translateY(40px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+
+        /* ═══════════ MOBILE ═══════════ */
+        @media (max-width: 900px) {
+            .nav-links { display: none; }
+            .nav-links.open {
+                display: flex; flex-direction: column;
+                position: absolute; top: 100%; left: 0; right: 0;
+                background: rgba(10,10,10,0.98);
+                padding: 2rem; gap: 1.5rem;
+                border-bottom: 1px solid var(--border);
+            }
+            .hamburger { display: flex; }
+            .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+            .about-image { max-height: 400px; }
+            .info-grid { grid-template-columns: 1fr; }
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+                grid-template-rows: auto;
+            }
+            .gallery-item:nth-child(1) { grid-column: span 2; }
+            .gallery-item { min-height: 200px; }
+        }
+        @media (max-width: 600px) {
+            section { padding: 5rem 1.2rem; }
+            .nav-inner { padding: 1rem; }
+            .hero-buttons { flex-direction: column; align-items: center; }
+            .btn { width: 100%; justify-content: center; }
+            .about-stats { grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+            .stat-num { font-size: 1.8rem; }
+            .services-grid { grid-template-columns: 1fr; }
+            .gallery-grid { grid-template-columns: 1fr; }
+            .gallery-item:nth-child(1) { grid-column: span 1; }
+            .testimonials-grid { grid-template-columns: 1fr; }
+            .footer-inner { flex-direction: column; text-align: center; }
+            .footer-links { flex-wrap: wrap; justify-content: center; }
+        }
+
+        /* ═══════════ SCROLLBAR ═══════════ */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: var(--bg-dark); }
+        ::-webkit-scrollbar-thumb { background: var(--gold-dark); border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--gold); }
+    </style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav id="navbar">
+    <div class="nav-inner">
+        <a href="#" class="nav-logo">LARNA<span>CUTS</span></a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#reviews">Reviews</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="tel:+35797788770" class="nav-cta">Book Now</a></li>
+        </ul>
+        <div class="hamburger" id="hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')">
+            <span></span><span></span><span></span>
+        </div>
+    </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+    <div class="hero-content">
+        <div class="hero-badge">Est. Larnaca, Cyprus</div>
+        <h1>Larna<span class="gold">Cuts</span></h1>
+        <p class="hero-sub">Where tradition meets modern style. Premium grooming for the modern gentleman in the heart of Larnaca.</p>
+        <div class="hero-buttons">
+            <a href="tel:+35797788770" class="btn btn-primary">✂ Book Appointment</a>
+            <a href="#services" class="btn btn-outline">View Services</a>
+        </div>
+    </div>
+    <div class="hero-scroll">Scroll</div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+    <div class="about-grid">
+        <div class="about-image reveal"></div>
+        <div class="about-text reveal">
+            <div class="section-label">Our Story</div>
+            <h3>Craftsmanship in Every Cut</h3>
+            <p>LarnaCuts Barber Shop is Larnaca's destination for men who appreciate the art of grooming. Nestled between Droshia Post Office and New York Sweets, we've built our reputation one perfect cut at a time.</p>
+            <p>Our skilled barbers combine classic techniques with contemporary style — delivering everything from precision fades to traditional hot towel shaves. No appointment needed — just walk in and experience the difference.</p>
+            <div class="about-stats">
+                <div>
+                    <div class="stat-num">5★</div>
+                    <div class="stat-label">Rated</div>
+                </div>
+                <div>
+                    <div class="stat-num">1000+</div>
+                    <div class="stat-label">Happy Clients</div>
+                </div>
+                <div>
+                    <div class="stat-num">Walk-in</div>
+                    <div class="stat-label">Welcome</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+    <div class="section-header reveal">
+        <div class="section-label">What We Offer</div>
+        <h2 class="section-title">Our Services</h2>
+        <div class="divider"></div>
+        <p class="section-desc">Premium grooming services crafted for the modern gentleman. Every visit is an experience.</p>
+    </div>
+    <div class="services-grid">
+        <div class="service-card reveal">
+            <div class="service-icon">✂️</div>
+            <h4>Classic Haircut</h4>
+            <p>Precision cut tailored to your style. Includes consultation, wash, and styling. Our barbers take the time to get it perfect.</p>
+            <div class="service-price">€18 <span>/ from</span></div>
+        </div>
+        <div class="service-card reveal">
+            <div class="service-icon">💈</div>
+            <h4>Skin Fade</h4>
+            <p>Ultra-clean skin fades with seamless blending. From low to high fades — sharp lines and flawless transitions every time.</p>
+            <div class="service-price">€20 <span>/ from</span></div>
+        </div>
+        <div class="service-card reveal">
+            <div class="service-icon">🧔</div>
+            <h4>Beard Sculpting</h4>
+            <p>Expert beard shaping and detailing. We define your look with precision trimming, lining, and optional beard oil treatment.</p>
+            <div class="service-price">€12 <span>/ from</span></div>
+        </div>
+        <div class="service-card reveal">
+            <div class="service-icon">🪒</div>
+            <h4>Hot Towel Shave</h4>
+            <p>The ultimate traditional experience. Hot towels, premium lather, straight razor shave — finished with soothing aftershave balm.</p>
+            <div class="service-price">€22 <span>/ from</span></div>
+        </div>
+        <div class="service-card reveal">
+            <div class="service-icon">👦</div>
+            <h4>Kids' Haircut</h4>
+            <p>Friendly and patient service for our youngest clients. We make sure every child leaves with a smile and a great style.</p>
+            <div class="service-price">€12 <span>/ from</span></div>
+        </div>
+        <div class="service-card reveal">
+            <div class="service-icon">✨</div>
+            <h4>The Full Package</h4>
+            <p>Haircut, beard trim, hot towel treatment, and styling. The complete grooming experience for the man who wants it all.</p>
+            <div class="service-price">€35 <span>/ from</span></div>
+        </div>
+    </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery" id="gallery">
+    <div class="section-header reveal">
+        <div class="section-label">Our Work</div>
+        <h2 class="section-title">The Gallery</h2>
+        <div class="divider"></div>
+        <p class="section-desc">Every cut tells a story. Here's a look at our craft.</p>
+    </div>
+    <div class="gallery-grid reveal">
+        <div class="gallery-item" data-label="Signature Fade">
+            <div class="gallery-icon">✂</div>
+        </div>
+        <div class="gallery-item" data-label="Classic Cut">
+            <div class="gallery-icon">✂</div>
+        </div>
+        <div class="gallery-item" data-label="Beard Work">
+            <div class="gallery-icon">✂</div>
+        </div>
+        <div class="gallery-item" data-label="Hot Shave">
+            <div class="gallery-icon">✂</div>
+        </div>
+        <div class="gallery-item" data-label="Style & Finish">
+            <div class="gallery-icon">✂</div>
+        </div>
+    </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="reviews">
+    <div class="section-header reveal">
+        <div class="section-label">Client Reviews</div>
+        <h2 class="section-title">What They Say</h2>
+        <div class="divider"></div>
+    </div>
+    <div class="testimonials-grid">
+        <div class="testimonial-card reveal">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-text">"Best barber shop in Larnaca, hands down. The attention to detail is incredible. I've been coming here for over a year and never been disappointed."</p>
+            <div class="testimonial-author">Andreas M.</div>
+            <div class="testimonial-role">Regular Client</div>
+        </div>
+        <div class="testimonial-card reveal">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-text">"Walked in as a tourist and got the best fade of my life. The guys here are super friendly and know exactly what they're doing. Highly recommend!"</p>
+            <div class="testimonial-author">James K.</div>
+            <div class="testimonial-role">Visitor from UK</div>
+        </div>
+        <div class="testimonial-card reveal">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-text">"Πολύ καλό κουρείο! Οι υπηρεσίες είναι εξαιρετικές και η ατμόσφαιρα πολύ φιλική. Συστήνω ανεπιφύλακτα!"</p>
+            <div class="testimonial-author">Georgios P.</div>
+            <div class="testimonial-role">Local Regular</div>
+        </div>
+    </div>
+</section>
+
+<!-- CONTACT & HOURS -->
+<section class="info" id="contact">
+    <div class="section-header reveal">
+        <div class="section-label">Find Us</div>
+        <h2 class="section-title">Visit Us</h2>
+        <div class="divider"></div>
+    </div>
+    <div class="info-grid">
+        <div class="info-block reveal">
+            <h3><span>🕐</span> Opening Hours</h3>
+            <div class="hours-table">
+                <div class="hours-row">
+                    <span class="hours-day">Monday</span>
+                    <span class="hours-time">09:00 – 19:00</span>
+                </div>
+                <div class="hours-row">
+                    <span class="hours-day">Tuesday</span>
+                    <span class="hours-time">09:00 – 19:00</span>
+                </div>
+                <div class="hours-row">
+                    <span class="hours-day">Wednesday</span>
+                    <span class="hours-time">09:00 – 19:00</span>
+                </div>
+                <div class="hours-row">
+                    <span class="hours-day">Thursday</span>
+                    <span class="hours-time">09:00 – 19:00</span>
+                </div>
+                <div class="hours-row">
+                    <span class="hours-day">Friday</span>
+                    <span class="hours-time">09:00 – 19:00</span>
+                </div>
+                <div class="hours-row">
+                    <span class="hours-day">Saturday</span>
+                    <span class="hours-time">09:00 – 17:00</span>
+                </div>
+                <div class="hours-row">
+                    <span class="hours-day">Sunday</span>
+                    <span class="hours-time closed">Closed</span>
+                </div>
+            </div>
+            <div class="map-embed">
+                📍 Near Droshia Post Office, Larnaca
+            </div>
+        </div>
+        <div class="info-block reveal">
+            <h3><span>📞</span> Contact</h3>
+            <div class="contact-item">
+                <div class="contact-icon">📍</div>
+                <div>
+                    <div class="contact-label">Address</div>
+                    <div class="contact-value">Near Droshia Post Office<br>Larnaca, Cyprus</div>
+                </div>
+            </div>
+            <div class="contact-item">
+                <div class="contact-icon">📱</div>
+                <div>
+                    <div class="contact-label">Phone</div>
+                    <div class="contact-value"><a href="tel:+35797788770">+357 97 788 770</a></div>
+                </div>
+            </div>
+            <div class="contact-item">
+                <div class="contact-icon">📧</div>
+                <div>
+                    <div class="contact-label">Email</div>
+                    <div class="contact-value"><a href="mailto:info@larnacuts.com">info@larnacuts.com</a></div>
+                </div>
+            </div>
+            <div class="contact-item">
+                <div class="contact-icon">📸</div>
+                <div>
+                    <div class="contact-label">Instagram</div>
+                    <div class="contact-value"><a href="https://instagram.com/larnacuts_barber_shop" target="_blank">@larnacuts_barber_shop</a></div>
+                </div>
+            </div>
+            <div class="contact-item">
+                <div class="contact-icon">💬</div>
+                <div>
+                    <div class="contact-label">Walk-ins</div>
+                    <div class="contact-value">No appointment needed — just walk in!</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+    <div class="cta-content reveal">
+        <div class="section-label">Ready for a fresh cut?</div>
+        <h2 class="section-title">Walk In Today</h2>
+        <p>No appointment needed. Just come by and let our barbers take care of the rest.</p>
+        <a href="tel:+35797788770" class="cta-phone">+357 97 788 770</a>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="footer-inner">
+        <div class="footer-brand">LarnaCuts</div>
+        <div class="footer-links">
+            <a href="#about">About</a>
+            <a href="#services">Services</a>
+            <a href="#gallery">Gallery</a>
+            <a href="#reviews">Reviews</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        &copy; 2025 LarnaCuts Barber Shop — Larnaca, Cyprus. All rights reserved.<br>
+        <small style="color:var(--text-muted); margin-top:0.5rem; display:inline-block;">
+            Premium website by <a href="#">Aurora Digital</a>
+        </small>
+    </div>
+</footer>
+
+<script>
+// Navbar scroll effect
+window.addEventListener('scroll', () => {
+    document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
+});
+
+// Reveal on scroll
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+        }
+    });
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Highlight today's hours
+const days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+const today = days[new Date().getDay()];
+document.querySelectorAll('.hours-row').forEach(row => {
+    if (row.querySelector('.hours-day').textContent === today) {
+        row.querySelector('.hours-time').classList.add('today');
+    }
+});
+
+// Smooth scroll for nav links
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+        const target = document.querySelector(a.getAttribute('href'));
+        if (target) {
+            e.preventDefault();
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            document.getElementById('navLinks').classList.remove('open');
+        }
+    });
+});
+</script>
+
+</body>
+</html>
