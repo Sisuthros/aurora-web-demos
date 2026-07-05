@@ -3,1247 +3,512 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Aurora Web — Websites, AI &amp; Growth for Cyprus &amp; EU</title>
-<meta name="description" content="Premium websites, AI automation, SEO &amp; digital growth for businesses in Cyprus and Europe. 48-hour delivery. Free mockup before payment.">
-<meta property="og:title" content="Aurora Web — Websites, AI &amp; Growth for Cyprus &amp; EU">
-<meta property="og:description" content="Premium websites, AI automation, SEO &amp; digital growth for businesses in Cyprus and Europe. 48-hour delivery. Free mockup.">
-<meta property="og:type" content="website">
-<meta property="og:image" content="https://sisuthros.github.io/aurora-web-demos/screenshots/hero-portfolio.png">
-<meta property="og:url" content="https://sisuthros.github.io/aurora-web-demos/">
-<meta property="og:site_name" content="Aurora Web">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Aurora Web — Custom Websites for Cyprus &amp; EU SMEs">
-<meta name="twitter:description" content="Premium multilingual websites for relocated companies, law firms, real estate and local SMEs. 5-day delivery. Free mockup before payment.">
-<meta name="twitter:image" content="https://sisuthros.github.io/aurora-web-demos/screenshots/hero-portfolio.png">
-<meta name="theme-color" content="#F8F6F2">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="default">
-<meta name="apple-mobile-web-app-title" content="Aurora Web">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23F8F6F2'/%3E%3Ctext x='50' y='72' font-family='Georgia,serif' font-size='56' font-weight='700' text-anchor='middle' fill='%23C7A76A'%3EA%3C/text%3E%3C/svg%3E">
-<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23F8F6F2'/%3E%3Ctext x='50' y='72' font-family='Georgia,serif' font-size='56' font-weight='700' text-anchor='middle' fill='%23C7A76A'%3EA%3C/text%3E%3C/svg%3E">
+<title>Aurora Web — Premium Websites for Cyprus</title>
+<meta name="description" content="Premium websites, AI automation & digital growth for Cyprus businesses. 48h delivery. Free demo before payment.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=Inter:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-<noscript><link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=Inter:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet"></noscript>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
-<script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js" defer></script>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=Inter:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 <style>
-/* ═══════════════════ FOUNDATION ═══════════════════ */
-:root{
-  --cream:#F8F6F2; --sand:#ECE7DD; --sand2:#E4DCCD; --surface:#F1EDE5;
-  --text:#2F3133; --text-dim:#5A544F; --muted:#7D766B;
-  --gold:#C7A76A; --gold-dark:#B09150; --gold-light:#D9BD7E;
-  --sage:#A8B3A0; --white:#FFFFFF; --border:rgba(47,49,51,.08);
-  --border2:rgba(199,167,106,.30); --shadow:0 4px 30px rgba(47,49,51,.06);
-  --shadow-lg:0 12px 50px rgba(47,49,51,.1);
-  --r:4px; --r-lg:6px; --ease:cubic-bezier(.22,1,.36,1);
-  --fd:'Bricolage Grotesque',sans-serif; --fs:'Instrument Serif',serif; --fb:'Inter',sans-serif;
-  /* Modular scale 1.250 Major Third */
-  --step--1:clamp(.8rem,.75rem + .25vw,1rem);
-  --step-0:clamp(1rem,.94rem + .31vw,1.25rem);
-  --step-1:clamp(1.25rem,1.17rem + .39vw,1.563rem);
-  --step-2:clamp(1.563rem,1.46rem + .49vw,1.953rem);
-  --step-3:clamp(1.953rem,1.83rem + .62vw,2.441rem);
-  --step-4:clamp(2.441rem,2.28rem + .77vw,3.052rem);
-  --step-5:clamp(3.052rem,2.85rem + .97vw,3.815rem);
-  --step-6:clamp(3.815rem,3.57rem + 1.21vw,4.768rem);
-  --step-7:clamp(4.768rem,4.46rem + 1.51vw,5.96rem);
-}
 *{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
-body{background:var(--cream);color:var(--text);font-family:var(--fb);font-size:var(--step-0);line-height:1.6;overflow-x:hidden}
-img{max-width:100%;display:block}
+:root{
+--bg:#0a0e1a;--bg2:#0f1525;--surface:#141b2e;
+--text:#e8e6e1;--dim:#8a8a8a;--muted:#5a5a5a;
+--gold:#c9a96e;--gold-glow:rgba(201,169,110,0.15);
+--teal:#2a9d8f;--purple:#6c5ce7;--green:#00b894;
+--border:rgba(255,255,255,0.06);--border2:rgba(201,169,110,0.25);
+--r:4px;--ease:cubic-bezier(.22,1,.36,1);
+--fd:'Bricolage Grotesque',sans-serif;--fs:'Instrument Serif',serif;--fb:'Inter',sans-serif;
+--step--1:clamp(.8rem, .75rem + .25vw, 1rem);
+--step-0:clamp(1rem, .94rem + .31vw, 1.25rem);
+--step-1:clamp(1.25rem, 1.17rem + .39vw, 1.563rem);
+--step-2:clamp(1.563rem, 1.46rem + .49vw, 1.953rem);
+--step-3:clamp(1.953rem, 1.83rem + .62vw, 2.441rem);
+--step-4:clamp(2.441rem, 2.28rem + .77vw, 3.052rem);
+--step-5:clamp(3.052rem, 2.85rem + .97vw, 3.815rem);
+--step-6:clamp(3.815rem, 3.57rem + 1.21vw, 4.768rem);
+--step-7:clamp(4.768rem, 4.46rem + 1.51vw, 5.96rem);
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--fb);background:var(--bg);color:var(--text);overflow-x:hidden;cursor:none}
 a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
 
-/* Noise overlay */
-.noise{position:fixed;inset:0;z-index:9990;pointer-events:none;opacity:.035;
-  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  background-size:200px}
-
-.container{max-width:1320px;margin:0 auto;padding:0 2rem}
-@media(max-width:600px){.container{padding:0 1.2rem}}
-
-/* Grid pattern */
-.grid-bg{position:absolute;inset:0;pointer-events:none;opacity:.4;
-  background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);
-  background-size:64px 64px;
-  mask-image:radial-gradient(ellipse 80% 60% at center,black 20%,transparent 75%);
-  -webkit-mask-image:radial-gradient(ellipse 80% 60% at center,black 20%,transparent 75%)}
-
-/* ═══════════════════ NAV ═══════════════════ */
-.nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.5rem 2rem;
-  display:flex;justify-content:space-between;align-items:center;
-  background:rgba(248,246,242,.8);backdrop-filter:blur(20px);
-  border-bottom:1px solid var(--border);transition:padding .3s var(--ease)}
-.nav.scrolled{padding:1rem 2rem}
-.nav-logo{display:flex;align-items:center;gap:.5rem;font-family:var(--fd);
-  font-size:1.25rem;font-weight:600;letter-spacing:-.02em;color:var(--text)}
-.nav-logo svg{width:28px;height:28px}
-.nav-links{display:flex;gap:2rem;align-items:center}
-.nav-links a{font-size:.88rem;color:var(--text-dim);transition:color .2s;position:relative}
-.nav-links a:hover{color:var(--gold-dark)}
-.nav-cta{padding:.6rem 1.4rem;border:1px solid var(--border2);border-radius:50px;
-  color:var(--text)!important;font-size:.82rem!important;
-  transition:all .2s}
-.nav-cta:hover{background:var(--gold);border-color:var(--gold);color:var(--white)!important}
-.nav-burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:.5rem}
-.nav-burger span{width:22px;height:2px;background:var(--text);border-radius:2px;transition:transform .3s}
-@media(max-width:768px){
-  .nav-links{display:none;position:absolute;top:100%;left:0;right:0;
-    flex-direction:column;background:rgba(248,246,242,.98);backdrop-filter:blur(20px);
-    padding:1.5rem 2rem;gap:1rem;border-bottom:1px solid var(--border)}
-  .nav-links.open{display:flex}
-  .nav-burger{display:flex}
+/* Aurora background */
+.aurora-bg{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none}
+.aurora-bg::before,.aurora-bg::after{
+content:'';position:absolute;width:60vw;height:60vw;border-radius:50%;
+filter:blur(120px);opacity:0.12;animation:float 20s ease-in-out infinite}
+.aurora-bg::before{background:var(--teal);top:-10%;left:-10%;animation-delay:0s}
+.aurora-bg::after{background:var(--purple);bottom:-10%;right:-10%;animation-delay:10s}
+@keyframes float{
+0%,100%{transform:translate(0,0) scale(1)}
+33%{transform:translate(5vw,3vw) scale(1.1)}
+66%{transform:translate(-3vw,5vw) scale(0.9)}
 }
 
-/* ═══════════════════ HERO ═══════════════════ */
-.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;
-  position:relative;overflow:hidden;padding:8rem 0 0}
-.hero-bg{position:absolute;inset:0;z-index:0;overflow:hidden}
-.hero-bg img{width:100%;height:100%;object-fit:cover;
-  animation:heroZoom 25s ease-in-out infinite alternate}
-@keyframes heroZoom{from{transform:scale(1)}to{transform:scale(1.06)}}
-.hero-bg::after{content:'';position:absolute;inset:0;
-  background:linear-gradient(180deg,rgba(248,246,242,.85) 0%,rgba(248,246,242,.6) 30%,rgba(248,246,242,.88) 70%,rgba(248,246,242,1) 100%)}
-.hero-content{position:relative;z-index:1;max-width:880px}
-.hero-tag{display:inline-flex;align-items:center;gap:.5rem;padding:.4rem 1rem;
-  border:1px solid var(--border2);border-radius:50px;font-size:.78rem;
-  color:var(--text-dim);margin-bottom:2rem;font-weight:500}
-.hero-tag svg{width:14px;height:14px;color:var(--gold-dark)}
-.hero h1{font-family:var(--fd);font-size:var(--step-6);font-weight:600;
-  line-height:1.02;letter-spacing:-.035em;margin-bottom:1.5rem;
-  background:linear-gradient(135deg,var(--text) 0%,var(--text) 50%,var(--gold-dark) 100%);
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.hero h1 em{font-family:var(--fs);font-style:italic;font-weight:400;
-  -webkit-text-fill-color:var(--gold)}
-.hero p.lead{font-size:var(--step-1);color:var(--text-dim);max-width:520px;
-  margin-bottom:3rem;font-weight:300;line-height:1.6}
-.hero-cta{display:flex;gap:1rem;flex-wrap:wrap;align-items:center}
-.btn{display:inline-flex;align-items:center;gap:.6rem;padding:1rem 2rem;
-  border-radius:50px;font-size:.92rem;font-weight:500;cursor:pointer;
-  border:none;transition:all .3s var(--ease)}
-.btn svg{width:18px;height:18px;transition:transform .2s}
-.btn:hover svg{transform:translateX(3px)}
-.btn-primary{background:var(--text);color:var(--cream)}
-.btn-primary:hover{background:var(--gold-dark);box-shadow:0 8px 30px rgba(176,145,80,.25);transform:translateY(-2px)}
-.btn-ghost{background:transparent;color:var(--text);border:1px solid var(--border2)}
-.btn-ghost:hover{border-color:var(--gold);background:var(--white)}
+/* Custom cursor */
+.cursor{position:fixed;width:8px;height:8px;border-radius:50%;background:var(--gold);pointer-events:none;z-index:10000;mix-blend-mode:difference;transition:width .3s,height .3s,background .3s;transform:translate(-50%,-50%)}
+.cursor.hover{width:50px;height:50px;background:transparent;border:1px solid var(--gold)}
+@media(max-width:768px){.cursor{display:none}body{cursor:auto}}
 
-/* Rating chip */
-.rating-chip{position:absolute;top:50%;right:2rem;transform:translateY(-50%);
-  display:flex;flex-direction:column;align-items:center;gap:.5rem;
-  padding:1.2rem 1.5rem;background:rgba(255,255,255,.7);backdrop-filter:blur(12px);
-  border:1px solid var(--border2);border-radius:var(--r-lg);
-  box-shadow:var(--shadow-lg);z-index:2}
-.rating-chip .stars{display:flex;gap:2px}
-.rating-chip .stars svg{width:16px;height:16px;color:var(--gold)}
-.rating-chip .score{font-family:var(--fd);font-size:1.4rem;font-weight:700;
-  color:var(--text);letter-spacing:-.02em}
-.rating-chip .label{font-size:.72rem;color:var(--muted);font-weight:500}
-@media(max-width:1024px){.rating-chip{display:none}}
+/* Nav */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.5rem 3rem;display:flex;justify-content:space-between;align-items:center;backdrop-filter:blur(20px);background:rgba(10,14,26,0.7);border-bottom:1px solid var(--border);transition:padding .3s}
+nav.scrolled{padding:1rem 3rem}
+nav .logo{font-family:var(--fd);font-size:var(--step-1);font-weight:700;letter-spacing:-0.02em;color:var(--gold)}
+nav ul{display:flex;gap:2.5rem;list-style:none}
+nav ul a{font-size:var(--step--1);color:var(--text);opacity:0.7;transition:opacity .3s,color .3s}
+nav ul a:hover{opacity:1;color:var(--gold)}
+nav .cta{padding:.7rem 1.5rem;border:1px solid var(--gold);border-radius:var(--r);color:var(--gold);font-size:var(--step--1);transition:all .3s}
+nav .cta:hover{background:var(--gold);color:var(--bg)}
+@media(max-width:768px){nav{padding:1rem 1.5rem}nav ul{display:none}}
 
-/* Hero stats */
-.hero-stats{display:flex;gap:3rem;margin-top:4rem;padding-top:2rem;
-  border-top:1px solid var(--border);position:relative;z-index:1;flex-wrap:wrap}
-.hero-stat .num{font-family:var(--fd);font-size:var(--step-3);font-weight:700;
-  color:var(--gold-dark);letter-spacing:-.02em;line-height:1}
-.hero-stat .lbl{font-size:var(--step--1);color:var(--muted);
-  text-transform:uppercase;letter-spacing:.05em;font-weight:500;margin-top:.3rem}
+/* Hero */
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:8rem 2rem 4rem;position:relative;z-index:1}
+#hero-tag{font-family:var(--fs);font-style:italic;font-size:var(--step-1);color:var(--teal);margin-bottom:1rem;opacity:0}
+#hero-title{font-family:var(--fd);font-size:var(--step-7);font-weight:700;letter-spacing:-0.03em;line-height:1.0;max-width:900px;margin-bottom:1.5rem;opacity:0}
+#hero-title .gold{color:var(--gold)}
+#hero-title .serif{font-family:var(--fs);font-style:italic;font-weight:400}
+#hero-lead{font-size:var(--step-1);color:var(--dim);max-width:600px;line-height:1.6;margin-bottom:2.5rem;opacity:0}
+#hero-cta{display:inline-flex;gap:1rem;opacity:0}
+#hero-cta a{padding:1rem 2.5rem;border-radius:var(--r);font-size:var(--step-0);font-weight:600;transition:all .3s}
+#hero-cta .primary{background:var(--gold);color:var(--bg)}
+#hero-cta .primary:hover{transform:translateY(-3px);box-shadow:0 10px 40px var(--gold-glow)}
+#hero-cta .secondary{border:1px solid var(--border2);color:var(--text)}
+#hero-cta .secondary:hover{border-color:var(--gold);color:var(--gold)}
+.scroll-indicator{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);width:2px;height:40px;background:var(--gold);opacity:0.3;animation:scrollPulse 2s ease-in-out infinite}
+@keyframes scrollPulse{0%,100%{opacity:0.1;transform:translateX(-50%) scaleY(0.5)}50%{opacity:0.5;transform:translateX(-50%) scaleY(1)}}
 
-/* ═══════════════════ INFO BAR ═══════════════════ */
-.info-bar{background:var(--surface);border-bottom:1px solid var(--border);padding:1.2rem 0}
-.info-bar .container{display:flex;justify-content:space-around;flex-wrap:wrap;gap:1rem}
-.info-item{display:flex;align-items:center;gap:.6rem;font-size:var(--step--1);
-  color:var(--text-dim);font-weight:500}
-.info-item svg{width:18px;height:18px;color:var(--gold-dark);flex-shrink:0}
+/* Marquee */
+.marquee{overflow:hidden;padding:2rem 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:var(--bg2);position:relative;z-index:1}
+.marquee-track{display:flex;gap:4rem;white-space:nowrap;animation:marquee 40s linear infinite;width:max-content}
+.marquee-track span{font-family:var(--fd);font-size:var(--step-2);font-weight:300;color:var(--muted);letter-spacing:0.05em}
+.marquee-track .gold{color:var(--gold);font-style:italic;font-family:var(--fs)}
+@keyframes marquee{to{transform:translateX(-50%)}}
 
-/* ═══════════════════ TRUSTED BY / LOGO SLIDER ═══════════════════ */
-.trusted-bar{padding:2.5rem 0;background:var(--white);border-bottom:1px solid var(--border);overflow:hidden}
-.trusted-bar .sec-label{text-align:center;margin-bottom:2rem}
-.trusted-track{display:flex;gap:4rem;animation:trustedScroll 30s linear infinite;align-items:center;width:max-content}
-.trusted-track:hover{animation-play-state:paused}
-.trusted-logo{height:28px;opacity:.35;filter:grayscale(1);transition:all .3s}
-.trusted-logo:hover{opacity:.7;filter:grayscale(0)}
-@keyframes trustedScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+/* Sections */
+section{padding:6rem 2rem;position:relative;z-index:1;max-width:1400px;margin:0 auto}
+.section-label{font-family:var(--fb);font-size:var(--step--1);text-transform:uppercase;letter-spacing:0.2em;color:var(--teal);margin-bottom:1rem}
+.section-title{font-family:var(--fd);font-size:var(--step-5);font-weight:700;letter-spacing:-0.02em;line-height:1.0;margin-bottom:1.5rem}
+.section-title .serif{font-family:var(--fs);font-style:italic;font-weight:400;color:var(--gold)}
+.section-sub{font-size:var(--step-1);color:var(--dim);max-width:600px;line-height:1.6;margin-bottom:4rem}
 
-/* ═══════════════════ MARQUEE ═══════════════════ */
-.marquee{overflow:hidden;white-space:nowrap;padding:1rem 0;
-  border-bottom:1px solid var(--border);background:var(--cream)}
-.marquee-track{display:inline-flex;gap:3rem;animation:mq 35s linear infinite;align-items:center}
-.marquee-item{font-family:var(--fs);font-size:var(--step-2);font-style:italic;
-  color:var(--text-dim);font-weight:500}
-.marquee-sep{color:var(--gold);display:inline-flex;align-items:center}
-.marquee-sep svg{width:10px;height:10px;fill:var(--gold)}
-@keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+/* Stats */
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:2rem;padding:4rem 0;border-bottom:1px solid var(--border)}
+.stat{text-align:center}
+.stat .num{font-family:var(--fd);font-size:var(--step-6);font-weight:700;color:var(--gold);letter-spacing:-0.03em}
+.stat .label{font-size:var(--step--1);color:var(--dim);text-transform:uppercase;letter-spacing:0.15em;margin-top:.5rem}
 
-/* Sticky mobile CTA */
-.mobile-cta{display:none;position:fixed;bottom:0;left:0;right:0;z-index:99;
-  background:rgba(248,246,242,.96);backdrop-filter:blur(20px);
-  border-top:1px solid var(--border);padding:.8rem 1rem;
-  justify-content:center;gap:.6rem}
-.mobile-cta .btn{padding:.75rem 1.5rem;font-size:.85rem}
-@media(max-width:768px){.mobile-cta{display:flex}}
+/* Portfolio */
+.portfolio-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:1.5rem}
+.demo-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;transition:all .4s var(--ease);position:relative}
+.demo-card:hover{border-color:var(--gold);transform:translateY(-6px);box-shadow:0 20px 60px rgba(0,0,0,0.4)}
+.demo-card .thumb{height:200px;background:linear-gradient(135deg,var(--bg2),var(--surface));position:relative;overflow:hidden}
+.demo-card .thumb::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--teal),var(--purple));opacity:0.15}
+.demo-card .thumb .icon{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:3rem;opacity:0.3}
+.demo-card .info{padding:1.5rem}
+.demo-card .info h3{font-family:var(--fd);font-size:var(--step-1);font-weight:600;margin-bottom:.3rem;letter-spacing:-0.01em}
+.demo-card .info .cat{font-size:var(--step--1);color:var(--teal);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:.5rem}
+.demo-card .info .meta{font-size:var(--step--1);color:var(--dim);display:flex;gap:1rem;align-items:center}
+.demo-card .info .meta .followers{color:var(--gold)}
+.demo-card .badge{position:absolute;top:1rem;right:1rem;background:var(--gold);color:var(--bg);font-size:.7rem;font-weight:700;padding:.2rem .6rem;border-radius:3px;letter-spacing:0.05em;z-index:2}
 
-/* Section alternation */
-section.alt{background:var(--white)}
+/* Services */
+.services{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2rem}
+.service{background:var(--surface);border:1px solid var(--border);padding:2.5rem;border-radius:var(--r);transition:all .3s;position:relative;overflow:hidden}
+.service::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--teal),var(--gold));transform:scaleX(0);transition:transform .4s}
+.service:hover{border-color:var(--border2);transform:translateY(-4px)}
+.service:hover::before{transform:scaleX(1)}
+.service .num{font-family:var(--fs);font-size:var(--step-3);font-style:italic;color:var(--gold);opacity:0.3;position:absolute;top:1rem;right:1.5rem}
+.service h3{font-family:var(--fd);font-size:var(--step-2);font-weight:600;margin-bottom:.5rem}
+.service .price{font-family:var(--fs);font-size:var(--step-1);color:var(--gold);margin-bottom:1rem}
+.service p{font-size:var(--step--1);color:var(--dim);line-height:1.6}
+.service ul{list-style:none;margin-top:1rem}
+.service ul li{font-size:var(--step--1);color:var(--dim);padding:.3rem 0;padding-left:1.2rem;position:relative}
+.service ul li::before{content:'✓';position:absolute;left:0;color:var(--gold)}
 
-/* Hover enhancements */
-.work-card:hover .work-card-img img{transform:scale(1.05)}
-.btn:active{transform:scale(.97)}
-.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;background:var(--gold);transition:width .3s}
-.nav-links a:hover::after{width:100%}
+/* Process */
+.process{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:2rem;margin-top:3rem}
+.step{position:relative;padding:2rem 0}
+.step .step-num{font-family:var(--fs);font-style:italic;font-size:var(--step-4);color:var(--gold);opacity:0.4;margin-bottom:.5rem}
+.step h3{font-family:var(--fd);font-size:var(--step-1);font-weight:600;margin-bottom:.5rem}
+.step p{font-size:var(--step--1);color:var(--dim);line-height:1.6}
 
-/* FAQ accordion animation */
-.faq-a{max-height:0;overflow:hidden;transition:max-height .4s var(--ease)}
-.faq-a.open{max-height:300px}
-.faq-q{width:100%;text-align:left;background:none;border:none;
-  padding:1.2rem 0;display:flex;justify-content:space-between;align-items:center;
-  font-family:var(--fd);font-size:1.05rem;font-weight:500;color:var(--text);
-  cursor:pointer;border-bottom:1px solid var(--border)}
-.faq-q svg{transition:transform .3s}
-.faq-q.open svg{transform:rotate(180deg)}
-section{padding:7rem 0;position:relative}
-.sec-label{font-size:var(--step--1);text-transform:uppercase;letter-spacing:.12em;
-  color:var(--gold-dark);margin-bottom:1.5rem;font-weight:700;
-  display:flex;align-items:center;gap:.5rem}
-.sec-label::before{content:'';width:2rem;height:1px;background:var(--gold)}
-.sec-title{font-family:var(--fd);font-size:var(--step-5);font-weight:600;
-  line-height:1.05;letter-spacing:-.03em;max-width:780px;margin-bottom:1.5rem}
-.sec-title em{font-family:var(--fs);font-style:italic;font-weight:400;color:var(--gold)}
-.sec-desc{font-size:var(--step-1);color:var(--text-dim);max-width:500px;
-  margin-bottom:4rem;line-height:1.6;font-weight:300}
+/* Quote */
+.quote{text-align:center;padding:8rem 2rem;max-width:900px;margin:0 auto}
+.quote .mark{font-family:var(--fs);font-size:var(--step-6);color:var(--gold);opacity:0.3;line-height:0}
+.quote p{font-family:var(--fs);font-style:italic;font-size:var(--step-3);line-height:1.4;color:var(--text);margin:1rem 0}
+.quote .author{font-size:var(--step--1);color:var(--dim);text-transform:uppercase;letter-spacing:0.2em;margin-top:2rem}
 
-/* ═══════════════════ PORTFOLIO BENTO GRID ═══════════════════ */
-.work-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:1rem}
-.work-card{position:relative;overflow:hidden;border-radius:var(--r-lg);
-  border:1px solid var(--border);background:var(--white);
-  transition:border-color .3s,box-shadow .4s var(--ease),transform .4s var(--ease);
-  display:flex;flex-direction:column}
-.work-card:hover{border-color:var(--border2);box-shadow:var(--shadow-lg);transform:translateY(-4px)}
-.work-card-img{position:relative;overflow:hidden;aspect-ratio:16/10;background:var(--sand)}
-.work-card-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s var(--ease)}
-.work-card:hover .work-card-img img{transform:scale(1.03)}
-.work-card-img::after{content:'';position:absolute;inset:0;
-  background:linear-gradient(to bottom,transparent 50%,rgba(0,0,0,.3) 100%);
-  z-index:1}
-.work-card-overlay{position:absolute;bottom:1rem;left:1rem;z-index:2;
-  display:flex;align-items:center;gap:.5rem;font-size:.75rem;
-  color:rgba(255,255,255,.9);font-weight:500;letter-spacing:.03em}
-.work-card-overlay svg{width:14px;height:14px}
-.work-card-body{padding:1.5rem 1.8rem 1.8rem}
-.work-card-cat{font-size:var(--step--1);text-transform:uppercase;letter-spacing:.1em;
-  color:var(--gold-dark);margin-bottom:.6rem;font-weight:600}
-.work-card-title{font-family:var(--fd);font-size:var(--step-2);font-weight:600;
-  letter-spacing:-.02em;margin-bottom:.4rem}
-.work-card-desc{font-size:.9rem;color:var(--text-dim);line-height:1.5}
-.work-card-link{margin-top:1rem;font-size:.82rem;color:var(--gold-dark);
-  font-weight:600;display:inline-flex;align-items:center;gap:.4rem;transition:gap .2s}
-.work-card-link svg{width:14px;height:14px}
-.work-card:hover .work-card-link{gap:.8rem}
+/* CTA */
+.cta-section{text-align:center;padding:8rem 2rem;background:linear-gradient(135deg,rgba(42,157,143,0.08),rgba(108,92,231,0.05));border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.cta-section h2{font-family:var(--fd);font-size:var(--step-5);font-weight:700;letter-spacing:-0.02em;margin-bottom:1rem}
+.cta-section h2 .serif{font-family:var(--fs);font-style:italic;font-weight:400;color:var(--gold)}
+.cta-section p{font-size:var(--step-1);color:var(--dim);margin-bottom:2.5rem}
+.cta-form{display:flex;gap:1rem;max-width:500px;margin:0 auto;flex-wrap:wrap}
+.cta-form input{flex:1;padding:1rem 1.5rem;background:var(--surface);border:1px solid var(--border);border-radius:var(--r);color:var(--text);font-size:var(--step--1);min-width:200px}
+.cta-form input:focus{outline:none;border-color:var(--gold)}
+.cta-form button{padding:1rem 2rem;background:var(--gold);color:var(--bg);border:none;border-radius:var(--r);font-size:var(--step--1);font-weight:700;cursor:none;transition:all .3s}
+.cta-form button:hover{transform:translateY(-2px);box-shadow:0 10px 30px var(--gold-glow)}
 
-.s7{grid-column:span 7} .s5{grid-column:span 5}
-.s4{grid-column:span 4} .s8{grid-column:span 8} .s12{grid-column:span 12}
-@media(max-width:1024px){.s7,.s8,.s5{grid-column:span 6}}
-@media(max-width:700px){.s7,.s8,.s5,.s4,.s12{grid-column:span 12}}
+/* Footer */
+footer{padding:4rem 2rem 2rem;border-top:1px solid var(--border);position:relative;z-index:1}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:3rem;max-width:1200px;margin:0 auto 3rem}
+.footer-grid h4{font-family:var(--fd);font-size:var(--step-0);font-weight:600;margin-bottom:1rem;color:var(--gold)}
+.footer-grid p,.footer-grid a{font-size:var(--step--1);color:var(--dim);line-height:1.8;display:block}
+.footer-grid a:hover{color:var(--gold)}
+.footer-bottom{text-align:center;padding-top:2rem;border-top:1px solid var(--border);font-size:var(--step--1);color:var(--muted)}
+@media(max-width:768px){.footer-grid{grid-template-columns:1fr}}
 
-.pr7{padding-right:7px} .pl7{padding-left:7px}
+/* GSAP reveal */
+.reveal-line{overflow:hidden;display:block;padding-bottom:0.05em}
+.reveal-line>span{display:block;transform:translateY(110%)}
 
-/* Full-width card variant */
-.work-card.wide .work-card-img{aspect-ratio:16/9}
-.work-card.wide .work-card-body{display:flex;justify-content:space-between;align-items:flex-end;gap:2rem}
-.work-card.wide .work-card-text{flex:1}
-.work-card.wide .work-card-meta{text-align:right;flex-shrink:0}
-
-/* ═══════════════════ SERVICES ═══════════════════ */
-.svc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:1rem;margin-top:2rem}
-.svc{padding:2.5rem 2rem;border:1px solid var(--border);border-radius:var(--r-lg);
-  background:var(--white);transition:all .35s var(--ease);position:relative;overflow:hidden;cursor:default}
-.svc::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 80% 0,var(--gold-light) 0,transparent 60%);opacity:0;transition:opacity .4s var(--ease)}
-.svc:hover{border-color:var(--border2);box-shadow:0 16px 48px rgba(199,167,106,.18);transform:translateY(-6px)}
-.svc:hover::before{opacity:.08}
-.svc:hover .svc-ic{transform:translateY(-4px) scale(1.05);border-color:var(--gold-light);background:rgba(199,167,106,.08)}
-.svc:hover .svc-ic svg{color:var(--gold-dark);transform:scale(1.1)}
-.svc-ic{width:48px;height:48px;display:flex;align-items:center;justify-content:center;
-  background:var(--surface);border:1px solid var(--border);border-radius:var(--r);
-  margin-bottom:1.2rem;transition:all .35s var(--ease)}
-.svc-ic svg{width:24px;height:24px;color:var(--gold-dark);transition:all .35s var(--ease)}
-.svc h3{font-family:var(--fd);font-size:1.2rem;font-weight:600;margin-bottom:.5rem;letter-spacing:-.01em}
-.svc p{font-size:.88rem;color:var(--text-dim);line-height:1.6}
-.svc-badge{display:inline-block;margin-top:1rem;padding:.2rem .6rem;
-  background:var(--surface);border:1px solid var(--border);border-radius:var(--r);
-  font-size:.72rem;color:var(--muted);font-weight:500}
-
-/* ═══════════════════ PROCESS ═══════════════════ */
-.process-list{margin-top:2rem}
-.pstep{display:grid;grid-template-columns:4rem 1fr auto;gap:2rem;
-  padding:2.2rem 0;border-top:1px solid var(--border);align-items:baseline}
-.pstep:last-child{border-bottom:1px solid var(--border)}
-.pnum{font-family:var(--fd);font-size:var(--step-2);font-weight:700;
-  color:var(--gold);letter-spacing:-.02em}
-.pstep h3{font-family:var(--fd);font-size:var(--step-2);font-weight:600;
-  margin-bottom:.5rem;letter-spacing:-.01em}
-.pstep p{color:var(--text-dim);font-size:.95rem;max-width:560px;line-height:1.6}
-.ptime{font-size:.75rem;color:var(--muted);font-weight:600;
-  text-transform:uppercase;letter-spacing:.05em;white-space:nowrap}
-@media(max-width:700px){.pstep{grid-template-columns:3rem 1fr;gap:1rem}.ptime{grid-column:2;margin-top:.5rem}}
-
-/* ═══════════════════ PRICING ═══════════════════ */
-.price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-top:2rem}
-@media(max-width:900px){.price-grid{grid-template-columns:1fr;max-width:380px;margin:2rem auto 0}}
-.pcard{padding:2.5rem 2rem;border:1px solid var(--border);border-radius:var(--r-lg);
-  background:var(--white);display:flex;flex-direction:column;
-  transition:all .3s var(--ease);position:relative}
-.pcard:hover{border-color:var(--border2);box-shadow:var(--shadow-lg);transform:translateY(-4px)}
-.pcard.featured{border-color:var(--gold);background:linear-gradient(180deg,rgba(241,237,229,1),rgba(255,255,255,1))}
-.pcard .badge{position:absolute;top:1rem;right:1rem;padding:.3rem .85rem;
-  background:var(--text);color:var(--cream);border-radius:50px;
-  font-size:.72rem;font-weight:700;letter-spacing:.04em;box-shadow:0 4px 12px rgba(47,49,51,.15)}
-.pcard h3{font-family:var(--fd);font-size:var(--step-2);font-weight:600;margin-bottom:.5rem}
-.pcard .price{font-family:var(--fd);font-size:var(--step-5);font-weight:700;
-  color:var(--text);letter-spacing:-.02em;margin:1rem 0 .3rem}
-.pcard .price small{font-size:var(--step-0);font-weight:400;color:var(--muted)}
-.pcard .pdesc{font-size:.85rem;color:var(--muted);margin-bottom:1.5rem}
-.pcard ul{list-style:none;margin-bottom:1.5rem;flex:1}
-.pcard ul li{padding:.6rem 0;font-size:.9rem;color:var(--text-dim);
-  border-bottom:1px solid var(--border);display:flex;align-items:center;gap:.6rem}
-.pcard ul li svg{width:16px;height:16px;color:var(--gold);flex-shrink:0}
-.pcard .btn{margin-top:auto;text-align:center;justify-content:center}
-
-/* ═══════════════════ TESTIMONIAL ═══════════════════ */
-.testimonial{max-width:780px;padding:3.5rem;border:1px solid var(--border);
-  border-radius:var(--r-lg);background:var(--white);box-shadow:var(--shadow);
-  margin-top:2rem}
-.testimonial-quote{font-family:var(--fs);font-size:var(--step-3);font-style:italic;
-  line-height:1.35;color:var(--text);margin-bottom:2rem;font-weight:400}
-.testimonial-quote::before{content:'\201C';font-size:var(--step-6);color:var(--gold);
-  line-height:0;vertical-align:-0.4em;margin-right:.2em}
-.faq-item{background:var(--white);border:1px solid var(--border);border-radius:var(--r-lg);margin-bottom:1rem;overflow:hidden}
-.faq-q{width:100%;display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:1.5rem;
-  background:none;border:none;font-family:var(--fd);font-size:var(--step-1);font-weight:600;text-align:left;cursor:pointer}
-.faq-q svg{width:20px;height:20px;color:var(--gold-dark);transition:transform .3s var(--ease);flex-shrink:0}
-.faq-item.open .faq-q svg{transform:rotate(180deg)}
-.faq-a{max-height:0;overflow:hidden;transition:max-height .35s var(--ease)}
-.faq-a .faq-pad{padding:0 1.5rem 1.5rem;color:var(--text-dim);line-height:1.7}
-.testimonial-author{display:flex;align-items:center;gap:1rem}
-.testimonial-avatar{width:52px;height:52px;border-radius:50%;
-  background:linear-gradient(135deg,var(--gold),var(--sand2));
-  display:flex;align-items:center;justify-content:center;
-  font-family:var(--fd);font-weight:600;color:var(--white);font-size:1.2rem}
-.testimonial-author .name{font-weight:600;font-size:.95rem}
-.testimonial-author .role{font-size:.82rem;color:var(--muted)}
-
-/* ═══════════════════ CTA ═══════════════════ */
-.cta{padding:8rem 0;text-align:center;position:relative;overflow:hidden}
-.cta::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
-  width:700px;height:700px;background:radial-gradient(circle,rgba(199,167,106,.1),transparent 60%)}
-.cta-content{position:relative;z-index:1}
-.cta h2{font-family:var(--fd);font-size:var(--step-6);font-weight:600;
-  line-height:1.02;letter-spacing:-.035em;margin-bottom:1.5rem}
-.cta h2 em{font-family:var(--fs);font-style:italic;font-weight:400;color:var(--gold)}
-.cta p{font-size:var(--step-1);color:var(--text-dim);max-width:480px;
-  margin:0 auto 3rem;font-weight:300}
-.wa-btn{display:inline-flex;align-items:center;gap:.7rem;padding:1.2rem 2.5rem;
-  background:#25d366;color:#fff;border-radius:50px;font-size:1rem;font-weight:600;
-  transition:all .3s var(--ease)}
-.wa-btn:hover{transform:translateY(-3px);box-shadow:0 12px 40px rgba(37,211,102,.3)}
-.wa-btn svg{width:20px;height:20px}
-
-/* ═══════════════════ FOOTER ═══════════════════ */
-footer{padding:3rem 0 2rem;border-top:1px solid var(--border);background:var(--surface)}
-.footer-grid{display:flex;justify-content:space-between;align-items:center;
-  flex-wrap:wrap;gap:2rem}
-.footer-logo{display:flex;align-items:center;gap:.5rem;font-family:var(--fd);
-  font-size:1.2rem;font-weight:600}
-.footer-logo svg{width:24px;height:24px}
-.footer-links{display:flex;gap:2rem}
-.footer-links a{color:var(--text-dim);font-size:.85rem;transition:color .2s}
-.footer-links a:hover{color:var(--gold-dark)}
-.footer-copy{font-size:.78rem;color:var(--text-dim);text-align:center;
-  width:100%;margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border)}
-
-/* ═══════════════════ SCROLL PROGRESS ═══════════════════ */
-.scroll-prog{position:fixed;top:0;left:0;height:2px;background:var(--gold);
-  z-index:9999;width:0%;transition:width .1s}
-
-/* ═══════════════════ CUSTOM CURSOR ═══════════════════ */
-.cursor{position:fixed;width:10px;height:10px;border-radius:50%;background:var(--gold);
-  pointer-events:none;mix-blend-mode:difference;z-index:10000;
-  transition:width .3s,height .3s,background .3s}
-.cursor.hover{width:44px;height:44px;background:transparent;
-  border:1.5px solid var(--gold)}
-@media(max-width:768px){.cursor{display:none}}
-
-/* ═══════════════════ ACCESSIBILITY ═══════════════════ */
-.skip-link{position:absolute;top:-100px;left:1rem;z-index:10001;
-  padding:.8rem 1.5rem;background:var(--text);color:var(--cream);
-  border-radius:50px;font-weight:600;font-size:.88rem;text-decoration:none;
-  transition:top .3s}
-.skip-link:focus{top:1rem;outline:2px solid var(--gold);outline-offset:3px}
-*:focus-visible{outline:2px solid var(--gold-dark);outline-offset:3px;border-radius:2px}
-:focus:not(:focus-visible){outline:none}
-
-/* ═══════════════════ EMAIL CAPTURE ═══════════════════ */
-.email-form-wrap{max-width:440px;margin:2rem auto 0;position:relative;z-index:1}
-.email-form{display:flex;gap:.5rem}
-.email-form input{flex:1;padding:.9rem 1.2rem;border:1px solid var(--border);
-  border-radius:50px;font-family:var(--fb);font-size:.92rem;background:var(--white);
-  color:var(--text);outline:none;transition:border-color .2s}
-.email-form input:focus{border-color:var(--gold)}
-.email-form input.error{border-color:#e74c3c;background:rgba(231,76,60,.04)}
-.email-form .btn{flex-shrink:0;white-space:nowrap}
-.email-msg{font-size:.78rem;margin-top:.6rem;font-weight:500;min-height:1.2em}
-.email-msg.success{color:#1a9e4a}
-.email-msg.error{color:#e74c3c}
-@media(max-width:500px){.email-form{flex-direction:column}.email-form .btn{width:100%;justify-content:center}}
+/* Responsive */
+@media(max-width:768px){
+.hero{padding:6rem 1.5rem 3rem}
+#hero-title{font-size:var(--step-4)}
+.portfolio-grid{grid-template-columns:1fr}
+.marquee-track span{font-size:var(--step-0)}
+}
+@media(prefers-reduced-motion:reduce){
+*{animation-duration:0.01ms!important;animation-iteration-count:1!important;transition-duration:0.01ms!important}
+.aurora-bg::before,.aurora-bg::after{animation:none}
+}
 </style>
 </head>
 <body>
 
-<a href="#work" class="skip-link">Skip to content</a>
-
-<div class="noise"></div>
-<div class="scroll-prog" id="scrollProg"></div>
+<div class="aurora-bg"></div>
 <div class="cursor" id="cursor"></div>
 
-<!-- ═════════════ NAV ═════════════ -->
-<nav class="nav" id="nav" role="navigation" aria-label="Main">
-  <a href="#" class="nav-logo" aria-label="Aurora Web — back to top">
-    <svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><circle cx="16" cy="16" r="14" stroke="currentColor" stroke-width="2"/><path d="M8 20Q12 8 16 16T24 12" stroke="var(--gold)" stroke-width="2.5" stroke-linecap="round" fill="none"/></svg>
-    Aurora Web
-  </a>
-  <div class="nav-links" id="navLinks">
-    <a href="#work">Work</a>
-    <a href="#services">Services</a>
-    <a href="#segments">Clients</a>
-    <a href="#pricing">Pricing</a>
-    <a href="#faq">FAQ</a>
-    <a href="#contact" class="nav-cta">Get a quote</a>
-  </div>
-  <div class="nav-burger" id="burger">
-    <span></span><span></span><span></span>
-  </div>
+<nav id="nav">
+<a href="#hero" class="logo">Aurora<span style="color:var(--teal)">.</span>Web</a>
+<ul>
+<li><a href="#work">Work</a></li>
+<li><a href="#services">Services</a></li>
+<li><a href="#process">Process</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+<a href="#contact" class="cta">Get Started</a>
 </nav>
 
-<!-- ═════════════ HERO ═════════════ -->
-<section class="hero">
-  <div class="hero-bg">
-    <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1920&q=80" alt="Sunrise over Mediterranean beach" style="width:100%;height:100%;object-fit:cover;animation:heroZoom 25s ease-in-out infinite alternate">
-  </div>
-  <div class="grid-bg"></div>
-  <div class="container hero-content">
-    <div class="hero-tag" id="hero-tag">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-      Websites · AI Automation · SEO · Apps — Helsinki · Larnaca · Cyprus
-    </div>
-    <h1 id="hero-title">We build the digital <em>presence</em> your business deserves.</h1>
-    <p class="lead" id="hero-lead">Premium websites, AI automation, SEO &amp; growth for businesses in Cyprus and Europe. Free mockup in 24 hours. Full site delivered in 48 hours. No templates, no shortcuts.</p>
-    <div class="hero-cta" id="hero-cta">
-      <a href="#contact" class="btn btn-primary">
-        Get a free mockup
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-      </a>
-      <a href="#work" class="btn btn-ghost">See our work</a>
-    </div>
-    <div class="hero-stats" id="hero-stats">
-      <div class="hero-stat"><div class="num">5-day SLA</div><div class="lbl">Delivery Guarantee</div></div>
-      <div class="hero-stat"><div class="num">100%</div><div class="lbl">Custom Design</div></div>
-      <div class="hero-stat"><div class="num">€0</div><div class="lbl">Pay After Mockup</div></div>
-      <div class="hero-stat"><div class="num">EN·EL·RU</div><div class="lbl">Multilingual</div></div>
-    </div>
-  </div>
-  <div class="rating-chip" id="rating-chip">
-    <div class="stars">
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14l-5-4.87 6.91-1.01z"/></svg>
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14l-5-4.87 6.91-1.01z"/></svg>
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14l-5-4.87 6.91-1.01z"/></svg>
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14l-5-4.87 6.91-1.01z"/></svg>
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14l-5-4.87 6.91-1.01z"/></svg>
-    </div>
-    <div class="score">5.0</div>
-    <div class="label">Client Rating</div>
-  </div>
+<section class="hero" id="hero">
+<p id="hero-tag">Premium websites for Cyprus businesses</p>
+<h1 id="hero-title">We build <span class="serif">websites</span><br>that make your <span class="gold">competition</span><br>irrelevant.</h1>
+<p id="hero-lead">Aurora Web designs and builds premium websites for restaurants, salons, and businesses across Cyprus. 48-hour delivery. Free demo before payment.</p>
+<div id="hero-cta">
+<a href="#work" class="primary">View Our Work</a>
+<a href="#contact" class="secondary">Get a Free Demo</a>
+</div>
+<div class="scroll-indicator"></div>
 </section>
 
-<!-- ═════════════ INFO BAR ═════════════ -->
-<div class="info-bar">
-  <div class="container">
-    <div class="info-item">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-      Helsinki · Larnaca · Cyprus
-    </div>
-    <div class="info-item">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-      48-hour delivery
-    </div>
-    <div class="info-item">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83 0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
-      Fixed price, no surprises
-    </div>
-    <div class="info-item">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2.4 7.4H22l-6 4.6 2.3 7-5.9-4.4L6.5 21l2.3-7-6-4.6h7.6z"/></svg>
-      100% custom — no templates
-    </div>
-  </div>
-</div>
-
-<!-- ═════════════ TRUSTED BY ═════════════ -->
-<div class="trusted-bar">
-  <div class="sec-label" style="justify-content:center">Demo concepts for businesses across Cyprus and Europe</div>
-  <div class="trusted-track">
-    <span class="trusted-logo" style="font-family:var(--fd);font-size:1.1rem;font-weight:700;letter-spacing:-.02em;color:var(--text);opacity:.4;height:auto">YELLOW FUN BOAT</span>
-    <span class="trusted-logo" style="font-family:var(--fd);font-size:1.1rem;font-weight:700;letter-spacing:-.02em;color:var(--text);opacity:.4;height:auto">3D DENTAL CENTRE</span>
-    <span class="trusted-logo" style="font-family:var(--fd);font-size:1.1rem;font-weight:700;letter-spacing:-.02em;color:var(--text);opacity:.4;height:auto">ITHAKI GARDEN</span>
-    <span class="trusted-logo" style="font-family:var(--fd);font-size:1.1rem;font-weight:700;letter-spacing:-.02em;color:var(--text);opacity:.4;height:auto">ZEPHYROS FISH</span>
-    <span class="trusted-logo" style="font-family:var(--fd);font-size:1.1rem;font-weight:700;letter-spacing:-.02em;color:var(--text);opacity:.4;height:auto">LARNACA AUTO</span>
-    <span class="trusted-logo" style="font-family:var(--fd);font-size:1.1rem;font-weight:700;letter-spacing:-.02em;color:var(--text);opacity:.4;height:auto">NAZANIN SALONKI</span>
-    <span class="trusted-logo" style="font-family:var(--fd);font-size:1.1rem;font-weight:700;letter-spacing:-.02em;color:var(--text);opacity:.4;height:auto">EMBER & OAK</span>
-    <span class="trusted-logo" style="font-family:var(--fd);font-size:1.1rem;font-weight:700;letter-spacing:-.02em;color:var(--text);opacity:.4;height:auto">KAIROS</span>
-    <!-- Duplicate for seamless loop -->
-    <span class="trusted-logo" style="font-family:var(--fd);font-size:1.1rem;font-weight:700;letter-spacing:-.02em;color:var(--text);opacity:.4;height:auto">YELLOW FUN BOAT</span>
-    <span class="trusted-logo" style="font-family:var(--fd);font-size:1.1rem;font-weight:700;letter-spacing:-.02em;color:var(--text);opacity:.4;height:auto">3D DENTAL CENTRE</span>
-    <span class="trusted-logo" style="font-family:var(--fd);font-size:1.1rem;font-weight:700;letter-spacing:-.02em;color:var(--text);opacity:.4;height:auto">ITHAKI GARDEN</span>
-    <span class="trusted-logo" style="font-family:var(--fd);font-size:1.1rem;font-weight:700;letter-spacing:-.02em;color:var(--text);opacity:.4;height:auto">ZEPHYROS FISH</span>
-    <span class="trusted-logo" style="font-family:var(--fd);font-size:1.1rem;font-weight:700;letter-spacing:-.02em;color:var(--text);opacity:.4;height:auto">LARNACA AUTO</span>
-    <span class="trusted-logo" style="font-family:var(--fd);font-size:1.1rem;font-weight:700;letter-spacing:-.02em;color:var(--text);opacity:.4;height:auto">NAZANIN SALONKI</span>
-    <span class="trusted-logo" style="font-family:var(--fd);font-size:1.1rem;font-weight:700;letter-spacing:-.02em;color:var(--text);opacity:.4;height:auto">EMBER & OAK</span>
-    <span class="trusted-logo" style="font-family:var(--fd);font-size:1.1rem;font-weight:700;letter-spacing:-.02em;color:var(--text);opacity:.4;height:auto">KAIROS</span>
-  </div>
-</div>
-
-<!-- ═════════════ MARQUEE ═════════════ -->
 <div class="marquee">
-  <div class="marquee-track">
-    <span class="marquee-item">Restaurants</span><span class="marquee-sep"><svg viewBox="0 0 24 24" fill="currentColor" width="10" height="10"><path d="M12 2l2.4 7.6L22 12l-7.6 2.4L12 22l-2.4-7.6L2 12l7.6-2.4z"/></svg></span>
-    <span class="marquee-item">Salons</span><span class="marquee-sep"><svg viewBox="0 0 24 24" fill="currentColor" width="10" height="10"><path d="M12 2l2.4 7.6L22 12l-7.6 2.4L12 22l-2.4-7.6L2 12l7.6-2.4z"/></svg></span>
-    <span class="marquee-item">Trades</span><span class="marquee-sep"><svg viewBox="0 0 24 24" fill="currentColor" width="10" height="10"><path d="M12 2l2.4 7.6L22 12l-7.6 2.4L12 22l-2.4-7.6L2 12l7.6-2.4z"/></svg></span>
-    <span class="marquee-item">Wellness</span><span class="marquee-sep"><svg viewBox="0 0 24 24" fill="currentColor" width="10" height="10"><path d="M12 2l2.4 7.6L22 12l-7.6 2.4L12 22l-2.4-7.6L2 12l7.6-2.4z"/></svg></span>
-    <span class="marquee-item">Photography</span><span class="marquee-sep"><svg viewBox="0 0 24 24" fill="currentColor" width="10" height="10"><path d="M12 2l2.4 7.6L22 12l-7.6 2.4L12 22l-2.4-7.6L2 12l7.6-2.4z"/></svg></span>
-    <span class="marquee-item">Real Estate</span><span class="marquee-sep"><svg viewBox="0 0 24 24" fill="currentColor" width="10" height="10"><path d="M12 2l2.4 7.6L22 12l-7.6 2.4L12 22l-2.4-7.6L2 12l7.6-2.4z"/></svg></span>
-    <span class="marquee-item">Fitness</span><span class="marquee-sep"><svg viewBox="0 0 24 24" fill="currentColor" width="10" height="10"><path d="M12 2l2.4 7.6L22 12l-7.6 2.4L12 22l-2.4-7.6L2 12l7.6-2.4z"/></svg></span>
-    <span class="marquee-item">Dental</span><span class="marquee-sep"><svg viewBox="0 0 24 24" fill="currentColor" width="10" height="10"><path d="M12 2l2.4 7.6L22 12l-7.6 2.4L12 22l-2.4-7.6L2 12l7.6-2.4z"/></svg></span>
-    <span class="marquee-item">Restaurants</span><span class="marquee-sep"><svg viewBox="0 0 24 24" fill="currentColor" width="10" height="10"><path d="M12 2l2.4 7.6L22 12l-7.6 2.4L12 22l-2.4-7.6L2 12l7.6-2.4z"/></svg></span>
-    <span class="marquee-item">Salons</span><span class="marquee-sep"><svg viewBox="0 0 24 24" fill="currentColor" width="10" height="10"><path d="M12 2l2.4 7.6L22 12l-7.6 2.4L12 22l-2.4-7.6L2 12l7.6-2.4z"/></svg></span>
-    <span class="marquee-item">Trades</span><span class="marquee-sep"><svg viewBox="0 0 24 24" fill="currentColor" width="10" height="10"><path d="M12 2l2.4 7.6L22 12l-7.6 2.4L12 22l-2.4-7.6L2 12l7.6-2.4z"/></svg></span>
-    <span class="marquee-item">Wellness</span><span class="marquee-sep"><svg viewBox="0 0 24 24" fill="currentColor" width="10" height="10"><path d="M12 2l2.4 7.6L22 12l-7.6 2.4L12 22l-2.4-7.6L2 12l7.6-2.4z"/></svg></span>
-    <span class="marquee-item">Photography</span><span class="marquee-sep"><svg viewBox="0 0 24 24" fill="currentColor" width="10" height="10"><path d="M12 2l2.4 7.6L22 12l-7.6 2.4L12 22l-2.4-7.6L2 12l7.6-2.4z"/></svg></span>
-    <span class="marquee-item">Real Estate</span><span class="marquee-sep"><svg viewBox="0 0 24 24" fill="currentColor" width="10" height="10"><path d="M12 2l2.4 7.6L22 12l-7.6 2.4L12 22l-2.4-7.6L2 12l7.6-2.4z"/></svg></span>
-    <span class="marquee-item">Fitness</span><span class="marquee-sep"><svg viewBox="0 0 24 24" fill="currentColor" width="10" height="10"><path d="M12 2l2.4 7.6L22 12l-7.6 2.4L12 22l-2.4-7.6L2 12l7.6-2.4z"/></svg></span>
-    <span class="marquee-item">Dental</span><span class="marquee-sep"><svg viewBox="0 0 24 24" fill="currentColor" width="10" height="10"><path d="M12 2l2.4 7.6L22 12l-7.6 2.4L12 22l-2.4-7.6L2 12l7.6-2.4z"/></svg></span>
-  </div>
+<div class="marquee-track">
+<span>Aurora Web</span><span class="gold">Premium Websites</span><span>Cyprus</span><span class="gold">AI Automation</span><span>48h Delivery</span><span class="gold">Free Demo</span><span>SEO</span><span class="gold">13 Demos Live</span><span>Aurora Web</span><span class="gold">Premium Websites</span><span>Cyprus</span><span class="gold">AI Automation</span><span>48h Delivery</span><span class="gold">Free Demo</span><span>SEO</span><span class="gold">13 Demos Live</span>
+</div>
 </div>
 
-<!-- ═════════════ PORTFOLIO ═════════════ -->
+<section id="stats">
+<div class="stats">
+<div class="stat"><div class="num">13</div><div class="label">Live Demos</div></div>
+<div class="stat"><div class="num">497</div><div class="label">Leads Found</div></div>
+<div class="stat"><div class="num">48h</div><div class="label">Delivery</div></div>
+<div class="stat"><div class="num">€599</div><div class="label">From</div></div>
+</div>
+</section>
+
 <section id="work">
-  <div class="container">
-    <div class="sec-label gs-reveal">Selected Work</div>
-    <h2 class="sec-title gs-reveal">Eight demos, <em>eight distinct styles</em> — one standard of quality.</h2>
-    <p class="sec-desc gs-reveal">Every site is built from scratch. No WordPress themes, no page builders. Just clean code, thoughtful design, and pages that load fast on any device.</p>
+<p class="section-label">Portfolio</p>
+<h2 class="section-title">Our <span class="serif">Work</span></h2>
+<p class="section-sub">Every demo below was built before the client paid a cent. That's how confident we are.</p>
+<div class="portfolio-grid">
 
-    <div class="work-grid">
-      <!-- 1. ReLove — span 7 (biggest) -->
-      <a href="demos/rellove.html" class="work-card s7" data-cat="wellness">
-        <div class="work-card-img">
-          <img src="screenshots/rellove.jpg" alt="ReLove Retreats — luxury wellness site" loading="lazy">
-          <div class="work-card-overlay">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17l9.2-9.2M17 17V7H7"/></svg>
-            Kos, Greece
-          </div>
-        </div>
-        <div class="work-card-body">
-          <div class="work-card-cat">Wellness · Luxury</div>
-          <div class="work-card-title">ReLove Retreats</div>
-          <div class="work-card-desc">A luxury wellness retreat on the Greek island of Kos. Cream palette, Playfair Display serif, soft parallax animations, and a booking flow that feels like a holiday.</div>
-          <span class="work-card-link">View live demo
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </span>
-        </div>
-      </a>
+<a href="demos/rebuke-lounge/" class="demo-card">
+<div class="badge">HOT</div>
+<div class="thumb"><div class="icon">🏖️</div></div>
+<div class="info"><div class="cat">Beach Bar · Restaurant</div><h3>Re.buke Lounge</h3><div class="meta"><span class="followers">13.4K followers</span><span>768 posts</span></div></div>
+</a>
 
-      <!-- 2. Fade Forge — span 5 -->
-      <a href="demos/fade-forge/index.html" class="work-card s5" data-cat="barber">
-        <div class="work-card-img">
-          <img src="screenshots/fade-forge.jpg" alt="Fade Forge — barber studio with WebGL" loading="lazy">
-          <div class="work-card-overlay">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17l9.2-9.2M17 17V7H7"/></svg>
-            Helsinki
-          </div>
-        </div>
-        <div class="work-card-body">
-          <div class="work-card-cat">Barber · Dark / Gold</div>
-          <div class="work-card-title">Fade Forge</div>
-          <div class="work-card-desc">Three.js particle effects, GSAP scroll animations, film grain overlay, and a magnetic cursor. Dark gold aesthetic with serious attitude.</div>
-          <span class="work-card-link">View demo
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </span>
-        </div>
-      </a>
+<a href="demos/noesis/" class="demo-card">
+<div class="badge">HOT</div>
+<div class="thumb"><div class="icon">🌊</div></div>
+<div class="info"><div class="cat">Mediterranean Fusion</div><h3>Noesis Restaurant</h3><div class="meta"><span class="followers">10.7K followers</span><span>194 posts</span></div></div>
+</a>
 
-      <!-- 3. Nazanin — span 5 -->
-      <a href="demos/nazanin.html" class="work-card s5" data-cat="wellness">
-        <div class="work-card-img">
-          <img src="screenshots/nazanin.jpg" alt="Nazanin Salonki — beauty salon" loading="lazy">
-          <div class="work-card-overlay">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17l9.2-9.2M17 17V7H7"/></svg>
-            Helsinki
-          </div>
-        </div>
-        <div class="work-card-body">
-          <div class="work-card-cat">Salon · Beauty</div>
-          <div class="work-card-title">Nazanin Salonki</div>
-          <div class="work-card-desc">Rose-gold palette with Cormorant Garamond type. Hero zoom, review highlights, elegant booking form for a premium salon experience.</div>
-          <span class="work-card-link">View demo
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </span>
-        </div>
-      </a>
+<a href="demos/elia-backyard/" class="demo-card">
+<div class="thumb"><div class="icon">🍷</div></div>
+<div class="info"><div class="cat">Award-Winning</div><h3>Elia Backyard</h3><div class="meta"><span class="followers">3.9K followers</span><span>129 posts</span></div></div>
+</a>
 
-      <!-- 4. Ember & Oak — span 7 -->
-      <a href="demos/ember-oak/index.html" class="work-card s7" data-cat="restaurant">
-        <div class="work-card-img">
-          <img src="screenshots/ember-oak.jpg" alt="Ember & Oak — fine dining restaurant" loading="lazy">
-          <div class="work-card-overlay">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17l9.2-9.2M17 17V7H7"/></svg>
-            Helsinki
-          </div>
-        </div>
-        <div class="work-card-body">
-          <div class="work-card-cat">Restaurant · Fine Dining</div>
-          <div class="work-card-title">Ember &amp; Oak</div>
-          <div class="work-card-desc">Interactive tasting-menu carousel, team profiles, reservation form, and warm amber palette. A restaurant site that makes you want to book a table.</div>
-          <span class="work-card-link">View demo
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </span>
-        </div>
-      </a>
+<a href="demos/voreas-tavern/" class="demo-card">
+<div class="thumb"><div class="icon">🍽️</div></div>
+<div class="info"><div class="cat">Traditional Tavern</div><h3>Voreas Tavern</h3><div class="meta"><span class="followers">5.1K FB</span><span>Oroklini</span></div></div>
+</a>
 
-      <!-- 5. ML Plumber — span 4 -->
-      <a href="demos/plumber.html" class="work-card s4" data-cat="trades">
-        <div class="work-card-img">
-          <img src="screenshots/plumber.jpg" alt="ML Plumber — trades website" loading="lazy">
-          <div class="work-card-overlay">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17l9.2-9.2M17 17V7H7"/></svg>
-            Vantaa
-          </div>
-        </div>
-        <div class="work-card-body">
-          <div class="work-card-cat">Trades · Emergency</div>
-          <div class="work-card-title">ML Plumber</div>
-          <div class="work-card-desc">A trades site done right — service grid, process steps, emergency call button, and a lead capture form that gets the phone ringing.</div>
-          <span class="work-card-link">View demo
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </span>
-        </div>
-      </a>
+<a href="demos/ayia-anna-tavern/" class="demo-card">
+<div class="thumb"><div class="icon">🎵</div></div>
+<div class="info"><div class="cat">Mountain Tavern</div><h3>Ayia Anna Tavern</h3><div class="meta"><span>Live Music</span></div></div>
+</a>
 
-      <!-- 6. Kairos — span 4 -->
-      <a href="demos/kairos/index.html" class="work-card s4" data-cat="creative">
-        <div class="work-card-img">
-          <img src="screenshots/kairos.jpg" alt="Kairos — photography portfolio" loading="lazy">
-          <div class="work-card-overlay">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17l9.2-9.2M17 17V7H7"/></svg>
-            Portfolio
-          </div>
-        </div>
-        <div class="work-card-body">
-          <div class="work-card-cat">Photography · Portfolio</div>
-          <div class="work-card-title">Kairos</div>
-          <div class="work-card-desc">Custom loupe cursor, full-screen parallax gallery, velocity-based distortion, and film grain. Minimalism in service of the image.</div>
-          <span class="work-card-link">View demo
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </span>
-        </div>
-      </a>
+<a href="demos/alonia-tavern/" class="demo-card">
+<div class="badge">#1</div>
+<div class="thumb"><div class="icon">🎊</div></div>
+<div class="info"><div class="cat">Private Events</div><h3>Alonia Tavern</h3><div class="meta"><span class="followers">607 IG</span><span>TripAdvisor #1</span></div></div>
+</a>
 
-      <!-- 7. 3D Dental Centre — span 4 -->
-      <a href="demos/dental3d/index.html" class="work-card s4" data-cat="medical">
-        <div class="work-card-img">
-          <img src="screenshots/dental3d.jpg" alt="3D Dental Centre — modern clinic" loading="lazy">
-          <div class="work-card-overlay">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17l9.2-9.2M17 17V7H7"/></svg>
-            Larnaca
-          </div>
-        </div>
-        <div class="work-card-body">
-          <div class="work-card-cat">Medical · Dental</div>
-          <div class="work-card-title">3D Dental Centre</div>
-          <div class="work-card-desc">Awwwards-level dental clinic site. 3D hero, gold-on-neutral palette, CBCT scanning showcase, online booking. Built to fill the chair.</div>
-          <span class="work-card-link">View demo
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </span>
-        </div>
-      </a>
+<a href="demos/to-kazani-tavern/" class="demo-card">
+<div class="thumb"><div class="icon">🔥</div></div>
+<div class="info"><div class="cat">Zivania Distillery</div><h3>To Kazani</h3><div class="meta"><span>1,295 reviews</span></div></div>
+</a>
 
-      <!-- 8. Aether — full width -->
-      <a href="demos/aether/index.html" class="work-card s12 wide" data-cat="creative">
-        <div class="work-card-img">
-          <img src="screenshots/aether.jpg" alt="Aether — experimental WebGL art" loading="lazy">
-          <div class="work-card-overlay">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17l9.2-9.2M17 17V7H7"/></svg>
-            Experimental
-          </div>
-        </div>
-        <div class="work-card-body">
-          <div class="work-card-text">
-            <div class="work-card-cat">Experimental · WebGL</div>
-            <div class="work-card-title">Aether</div>
-            <div class="work-card-desc">An audio-reactive art installation site. Cyan and ember glitch typography, WebGL particle systems, and a real-time sound visualizer. Shows what we can do when the brief says "go wild."</div>
-            <span class="work-card-link">View demo
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            </span>
-          </div>
-          <div class="work-card-meta">
-            <div class="work-card-cat">Technologies</div>
-            <div style="font-size:.85rem;color:var(--text-dim);line-height:1.8">
-              Three.js · WebGL Shaders<br>Web Audio API<br>GSAP · Lenis<br>Custom GLSL
-            </div>
-          </div>
-        </div>
-      </a>
-    </div>
-  </div>
-</section>
+<a href="demos/kafeneio-to-taxidromio/" class="demo-card">
+<div class="thumb"><div class="icon">☕</div></div>
+<div class="info"><div class="cat">Kafeneio</div><h3>To Taxidromio</h3><div class="meta"><span>3,304 likes</span></div></div>
+</a>
 
-<!-- ═════════════ SERVICES ═════════════ -->
-<section id="services" style="background:var(--surface)">
-  <div class="container">
-    <div class="sec-label gs-reveal">What We Build</div>
-    <h2 class="sec-title gs-reveal">Everything your business needs <em>to be found online</em>.</h2>
+<a href="demos/lysia-restaurant/" class="demo-card">
+<div class="thumb"><div class="icon">🥩</div></div>
+<div class="info"><div class="cat">Restaurant</div><h3>Lysia Restaurant</h3><div class="meta"><span>34 years</span><span>Lamb Kleftimo</span></div></div>
+</a>
 
-    <div class="svc-grid">
-      <div class="svc gs-reveal">
-        <div class="svc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></div>
-        <h3>Business Website</h3>
-        <p>3–5 page custom site with mobile-first design, technical SEO, contact forms, and fast Cloudflare hosting. Your digital storefront.</p>
-        <span class="svc-badge">From &euro;1,800</span>
-      </div>
-      <div class="svc gs-reveal">
-        <div class="svc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 002-2V2M7 2v20M17 2v20M21 15V2a4 4 0 00-4 4v8a2 2 0 002 2"/></svg></div>
-        <h3>Restaurant &amp; Menu</h3>
-        <p>Interactive menu, online reservation, gallery, Instagram feed, and Google Maps directions. Built to fill tables.</p>
-        <span class="svc-badge">From &euro;2,500</span>
-      </div>
-      <div class="svc gs-reveal">
-        <div class="svc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" y1="4" x2="8.12" y2="15.88"/><line x1="14.47" y1="14.48" x2="20" y2="20"/><line x1="8.12" y1="8.12" x2="12" y2="12"/></svg></div>
-        <h3>Salon &amp; Booking</h3>
-        <p>Service menu, price list, online booking integration, staff profiles, and review highlights. Stylish and functional.</p>
-        <span class="svc-badge">From &euro;2,500</span>
-      </div>
-      <div class="svc gs-reveal">
-        <div class="svc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg></div>
-        <h3>Trades &amp; Services</h3>
-        <p>Emergency call buttons, service areas, before/after gallery, and lead-capture forms. Built to get the phone ringing.</p>
-        <span class="svc-badge">From &euro;1,800</span>
-      </div>
-      <div class="svc gs-reveal">
-        <div class="svc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg></div>
-        <h3>E-Commerce</h3>
-        <p>Online store with cart, checkout, payment processing, inventory management, and order tracking — all custom built.</p>
-        <span class="svc-badge">From &euro;4,500</span>
-      </div>
-      <div class="svc gs-reveal">
-        <div class="svc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M18 17V9M13 17V5M8 17v-3"/></svg></div>
-        <h3>SEO &amp; Growth</h3>
-        <p>Google Business Profile setup, local SEO, speed optimization, and monthly analytics reports. Get found by more customers.</p>
-        <span class="svc-badge">From &euro;600/mo</span>
-      </div>
-    </div>
-  </div>
-</section>
+<a href="demos/dc-barbershop/" class="demo-card">
+<div class="thumb"><div class="icon">💈</div></div>
+<div class="info"><div class="cat">Barbershop</div><h3>DC Barbershop</h3><div class="meta"><span class="followers">318 IG</span><span>63 posts</span></div></div>
+</a>
 
-<!-- ═════════════ TARGET SEGMENTS ═════════════ -->
-<section id="segments" style="background:linear-gradient(180deg,var(--cream),var(--surface))">
-  <div class="container">
-    <div class="sec-label gs-reveal">Who We Serve</div>
-    <h2 class="sec-title gs-reveal">Built for the businesses that <em>need to be trusted fast.</em></h2>
-    <p class="sec-desc gs-reveal">We focus on three segments where speed, multilingual precision and local SEO create immediate revenue impact.</p>
+<a href="demos/location-a-hairdressing/" class="demo-card">
+<div class="thumb"><div class="icon">✂️</div></div>
+<div class="info"><div class="cat">Hair Salon</div><h3>Location A</h3><div class="meta"><span>1,111 likes</span><span>Finikoudes</span></div></div>
+</a>
 
-    <div class="svc-grid" style="grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem">
-      <div class="svc gs-reveal" style="border-color:var(--border2)">
-        <div class="svc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
-        <h3>Relocated Companies</h3>
-        <p>Holding, trading and fintech companies moving to Cyprus need local substance proof. We deliver EN/EL/RU/PL sites with Schema.org local data, GDPR-ready privacy infrastructure and Google Business Profile integration.</p>
-        <span class="svc-badge">Budget &euro;3,000–&euro;5,000</span>
-      </div>
-      <div class="svc gs-reveal" style="border-color:var(--border2)">
-        <div class="svc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
-        <h3>Law &amp; Accounting Firms</h3>
-        <p>Competition in Nicosia and Limassol search results is fierce. Astro-based static sites load in under a second and rank higher. Secure intake portals, team profiles and trust signals turn searches into consultations.</p>
-        <span class="svc-badge">Budget &euro;2,500–&euro;6,000</span>
-      </div>
-      <div class="svc gs-reveal" style="border-color:var(--border2)">
-        <div class="svc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
-        <h3>Real Estate &amp; Tourism</h3>
-        <p>New developments and seasonal campaigns need landing pages fast. We produce conversion-optimised landing pages in hours, with A/B testing ready, booking integrations and direct lead capture.</p>
-        <span class="svc-badge">Budget &euro;2,000–&euro;4,500+</span>
-      </div>
-    </div>
-  </div>
-</section>
+<a href="demos/stavros-hair-style/" class="demo-card">
+<div class="thumb"><div class="icon">💇</div></div>
+<div class="info"><div class="cat">Hair Salon</div><h3>Stavros Hair Style</h3><div class="meta"><span>3,435 likes</span><span>Menovou</span></div></div>
+</a>
 
-<!-- ═════════════ PROCESS ═════════════ -->
-<section id="process">
-  <div class="container">
-    <div class="sec-label gs-reveal">How It Works</div>
-    <h2 class="sec-title gs-reveal">From <em>first contact</em> to launch in four steps.</h2>
+<a href="demos/anthony-barber-shop/" class="demo-card">
+<div class="thumb"><div class="icon">💈</div></div>
+<div class="info"><div class="cat">Barber Shop</div><h3>Anthony Barber</h3><div class="meta"><span>392 likes</span></div></div>
+</a>
 
-    <div class="process-list">
-      <div class="pstep gs-reveal">
-        <div class="pnum">01</div>
-        <div>
-          <h3>Brief &amp; Research</h3>
-          <p>Send us a WhatsApp message or email. We research your business, competitors, and target audience. No questionnaires — just a conversation.</p>
-        </div>
-        <div class="ptime">Day 1</div>
-      </div>
-      <div class="pstep gs-reveal">
-        <div class="pnum">02</div>
-        <div>
-          <h3>Free Mockup</h3>
-          <p>We build a working mockup of your homepage within 24 hours. You see exactly what you're getting before you pay anything. No obligation.</p>
-        </div>
-        <div class="ptime">Day 1–2</div>
-      </div>
-      <div class="pstep gs-reveal">
-        <div class="pnum">03</div>
-        <div>
-          <h3>Build &amp; Refine</h3>
-          <p>Once you approve the mockup, we build the full site — pages, content, images, forms, SEO. Two rounds of revisions included.</p>
-        </div>
-        <div class="ptime">Day 2–4</div>
-      </div>
-      <div class="pstep gs-reveal">
-        <div class="pnum">04</div>
-        <div>
-          <h3>Launch</h3>
-          <p>We deploy to your domain, set up analytics, submit to Google, and hand over all files. You own everything. Optional monthly maintenance.</p>
-        </div>
-        <div class="ptime">Day 4–5</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═════════════ PRICING ═════════════ -->
-<section id="pricing" style="background:var(--surface)">
-  <div class="container">
-    <div class="sec-label gs-reveal">Pricing</div>
-    <h2 class="sec-title gs-reveal">Fixed price. <em>No surprises.</em></h2>
-    <p class="sec-desc gs-reveal">No hourly invoices. Pay once after you approve the free mockup. Optional monthly retainers keep your site fast and visible.</p>
-
-    <div class="price-grid">
-      <div class="pcard gs-reveal">
-        <h3>Local Starter</h3>
-        <div class="price">&euro;1,800<small> one-time</small></div>
-        <div class="pdesc">Modern digital presence for small local businesses in Cyprus.</div>
-        <ul>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>3–5 page custom website</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>English + Greek structure</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Technical SEO + Cloudflare CDN</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Mobile-first responsive design</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Contact form + Google Maps</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>48-hour delivery</li>
-        </ul>
-        <a href="#contact" class="btn btn-ghost">Get started</a>
-      </div>
-      <div class="pcard featured gs-reveal">
-        <span class="badge">MOST POPULAR</span>
-        <h3>Substance &amp; Trust</h3>
-        <div class="price">&euro;4,500<small> one-time</small></div>
-        <div class="pdesc">For relocated companies, lawyers, accountants and premium services.</div>
-        <ul>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>5–10 page multilingual site (EN/EL/RU/PL)</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Google Business Profile setup</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Local Schema.org + GEO-SEO</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>GDPR cookie + privacy infrastructure</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Secure consultation intake forms</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>5-day delivery SLA</li>
-        </ul>
-        <a href="#contact" class="btn btn-primary">Get started
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </a>
-      </div>
-      <div class="pcard gs-reveal">
-        <h3>Full Digital</h3>
-        <div class="price">&euro;4,500–&euro;10,000+<small> one-time</small></div>
-        <div class="pdesc">Custom scope for growth companies, e-commerce, real estate platforms and web apps.</div>
-        <ul>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Unlimited pages + design system</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>E-commerce / Shopify / WooCommerce</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Custom animations, WebGL, API integrations</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Advanced SEO, analytics, A/B testing</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Unlimited revisions during build</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>1 month free maintenance</li>
-        </ul>
-        <a href="#contact" class="btn btn-ghost">Get a quote</a>
-      </div>
-    </div>
-    <p style="text-align:center;margin-top:2.5rem;color:var(--text-dim);font-size:.85rem">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px;display:inline;vertical-align:-3px;margin-right:4px"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
-      All plans include free mockup before payment. Monthly retainers: Astro Care &euro;150–250/mo · Local SEO &amp; Growth &euro;600–1,200/mo
-    </p>
-  </div>
-</section>
-
-<!-- ═════════════ TESTIMONIAL ═════════════ -->
-<section>
-  <div class="container">
-    <div class="sec-label gs-reveal">Example Outcomes</div>
-    <h2 class="sec-title gs-reveal">The kind of results <em>we design for</em>.</h2>
-      <p style="margin-bottom:2rem;color:var(--text-dim);font-size:.9rem">These demo scenarios show the business outcomes Aurora sites are built to support — faster trust, clearer offers, stronger local search visibility, and more direct leads.</p>
-    <div class="testimonial gs-reveal">
-      <p class="testimonial-quote">The mockup landed in my inbox before I even finished my coffee. By the end of the week I had a website that looks better than my competitors who spent five times more. Aurora just gets it.</p>
-      <div class="testimonial-author">
-        <div class="testimonial-avatar">R</div>
-        <div>
-          <div class="name">ReLove Retreats</div>
-          <div class="role">Wellness Retreat · Kos, Greece</div>
-        </div>
-      </div>
-    </div>
-    <div class="testimonial gs-reveal" style="margin-top:1.5rem">
-      <p class="testimonial-quote">We needed a site in Greek, English, and Russian — fast. Aurora delivered in three days, and our Google traffic doubled in the first month. The fixed-price model meant no surprises on the invoice.</p>
-      <div class="testimonial-author">
-        <div class="testimonial-avatar" style="background:var(--gold-light);color:var(--white)">V</div>
-        <div>
-          <div class="name">Vasiliou &amp; Co LLC</div>
-          <div class="role">Law Firm · Larnaca, Cyprus</div>
-        </div>
-      </div>
-    </div>
-    <div class="testimonial gs-reveal" style="margin-top:1.5rem">
-      <p class="testimonial-quote">I was skeptical about the 'free mockup' promise — but they actually did it. The demo looked so good I approved it same day. My bookings are up 40% since launch. Best investment I ever made.</p>
-      <div class="testimonial-author">
-        <div class="testimonial-avatar" style="background:var(--sage);color:var(--white)">M</div>
-        <div>
-          <div class="name">Mingle Cafe</div>
-          <div class="role">Café · Larnaca, Cyprus</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═════════════ ABOUT / TRUST ═════════════ -->
-<section id="about" style="background:var(--white)">
-  <div class="container">
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center">
-      <div class="gs-reveal">
-        <div class="sec-label">Why Aurora</div>
-        <h2 class="sec-title" style="max-width:none">A small agency with <em>family-grade standards.</em></h2>
-        <p style="font-size:var(--step-1);color:var(--text-dim);line-height:1.6;margin-bottom:1.5rem;font-weight:300">
-          We are a two-person team split between Helsinki and Larnaca. One designer, one developer, one shared obsession: build websites that load fast, rank higher, and actually convert.
-        </p>
-        <p style="font-size:var(--step-0);color:var(--text-dim);line-height:1.7">
-          Unlike template-based freelancers, every Aurora site is hand-coded from scratch using Astro — the same framework trusted by companies that care about performance. We speak Finnish, English and Greek. We understand Cypriot business culture, the 60-day tax-residency audience, and what relocated companies need to prove local substance.
-        </p>
-        <div style="display:flex;gap:2rem;margin-top:2rem;flex-wrap:wrap">
-          <div>
-            <div class="stat-counter" data-target="12">12</div>
-            <div style="font-size:.85rem;color:var(--muted)">Live demos</div>
-          </div>
-          <div>
-            <div class="stat-counter" data-target="3">3</div>
-            <div style="font-size:.85rem;color:var(--muted)">Languages</div>
-          </div>
-          <div>
-            <div class="stat-counter" data-target="100">100</div>
-            <div style="font-size:.85rem;color:var(--muted)">% on-time delivery</div>
-          </div>
-        </div>
-      </div>
-      <div class="gs-reveal" style="background:var(--surface);border-radius:var(--r-lg);padding:2.5rem;border:1px solid var(--border)">
-        <h3 style="font-family:var(--fd);font-size:var(--step-2);font-weight:600;margin-bottom:1.5rem">What makes us different</h3>
-        <ul style="list-style:none;display:flex;flex-direction:column;gap:1rem">
-          <li style="display:flex;gap:.75rem;align-items:flex-start;font-size:.95rem;color:var(--text-dim);line-height:1.5">
-            <svg style="width:20px;height:20px;color:var(--gold);flex-shrink:0;margin-top:2px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-            <span><strong>Free mockup first.</strong> You see the real design before paying. No deposit, no risk.</span>
-          </li>
-          <li style="display:flex;gap:.75rem;align-items:flex-start;font-size:.95rem;color:var(--text-dim);line-height:1.5">
-            <svg style="width:20px;height:20px;color:var(--gold);flex-shrink:0;margin-top:2px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-            <span><strong>No templates.</strong> Every line of code is written for your brand, your customers, your goals.</span>
-          </li>
-          <li style="display:flex;gap:.75rem;align-items:flex-start;font-size:.95rem;color:var(--text-dim);line-height:1.5">
-            <svg style="width:20px;height:20px;color:var(--gold);flex-shrink:0;margin-top:2px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-            <span><strong>Built for speed.</strong> Astro static sites load in under a second, which directly improves Google rankings and conversions.</span>
-          </li>
-          <li style="display:flex;gap:.75rem;align-items:flex-start;font-size:.95rem;color:var(--text-dim);line-height:1.5">
-            <svg style="width:20px;height:20px;color:var(--gold);flex-shrink:0;margin-top:2px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-            <span><strong>Local substance ready.</strong> Multilingual sites, Schema.org local data, GDPR cookies, Google Business Profile setup.</span>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═════════════ FAQ ═════════════ -->
-<section id="faq" style="background:var(--surface)">
-  <div class="container" style="max-width:900px">
-    <div class="sec-label gs-reveal" style="justify-content:center">FAQ</div>
-    <h2 class="sec-title gs-reveal" style="text-align:center;max-width:none;margin-bottom:3rem">Questions we hear a lot.</h2>
-
-    <div class="faq-item gs-reveal">
-      <button class="faq-q">
-        What if I don't like the mockup?
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
-      </button>
-      <div class="faq-a"><div class="faq-pad">Then you don't pay. The mockup is completely free and comes with no obligation. We only invoice after you approve the design direction.</div></div>
-    </div>
-    <div class="faq-item gs-reveal">
-      <button class="faq-q">
-        Do you use WordPress or templates?
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
-      </button>
-      <div class="faq-a"><div class="faq-pad">No. Every site is hand-coded with Astro, which gives you faster load times, stronger security, and none of the plugin-update headaches that come with WordPress.</div></div>
-    </div>
-    <div class="faq-item gs-reveal">
-      <button class="faq-q">
-        How fast is "fast"?
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
-      </button>
-      <div class="faq-a"><div class="faq-pad">Most Aurora sites score 95+ on Google PageSpeed Insights and load in under one second on a fast connection. For clients in Cyprus, we deploy through Cloudflare for sub-second delivery across the island and EU.</div></div>
-    </div>
-    <div class="faq-item gs-reveal">
-      <button class="faq-q">
-        Can the site be in Greek, Russian or Polish?
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
-      </button>
-      <div class="faq-a"><div class="faq-pad">Yes. Our Substance &amp; Trust package includes multilingual structure and UTF-8-aware content budgets so special characters display correctly without breaking the layout.</div></div>
-    </div>
-    <div class="faq-item gs-reveal">
-      <button class="faq-q">
-        What happens after launch?
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
-      </button>
-      <div class="faq-a"><div class="faq-pad">We offer two monthly retainers: Astro Care (&euro;150–250/mo) for hosting, security updates and small edits; and Local SEO &amp; Growth (&euro;600–1,200/mo) for keyword tracking, Google Maps optimisation and two articles per month.</div></div>
-    </div>
-  </div>
-</section>
-
-<!-- ═════════════ CTA ═════════════ -->
-<section id="contact" class="cta">
-  <div class="container cta-content">
-    <h2 class="gs-reveal">Let's build <em>something</em> together.</h2>
-    <p class="gs-reveal">WhatsApp or email us a one-line brief. We'll send you a free mockup within 24 hours and a complete site within 5 business days — no forms, no commitment, no payment until you approve.</p>
-    <a href="https://wa.me/35796306748?text=Hi%20Aurora%20Web!%20I%20want%20a%20website%20for%20my%20business" class="wa-btn gs-reveal">
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.71.306 1.263.489 1.694.625.712.227 1.362.195 1.877.118.572-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.999-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.885-9.886 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.89c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-      Message us on WhatsApp
-    </a>
-    <div class="email-form-wrap gs-reveal">
-      <div class="email-form" id="emailForm">
-        <input type="email" id="emailInput" placeholder="or drop your email — we'll write first" aria-label="Email address">
-        <button type="submit" class="btn btn-ghost" id="emailSubmit">Send</button>
-      </div>
-      <div class="email-msg" id="emailMsg"></div>
-    </div>
-  </div>
-</section>
-
-<!-- ═════════════ FOOTER ═════════════ -->
-<!-- ═════════════ MOBILE CTA ═════════════ -->
-<div class="mobile-cta">
-  <a href="#contact" class="btn btn-primary" style="font-size:.82rem;padding:.7rem 1.4rem">Get a free mockup</a>
-  <a href="https://wa.me/357" class="btn btn-ghost" style="font-size:.82rem;padding:.7rem 1.4rem">WhatsApp</a>
 </div>
+</section>
+
+<section id="services">
+<p class="section-label">Services</p>
+<h2 class="section-title">What <span class="serif">we do</span></h2>
+<p class="section-sub">From a single landing page to a full digital presence with AI automation.</p>
+<div class="services">
+
+<div class="service">
+<span class="num">01</span>
+<h3>Premium Website</h3>
+<div class="price">€599 – €1,999</div>
+<p>Custom-designed, responsive, blazing-fast websites built to convert visitors into customers.</p>
+<ul>
+<li>Custom design (no templates)</li>
+<li>Mobile + tablet + desktop</li>
+<li>SEO-ready</li>
+<li>48h delivery</li>
+<li>Free demo before payment</li>
+</ul>
+</div>
+
+<div class="service">
+<span class="num">02</span>
+<h3>Hosting & Care</h3>
+<div class="price">€99 – €299/mo</div>
+<p>Secure hosting, updates, backups, and unlimited content changes.</p>
+<ul>
+<li>SSL certificate</li>
+<li>Daily backups</li>
+<li>Unlimited edits</li>
+<li>Performance monitoring</li>
+<li>Priority support</li>
+</ul>
+</div>
+
+<div class="service">
+<span class="num">03</span>
+<h3>AI Automation</h3>
+<div class="price">Custom</div>
+<p>Automate your outreach, bookings, and customer follow-ups with AI.</p>
+<ul>
+<li>Instagram/Facebook automation</li>
+<li>Email outreach campaigns</li>
+<li>Smart booking systems</li>
+<li>Customer review monitoring</li>
+<li>Lead intelligence</li>
+</ul>
+</div>
+
+<div class="service">
+<span class="num">04</span>
+<h3>SEO & Growth</h3>
+<div class="price">€299/mo</div>
+<p>Get found on Google. We optimize and monitor your search ranking.</p>
+<ul>
+<li>Google Business Profile</li>
+<li>Local SEO optimization</li>
+<li>Keyword tracking</li>
+<li>Monthly reports</li>
+<li>Competitor analysis</li>
+</ul>
+</div>
+
+</div>
+</section>
+
+<section id="process">
+<p class="section-label">How it works</p>
+<h2 class="section-title">Simple <span class="serif">process</span></h2>
+<p class="section-sub">From idea to launch in four steps. No complexity, no jargon.</p>
+<div class="process">
+<div class="step">
+<div class="step-num">01</div>
+<h3>Discover</h3>
+<p>We research your business, your Instagram, your competitors, and your customers. We find what makes you unique.</p>
+</div>
+<div class="step">
+<div class="step-num">02</div>
+<h3>Design</h3>
+<p>We build a custom demo website specifically for you — before you pay anything. You see exactly what you're getting.</p>
+</div>
+<div class="step">
+<div class="step-num">03</div>
+<h3>Refine</h3>
+<p>You give feedback. We refine. Colors, photos, menu items, prices, layout — everything is adjustable until it's perfect.</p>
+</div>
+<div class="step">
+<div class="step-num">04</div>
+<h3>Launch</h3>
+<p>We deploy your website, set up hosting, connect your domain, and optimize for Google. You're live in 48 hours.</p>
+</div>
+</div>
+</section>
+
+<div class="quote">
+<div class="mark">"</div>
+<p>We don't just build websites. We build your presence on the internet — so when someone searches for what you do, they find you, not your competition.</p>
+<div class="author">Aurora Web — Larnaca, Cyprus</div>
+</div>
+
+<section id="contact" class="cta-section">
+<h2>Ready to <span class="serif">grow?</span></h2>
+<p>Get a free custom demo of your website. No payment, no obligation.<br>Just send us your business name and Instagram.</p>
+<form class="cta-form" action="https://formspree.io/f/your-form-id" method="POST">
+<input type="text" name="business" placeholder="Your business name" required>
+<input type="email" name="email" placeholder="Your email" required>
+<button type="submit">Get Free Demo</button>
+</form>
+<p style="margin-top:1.5rem;font-size:var(--step--1);color:var(--muted)">Or DM us on Instagram · WhatsApp +357 · Reply within 24h</p>
+</section>
 
 <footer>
-  <div class="container">
-    <div class="footer-grid">
-      <div class="footer-logo">
-        <svg viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="14" stroke="currentColor" stroke-width="2"/><path d="M8 20Q12 8 16 16T24 12" stroke="var(--gold)" stroke-width="2.5" stroke-linecap="round" fill="none"/></svg>
-        Aurora Web
-      </div>
-      <div class="footer-links">
-        <a href="mailto:hello@auroraweb.fi">hello@auroraweb.fi</a>
-        <a href="https://wa.me/35796306748">WhatsApp</a>
-        <a href="#work">Work</a>
-        <a href="#pricing">Pricing</a>
-      </div>
-    </div>
-    <div class="footer-copy">&copy; 2026 Aurora Web Design · Helsinki · Larnaca · Cyprus · Built with sisu &#10084; &nbsp;<span style="display:inline-flex;align-items:center;gap:4px;padding:2px 10px;background:rgba(37,211,102,.1);border:1px solid rgba(37,211,102,.25);border-radius:50px;font-size:.72rem;color:#1a9e4a;font-weight:600">⚡ Lighthouse 98</span></div>
-  </div>
+<div class="footer-grid">
+<div>
+<h4>Aurora Web</h4>
+<p>Premium websites, AI automation, and digital growth for businesses in Cyprus and Europe. 48-hour delivery. Free demo before payment.</p>
+</div>
+<div>
+<h4>Services</h4>
+<a href="#services">Premium Websites</a>
+<a href="#services">Hosting & Care</a>
+<a href="#services">AI Automation</a>
+<a href="#services">SEO & Growth</a>
+</div>
+<div>
+<h4>Connect</h4>
+<a href="#">Instagram @sisuthros</a>
+<a href="#">WhatsApp +357</a>
+<a href="#">GitHub</a>
+<a href="#">Email</a>
+</div>
+</div>
+<div class="footer-bottom">
+<p>© 2026 Aurora Web · Larnaca, Cyprus · Built with ❤️ by Aurora</p>
+</div>
 </footer>
 
-<script defer>
-document.addEventListener('DOMContentLoaded', function() {
-  if (typeof Lenis === 'undefined' || typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
-    // Graceful fallback if libraries fail to load
-    return;
-  }
-  
-  /* ═════════════ GSAP ANIMATIONS ═════════════ */
-  /* Lenis smooth scroll */
-  const lenis = new Lenis({
-  duration: 1.1,
-  easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-  orientation: 'vertical',
-  smoothWheel: true,
-  touchMultiplier: 1.8
-});
-
-lenis.on('scroll', ScrollTrigger.update);
-gsap.ticker.add((time) => {
-  lenis.raf(time * 1000);
-});
-gsap.ticker.lagSmoothing(0);
-
-/* All elements visible by default — GSAP from() ONLY, no CSS opacity:0 */
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
 gsap.registerPlugin(ScrollTrigger);
 
-/* Reveal: fade up on scroll */
-gsap.utils.toArray('.gs-reveal').forEach(function(el) {
-  gsap.from(el, {
-    opacity: 0,
-    y: 40,
-    duration: 0.8,
-    ease: 'power2.out',
-    scrollTrigger: {
-      trigger: el,
-      start: 'top 88%',
-      toggleActions: 'play none none none'
-    }
-  });
-});
-
-/* Hero: sequential entrance (NO gs-reveal class — dedicated IDs to avoid double animation) */
-gsap.from('#hero-tag', {opacity: 0, y: 20, duration: 0.6, delay: 0.1, ease: 'power2.out'});
-gsap.from('#hero-title', {opacity: 0, y: 30, duration: 1.0, delay: 0.2, ease: 'power3.out'});
-gsap.from('#hero-lead', {opacity: 0, y: 20, duration: 0.8, delay: 0.4, ease: 'power2.out'});
-gsap.from('#hero-cta', {opacity: 0, y: 20, duration: 0.7, delay: 0.6, ease: 'power2.out'});
-gsap.from('#hero-stats', {opacity: 0, y: 20, duration: 0.7, delay: 0.8, ease: 'power2.out'});
-gsap.from('#rating-chip', {opacity: 0, x: 30, duration: 0.8, delay: 1.0, ease: 'power2.out'});
-
-/* Portfolio cards stagger */
-gsap.utils.toArray('.work-card').forEach(function(card, i) {
-  /* Remove gs-reveal class to avoid double animation */
-  card.classList.remove('gs-reveal');
-  gsap.from(card, {
-    opacity: 0,
-    y: 50,
-    duration: 0.8,
-    delay: (i % 2) * 0.15,
-    ease: 'power2.out',
-    scrollTrigger: {
-      trigger: card,
-      start: 'top 90%',
-      toggleActions: 'play none none none'
-    }
-  });
-});
-
-/* Nav scroll state */
-const nav = document.getElementById('nav');
-const scrollProg = document.getElementById('scrollProg');
-window.addEventListener('scroll', function() {
-  const scrolled = window.scrollY;
-  const height = document.documentElement.scrollHeight - window.innerHeight;
-  if (scrolled > 50) nav.classList.add('scrolled');
-  else nav.classList.remove('scrolled');
-  scrollProg.style.width = (scrolled / height * 100) + '%';
-});
-
-/* Burger menu */
-document.getElementById('burger').addEventListener('click', function() {
-  document.getElementById('navLinks').classList.toggle('open');
-});
-
-/* Custom cursor */
+// Custom cursor
 const cursor = document.getElementById('cursor');
-let cursorX = 0, cursorY = 0;
-document.addEventListener('mousemove', function(e) {
-  cursorX = e.clientX; cursorY = e.clientY;
-  cursor.style.left = cursorX + 'px';
-  cursor.style.top = cursorY + 'px';
-});
-document.querySelectorAll('a, button, .work-card, .svc').forEach(function(el) {
-  el.addEventListener('mouseenter', function() { cursor.classList.add('hover'); });
-  el.addEventListener('mouseleave', function() { cursor.classList.remove('hover'); });
+document.addEventListener('mousemove', e => { cursor.style.left = e.clientX + 'px'; cursor.style.top = e.clientY + 'px'; });
+document.querySelectorAll('a, button, .demo-card').forEach(el => {
+el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
 });
 
-/* Marquee — duplicate for seamless loop (already done in markup) */
-
-/* FAQ Accordion */
-document.querySelectorAll('.faq-q').forEach(function(btn) {
-  btn.addEventListener('click', function() {
-    var item = btn.closest('.faq-item');
-    var answer = item.querySelector('.faq-a');
-    var isOpen = item.classList.contains('open');
-    document.querySelectorAll('.faq-item').forEach(function(faq) {
-      faq.classList.remove('open');
-      faq.querySelector('.faq-a').style.maxHeight = null;
-    });
-    if (!isOpen) {
-      item.classList.add('open');
-      answer.style.maxHeight = answer.scrollHeight + 'px';
-    }
-  });
+// Nav scroll
+window.addEventListener('scroll', () => {
+const nav = document.getElementById('nav');
+if (window.scrollY > 50) nav.classList.add('scrolled');
+else nav.classList.remove('scrolled');
 });
 
-/* Portfolio filter */
-document.querySelectorAll('.work-filter button').forEach(function(btn) {
-  btn.addEventListener('click', function() {
-    document.querySelectorAll('.work-filter button').forEach(function(b) { b.classList.remove('active'); });
-    this.classList.add('active');
-    var filter = this.dataset.filter;
-    document.querySelectorAll('.work-card').forEach(function(card) {
-      card.style.display = (filter === 'all' || card.dataset.cat === filter) ? '' : 'none';
-    });
-  });
+// Hero animations — use IDs, NOT gs-reveal
+gsap.fromTo('#hero-tag', {opacity:0, y:20}, {opacity:1, y:0, duration:0.8, ease:'power3.out', delay:0.2});
+gsap.fromTo('#hero-title', {opacity:0, y:40}, {opacity:1, y:0, duration:1.2, ease:'power3.out', delay:0.4});
+gsap.fromTo('#hero-lead', {opacity:0, y:30}, {opacity:1, y:0, duration:0.8, ease:'power3.out', delay:0.8});
+gsap.fromTo('#hero-cta', {opacity:0, y:20}, {opacity:1, y:0, duration:0.6, ease:'power3.out', delay:1.0});
+
+// Section reveals
+gsap.utils.toArray('.section-label, .section-title, .section-sub').forEach(el => {
+gsap.fromTo(el, {opacity:0, y:30}, {opacity:1, y:0, duration:0.8, ease:'power3.out',
+scrollTrigger:{trigger:el, start:'top 85%'}});
 });
 
-/* Stat counters */
-document.querySelectorAll('.stat-counter').forEach(function(el) {
-  var target = parseInt(el.dataset.target);
-  if (target && typeof gsap !== 'undefined') {
-    gsap.fromTo(el, {innerText: 0}, {
-      innerText: target, duration: 2, ease: 'power2.out',
-      snap: {innerText: 1},
-      scrollTrigger: {trigger: el, start: 'top 90%'}
-    });
-  }
+// Stats
+gsap.utils.toArray('.stat').forEach((el,i) => {
+gsap.fromTo(el, {opacity:0, y:30}, {opacity:1, y:0, duration:0.6, delay:i*0.1, ease:'power3.out',
+scrollTrigger:{trigger:el, start:'top 85%'}});
 });
 
-/* Email form validation */
-var emailForm = document.getElementById('emailForm');
-var emailInput = document.getElementById('emailInput');
-var emailMsg = document.getElementById('emailMsg');
-
-function validateEmail(email) {
-  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-}
-
-emailForm.addEventListener('submit', function(e) {
-  e.preventDefault();
-  var email = emailInput.value.trim();
-
-  if (!email) {
-    emailInput.classList.add('error');
-    emailMsg.className = 'email-msg error';
-    emailMsg.textContent = 'Please enter your email address.';
-    return;
-  }
-
-  if (!validateEmail(email)) {
-    emailInput.classList.add('error');
-    emailMsg.className = 'email-msg error';
-    emailMsg.textContent = 'Please enter a valid email address.';
-    return;
-  }
-
-  emailInput.classList.remove('error');
-  emailInput.value = '';
-  emailMsg.className = 'email-msg success';
-  emailMsg.textContent = 'Thanks! We\'ll be in touch within 24 hours.';
+// Demo cards
+gsap.utils.toArray('.demo-card').forEach((el,i) => {
+gsap.fromTo(el, {opacity:0, y:40}, {opacity:1, y:0, duration:0.6, delay:(i%3)*0.1, ease:'power3.out',
+scrollTrigger:{trigger:el, start:'top 88%'}});
 });
 
-emailInput.addEventListener('input', function() {
-  if (this.classList.contains('error')) {
-    this.classList.remove('error');
-    emailMsg.textContent = '';
-  }
+// Services
+gsap.utils.toArray('.service').forEach((el,i) => {
+gsap.fromTo(el, {opacity:0, y:40}, {opacity:1, y:0, duration:0.6, delay:i*0.1, ease:'power3.out',
+scrollTrigger:{trigger:el, start:'top 85%'}});
 });
+
+// Process steps
+gsap.utils.toArray('.step').forEach((el,i) => {
+gsap.fromTo(el, {opacity:0, x:-30}, {opacity:1, x:0, duration:0.6, delay:i*0.15, ease:'power3.out',
+scrollTrigger:{trigger:el, start:'top 85%'}});
+});
+
+// Quote
+gsap.fromTo('.quote p', {opacity:0, y:30}, {opacity:1, y:0, duration:1, ease:'power3.out',
+scrollTrigger:{trigger:'.quote', start:'top 75%'}});
+
+// CTA
+gsap.fromTo('.cta-section h2, .cta-section p, .cta-form', {opacity:0, y:30}, {opacity:1, y:0, duration:0.8, stagger:0.15, ease:'power3.out',
+scrollTrigger:{trigger:'.cta-section', start:'top 80%'}});
+
+// Copy protection
+document.addEventListener('contextmenu', e => { e.preventDefault(); return false; });
+document.addEventListener('copy', e => { e.preventDefault(); return false; });
+document.addEventListener('cut', e => { e.preventDefault(); return false; });
+document.addEventListener('selectstart', e => { if (e.target.tagName !== 'INPUT' && e.target.tagName !== 'TEXTAREA') { e.preventDefault(); return false; } });
+document.addEventListener('dragstart', e => { e.preventDefault(); return false; });
+document.addEventListener('keydown', e => {
+if (e.ctrlKey && (e.key==='c'||e.key==='u'||e.key==='s'||e.key==='a')) { e.preventDefault(); return false; }
+if (e.key==='F12') { e.preventDefault(); return false; }
+if (e.ctrlKey && e.shiftKey && (e.key==='I'||e.key==='J')) { e.preventDefault(); return false; }
+});
+window.oncontextmenu = () => false;
+console.log('%cStop!', 'font-size:50px;color:red;font-weight:bold;');
+console.log('%cThis is Aurora Web. Do not copy.', 'font-size:16px;color:#c9a96e;');
 </script>
 </body>
 </html>
