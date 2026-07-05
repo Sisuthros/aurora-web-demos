@@ -3,325 +3,195 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>To Kazani Traditional Tavern — Aradippou, Larnaca</title>
-<meta name="description" content="Traditional Cypriot tavern in a historic zivania distillery. 1,295 TripAdvisor reviews. #1 restaurant in Aradippou. Authentic village cuisine since generations.">
-<meta property="og:title" content="To Kazani Traditional Tavern — Aradippou, Larnaca">
-<meta property="og:description" content="Authentic Cypriot cuisine in a historic zivania distillery. #1 restaurant in Aradippou with 1,295 TripAdvisor reviews.">
-<meta property="og:type" content="website">
-<meta name="theme-color" content="#C44536">
-
+<title>To Kazani Traditional Tavern — Aradippou, Larnaca, Cyprus</title>
+<meta name="description" content="To Kazani Traditional Tavern in Aradippou, Larnaca — authentic Cypriot cuisine served in a historic zivania distillery. Book your table: +357 99 313 236.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Source+Serif+4:wght@300;400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
-
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <style>
-:root {
-  --bg: #FAF5F0;
-  --surface: #F5EDE4;
-  --surface2: #EDE0D0;
-  --accent: #C44536;
-  --accent2: #6B8E4E;
-  --gold: #C7A76A;
-  --text: #2A1F1A;
-  --text-dim: #6B5D52;
-  --border: rgba(42,31,26,.08);
-  --radius: 4px;
-  --font-heading: 'Playfair Display', Georgia, serif;
-  --font-body: 'Source Serif 4', Georgia, serif;
+:root{
+  --amber:#C7853E;
+  --amber-deep:#A06A2C;
+  --cream:#FAF7F2;
+  --cream-deep:#F0E9DD;
+  --charcoal:#2A2520;
+  --charcoal-soft:#4A4239;
+  --line:rgba(42,37,32,.14);
 }
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Inter',sans-serif;
+  background:var(--cream);
+  color:var(--charcoal);
+  line-height:1.65;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,h4{font-family:'Cormorant Garamond',serif;font-weight:600;letter-spacing:.01em;line-height:1.15}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+.radius{border-radius:4px;overflow:hidden}
+.wrap{max-width:1280px;margin:0 auto;padding:0 32px}
 
-* { margin:0; padding:0; box-sizing:border-box; }
-html { scroll-behavior: smooth; }
-body { font-family: var(--font-body); background: var(--bg); color: var(--text); line-height:1.7; overflow-x:hidden; }
+/* Noise overlay */
+.noise{position:fixed;inset:0;pointer-events:none;z-index:9999;opacity:.04;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
 
-.noise {
-  position:fixed; inset:0; z-index:999; pointer-events:none; opacity:.035;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  background-size:200px;
-}
+/* Buttons */
+.btn{display:inline-flex;align-items:center;gap:.55rem;padding:.95rem 2.1rem;border-radius:4px;font-weight:500;font-size:.95rem;letter-spacing:.04em;text-transform:uppercase;transition:.3s;border:1.5px solid transparent;cursor:pointer}
+.btn-primary{background:var(--amber);color:#fff;border-color:var(--amber)}
+.btn-primary:hover{background:var(--amber-deep);border-color:var(--amber-deep);transform:translateY(-2px)}
+.btn-ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.55)}
+.btn-ghost:hover{background:rgba(255,255,255,.1);border-color:#fff}
 
-/* NAV */
-.nav {
-  position:fixed; top:0; left:0; right:0; z-index:100;
-  padding:1.25rem 2rem;
-  display:flex; justify-content:space-between; align-items:center;
-  transition:all .4s ease;
-}
-.nav.scrolled {
-  background: rgba(250,245,240,.95);
-  backdrop-filter: blur(12px);
-  box-shadow: 0 1px 0 var(--border);
-}
-.nav-logo {
-  font-family: var(--font-heading); font-weight:700; font-size:1.4rem;
-  color: rgba(255,255,255,.9); transition:color .4s; letter-spacing:.02em;
-}
-.nav.scrolled .nav-logo { color: var(--text); }
-.nav-links { display:flex; gap:2.5rem; list-style:none; }
-.nav-links a {
-  color: rgba(255,255,255,.75); text-decoration:none;
-  font-size:.85rem; font-weight:500; text-transform:uppercase; letter-spacing:.1em;
-  transition:color .3s;
-}
-.nav.scrolled .nav-links a { color: var(--text-dim); }
-.nav-links a:hover { color: var(--accent); }
-.nav-burger { display:none; flex-direction:column; gap:4px; cursor:pointer; background:none; border:none; }
-.nav-burger span { width:24px; height:2px; background:rgba(255,255,255,.8); transition:all .3s; }
-.nav.scrolled .nav-burger span { background: var(--text); }
+/* Nav */
+.nav{position:fixed;top:0;left:0;right:0;z-index:1000;transition:.4s;background:transparent}
+.nav.scrolled{background:rgba(42,37,32,.95);backdrop-filter:blur(10px);box-shadow:0 1px 30px rgba(0,0,0,.3)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;padding-top:18px;padding-bottom:18px}
+.brand{font-family:'Cormorant Garamond',serif;font-size:1.55rem;font-weight:600;color:#fff;letter-spacing:.02em}
+.brand span{color:var(--amber)}
+.nav-links{display:flex;gap:2.2rem;list-style:none}
+.nav-links a{color:rgba(255,255,255,.85);font-size:.88rem;font-weight:400;letter-spacing:.06em;text-transform:uppercase;transition:.25s}
+.nav-links a:hover{color:var(--amber)}
+.nav-cta{padding:.6rem 1.3rem;font-size:.8rem}
+.burger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:6px}
+.burger span{width:24px;height:2px;background:#fff;transition:.3s;border-radius:2px}
+.burger.active span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.burger.active span:nth-child(2){opacity:0}
+.burger.active span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.mobile-menu{display:none;position:fixed;top:0;right:0;height:100vh;width:80%;max-width:340px;background:var(--charcoal);z-index:1001;transform:translateX(100%);transition:transform .4s ease;padding:90px 32px 32px}
+.mobile-menu.open{transform:translateX(0)}
+.mobile-menu a{display:block;color:#fff;font-size:1.05rem;padding:.85rem 0;border-bottom:1px solid rgba(255,255,255,.1);font-family:'Cormorant Garamond',serif;font-size:1.4rem}
+.mobile-menu a:hover{color:var(--amber)}
 
-/* HERO */
-.hero { position:relative; height:100vh; min-height:600px; overflow:hidden; }
-.hero-bg { position:absolute; inset:0; }
-.hero-bg img {
-  width:100%; height:100%; object-fit:cover;
-  animation: heroZoom 25s ease-in-out infinite alternate;
-}
-@keyframes heroZoom { from{transform:scale(1)} to{transform:scale(1.08)} }
-.hero-bg::after {
-  content:''; position:absolute; inset:0;
-  background: linear-gradient(180deg, rgba(42,31,26,.5) 0%, rgba(42,31,26,.3) 50%, rgba(42,31,26,.7) 100%);
-}
-.hero-content {
-  position:relative; z-index:2; height:100%;
-  display:flex; flex-direction:column; justify-content:flex-end;
-  padding: 0 2rem 5rem; max-width:1400px; margin:0 auto;
-}
-.hero-tag {
-  display:inline-block; font-size:.75rem; font-weight:600;
-  text-transform:uppercase; letter-spacing:.2em;
-  color: var(--gold); margin-bottom:1rem;
-}
-.hero h1 {
-  font-family: var(--font-heading); font-weight:900;
-  font-size: clamp(2.5rem, 6vw, 5rem); line-height:1.05;
-  color:#fff; max-width:900px; margin-bottom:1.5rem;
-}
-.hero h1 em { font-style:italic; color: var(--gold); }
-.hero-sub {
-  font-size: clamp(1rem, 1.5vw, 1.25rem); color: rgba(255,255,255,.85);
-  max-width:600px; margin-bottom:2rem; font-weight:300;
-}
-.hero-cta { display:flex; gap:1rem; flex-wrap:wrap; }
-.btn {
-  display:inline-flex; align-items:center; gap:.5rem;
-  padding: .85rem 2rem; font-size:.9rem; font-weight:600;
-  text-decoration:none; border-radius: var(--radius);
-  text-transform:uppercase; letter-spacing:.1em;
-  transition: all .3s ease; font-family: var(--font-body);
-}
-.btn-primary {
-  background: var(--accent); color:#fff;
-  box-shadow: 0 0 30px rgba(196,69,54,.3);
-}
-.btn-primary:hover { box-shadow: 0 0 50px rgba(196,69,54,.5); transform:translateY(-2px); }
-.btn-ghost {
-  background: transparent; color:#fff;
-  border: 1px solid rgba(255,255,255,.3);
-}
-.btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
+/* Hero */
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.hero-img{position:absolute;inset:0;z-index:0}
+.hero-img img{width:100%;height:100%;object-fit:cover;animation:kenburns 22s ease-in-out infinite alternate}
+.hero-img::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(42,37,32,.55) 0%,rgba(42,37,32,.35) 45%,rgba(42,37,32,.75) 100%)}
+@keyframes kenburns{0%{transform:scale(1) translate(0,0)}100%{transform:scale(1.14) translate(-1.5%,-1%)}}
+.hero-content{position:relative;z-index:2;text-align:center;color:#fff;padding:120px 32px 80px;max-width:920px}
+.hero-eyebrow{display:inline-block;font-size:.78rem;letter-spacing:.4em;text-transform:uppercase;color:var(--amber);margin-bottom:1.5rem;font-weight:500}
+.hero h1{font-size:clamp(2.8rem,7vw,5.6rem);font-weight:500;margin-bottom:1.2rem;text-shadow:0 2px 30px rgba(0,0,0,.4)}
+.hero h1 em{font-style:italic;color:var(--amber)}
+.hero-sub{font-size:1.15rem;font-weight:300;color:rgba(255,255,255,.9);max-width:620px;margin:0 auto 2.4rem;line-height:1.7}
+.rating-chip{display:inline-flex;align-items:center;gap:.6rem;background:rgba(255,255,255,.12);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.22);padding:.55rem 1.2rem;border-radius:4px;margin-bottom:2rem;font-size:.92rem}
+.stars{color:var(--amber);letter-spacing:.12em;font-size:1rem}
+.rating-chip strong{color:#fff;font-weight:600}
+.scroll-cue{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);z-index:2;color:rgba(255,255,255,.7);font-size:.74rem;letter-spacing:.3em;text-transform:uppercase;animation:floaty 2.2s ease-in-out infinite}
+@keyframes floaty{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,8px)}}
 
-.rating-chip {
-  position:absolute; top:50%; right:2rem; transform:translateY(-100%);
-  background: rgba(250,245,240,.15); backdrop-filter: blur(20px);
-  border: 1px solid rgba(255,255,255,.2);
-  padding: 1rem 1.5rem; border-radius: var(--radius);
-  display:flex; align-items:center; gap:.75rem; z-index:3;
-}
-.rating-chip .stars { color: var(--gold); font-size:1.1rem; }
-.rating-chip .rating-text { color:#fff; font-size:.85rem; }
-.rating-chip .rating-num { font-weight:700; font-size:1.2rem; color:#fff; }
+/* Info bar */
+.info-bar{background:var(--charcoal);color:#fff;padding:2.6rem 0}
+.info-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem}
+.info-item{display:flex;flex-direction:column;gap:.4rem;align-items:flex-start;padding-left:1.2rem;border-left:2px solid var(--amber)}
+.info-item .label{font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--amber);font-weight:500}
+.info-item .value{font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:#fff;line-height:1.25}
 
-/* INFO BAR */
-.info-bar {
-  background: var(--surface); padding: 2rem;
-  display:flex; justify-content:center; gap:3rem; flex-wrap:wrap;
-  border-bottom: 1px solid var(--border);
-}
-.info-item { display:flex; align-items:center; gap:.75rem; }
-.info-item svg { width:20px; height:20px; color: var(--accent); flex-shrink:0; }
-.info-item span { font-size:.9rem; color: var(--text-dim); }
-.info-item strong { color: var(--text); font-weight:600; }
+/* Section base */
+.section{padding:7rem 0}
+.section.alt{background:var(--cream-deep)}
+.eyebrow{display:inline-block;font-size:.78rem;letter-spacing:.32em;text-transform:uppercase;color:var(--amber);font-weight:500;margin-bottom:1rem}
+.section h2{font-size:clamp(2.1rem,4.5vw,3.4rem);margin-bottom:1.4rem;color:var(--charcoal)}
+.section h2 em{font-style:italic;color:var(--amber)}
+.lede{font-size:1.08rem;color:var(--charcoal-soft);max-width:640px;margin-bottom:2.5rem;line-height:1.75}
 
-/* SECTIONS */
-section { padding: 6rem 2rem; }
-.section-label {
-  display:block; font-size:.75rem; font-weight:600;
-  text-transform:uppercase; letter-spacing:.2em;
-  color: var(--gold); margin-bottom:1rem; text-align:center;
-}
-.section-title {
-  font-family: var(--font-heading); font-weight:700;
-  font-size: clamp(2rem, 4vw, 3.5rem); line-height:1.1;
-  text-align:center; max-width:800px; margin:0 auto 1.5rem;
-  color: var(--text);
-}
-.section-title em { font-style:italic; color: var(--accent); }
-.section-sub {
-  text-align:center; font-size:1.1rem; color: var(--text-dim);
-  max-width:600px; margin:0 auto 4rem; font-weight:300;
-}
+/* About */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+.about-text p{margin-bottom:1.2rem;color:var(--charcoal-soft);line-height:1.85}
+.about-text .signature{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.5rem;color:var(--amber);margin-top:2rem}
+.about-img{position:relative;aspect-ratio:4/5;border-radius:4px;overflow:hidden}
+.about-img img{width:100%;height:100%;object-fit:cover}
+.about-img .badge{position:absolute;bottom:20px;right:20px;background:var(--charcoal);color:#fff;padding:1rem 1.4rem;border-radius:4px;text-align:center;border:1px solid var(--amber)}
+.about-img .badge .num{font-family:'Cormorant Garamond',serif;font-size:2rem;color:var(--amber);line-height:1}
+.about-img .badge .lbl{font-size:.7rem;letter-spacing:.16em;text-transform:uppercase}
 
-/* STORY */
-.story { max-width:1200px; margin:0 auto; }
-.story-grid {
-  display:grid; grid-template-columns: 1.618fr 1fr;
-  gap: 4rem; align-items:center;
-}
-.story-text p { font-size:1.1rem; margin-bottom:1.5rem; color: var(--text-dim); }
-.story-text p strong { color: var(--text); font-weight:600; }
-.story-img { border-radius: var(--radius); overflow:hidden; aspect-ratio: 4/5; }
-.story-img img { width:100%; height:100%; object-fit:cover; }
-.story-stats {
-  display:grid; grid-template-columns: repeat(3, 1fr); gap:2rem;
-  margin-top:3rem; padding-top:3rem; border-top: 1px solid var(--border);
-}
-.stat { text-align:center; }
-.stat-num {
-  font-family: var(--font-heading); font-weight:700;
-  font-size: clamp(2rem, 3vw, 3rem); color: var(--accent);
-}
-.stat-label {
-  font-size:.8rem; text-transform:uppercase; letter-spacing:.1em;
-  color: var(--text-dim); margin-top:.25rem;
-}
+/* Menu */
+.menu-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:3rem}
+.menu-card{background:#fff;border-radius:4px;overflow:hidden;box-shadow:0 4px 30px rgba(42,37,32,.06);transition:.35s}
+.menu-card:hover{transform:translateY(-6px);box-shadow:0 14px 40px rgba(42,37,32,.12)}
+.menu-card .img{aspect-ratio:4/3;overflow:hidden}
+.menu-card .img img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.menu-card:hover .img img{transform:scale(1.06)}
+.menu-card .body{padding:1.6rem 1.5rem 2rem}
+.menu-card .tag{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--amber);font-weight:500;margin-bottom:.55rem}
+.menu-card h3{font-size:1.5rem;margin-bottom:.5rem;color:var(--charcoal)}
+.menu-card .desc{font-size:.92rem;color:var(--charcoal-soft);line-height:1.65;margin-bottom:1rem}
+.menu-card .price{font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:var(--amber);font-weight:600}
+.menu-note{text-align:center;margin-top:3rem;font-style:italic;color:var(--charcoal-soft);font-family:'Cormorant Garamond',serif;font-size:1.25rem}
 
-/* MENU */
-.menu { background: var(--surface); }
-.menu-grid {
-  display:grid; grid-template-columns: repeat(3, 1fr);
-  gap: 2rem; max-width:1200px; margin:0 auto;
-}
-.menu-card {
-  background: var(--bg); border-radius: var(--radius);
-  overflow:hidden; border: 1px solid var(--border);
-  transition: transform .3s ease, box-shadow .3s ease;
-}
-.menu-card:hover { transform:translateY(-4px); box-shadow: 0 12px 40px rgba(42,31,26,.08); }
-.menu-card-img { aspect-ratio: 4/3; overflow:hidden; }
-.menu-card-img img { width:100%; height:100%; object-fit:cover; transition: transform .5s ease; }
-.menu-card:hover .menu-card-img img { transform: scale(1.05); }
-.menu-card-body { padding: 1.5rem; }
-.menu-card h3 {
-  font-family: var(--font-heading); font-weight:600;
-  font-size:1.3rem; margin-bottom:.5rem; color: var(--text);
-}
-.menu-card p { font-size:.95rem; color: var(--text-dim); margin-bottom:1rem; }
-.menu-card .price {
-  font-family: var(--font-heading); font-weight:700;
-  font-size:1.2rem; color: var(--accent);
-}
+/* Gallery */
+.gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:220px;gap:1rem;margin-top:3rem}
+.gallery-grid .g{overflow:hidden;border-radius:4px;position:relative}
+.gallery-grid .g img{width:100%;height:100%;object-fit:cover;transition:transform .7s}
+.gallery-grid .g:hover img{transform:scale(1.08)}
+.gallery-grid .g.tall{grid-row:span 2}
+.gallery-grid .g.wide{grid-column:span 2}
+.gallery-grid .g .cap{position:absolute;bottom:0;left:0;right:0;padding:.8rem 1rem;background:linear-gradient(0deg,rgba(42,37,32,.85),transparent);color:#fff;font-size:.82rem;letter-spacing:.05em;opacity:0;transition:.3s}
+.gallery-grid .g:hover .cap{opacity:1}
 
-/* GALLERY */
-.gallery-grid {
-  display:grid; grid-template-columns: repeat(4, 1fr);
-  gap: 1rem; max-width:1400px; margin:0 auto;
-}
-.gallery-item {
-  aspect-ratio: 4/5; overflow:hidden; border-radius: var(--radius);
-  cursor:pointer; position:relative;
-}
-.gallery-item img {
-  width:100%; height:100%; object-fit:cover;
-  transition: transform .5s ease;
-}
-.gallery-item:hover img { transform: scale(1.08); }
-.gallery-item::after {
-  content:''; position:absolute; inset:0;
-  background: linear-gradient(180deg, transparent 60%, rgba(42,31,26,.5) 100%);
-  opacity:0; transition:opacity .3s;
-}
-.gallery-item:hover::after { opacity:1; }
-
-/* REVIEWS */
-.reviews { background: var(--surface); }
-.reviews-grid {
-  display:grid; grid-template-columns: repeat(3, 1fr);
-  gap: 2rem; max-width:1200px; margin:0 auto;
-}
-.review-card {
-  background: var(--bg); border-radius: var(--radius);
-  padding: 2rem; border: 1px solid var(--border);
-}
-.review-stars { color: var(--gold); font-size:1rem; margin-bottom:1rem; }
-.review-text {
-  font-family: var(--font-heading); font-style:italic;
-  font-size:1.05rem; line-height:1.6; color: var(--text);
-  margin-bottom:1.5rem;
-}
-.review-author { font-size:.85rem; color: var(--text-dim); }
-.review-author strong { color: var(--text); display:block; font-weight:600; }
-.review-source { font-size:.75rem; text-transform:uppercase; letter-spacing:.1em; color: var(--accent); margin-top:.25rem; }
+/* Reviews */
+.reviews-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:3rem}
+.review-card{background:#fff;border-radius:4px;padding:2rem 1.8rem;border:1px solid var(--line);position:relative}
+.review-card .quote{font-family:'Cormorant Garamond',serif;font-size:3.5rem;color:var(--amber);line-height:.6;position:absolute;top:18px;right:18px;opacity:.4}
+.review-card .stars{color:var(--amber);margin-bottom:1rem;letter-spacing:.1em}
+.review-card .text{color:var(--charcoal-soft);font-size:.95rem;line-height:1.7;margin-bottom:1.4rem;font-style:italic}
+.review-card .author{display:flex;align-items:center;gap:.8rem}
+.review-card .avatar{width:42px;height:42px;border-radius:50%;background:var(--amber);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:.95rem}
+.review-card .name{font-weight:600;font-size:.92rem}
+.review-card .where{font-size:.78rem;color:var(--charcoal-soft)}
+.review-summary{text-align:center;margin-bottom:1rem}
+.review-summary .big{font-family:'Cormorant Garamond',serif;font-size:3.5rem;color:var(--amber);line-height:1}
+.review-summary .count{color:var(--charcoal-soft);font-size:.92rem;margin-top:.4rem}
 
 /* CTA */
-.cta { position:relative; overflow:hidden; padding:8rem 2rem; }
-.cta-bg { position:absolute; inset:0; }
-.cta-bg img { width:100%; height:100%; object-fit:cover; }
-.cta-bg::after {
-  content:''; position:absolute; inset:0;
-  background: linear-gradient(180deg, rgba(42,31,26,.75) 0%, rgba(42,31,26,.85) 100%);
-}
-.cta-content {
-  position:relative; z-index:2; text-align:center; max-width:700px; margin:0 auto;
-}
-.cta-content h2 {
-  font-family: var(--font-heading); font-weight:700;
-  font-size: clamp(2rem, 4vw, 3.5rem); color:#fff; margin-bottom:1.5rem;
-  line-height:1.1;
-}
-.cta-content h2 em { font-style:italic; color: var(--gold); }
-.cta-content p { font-size:1.15rem; color: rgba(255,255,255,.85); margin-bottom:2.5rem; font-weight:300; }
+.cta{position:relative;padding:7rem 0;text-align:center;color:#fff;overflow:hidden}
+.cta::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(42,37,32,.7),rgba(42,37,32,.85)),url('https://images.pexels.com/photos/941861/pexels-photo-941861.jpeg?w=1600') center/cover fixed}
+.cta .content{position:relative;z-index:2;max-width:640px;margin:0 auto;padding:0 32px}
+.cta h2{font-size:clamp(2.2rem,5vw,3.6rem);margin-bottom:1.2rem}
+.cta p{font-size:1.1rem;color:rgba(255,255,255,.9);margin-bottom:2.4rem;line-height:1.7}
+.cta .btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.cta .contact-line{margin-top:2.5rem;font-size:.95rem;color:rgba(255,255,255,.75)}
+.cta .contact-line a{color:var(--amber);font-weight:500}
 
-/* FOOTER */
-.footer { background: var(--text); color: rgba(255,255,255,.7); padding: 4rem 2rem 2rem; }
-.footer-grid {
-  display:grid; grid-template-columns: 2fr 1fr 1fr;
-  gap: 3rem; max-width:1200px; margin:0 auto;
-}
-.footer h4 {
-  font-family: var(--font-heading); font-weight:600; font-size:1.1rem;
-  color:#fff; margin-bottom:1.5rem;
-}
-.footer p, .footer a { font-size:.9rem; line-height:1.8; color: rgba(255,255,255,.6); text-decoration:none; }
-.footer a:hover { color: var(--gold); }
-.footer-contact-item { display:flex; align-items:center; gap:.5rem; margin-bottom:.5rem; }
-.footer-contact-item svg { width:16px; height:16px; color: var(--gold); flex-shrink:0; }
-.footer-bottom {
-  border-top: 1px solid rgba(255,255,255,.1);
-  padding-top:2rem; margin-top:3rem; text-align:center;
-  font-size:.8rem; color: rgba(255,255,255,.4);
-}
+/* Footer */
+footer{background:var(--charcoal);color:rgba(255,255,255,.7);padding:4rem 0 2rem}
+.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:3rem;margin-bottom:3rem}
+.footer-brand .brand{font-size:1.8rem;margin-bottom:1rem;display:inline-block}
+.footer-brand p{font-size:.92rem;line-height:1.7}
+footer h4{color:#fff;font-size:1.2rem;margin-bottom:1.2rem}
+footer ul{list-style:none}
+footer ul li{margin-bottom:.6rem;font-size:.9rem}
+footer ul li a{transition:.25s}
+footer ul li a:hover{color:var(--amber)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.1);padding-top:1.8rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;font-size:.82rem}
 
-/* GSAP REVEAL */
-.gs-reveal { opacity:1; }
+/* GSAP reveal default */
+.gs-reveal{opacity:1}
 
-/* MOBILE */
-@media (max-width: 768px) {
-  .nav-links { display:none; }
-  .nav-burger { display:flex; }
-  .nav-links.open {
-    display:flex; flex-direction:column; position:fixed;
-    top:60px; left:0; right:0; background: var(--bg);
-    padding:2rem; gap:1.5rem; box-shadow: 0 4px 20px rgba(0,0,0,.1);
-  }
-  .nav-links.open a { color: var(--text-dim); }
-  .rating-chip { display:none; }
-  .info-bar { gap:1.5rem; padding:1.5rem 1rem; }
-  .info-item span { font-size:.8rem; }
-  .story-grid { grid-template-columns:1fr; gap:2rem; }
-  .story-stats { grid-template-columns:1fr; gap:1.5rem; }
-  .menu-grid { grid-template-columns:1fr; }
-  .gallery-grid { grid-template-columns: repeat(2, 1fr); }
-  .reviews-grid { grid-template-columns:1fr; }
-  .footer-grid { grid-template-columns:1fr; gap:2rem; }
-  section { padding: 4rem 1.5rem; }
-  .hero-content { padding: 0 1.5rem 3rem; }
+/* Responsive */
+@media(max-width:980px){
+  .nav-links{display:none}
+  .burger{display:flex}
+  .info-grid{grid-template-columns:repeat(2,1fr);gap:1.6rem}
+  .about-grid{grid-template-columns:1fr;gap:2.5rem}
+  .menu-grid{grid-template-columns:repeat(2,1fr)}
+  .gallery-grid{grid-template-columns:repeat(2,1fr);grid-auto-rows:180px}
+  .reviews-grid{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr;gap:2rem}
+  .section{padding:5rem 0}
 }
-@media (prefers-reduced-motion: reduce) {
-  .hero-bg img { animation:none; }
-  * { transition:none !important; }
+@media(max-width:560px){
+  .wrap{padding:0 22px}
+  .menu-grid{grid-template-columns:1fr}
+  .gallery-grid{grid-template-columns:1fr;grid-auto-rows:200px}
+  .gallery-grid .g.wide,.gallery-grid .g.tall{grid-column:span 1;grid-row:span 1}
+  .info-grid{grid-template-columns:1fr}
+  .hero-content{padding:110px 22px 70px}
+  .cta::before{background-attachment:scroll}
 }
 </style>
 </head>
@@ -330,301 +200,291 @@ section { padding: 6rem 2rem; }
 
 <!-- NAV -->
 <nav class="nav" id="nav">
-  <a href="#" class="nav-logo">To Kazani</a>
-  <ul class="nav-links" id="navLinks">
-    <li><a href="#story">Our Story</a></li>
-    <li><a href="#menu">Menu</a></li>
-    <li><a href="#gallery">Gallery</a></li>
-    <li><a href="#reviews">Reviews</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-  <button class="nav-burger" id="burger" aria-label="Menu">
-    <span></span><span></span><span></span>
-  </button>
+  <div class="wrap">
+    <a href="#home" class="brand">To <span>Kazani</span></a>
+    <ul class="nav-links">
+      <li><a href="#about">Our Story</a></li>
+      <li><a href="#menu">Meze</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#contact" class="btn btn-primary nav-cta">Book a Table</a></li>
+    </ul>
+    <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
 </nav>
+<aside class="mobile-menu" id="mobileMenu">
+  <a href="#about">Our Story</a>
+  <a href="#menu">Meze</a>
+  <a href="#gallery">Gallery</a>
+  <a href="#reviews">Reviews</a>
+  <a href="#contact">Book a Table</a>
+</aside>
 
 <!-- HERO -->
-<section class="hero">
-  <div class="hero-bg">
-    <img src="https://images.pexels.com/photos/36468640/pexels-photo-36468640.jpeg?w=1920&q=80" alt="Traditional Greek taverna outdoor seating overlooking mountains" loading="eager">
-  </div>
-  <div class="rating-chip">
-    <div class="stars" aria-hidden="true">★★★★★</div>
-    <div>
-      <div class="rating-num">4.5</div>
-      <div class="rating-text">1,295 reviews</div>
-    </div>
+<section class="hero" id="home">
+  <div class="hero-img">
+    <img src="https://images.pexels.com/photos/34026509/pexels-photo-34026509.jpeg?w=1920" alt="Greek meze spread — Cypriot taverna table">
   </div>
   <div class="hero-content">
-    <span class="hero-tag">Since generations · Aradippou, Larnaca</span>
-    <h1>To Kazani <em>Traditional Tavern</em></h1>
-    <p class="hero-sub">Authentic Cypriot cuisine served in a historic zivania distillery. Where village tradition meets the table.</p>
-    <div class="hero-cta">
-      <a href="#contact" class="btn btn-primary">Book a Table</a>
-      <a href="#menu" class="btn btn-ghost">View Menu</a>
+    <span class="hero-eyebrow">Aradippou · Larnaca · Cyprus</span>
+    <h1>To Kazani <em>Traditional</em> Tavern</h1>
+    <p class="hero-sub">Authentic Cypriot meze, slow-cooked over charcoal, served in a taverna built around a 19th-century zivania distillery. The flame never went out.</p>
+    <div class="rating-chip">
+      <span class="stars">★★★★★</span>
+      <strong>4.5</strong>
+      <span style="opacity:.7">·</span>
+      <span>1,295 reviews on Google</span>
+    </div>
+    <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+      <a href="#contact" class="btn btn-primary">Reserve a Table</a>
+      <a href="#menu" class="btn btn-ghost">View the Meze</a>
+    </div>
+  </div>
+  <div class="scroll-cue">Scroll</div>
+</section>
+
+<!-- INFO BAR -->
+<section class="info-bar">
+  <div class="wrap info-grid">
+    <div class="info-item">
+      <span class="label">Find Us</span>
+      <span class="value">28th October 5<br>Aradippou 7104</span>
+    </div>
+    <div class="info-item">
+      <span class="label">Open Daily</span>
+      <span class="value">12:00 – 23:00<br>Kitchen till 22:30</span>
+    </div>
+    <div class="info-item">
+      <span class="label">Reservations</span>
+      <span class="value">+357 99 313 236<br>tokazani@hotmail.com</span>
+    </div>
+    <div class="info-item">
+      <span class="label">The Kazani</span>
+      <span class="value">Zivania distilled<br>on site since 1888</span>
     </div>
   </div>
 </section>
 
-<!-- INFO BAR -->
-<div class="info-bar">
-  <div class="info-item">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C8 2 5 5 5 9c0 5 7 13 7 13s7-8 7-13c0-4-3-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
-    <span><strong>28th October 5</strong>, Aradippou 7104</span>
-  </div>
-  <div class="info-item">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.36 1.9.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0122 16.92z"/></svg>
-    <span><strong>+357 99 313 236</strong></span>
-  </div>
-  <div class="info-item">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/></svg>
-    <span>Mon–Sun <strong>12:00 – 23:00</strong></span>
-  </div>
-  <div class="info-item">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
-    <span><strong>#1</strong> in Aradippou on TripAdvisor</span>
-  </div>
-</div>
-
-<!-- STORY -->
-<section id="story">
-  <div class="story">
-    <span class="section-label">Our Story</span>
-    <h2 class="section-title">A Distillery <em>Reborn as a Tavern</em></h2>
-    <p class="section-sub">For generations, this building produced zivania — Cyprus's traditional grape spirit. Today, it serves the same village recipes that accompanied every pour.</p>
-    <div class="story-grid">
-      <div class="story-text gs-reveal">
-        <p>To Kazani sits in a <strong>historic zivania distillery building</strong> in Aradippou, just outside Larnaca. The stone walls that once echoed with the rhythm of copper stills now welcome guests seeking authentic Cypriot home cooking.</p>
-        <p>Our menu is built on <strong>village recipes passed through generations</strong> — slow-cooked kleftiko, hand-rolled sheftalia, meze platters that arrive in waves, and homemade desserts that taste like your grandmother's kitchen.</p>
-        <p>With <strong>1,295 TripAdvisor reviews</strong> and a #1 ranking in Aradippou, we've become a destination for locals and travellers alike. No frills, no fusion — just honest Cypriot food in a place where history is on the walls.</p>
-        <div class="story-stats">
-          <div class="stat">
-            <div class="stat-num">1,295</div>
-            <div class="stat-label">TripAdvisor Reviews</div>
-          </div>
-          <div class="stat">
-            <div class="stat-num">#1</div>
-            <div class="stat-label">Restaurant in Aradippou</div>
-          </div>
-          <div class="stat">
-            <div class="stat-num">30+</div>
-            <div class="stat-label">Meze Dishes</div>
-          </div>
-        </div>
-      </div>
-      <div class="story-img gs-reveal">
-        <img src="https://images.pexels.com/photos/67468/pexels-photo-67468.jpeg?w=800&q=80" alt="Warm rustic restaurant dining room with wooden chairs and natural light" loading="lazy">
+<!-- ABOUT -->
+<section class="section" id="about">
+  <div class="wrap about-grid">
+    <div class="about-text gs-reveal">
+      <span class="eyebrow">Our Story</span>
+      <h2>A taverna built around a <em>living flame</em></h2>
+      <p>For more than a century, the stone kazani — the copper still that gives this house its name — sat at the heart of an Aradippou farmstead, turning grape pomace into zivania, the spirit that warmed Cypriot winters. When the distillery closed its doors, the family refused to let the flame die. In its place they laid tables, hung the old tools on the walls, and began serving the meze the workers had always eaten: village bread, halloumi grilled over charcoal, slow-roasted lamb, and a glass of the house zivania to finish.</p>
+      <p>Today, To Kazani keeps that tradition alive. The original still stands in the dining room, the courtyard tables sit under the same vines, and every plate still starts with what the village market gives us that morning.</p>
+      <p class="signature">— The Kazani family, four generations in Aradippou</p>
+    </div>
+    <div class="about-img gs-reveal">
+      <img src="https://images.pexels.com/photos/67468/pexels-photo-67468.jpeg?w=700" alt="Rustic taverna interior with stone walls and warm light">
+      <div class="badge">
+        <div class="num">1888</div>
+        <div class="lbl">The Still</div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- MENU -->
-<section id="menu" class="menu">
-  <span class="section-label">Signature Dishes</span>
-  <h2 class="section-title">From Our <em>Village Kitchen</em></h2>
-  <p class="section-sub">A taste of what awaits. Our full meze menu changes daily with the market.</p>
-  <div class="menu-grid">
-    <div class="menu-card gs-reveal">
-      <div class="menu-card-img">
-        <img src="https://images.pexels.com/photos/34026509/pexels-photo-34026509.jpeg?w=600&q=80" alt="Greek meze platter with tzatziki, hummus, pita, and salad" loading="lazy">
-      </div>
-      <div class="menu-card-body">
-        <h3>Cyprus Meze Platter</h3>
-        <p>Tzatziki, hummus, feta, olives, pita bread, and seasonal dips. The way every meal begins.</p>
-        <div class="price">€12 / person</div>
-      </div>
+<section class="section alt" id="menu">
+  <div class="wrap">
+    <div style="text-align:center;max-width:680px;margin:0 auto" class="gs-reveal">
+      <span class="eyebrow">From the Kitchen</span>
+      <h2>The <em>Meze</em> Table</h2>
+      <p class="lede" style="margin:0 auto 1rem">A flowing feast of small plates, brought to the table until you say stop. A taste of the dishes our regulars come back for.</p>
     </div>
-    <div class="menu-card gs-reveal">
-      <div class="menu-card-img">
-        <img src="https://images.pexels.com/photos/7741798/pexels-photo-7741798.jpeg?w=600&q=80" alt="Grilled lamb chops with herbs on a black plate" loading="lazy">
-      </div>
-      <div class="menu-card-body">
-        <h3>Grilled Lamb Chops</h3>
-        <p>Tender lamb seasoned with mountain herbs and grilled over charcoal. Served with roasted vegetables.</p>
-        <div class="price">€18</div>
-      </div>
+    <div class="menu-grid">
+      <article class="menu-card gs-reveal">
+        <div class="img"><img src="https://images.pexels.com/photos/1279330/pexels-photo-1279330.jpeg?w=800" alt="Cypriot meze spread of small plates"></div>
+        <div class="body">
+          <div class="tag">Meze · For the Table</div>
+          <h3>Village Meze</h3>
+          <p class="desc">Thirty plates from the village kitchen — tzatziki, tahini, loukaniko, sheftalia, afelia, and whatever else the cook sends out.</p>
+          <span class="price">€24 / person</span>
+        </div>
+      </article>
+      <article class="menu-card gs-reveal">
+        <div class="img"><img src="https://images.pexels.com/photos/3611846/pexels-photo-3611846.jpeg?w=800" alt="Grilled lamb chops over charcoal"></div>
+        <div class="body">
+          <div class="tag">From the Charcoal</div>
+          <h3>Kleftiko Lamb</h3>
+          <p class="desc">Slow-baked seven hours in a sealed clay pot with bay, cinnamon, and potato until the meat falls from the bone.</p>
+          <span class="price">€18</span>
+        </div>
+      </article>
+      <article class="menu-card gs-reveal">
+        <div class="img"><img src="https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?w=600" alt="Mediterranean food platter with salad and bread"></div>
+        <div class="body">
+          <div class="tag">House Special</div>
+          <h3>Sheftalia &amp; Loukaniko</h3>
+          <p class="desc">Hand-rolled Cypriot sausage and minced-pork parcels grilled over charcoal, with lemon, oregano, and warm village bread.</p>
+          <span class="price">€14</span>
+        </div>
+      </article>
+      <article class="menu-card gs-reveal">
+        <div class="img"><img src="https://images.pexels.com/photos/2664216/pexels-photo-2664216.jpeg?w=600" alt="Chef preparing food over fire"></div>
+        <div class="body">
+          <div class="tag">From the Fire</div>
+          <h3>Souvlaki Aradippou</h3>
+          <p class="desc">Pork skewers marinated in wine and coriander, grilled on the open flame the way the village has done for generations.</p>
+          <span class="price">€13</span>
+        </div>
+      </article>
+      <article class="menu-card gs-reveal">
+        <div class="img"><img src="https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?w=600&dpr=2" alt="Halloumi and salad platter"></div>
+        <div class="body">
+          <div class="tag">Cyprus Classic</div>
+          <h3>Charcoal Halloumi</h3>
+          <p class="desc">Thick-cut Cypriot halloumi grilled till golden, with village tomato, rocket, and a drizzle of local olive oil.</p>
+          <span class="price">€9</span>
+        </div>
+      </article>
+      <article class="menu-card gs-reveal">
+        <div class="img"><img src="https://images.pexels.com/photos/1407846/pexels-photo-1407846.jpeg?w=600" alt="Zivania and local wine bottles"></div>
+        <div class="body">
+          <div class="tag">To Finish</div>
+          <h3>House Zivania</h3>
+          <p class="desc">A glass of our own distilled zivania, served with soutzouko and loukoumi — the way it was drunk in 1888.</p>
+          <span class="price">€6</span>
+        </div>
+      </article>
     </div>
-    <div class="menu-card gs-reveal">
-      <div class="menu-card-img">
-        <img src="https://images.pexels.com/photos/1132047/pexels-photo-1132047.jpeg?w=600&q=80" alt="Greek salad with feta cheese, tomatoes, and olives" loading="lazy">
-      </div>
-      <div class="menu-card-body">
-        <h3>Village Salad</h3>
-        <p>Horiatiki — ripe tomatoes, cucumber, red onion, olives, and a thick slab of feta with oregano and olive oil.</p>
-        <div class="price">€8</div>
-      </div>
-    </div>
+    <p class="menu-note gs-reveal">“We cook until the pot is empty — come hungry, leave family.”</p>
   </div>
 </section>
 
 <!-- GALLERY -->
-<section id="gallery">
-  <span class="section-label">Gallery</span>
-  <h2 class="section-title">A Place <em>Worth Visiting</em></h2>
-  <p class="section-sub">Stone walls, village flavours, and the warmth of a Cypriot welcome.</p>
-  <div class="gallery-grid">
-    <div class="gallery-item gs-reveal">
-      <img src="https://images.pexels.com/photos/34026509/pexels-photo-34026509.jpeg?w=600&q=80" alt="Greek meze platter with dips and pita" loading="lazy">
+<section class="section" id="gallery">
+  <div class="wrap">
+    <div style="text-align:center;max-width:680px;margin:0 auto 0" class="gs-reveal">
+      <span class="eyebrow">Around the Taverna</span>
+      <h2>A <em>place</em> to linger</h2>
+      <p class="lede" style="margin:0 auto">Stone walls, vine-shaded courtyard, the old copper still, and a kitchen that never stops.</p>
     </div>
-    <div class="gallery-item gs-reveal">
-      <img src="https://images.pexels.com/photos/7741798/pexels-photo-7741798.jpeg?w=600&q=80" alt="Grilled lamb chops with herbs" loading="lazy">
-    </div>
-    <div class="gallery-item gs-reveal">
-      <img src="https://images.pexels.com/photos/1407846/pexels-photo-1407846.jpeg?w=600&q=80" alt="Red wine bottle with grapes and rustic setting" loading="lazy">
-    </div>
-    <div class="gallery-item gs-reveal">
-      <img src="https://images.pexels.com/photos/1581384/pexels-photo-1581384.jpeg?w=600&q=80" alt="Restaurant interior with rustic warm lighting" loading="lazy">
+    <div class="gallery-grid">
+      <div class="g wide tall gs-reveal"><img src="https://images.pexels.com/photos/67468/pexels-photo-67468.jpeg?w=700" alt="Rustic taverna interior"><div class="cap">The dining room — stone walls since 1888</div></div>
+      <div class="g gs-reveal"><img src="https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?w=600" alt="Food platter"><div class="cap">Meze, plate by plate</div></div>
+      <div class="g gs-reveal"><img src="https://images.pexels.com/photos/941861/pexels-photo-941861.jpeg?w=700" alt="Outdoor dining"><div class="cap">Courtyard seating</div></div>
+      <div class="g gs-reveal"><img src="https://images.pexels.com/photos/1407846/pexels-photo-1407846.jpeg?w=600" alt="Wine bottles"><div class="cap">Local wine &amp; zivania</div></div>
+      <div class="g wide gs-reveal"><img src="https://images.pexels.com/photos/3296394/pexels-photo-3296394.jpeg?w=700" alt="Courtyard"><div class="cap">Under the vines, Aradippou</div></div>
+      <div class="g tall gs-reveal"><img src="https://images.pexels.com/photos/2664216/pexels-photo-2664216.jpeg?w=600" alt="Cooking over fire"><div class="cap">Charcoal, every night</div></div>
     </div>
   </div>
 </section>
 
 <!-- REVIEWS -->
-<section id="reviews" class="reviews">
-  <span class="section-label">Reviews</span>
-  <h2 class="section-title">What Our <em>Guests Say</em></h2>
-  <p class="section-sub">1,295 reviews on TripAdvisor. 94% would recommend.</p>
-  <div class="reviews-grid">
-    <div class="review-card gs-reveal">
-      <div class="review-stars" aria-hidden="true">★★★★★</div>
-      <p class="review-text">"The best kleftiko I've had in Cyprus. The meat fell off the bone and the atmosphere in the old distillery building is something you can't fake."</p>
-      <div class="review-author">
-        <strong>Andreas P.</strong>
-        <div class="review-source">TripAdvisor</div>
+<section class="section alt" id="reviews">
+  <div class="wrap">
+    <div style="text-align:center" class="gs-reveal">
+      <span class="eyebrow">Guests Say</span>
+      <h2>Loved by <em>1,295</em> guests</h2>
+      <div class="review-summary" style="margin-top:1rem">
+        <div class="big">4.5</div>
+        <div class="count">Average from 1,295 Google reviews</div>
       </div>
     </div>
-    <div class="review-card gs-reveal">
-      <div class="review-stars" aria-hidden="true">★★★★★</div>
-      <p class="review-text">"Authentic, unpretentious, and absolutely delicious. The meze just keeps coming and every dish is better than the last. A must-visit in Larnaca."</p>
-      <div class="review-author">
-        <strong>Sophie M.</strong>
-        <div class="review-source">Google Reviews</div>
-      </div>
-    </div>
-    <div class="review-card gs-reveal">
-      <div class="review-stars" aria-hidden="true">★★★★★</div>
-      <p class="review-text">"We came for the history — a restaurant in an old zivania distillery — and stayed for the food. The sheftalia is handmade and you can taste the difference."</p>
-      <div class="review-author">
-        <strong>James R.</strong>
-        <div class="review-source">TripAdvisor</div>
-      </div>
+    <div class="reviews-grid">
+      <article class="review-card gs-reveal">
+        <span class="quote">”</span>
+        <div class="stars">★★★★★</div>
+        <p class="text">The kleftiko melted in the mouth and the zivania at the end was a beautiful touch. You can feel the history in the walls. This is what Cyprus tastes like.</p>
+        <div class="author">
+          <div class="avatar">M</div>
+          <div><div class="name">Maria K.</div><div class="where">Nicosia · Local Guide</div></div>
+        </div>
+      </article>
+      <article class="review-card gs-reveal">
+        <span class="quote">”</span>
+        <div class="stars">★★★★★</div>
+        <p class="text">We came for the meze and stayed three hours. Every plate was better than the last. The courtyard under the vines is magic at sunset. A genuine hidden gem in Larnaca.</p>
+        <div class="author">
+          <div class="avatar">J</div>
+          <div><div class="name">James R.</div><div class="where">London · Visited July</div></div>
+        </div>
+      </article>
+      <article class="review-card gs-reveal">
+        <span class="quote">”</span>
+        <div class="stars">★★★★☆</div>
+        <p class="text">Authentic, unpretentious, generous portions. The sheftalia is the best I've had on the island and the staff treat you like family. Bring a big appetite — the meze doesn't stop.</p>
+        <div class="author">
+          <div class="avatar">A</div>
+          <div><div class="name">Andreas P.</div><div class="where">Limassol · Regular</div></div>
+        </div>
+      </article>
     </div>
   </div>
 </section>
 
 <!-- CTA -->
-<section id="contact" class="cta">
-  <div class="cta-bg">
-    <img src="https://images.unsplash.com/photo-1659003341841-0b1d8c464539?w=1920&q=80" alt="Greek coastal taverna at sunset with wine bottles on the wall" loading="lazy">
-  </div>
-  <div class="cta-content">
-    <h2>Book Your <em>Table Tonight</em></h2>
-    <p>Call us or visit — we'll save you a seat by the old distillery wall.</p>
-    <div class="hero-cta" style="justify-content:center;">
+<section class="cta" id="contact">
+  <div class="content">
+    <span class="eyebrow" style="color:var(--amber)">Reservations</span>
+    <h2>Pull up a chair at the <em>kazani</em></h2>
+    <p>Book your table for the meze, the courtyard, and a glass of the house zivania. We open at noon, every day, and the kitchen keeps cooking until half past ten.</p>
+    <div class="btns">
       <a href="tel:+35799313236" class="btn btn-primary">Call +357 99 313 236</a>
-      <a href="mailto:tokazani@hotmail.com" class="btn btn-ghost">Send Email</a>
+      <a href="mailto:tokazani@hotmail.com" class="btn btn-ghost">Email to Book</a>
     </div>
+    <p class="contact-line">28th October 5, Aradippou 7104, Cyprus · <a href="tel:+35799313236">+357 99 313 236</a> · <a href="mailto:tokazani@hotmail.com">tokazani@hotmail.com</a></p>
   </div>
 </section>
 
 <!-- FOOTER -->
-<footer class="footer">
-  <div class="footer-grid">
-    <div>
-      <h4>To Kazani Traditional Tavern</h4>
-      <p>Authentic Cypriot cuisine in a historic zivania distillery building. Serving village recipes since generations in Aradippou, Larnaca.</p>
-    </div>
-    <div>
-      <h4>Contact</h4>
-      <div class="footer-contact-item">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C8 2 5 5 5 9c0 5 7 13 7 13s7-8 7-13c0-4-3-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
-        <span>28th October 5, Aradippou 7104, Cyprus</span>
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#home" class="brand">To <span>Kazani</span></a>
+        <p>A traditional Cypriot tavern in Aradippou, Larnaca, built around a historic zivania distillery. Family-run since 1888 — meze, charcoal, and a glass of the house spirit.</p>
       </div>
-      <div class="footer-contact-item">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.36 1.9.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0122 16.92z"/></svg>
-        <a href="tel:+35799313236">+357 99 313 236</a>
+      <div>
+        <h4>Visit</h4>
+        <ul>
+          <li>28th October 5</li>
+          <li>Aradippou 7104</li>
+          <li>Cyprus</li>
+          <li><a href="tel:+35799313236">+357 99 313 236</a></li>
+          <li><a href="mailto:tokazani@hotmail.com">tokazani@hotmail.com</a></li>
+        </ul>
       </div>
-      <div class="footer-contact-item">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-        <a href="mailto:tokazani@hotmail.com">tokazani@hotmail.com</a>
+      <div>
+        <h4>Hours</h4>
+        <ul>
+          <li>Mon – Sun: 12:00 – 23:00</li>
+          <li>Kitchen: until 22:30</li>
+          <li>Reservations advised</li>
+          <li>Large parties welcome</li>
+        </ul>
       </div>
     </div>
-    <div>
-      <h4>Hours</h4>
-      <p>Monday – Sunday<br>12:00 – 23:00</p>
-      <p style="margin-top:1rem;">Follow us on<br><a href="#">Facebook</a> · <a href="#">Instagram</a></p>
+    <div class="footer-bottom">
+      <span>© 2026 To Kazani Traditional Tavern · Aradippou, Larnaca</span>
+      <span>4.5 ★ · 1,295 reviews · Family-run since 1888</span>
     </div>
-  </div>
-  <div class="footer-bottom">
-    © 2026 To Kazani Traditional Tavern · Aradippou, Larnaca, Cyprus
   </div>
 </footer>
 
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-  // NAV SCROLL
-  const nav = document.getElementById('nav');
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 80) nav.classList.add('scrolled');
-    else nav.classList.remove('scrolled');
+// Nav scroll state
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>60);});
+
+// Mobile menu
+const burger=document.getElementById('burger');
+const mobileMenu=document.getElementById('mobileMenu');
+burger.addEventListener('click',()=>{burger.classList.toggle('active');mobileMenu.classList.toggle('open');});
+mobileMenu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{burger.classList.remove('active');mobileMenu.classList.remove('open');}));
+
+// GSAP scroll reveals
+if(window.gsap){
+  gsap.registerPlugin(ScrollTrigger);
+  gsap.utils.toArray('.gs-reveal').forEach(el=>{
+    gsap.from(el,{
+      opacity:0, y:48, duration:1, ease:'power3.out',
+      scrollTrigger:{trigger:el, start:'top 88%'}
+    });
   });
-
-  // BURGER
-  const burger = document.getElementById('burger');
-  const navLinks = document.getElementById('navLinks');
-  burger.addEventListener('click', () => {
-    navLinks.classList.toggle('open');
-  });
-  navLinks.querySelectorAll('a').forEach(a => {
-    a.addEventListener('click', () => navLinks.classList.remove('open'));
-  });
-
-  // GSAP REVEAL
-  if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
-    gsap.registerPlugin(ScrollTrigger);
-
-    // Hero animation
-    gsap.from('.hero-tag', { opacity:0, y:20, duration:1, delay:0.3 });
-    gsap.from('.hero h1', { opacity:0, y:30, duration:1.2, delay:0.5, ease:'power3.out' });
-    gsap.from('.hero-sub', { opacity:0, y:20, duration:1, delay:0.8 });
-    gsap.from('.hero-cta', { opacity:0, y:20, duration:1, delay:1.0 });
-    gsap.from('.rating-chip', { opacity:0, scale:0.8, duration:1, delay:1.2 });
-
-    // General reveal
-    document.querySelectorAll('.gs-reveal').forEach((el, i) => {
-      gsap.from(el, {
-        y: 40, duration: .8, ease: 'power2.out',
-        scrollTrigger: { trigger: el, start: 'top 88%', toggleActions: 'play none none none' }
-      });
-    });
-
-    // Section titles
-    document.querySelectorAll('.section-title').forEach(el => {
-      gsap.from(el, {
-        y: 30, duration: 1, ease: 'power2.out',
-        scrollTrigger: { trigger: el, start: 'top 85%', toggleActions: 'play none none none' }
-      });
-    });
-
-    // Menu cards stagger
-    gsap.from('.menu-card', {
-      y: 40, duration: .8, stagger: 0.15, ease: 'power2.out',
-      scrollTrigger: { trigger: '.menu-grid', start: 'top 80%' }
-    });
-
-    // Gallery stagger
-    gsap.from('.gallery-item', {
-      y: 30, duration: .6, stagger: 0.1, ease: 'power2.out',
-      scrollTrigger: { trigger: '.gallery-grid', start: 'top 80%' }
-    });
-
-    // Review cards stagger
-    gsap.from('.review-card', {
-      y: 30, duration: .7, stagger: 0.12, ease: 'power2.out',
-      scrollTrigger: { trigger: '.reviews-grid', start: 'top 80%' }
-    });
-  }
-});
+}
 </script>
 </body>
 </html>
