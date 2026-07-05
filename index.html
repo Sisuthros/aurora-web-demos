@@ -7,9 +7,16 @@
 <meta name="description" content="Aurora Web builds websites that make your competition irrelevant. Premium web design for restaurants, bars, salons and hotels in Cyprus. Delivery in 48 hours.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet"></noscript>
+<meta property="og:title" content="Aurora Web — Premium Web Design for Cyprus">
+<meta property="og:description" content="We build websites that make your competition irrelevant. 13 live demos for real Cyprus businesses.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://sisuthros.github.io/aurora-web-demos/">
+<meta name="theme-color" content="#061B31">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='4' fill='%23061B31'/%3E%3Ctext x='50' y='72' font-family='Georgia,serif' font-size='56' font-weight='400' text-anchor='middle' fill='%23C9A96E' font-style='italic'%3EA%3C/text%3E%3C/svg%3E">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
 <style>
 :root{
 --navy:#061B31;--paper:#F7F8F8;--gold:#C9A96E;--gold-soft:rgba(201,169,110,.12);
@@ -18,10 +25,16 @@
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{font-family:'Inter',system-ui,sans-serif;background:var(--paper);color:var(--text);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+body{font-family:'Space Grotesk',system-ui,sans-serif;background:var(--paper);color:var(--text);overflow-x:hidden;-webkit-font-smoothing:antialiased;font-feature-settings:'cv01','ss03'}
 img{max-width:100%;display:block}
 a{color:inherit}
 ::selection{background:var(--gold);color:var(--navy)}
+
+/* Noise overlay */
+.noise{position:fixed;inset:0;z-index:999;pointer-events:none;opacity:.03;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.4'/%3E%3C/svg%3E");background-size:200px}
+
+/* Section label */
+.sec-label{font-size:.7rem;text-transform:uppercase;letter-spacing:.25em;color:var(--gold);font-weight:600;margin-bottom:1.5rem}
 
 /* Preloader */
 .preloader{position:fixed;inset:0;background:var(--navy);z-index:9999;display:flex;align-items:center;justify-content:center}
@@ -54,7 +67,7 @@ a{color:inherit}
 .hero-left h1{font-family:'Instrument Serif',serif;font-size:clamp(3.5rem,2rem+8vw,9rem);font-weight:400;line-height:.95;letter-spacing:-.03em;margin-bottom:2rem}
 .hero-left h1 em{color:var(--gold);font-style:italic}
 .hero-left h1 .word{display:inline-block;overflow:hidden;vertical-align:top}
-.hero-left h1 .word span{display:inline-block;transform:translateY(110%)}
+.hero-left h1 .word span{display:inline-block}
 .hero-sub{font-size:1.0625rem;color:var(--text-dim);max-width:42ch;line-height:1.6;margin-bottom:2.5rem}
 .hero-cta{display:flex;gap:1rem;flex-wrap:wrap}
 .btn{display:inline-flex;align-items:center;padding:1rem 2rem;font-size:.8125rem;text-transform:uppercase;letter-spacing:.12em;font-weight:600;text-decoration:none;cursor:pointer;transition:all .3s var(--ease);border-radius:2px;will-change:transform}
@@ -176,6 +189,9 @@ footer{background:var(--navy);position:relative;min-height:60vh;display:flex;fle
 /* Reveal */
 .reveal{opacity:1}
 
+/* Print protection */
+@media print{*{display:none!important}body:after{content:"© Aurora Web";display:block;font-size:2rem;padding:2rem}}
+
 /* Responsive */
 @media(max-width:900px){
 .nav{padding:1rem 1.5rem}
@@ -216,6 +232,7 @@ footer{padding:4rem 1.5rem 2rem}
 </style>
 </head>
 <body>
+<div class="noise"></div>
 <!-- Preloader -->
 <div class="preloader"><span>Aurora</span><div class="pl-bar"></div></div>
 
@@ -275,6 +292,7 @@ footer{padding:4rem 1.5rem 2rem}
 <!-- Portfolio Horizontal Scroll -->
 <section class="portfolio-scroll" id="work">
 <div class="portfolio-header reveal">
+<div class="sec-label">Our Work</div>
 <h2>Selected <em>Work</em></h2>
 <p>13 live demos · scroll horizontally →</p>
 </div>
@@ -297,7 +315,8 @@ footer{padding:4rem 1.5rem 2rem}
 </section>
 <!-- Industry Selector -->
 <section class="selector reveal" id="industries">
-<div class="selector-head">
+<div class="selector-head reveal">
+<div class="sec-label" style="text-align:center">Industries</div>
 <h2>What's your <em>business?</em></h2>
 <p>Find demos tailored to your industry. Pick your category and see exactly what your new website could look like.</p>
 </div>
@@ -332,6 +351,7 @@ footer{padding:4rem 1.5rem 2rem}
 <!-- Services Dark -->
 <section class="services" id="services">
 <div class="services-head reveal">
+<div class="sec-label">What We Do</div>
 <h2>What we <em>do</em></h2>
 <p>Full-service web design, development, hosting, AI automation and growth — all under one roof.</p>
 </div>
@@ -364,6 +384,7 @@ footer{padding:4rem 1.5rem 2rem}
 <!-- Process Outlined Numbers -->
 <section class="process" id="process">
 <div class="process-head reveal">
+<div class="sec-label">How We Work</div>
 <h2>How we <em>work</em></h2>
 </div>
 <div class="process-step reveal">
@@ -420,7 +441,7 @@ footer{padding:4rem 1.5rem 2rem}
 <p>Premium web design for Cyprus businesses.</p>
 <p>Larnaca, Cyprus</p>
 <div class="footer-links">
-<a href="https://instagram.com">Instagram</a>
+<a href="https://www.instagram.com/sisuthros/">Instagram</a>
 <a href="mailto:viltsu.myllyniemi@gmail.com">Email</a>
 <a href="#work">Portfolio</a>
 <a href="mailto:viltsu.myllyniemi@gmail.com?subject=Quote Request">Get Quote</a>
@@ -447,7 +468,7 @@ document.addEventListener('dragstart',function(e){e.preventDefault();});
 <script>
 document.addEventListener('DOMContentLoaded',function(){
 var hasGSAP = (typeof gsap !== 'undefined');
-if(hasGSAP) gsap.registerPlugin(ScrollTrigger);
+if(hasGSAP && typeof ScrollTrigger !== 'undefined') gsap.registerPlugin(ScrollTrigger);
 
 /* === Preloader === */
 var preloader = document.querySelector('.preloader');
@@ -516,7 +537,7 @@ if(h1 && hasGSAP){
     }
     h1.innerHTML = wrapWords(h1);
   })();
-  gsap.from(h1.querySelectorAll('.word span'),{yPercent:110,duration:1.2,stagger:0.08,ease:'power4.out',delay:0.5});
+  gsap.fromTo(h1.querySelectorAll('.word span'),{yPercent:110},{yPercent:0,duration:1.2,stagger:0.08,ease:'power4.out',delay:0.5});
 }
 
 /* === Nav scroll + progress === */
@@ -585,7 +606,7 @@ if(hasGSAP){
 }
 
 /* === Portfolio horizontal scroll === */
-if(hasGSAP){
+if(hasGSAP && typeof ScrollTrigger !== 'undefined'){
   var track = document.getElementById('portfolioTrack');
   var section = document.getElementById('work');
   if(track && section && window.innerWidth > 900){
