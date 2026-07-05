@@ -214,15 +214,15 @@ footer{background:var(--navy);position:relative;min-height:60vh;display:flex;fle
 .process-step{grid-template-columns:1fr;gap:1rem;padding:3rem 0}
 .process-num{font-size:5rem}
 .quote{padding:5rem 1.5rem}
-.quote blockquote{padding-left:1rem}
-.quote cite{padding-left:1rem}
-.cta-dark{padding:5rem 1.5rem}
-footer{padding:4rem 1.5rem 2rem}
-.footer-links{gap:1rem}
-.portfolio-scroll{height:auto;overflow-x:auto;-webkit-overflow-scrolling:touch}
-.portfolio-track{padding:5rem 1.5rem}
-.portfolio-card{flex:0 0 280px}
-.portfolio-hint{display:none}
+.portfolio-scroll{min-height:auto;padding:6rem 3rem;background:var(--paper)}
+.portfolio-header{position:static;margin-bottom:3rem}
+.portfolio-track{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
+.portfolio-card{scroll-snap-align:none}
+@media(max-width:900px){
+.portfolio-scroll{display:flex;align-items:center;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;-webkit-overflow-scrolling:touch;padding:5rem 1.5rem;min-height:80vh}
+.portfolio-header{position:absolute;top:5rem;left:3rem;z-index:10}
+.portfolio-track{display:flex;gap:2rem;padding:0}
+.portfolio-card{flex:0 0 280px;scroll-snap-align:center}
 }
 @media(max-width:600px){
 .selector-grid{grid-template-columns:1fr}
@@ -605,16 +605,10 @@ if(hasGSAP){
   });
 }
 
-/* === Portfolio horizontal scroll === */
+/* === Portfolio horizontal scroll (mobile only) === */
 if(hasGSAP && typeof ScrollTrigger !== 'undefined'){
-  var track = document.getElementById('portfolioTrack');
-  var section = document.getElementById('work');
-  if(track && section && window.innerWidth > 900){
-    gsap.set('.portfolio-scroll',{overflow:'hidden',height:'100vh'});
-    gsap.set('.portfolio-track',{padding:'0 3rem'});
-    var scrollWidth = track.scrollWidth - window.innerWidth + 100;
-    gsap.to(track,{x:-scrollWidth,ease:'none',scrollTrigger:{trigger:section,start:'top top',end:'+='+scrollWidth,pin:true,scrub:1,invalidateOnRefresh:true}});
-  }
+  // Desktop uses grid layout, mobile uses CSS horizontal scroll
+  // No GSAP pinning needed
 }
 
 /* === GSAP fallback === */
