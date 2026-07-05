@@ -3,530 +3,601 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Aurora Web — Premium Websites for Cyprus Businesses</title>
-<meta name="description" content="Aurora Web builds premium, high-converting websites for real Cyprus businesses. AI automation, SEO, 48h delivery. From €599.">
-<meta property="og:title" content="Aurora Web — Premium Websites for Cyprus Businesses">
-<meta property="og:description" content="We build websites that make your competition irrelevant. 13 live demos for real Cyprus businesses.">
-<meta property="og:type" content="website">
-<meta property="og:image" content="https://images.pexels.com/photos/262047/pexels-photo-262047.jpeg?w=1200">
-<meta name="theme-color" content="#061b31">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='16' fill='%23061b31'/%3E%3Ctext x='50' y='72' font-family='Georgia,serif' font-size='64' font-style='italic' text-anchor='middle' fill='%23C9A96E'%3EA%3C/text%3E%3C/svg%3E">
+<title>Aurora Web — Premium Web Design for Cyprus Businesses</title>
+<meta name="description" content="Aurora Web builds websites that make your competition irrelevant. Premium web design for restaurants, bars, salons and hotels in Cyprus. Delivery in 48 hours.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" media="print" onload="this.media='all'">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <style>
 :root{
-  --navy:#061b31;
-  --navy2:#0d253d;
-  --paper:#F8F6F0;
-  --paper2:#EDEAE3;
-  --gold:#C9A96E;
-  --gold-soft:rgba(201,169,110,0.12);
-  --text:#061b31;
-  --text-dim:#64748d;
-  --text-light:#f7f8f8;
-  --text-light-dim:rgba(247,248,248,0.6);
-  --border:rgba(17,27,49,0.08);
-  --border-dark:rgba(255,255,255,0.08);
-  --shadow:rgba(50,50,93,0.25) 0px 30px 45px -30px,rgba(0,0,0,0.1) 0px 18px 36px -18px;
-  --r:4px;
-  --ease:cubic-bezier(.22,1,.36,1);
-  --serif:'Instrument Serif',serif;
-  --sans:'Space Grotesk',system-ui,sans-serif;
+--navy:#061B31;--paper:#F7F8F8;--gold:#C9A96E;--gold-soft:rgba(201,169,110,.12);
+--text:#1A1A1A;--text-light:#F7F8F8;--text-dim:#6B7280;--border:rgba(26,26,26,.1);
+--ease:cubic-bezier(.22,1,.36,1);--shadow:0 20px 60px -20px rgba(6,27,49,.25);
 }
-*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
-body{font-family:var(--sans);background:var(--paper);color:var(--text);line-height:1.6;overflow-x:hidden;font-weight:400}
-img{display:block;max-width:100%;height:auto}
-a{color:inherit;text-decoration:none}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--paper);color:var(--text);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit}
+::selection{background:var(--gold);color:var(--navy)}
 
-/* Scroll progress */
-.scroll-progress{position:fixed;top:0;left:0;height:2px;width:0;background:var(--gold);z-index:9999;transition:width .1s linear}
+/* Preloader */
+.preloader{position:fixed;inset:0;background:var(--navy);z-index:9999;display:flex;align-items:center;justify-content:center}
+.preloader span{font-family:'Instrument Serif',serif;font-size:8rem;font-style:italic;color:var(--gold);letter-spacing:-.02em}
+.preloader .pl-bar{position:absolute;bottom:0;left:0;height:2px;width:0;background:var(--gold)}
 
 /* Nav */
-.nav{position:fixed;top:0;left:0;right:0;display:flex;justify-content:space-between;align-items:center;padding:1.5rem 3rem;z-index:100;transition:background .4s var(--ease),backdrop-filter .4s var(--ease),border-color .4s var(--ease),padding .4s var(--ease);border-bottom:1px solid transparent}
-.nav.scrolled{background:rgba(248,246,240,0.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:1rem 3rem}
-.nav-logo{font-family:var(--serif);font-style:italic;font-size:1.5rem;color:var(--text);letter-spacing:-.01em}
-.nav.scrolled .nav-logo{color:var(--text)}
+.nav{position:fixed;top:0;left:0;width:100%;z-index:1000;padding:1.5rem 3rem;display:flex;justify-content:space-between;align-items:center;transition:all .4s var(--ease);mix-blend-mode:difference}
+.nav.scrolled{padding:1rem 3rem}
+.nav-logo{font-family:'Instrument Serif',serif;font-size:1.5rem;font-style:italic;color:#fff;font-weight:400;text-decoration:none;letter-spacing:-.01em}
 .nav-links{display:flex;gap:2.5rem;align-items:center}
-.nav-links a{font-size:.875rem;font-weight:500;color:var(--text-dim);transition:color .3s var(--ease);position:relative}
-.nav-links a::after{content:'';position:absolute;left:0;bottom:-4px;width:0;height:1px;background:var(--gold);transition:width .4s var(--ease)}
-.nav-links a:hover{color:var(--text)}
-.nav-links a:hover::after{width:100%}
-.nav-cta{font-size:.8125rem;font-weight:600;padding:.7rem 1.4rem;border:1px solid var(--text);border-radius:var(--r);color:var(--text);transition:background .3s var(--ease),color .3s var(--ease)}
-.nav-cta:hover{background:var(--text);color:var(--paper)}
-.nav-burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:.5rem;background:none;border:none}
-.nav-burger span{width:24px;height:2px;background:var(--text);transition:transform .3s var(--ease),opacity .3s var(--ease)}
-.nav-burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
-.nav-burger.open span:nth-child(2){opacity:0}
-.nav-burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.nav-links a{color:#fff;text-decoration:none;font-size:.8125rem;text-transform:uppercase;letter-spacing:.12em;font-weight:500;transition:opacity .3s}
+.nav-links a:hover{opacity:.7}
+.nav-cta{padding:.6rem 1.4rem;border:1px solid #fff;border-radius:2px;font-size:.75rem;text-transform:uppercase;letter-spacing:.12em;font-weight:600;color:#fff;text-decoration:none;transition:all .3s var(--ease)}
+.nav-cta:hover{background:#fff;color:var(--navy)}
+.nav-progress{position:fixed;top:0;left:0;height:2px;background:var(--gold);z-index:1001;width:0}
+.burger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:0}
+.burger span{width:24px;height:2px;background:#fff;transition:all .3s}
+.burger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+.burger.open span:nth-child(2){opacity:0}
+.burger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+.mobile-menu{position:fixed;inset:0;background:var(--navy);z-index:999;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2rem;opacity:0;pointer-events:none;transition:opacity .4s var(--ease)}
+.mobile-menu.open{opacity:1;pointer-events:auto}
+.mobile-menu a{color:#fff;text-decoration:none;font-family:'Instrument Serif',serif;font-size:2rem;font-style:italic}
 
-/* Hero */
-.hero{position:relative;min-height:100vh;display:flex;align-items:flex-end;overflow:hidden}
-.hero-bg{position:absolute;inset:0;z-index:0}
-.hero-bg img{width:100%;height:100%;object-fit:cover;filter:brightness(.35) saturate(1.2);animation:kenBurns 25s ease-in-out infinite alternate}
-@keyframes kenBurns{from{transform:scale(1)}to{transform:scale(1.15)}}
-.hero-overlay{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(6,27,49,0.4) 0%,rgba(6,27,49,0.2) 40%,rgba(6,27,49,0.85) 100%)}
-.hero-grain{position:absolute;inset:0;z-index:2;opacity:.03;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
-.hero-content{position:relative;z-index:3;padding:0 3rem 6rem;max-width:1400px;margin:0 auto;width:100%}
-.hero-meta{display:flex;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,0.15);padding-bottom:1.5rem;margin-bottom:3rem}
-.hero-meta span{font-size:.75rem;text-transform:uppercase;letter-spacing:.25em;color:rgba(255,255,255,0.6)}
-.hero h1{font-family:var(--serif);font-size:clamp(5rem,2rem + 12vw,14rem);font-weight:400;line-height:.88;letter-spacing:-.04em;max-width:14ch;color:var(--text-light)}
-.hero h1 em{font-style:italic;color:var(--gold)}
-.hero h1 .word{display:inline-block;overflow:hidden}
-.hero h1 .word span{display:inline-block}
-.hero-sub{margin-top:2rem;font-size:1.25rem;color:rgba(255,255,255,0.85);max-width:42ch;font-weight:400}
-.hero-cta-row{margin-top:2.5rem;display:flex;gap:1.5rem;flex-wrap:wrap}
-.btn{font-size:.875rem;padding:1rem 1.75rem;font-weight:600;border-radius:var(--r);transition:transform .4s var(--ease),box-shadow .4s var(--ease),background .3s var(--ease),border-color .3s var(--ease);display:inline-flex;align-items:center;gap:.5rem;cursor:pointer;border:none}
-.btn-gold{background:var(--gold);color:var(--navy)}
-.btn-gold:hover{transform:translateY(-2px);box-shadow:0 10px 30px -10px rgba(201,169,110,0.6)}
-.btn-ghost{background:transparent;border:1px solid rgba(255,255,255,0.2);color:var(--text-light)}
-.btn-ghost:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-2px)}
-.hero-scroll{position:absolute;bottom:2rem;right:3rem;font-size:.75rem;color:rgba(255,255,255,0.7);text-transform:uppercase;letter-spacing:.2em;display:flex;flex-direction:column;align-items:center;gap:1rem;z-index:3}
-.hero-scroll-line{width:1px;height:50px;background:rgba(255,255,255,0.2);position:relative;overflow:hidden}
-.hero-scroll-line::after{content:'';position:absolute;top:0;left:0;width:100%;height:50%;background:var(--gold);animation:scrollLine 2s var(--ease) infinite}
-@keyframes scrollLine{0%{transform:translateY(-100%)}100%{transform:translateY(200%)}}
+/* Hero Split */
+.hero-split{display:grid;grid-template-columns:1fr 1fr;min-height:100vh}
+.hero-left{display:flex;flex-direction:column;justify-content:center;padding:0 4rem;background:var(--paper);position:relative}
+.hero-meta{display:flex;justify-content:space-between;font-size:.75rem;text-transform:uppercase;letter-spacing:.15em;color:var(--text-dim);font-weight:600;margin-bottom:3rem}
+.hero-left h1{font-family:'Instrument Serif',serif;font-size:clamp(3.5rem,2rem+8vw,9rem);font-weight:400;line-height:.95;letter-spacing:-.03em;margin-bottom:2rem}
+.hero-left h1 em{color:var(--gold);font-style:italic}
+.hero-left h1 .word{display:inline-block;overflow:hidden;vertical-align:top}
+.hero-left h1 .word span{display:inline-block;transform:translateY(110%)}
+.hero-sub{font-size:1.0625rem;color:var(--text-dim);max-width:42ch;line-height:1.6;margin-bottom:2.5rem}
+.hero-cta{display:flex;gap:1rem;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;padding:1rem 2rem;font-size:.8125rem;text-transform:uppercase;letter-spacing:.12em;font-weight:600;text-decoration:none;cursor:pointer;transition:all .3s var(--ease);border-radius:2px;will-change:transform}
+.btn-navy{background:var(--navy);color:var(--text-light)}
+.btn-navy:hover{background:var(--gold);color:var(--navy)}
+.btn-outline{border:1px solid var(--text);color:var(--text)}
+.btn-outline:hover{background:var(--navy);color:var(--text-light);border-color:var(--navy)}
+.hero-right{position:relative;overflow:hidden}
+.hero-right img{width:100%;height:100%;object-fit:cover;animation:kenBurns 25s ease-in-out infinite alternate}
+@keyframes kenBurns{0%{transform:scale(1) translate(0,0)}100%{transform:scale(1.12) translate(-2%,-2%)}}
+.hero-right::after{content:'';position:absolute;inset:0;background:linear-gradient(to right,rgba(247,248,248,.15),transparent 30%,transparent 70%,rgba(6,27,49,.3));pointer-events:none}
+.hero-scroll-hint{position:absolute;bottom:2rem;left:4rem;font-size:.7rem;text-transform:uppercase;letter-spacing:.2em;color:var(--text-dim);font-weight:600;display:flex;align-items:center;gap:.5rem}
+.hero-scroll-hint::after{content:'';width:40px;height:1px;background:var(--text-dim);display:inline-block}
 
 /* Marquee */
-.marquee{overflow:hidden;padding:3rem 0;background:var(--navy);color:var(--text-light)}
-.marquee-track{display:flex;gap:3rem;animation:marquee 40s linear infinite;width:max-content}
-.marquee-track span{font-family:var(--serif);font-style:italic;font-size:2.5rem;opacity:.6;white-space:nowrap}
-.marquee-track span:nth-child(odd){color:var(--gold)}
-@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.marquee{background:var(--navy);overflow:hidden;padding:1.5rem 0;white-space:nowrap}
+.marquee-track{display:inline-flex;gap:3rem;animation:marquee 30s linear infinite}
+.marquee-track span{font-family:'Instrument Serif',serif;font-size:2.5rem;font-style:italic;color:var(--gold);font-weight:400}
+.marquee-track span::after{content:'·';margin-left:3rem;color:rgba(201,169,110,.4)}
+@keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 
 /* Stats */
-.stats{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
-.stat{padding:3.5rem 2.5rem;border-right:1px solid var(--border)}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);padding:6rem 3rem;background:var(--paper);text-align:center}
+.stat{border-right:1px solid var(--border)}
 .stat:last-child{border-right:none}
-.stat-num{font-family:var(--serif);font-size:clamp(2.5rem,1.5rem + 4vw,5.5rem);font-weight:400;line-height:1;letter-spacing:-.02em}
-.stat-num em{font-style:italic;color:var(--gold)}
-.stat-label{margin-top:1rem;font-size:.8rem;text-transform:uppercase;letter-spacing:.2em;color:var(--text-dim);font-weight:500}
+.stat-num{font-family:'Instrument Serif',serif;font-size:clamp(3rem,2rem+4vw,5rem);font-weight:400;color:var(--navy);line-height:1;margin-bottom:.5rem}
+.stat-num em{color:var(--gold);font-style:italic}
+.stat-label{font-size:.75rem;text-transform:uppercase;letter-spacing:.15em;color:var(--text-dim);font-weight:600}
 
-/* Portfolio horizontal scroll */
+/* Portfolio */
 .portfolio-scroll{height:100vh;display:flex;align-items:center;overflow:hidden;background:var(--paper);position:relative}
-.portfolio-scroll-header{position:absolute;top:5rem;left:3rem;z-index:10;max-width:600px}
-.portfolio-scroll-header .label{font-size:.75rem;text-transform:uppercase;letter-spacing:.25em;color:var(--gold);font-weight:600;margin-bottom:1rem}
-.portfolio-scroll-header h2{font-family:var(--serif);font-size:clamp(2rem,1.5rem + 3vw,5rem);font-weight:400;line-height:.95;letter-spacing:-.03em}
-.portfolio-scroll-header h2 em{font-style:italic;color:var(--gold)}
-.portfolio-track{display:flex;gap:2rem;padding:0 3rem;will-change:transform;margin-left:600px}
-.portfolio-card{flex:0 0 380px;display:flex;flex-direction:column;gap:1rem}
-.portfolio-card-img{aspect-ratio:4/3;overflow:hidden;border-radius:var(--r);box-shadow:var(--shadow);position:relative}
+.portfolio-header{position:absolute;top:5rem;left:3rem;z-index:10}
+.portfolio-header h2{font-family:'Instrument Serif',serif;font-size:clamp(2.5rem,1.5rem+4vw,4rem);font-weight:400;line-height:1;letter-spacing:-.02em}
+.portfolio-header p{font-size:.8125rem;color:var(--text-dim);margin-top:.5rem;text-transform:uppercase;letter-spacing:.1em;font-weight:600}
+.portfolio-track{display:flex;gap:2rem;padding:0 3rem;will-change:transform}
+.portfolio-card{flex:0 0 400px;display:flex;flex-direction:column;gap:1rem;text-decoration:none;color:inherit}
+.portfolio-card-img{aspect-ratio:4/3;overflow:hidden;border-radius:4px;box-shadow:var(--shadow);position:relative}
 .portfolio-card-img img{width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease)}
-.portfolio-card:hover .portfolio-card-img img{transform:scale(1.06)}
+.portfolio-card-overlay{position:absolute;inset:0;background:rgba(6,27,49,.85);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .4s var(--ease)}
+.portfolio-card:hover .portfolio-card-overlay{opacity:1}
+.portfolio-card:hover .portfolio-card-img img{transform:scale(1.08)}
+.portfolio-card-overlay span{font-family:'Instrument Serif',serif;font-size:1.5rem;font-style:italic;color:var(--gold)}
 .portfolio-card-info{display:flex;justify-content:space-between;align-items:baseline}
-.portfolio-card-name{font-family:var(--serif);font-size:1.5rem;font-weight:400;line-height:1.1}
-.portfolio-card-meta{font-size:.8125rem;color:var(--text);opacity:.6}
+.portfolio-card-name{font-family:'Instrument Serif',serif;font-size:1.5rem;font-weight:400}
+.portfolio-card-meta{font-size:.8125rem;opacity:.6}
 .portfolio-card-badge{font-size:.7rem;padding:.25rem .8rem;border:1px solid var(--gold);color:var(--gold);letter-spacing:.15em;text-transform:uppercase;font-weight:600;background:var(--gold-soft);border-radius:2px;align-self:flex-start}
-.portfolio-hint{position:absolute;bottom:3rem;right:3rem;font-size:.75rem;text-transform:uppercase;letter-spacing:.1em;color:var(--text-dim);font-weight:500}
+.portfolio-hint{position:absolute;bottom:3rem;right:3rem;font-size:.75rem;text-transform:uppercase;letter-spacing:.1em;color:var(--text-dim);font-weight:600}
 
-/* Services dark */
-.services-section{background:var(--navy);color:var(--text-light)}
-.services-inner{max-width:1400px;margin:0 auto;padding:8rem 3rem}
-.services-label{font-size:.75rem;text-transform:uppercase;letter-spacing:.25em;color:var(--gold);font-weight:600;margin-bottom:1.5rem}
-.services-title{font-family:var(--serif);font-size:clamp(2rem,1.5rem + 3vw,5rem);font-weight:400;line-height:.95;letter-spacing:-.03em;margin-bottom:2rem}
-.services-title em{font-style:italic;color:var(--gold)}
-.services-sub{font-size:1.125rem;opacity:.7;max-width:55ch;margin-bottom:4rem}
-.services{display:flex;flex-direction:column}
-.service-row{display:grid;grid-template-columns:auto 1fr auto;gap:2.5rem;padding:3rem 0;border-top:1px solid var(--border-dark);position:relative;transition:background .4s var(--ease);align-items:start}
-.service-row::before{content:'';position:absolute;left:0;top:0;width:2px;height:100%;background:var(--gold);transform:scaleX(0);transform-origin:top;transition:transform .5s var(--ease)}
-.service-row:hover{background:rgba(255,255,255,0.03)}
-.service-row:hover::before{transform:scaleX(1)}
-.service-row:last-child{border-bottom:1px solid var(--border-dark)}
-.service-num{font-family:var(--serif);font-style:italic;font-size:1.75rem;color:var(--gold);opacity:.5}
-.service-name{font-family:var(--serif);font-size:1.75rem;font-weight:400;color:var(--text-light);line-height:1.1}
-.service-name em{font-style:italic;color:var(--gold)}
-.service-desc{font-size:.875rem;color:rgba(247,248,248,.7);max-width:45ch;margin-top:.75rem;font-weight:400}
-.service-price{font-size:1.125rem;font-weight:600;color:var(--gold);white-space:nowrap;align-self:center}
+/* Selector */
+.selector{padding:8rem 3rem;max-width:1400px;margin:0 auto}
+.selector-head{text-align:center;margin-bottom:2rem}
+.selector-head h2{font-family:'Instrument Serif',serif;font-size:clamp(2.5rem,1.5rem+4vw,4rem);font-weight:400;line-height:1;letter-spacing:-.02em}
+.selector-head h2 em{color:var(--gold);font-style:italic}
+.selector-head p{font-size:1rem;color:var(--text-dim);margin-top:1rem;max-width:50ch;margin-left:auto;margin-right:auto}
+.selector-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;margin-top:5rem}
+.selector-card{padding:3rem 2rem;border:1px solid var(--border);border-radius:4px;text-align:center;transition:all .4s var(--ease);cursor:pointer;position:relative;overflow:hidden;text-decoration:none;color:inherit;display:block}
+.selector-card:hover{border-color:var(--gold);background:var(--gold-soft);transform:translateY(-4px)}
+.selector-card h3{font-family:'Instrument Serif',serif;font-size:1.75rem;font-weight:400;margin-bottom:1rem}
+.selector-card p{font-size:.875rem;color:var(--text-dim);margin-bottom:1.5rem}
+.selector-card .selector-link{font-size:.8rem;text-transform:uppercase;letter-spacing:.15em;color:var(--gold);font-weight:600;opacity:0;transition:opacity .3s}
+.selector-card:hover .selector-link{opacity:1}
+.selector-card.coming-soon{cursor:default;opacity:.6}
+.selector-card.coming-soon:hover{transform:none}
+.selector-icon{width:48px;height:48px;margin:0 auto 1.5rem;color:var(--navy)}
+.selector-card:hover .selector-icon{color:var(--gold)}
+
+/* Services */
+.services{background:var(--navy);padding:8rem 3rem;color:var(--text-light)}
+.services-head{margin-bottom:5rem}
+.services-head h2{font-family:'Instrument Serif',serif;font-size:clamp(2.5rem,1.5rem+4vw,4rem);font-weight:400;line-height:1;letter-spacing:-.02em}
+.services-head h2 em{color:var(--gold);font-style:italic}
+.services-head p{font-size:1rem;color:rgba(247,248,248,.6);margin-top:1rem;max-width:50ch}
+.service-row{display:grid;grid-template-columns:4rem 1fr auto auto;gap:3rem;align-items:center;padding:2.5rem 0;border-top:1px solid rgba(247,248,248,.12);position:relative;cursor:pointer;transition:padding-left .4s var(--ease)}
+.service-row:hover{padding-left:1.5rem}
+.service-row::before{content:'';position:absolute;left:0;top:50%;width:0;height:1px;background:var(--gold);transition:width .4s var(--ease);transform:translateY(-50%)}
+.service-row:hover::before{width:1rem}
+.service-num{font-family:'Instrument Serif',serif;font-size:1.5rem;color:var(--gold);font-style:italic;font-weight:400}
+.service-title{font-family:'Instrument Serif',serif;font-size:2rem;font-weight:400}
+.service-desc{font-size:.875rem;color:rgba(247,248,248,.6);max-width:35ch;line-height:1.6;grid-column:2}
+.service-price{font-size:1rem;color:var(--gold);font-weight:600;white-space:nowrap}
 
 /* Process */
 .process{padding:8rem 3rem;max-width:1400px;margin:0 auto}
-.process-label{font-size:.75rem;text-transform:uppercase;letter-spacing:.25em;color:var(--gold);font-weight:600;margin-bottom:1.5rem}
-.process-title{font-family:var(--serif);font-size:clamp(2rem,1.5rem + 3vw,5rem);font-weight:400;line-height:.95;letter-spacing:-.03em;margin-bottom:5rem}
-.process-title em{font-style:italic;color:var(--gold)}
-.process-step{display:grid;grid-template-columns:auto 1fr;gap:3rem;padding:4rem 0;border-top:1px solid var(--border);align-items:start}
-.process-step:last-child{border-bottom:1px solid var(--border)}
-.process-num{font-family:var(--serif);font-style:italic;font-size:clamp(2rem,1.5rem + 2vw,4rem);color:var(--gold);opacity:.7;line-height:1}
-.process-step h3{font-family:var(--serif);font-size:1.75rem;font-weight:400;margin-bottom:1rem;letter-spacing:-.01em}
-.process-step p{font-size:.9375rem;max-width:50ch;color:var(--text-dim)}
+.process-head{margin-bottom:3rem}
+.process-head h2{font-family:'Instrument Serif',serif;font-size:clamp(2.5rem,1.5rem+4vw,4rem);font-weight:400;line-height:1;letter-spacing:-.02em}
+.process-head h2 em{color:var(--gold);font-style:italic}
+.process-step{display:grid;grid-template-columns:auto 1fr;gap:4rem;align-items:center;padding:5rem 0;border-top:1px solid var(--border)}
+.process-num{font-family:'Instrument Serif',serif;font-size:clamp(6rem,4rem+8vw,14rem);font-weight:400;line-height:1;-webkit-text-stroke:1.5px var(--gold);color:transparent;opacity:.8;font-style:italic}
+.process-content h3{font-family:'Instrument Serif',serif;font-size:2rem;font-weight:400;margin-bottom:1rem}
+.process-content p{font-size:1rem;color:var(--text-dim);max-width:50ch;line-height:1.7}
 
 /* Quote */
-.quote{padding:12rem 3rem;max-width:1000px;margin:0 auto}
-.quote-text{font-family:var(--serif);font-style:italic;font-size:clamp(2rem,1.5rem + 5vw,6rem);line-height:1.05;letter-spacing:-.02em;border-left:3px solid var(--gold);padding-left:2rem}
-.quote-text em{color:var(--gold);font-style:italic}
-.quote-author{margin-top:3rem;font-size:.75rem;text-transform:uppercase;letter-spacing:.2em;color:var(--text-dim);font-weight:600;padding-left:2rem}
+.quote{padding:8rem 3rem;max-width:1000px;margin:0 auto;text-align:left}
+.quote blockquote{font-family:'Instrument Serif',serif;font-size:clamp(2rem,1.2rem+3vw,3.5rem);font-weight:400;line-height:1.2;letter-spacing:-.02em;border-left:2px solid var(--gold);padding-left:2rem}
+.quote blockquote em{color:var(--gold);font-style:italic}
+.quote cite{display:block;font-style:normal;font-size:.875rem;color:var(--text-dim);margin-top:2rem;padding-left:2rem;text-transform:uppercase;letter-spacing:.15em;font-weight:600}
 
-/* CTA dark */
-.cta{padding:10rem 3rem;text-align:center;max-width:800px;margin:0 auto;position:relative}
-.cta::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:600px;height:600px;background:radial-gradient(circle,rgba(201,169,110,0.08) 0%,transparent 70%);z-index:0}
-.cta h2,.cta p,.cta form{position:relative;z-index:1}
-.cta h2{font-family:var(--serif);font-size:clamp(2.5rem,1.5rem + 5vw,6rem);font-weight:400;line-height:.95;letter-spacing:-.03em;color:var(--text-light);margin-bottom:1.5rem}
-.cta h2 em{font-style:italic;color:var(--gold)}
-.cta p{font-size:1.125rem;color:rgba(247,248,248,.7);margin-bottom:2.5rem}
-.cta-form{display:flex;gap:1rem;max-width:500px;margin:0 auto;flex-wrap:wrap}
-.cta-input{flex:1;min-width:220px;padding:1rem 1.25rem;background:rgba(255,255,255,0.05);border:1px solid var(--border-dark);border-radius:var(--r);color:var(--text-light);font-family:var(--sans);font-size:.9375rem;outline:none;transition:border-color .3s var(--ease),box-shadow .3s var(--ease)}
-.cta-input::placeholder{color:rgba(247,248,248,0.4)}
-.cta-input:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(201,169,110,0.15)}
+/* CTA Dark */
+.cta-dark{background:var(--navy);padding:8rem 3rem;text-align:center;color:var(--text-light)}
+.cta-dark h2{font-family:'Instrument Serif',serif;font-size:clamp(3rem,2rem+6vw,6rem);font-weight:400;line-height:1;letter-spacing:-.02em;margin-bottom:2rem}
+.cta-dark h2 em{color:var(--gold);font-style:italic}
+.cta-dark p{font-size:1.125rem;color:rgba(247,248,248,.7);margin-bottom:2.5rem;max-width:45ch;margin-left:auto;margin-right:auto}
+.btn-gold{background:var(--gold);color:var(--navy)}
+.btn-gold:hover{background:#fff}
+.cta-dark .email-alt{margin-top:2rem;font-size:.875rem;color:rgba(247,248,248,.5)}
+.cta-dark .email-alt a{color:var(--gold);text-decoration:none}
 
 /* Footer */
-.footer{padding:5rem 3rem 2rem;background:var(--navy);border-top:1px solid var(--border-dark)}
-.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:4rem;max-width:1400px;margin:0 auto}
-.footer-brand{font-family:var(--serif);font-style:italic;font-size:1.5rem;color:var(--text-light);margin-bottom:1rem}
-.footer p{color:rgba(247,248,248,.6);font-size:.875rem;max-width:35ch}
-.footer-col h4{font-size:.75rem;text-transform:uppercase;letter-spacing:.15em;color:var(--gold);font-weight:600;margin-bottom:1.5rem}
-.footer-col a{display:block;color:rgba(247,248,248,.6);font-size:.875rem;margin-bottom:.75rem;transition:color .3s var(--ease)}
-.footer-col a:hover{color:var(--text-light)}
-.footer-bottom{text-align:center;border-top:1px solid var(--border-dark);margin-top:4rem;padding-top:2rem;color:rgba(247,248,248,.5);font-size:.75rem}
+footer{background:var(--navy);position:relative;min-height:60vh;display:flex;flex-direction:column;justify-content:center;align-items:center;overflow:hidden;padding:6rem 3rem 3rem}
+.footer-giant{font-family:'Instrument Serif',serif;font-size:clamp(6rem,4rem+15vw,20rem);font-weight:400;font-style:italic;color:rgba(201,169,110,.08);line-height:.8;letter-spacing:-.04em;text-align:center;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);white-space:nowrap;pointer-events:none}
+.footer-content{position:relative;z-index:1;text-align:center}
+.footer-content .nav-logo{font-size:2rem;margin-bottom:1rem;display:block;color:var(--text-light)}
+.footer-content p{color:rgba(247,248,248,.6);font-size:.875rem;margin-bottom:.5rem}
+.footer-links{display:flex;gap:2rem;justify-content:center;margin-top:2rem;flex-wrap:wrap}
+.footer-links a{font-size:.75rem;text-transform:uppercase;letter-spacing:.15em;color:rgba(247,248,248,.6);font-weight:500;transition:color .3s;text-decoration:none}
+.footer-links a:hover{color:var(--gold)}
+.footer-bottom{margin-top:3rem;font-size:.75rem;color:rgba(247,248,248,.4);text-align:center;position:relative;z-index:1}
 
-/* Reveal — always visible by default */
-.reveal{opacity:1;transform:none}
-
-@media print{*{display:none!important}body:after{content:"© Aurora Web";display:block;font-size:2rem;padding:2rem}}
+/* Reveal */
+.reveal{opacity:1}
 
 /* Responsive */
 @media(max-width:900px){
-  .nav{padding:1.25rem 1.5rem}
-  .nav-links{display:none}
-  .nav-links.open{display:flex;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:var(--paper);padding:2rem 1.5rem;gap:1.5rem;border-bottom:1px solid var(--border)}
-  .nav-burger{display:flex}
-  .hero-content{padding:0 1.5rem 4rem}
-  .hero-scroll{display:none}
-  .stats{grid-template-columns:repeat(2,1fr)}
-  .stat:nth-child(2){border-right:none}
-  .stat:nth-child(1),.stat:nth-child(2){border-bottom:1px solid var(--border)}
-  .portfolio-scroll{height:auto}
-  .portfolio-track{flex-direction:column;padding:2rem 1.5rem;margin-left:0;gap:2rem}
-  .portfolio-card{flex:0 0 auto;width:100%}
-  .portfolio-scroll-header{position:relative;top:auto;left:auto;max-width:100%;padding:3rem 1.5rem 0}
-  .portfolio-hint{display:none}
-  .services-inner{padding:5rem 1.5rem}
-  .service-row{grid-template-columns:1fr;gap:1rem;padding:2rem 0}
-  .service-price{align-self:flex-start}
-  .process{padding:5rem 1.5rem}
-  .process-step{grid-template-columns:1fr;gap:1rem}
-  .quote{padding:6rem 1.5rem}
-  .quote-text{padding-left:1.25rem}
-  .quote-author{padding-left:1.25rem}
-  .cta{padding:6rem 1.5rem}
-  .cta::before{width:100%;height:100%}
-  .footer{padding:4rem 1.5rem 2rem}
-  .footer-grid{grid-template-columns:1fr;gap:2.5rem}
+.nav{padding:1rem 1.5rem}
+.nav-links{display:none}
+.burger{display:flex}
+.hero-split{grid-template-columns:1fr}
+.hero-left{padding:3rem 1.5rem;order:2}
+.hero-right{height:50vh;order:1}
+.hero-meta{margin-bottom:2rem}
+.hero-scroll-hint{display:none}
+.stats{grid-template-columns:repeat(2,1fr);padding:4rem 1.5rem;gap:2rem 0}
+.stat:nth-child(2){border-right:none}
+.selector-grid{grid-template-columns:repeat(2,1fr)}
+.services{padding:5rem 1.5rem}
+.service-row{grid-template-columns:2rem 1fr;gap:1rem}
+.service-title{font-size:1.5rem}
+.service-desc{grid-column:2}
+.service-price{grid-column:2;font-size:.875rem}
+.process{padding:5rem 1.5rem}
+.process-step{grid-template-columns:1fr;gap:1rem;padding:3rem 0}
+.process-num{font-size:5rem}
+.quote{padding:5rem 1.5rem}
+.quote blockquote{padding-left:1rem}
+.quote cite{padding-left:1rem}
+.cta-dark{padding:5rem 1.5rem}
+footer{padding:4rem 1.5rem 2rem}
+.footer-links{gap:1rem}
+.portfolio-scroll{height:auto;overflow-x:auto;-webkit-overflow-scrolling:touch}
+.portfolio-track{padding:5rem 1.5rem}
+.portfolio-card{flex:0 0 280px}
+.portfolio-hint{display:none}
+}
+@media(max-width:600px){
+.selector-grid{grid-template-columns:1fr}
+.stats{grid-template-columns:1fr}
+.stat{border-right:none;border-bottom:1px solid var(--border);padding-bottom:2rem}
 }
 </style>
 </head>
 <body>
-<div class="scroll-progress" id="scrollProgress"></div>
+<!-- Preloader -->
+<div class="preloader"><span>Aurora</span><div class="pl-bar"></div></div>
 
+<!-- Nav -->
 <nav class="nav" id="nav">
-  <a href="#" class="nav-logo">Aurora Web</a>
-  <div class="nav-links" id="navLinks">
-    <a href="#work">Work</a>
-    <a href="#services">Services</a>
-    <a href="#process">Process</a>
-    <a href="#contact" class="nav-cta">Get a Quote</a>
-  </div>
-  <button class="nav-burger" id="navBurger" aria-label="Menu"><span></span><span></span><span></span></button>
+<a href="#" class="nav-logo">Aurora</a>
+<div class="nav-links">
+<a href="#work">Work</a>
+<a href="#services">Services</a>
+<a href="#process">Process</a>
+<a href="#contact">Contact</a>
+<a href="mailto:viltsu.myllyniemi@gmail.com?subject=Quote Request" class="nav-cta">Get a Quote</a>
+</div>
+<button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
 </nav>
+<div class="nav-progress" id="navProgress"></div>
+<div class="mobile-menu" id="mobileMenu">
+<a href="#work">Work</a>
+<a href="#services">Services</a>
+<a href="#process">Process</a>
+<a href="#contact">Contact</a>
+<a href="mailto:viltsu.myllyniemi@gmail.com?subject=Quote Request">Get a Quote</a>
+</div>
 
-<section class="hero">
-  <div class="hero-bg"><img src="https://images.pexels.com/photos/262047/pexels-photo-262047.jpeg?w=1920&q=80" alt="Cyprus coastline"></div>
-  <div class="hero-overlay"></div>
-  <div class="hero-grain"></div>
-  <div class="hero-content">
-    <div class="hero-meta reveal">
-      <span>Aurora Web · Est. 2024</span>
-      <span>Larnaca · Cyprus</span>
-    </div>
-    <h1 id="heroTitle">We build websites that make your <em>competition</em> irrelevant.</h1>
-    <p class="hero-sub reveal">Premium, high-converting websites for real Cyprus businesses. AI automation, SEO, and design that commands attention — delivered in 48 hours.</p>
-    <div class="hero-cta-row reveal">
-      <a href="#work" class="btn btn-gold">View Our Work →</a>
-      <a href="#contact" class="btn btn-ghost">Get a Free Mockup</a>
-    </div>
-  </div>
-  <div class="hero-scroll">Scroll<span class="hero-scroll-line"></span></div>
+<!-- Hero Split -->
+<section class="hero-split">
+<div class="hero-left">
+<div class="hero-meta"><span>Premium Web Design · Cyprus</span><span>Est. 2026</span></div>
+<h1 id="heroHeadline">We build websites that make your <em>competition</em> irrelevant.</h1>
+<p class="hero-sub">Aurora Web crafts award-worthy websites for restaurants, bars, salons and hotels across Cyprus. Designed to dominate your local market, delivered in 48 hours.</p>
+<div class="hero-cta">
+<a href="#work" class="btn btn-navy magnetic">View Our Work →</a>
+<a href="#contact" class="btn btn-outline magnetic">Get a Free Mockup</a>
+</div>
+<div class="hero-scroll-hint">Scroll</div>
+</div>
+<div class="hero-right">
+<img src="https://images.pexels.com/photos/1450363/pexels-photo-1450363.jpeg?w=1200" alt="Cyprus coastline at golden hour" id="heroImg">
+</div>
 </section>
 
-<section class="marquee" aria-hidden="true">
-  <div class="marquee-track">
-    <span>Premium Websites</span><span>·</span><span>Cyprus</span><span>·</span><span>AI Automation</span><span>·</span><span>SEO</span><span>·</span><span>48h Delivery</span><span>·</span>
-    <span>Premium Websites</span><span>·</span><span>Cyprus</span><span>·</span><span>AI Automation</span><span>·</span><span>SEO</span><span>·</span><span>48h Delivery</span><span>·</span>
-  </div>
-</section>
+<!-- Marquee -->
+<div class="marquee">
+<div class="marquee-track">
+<span>Web Design</span><span>Branding</span><span>AI Automation</span><span>SEO</span><span>Hosting</span><span>Web Design</span><span>Branding</span><span>AI Automation</span><span>SEO</span><span>Hosting</span>
+</div>
+</div>
 
+<!-- Stats -->
 <section class="stats reveal">
-  <div class="stat"><div class="stat-num">13</div><div class="stat-label">Live Demos</div></div>
-  <div class="stat"><div class="stat-num">497</div><div class="stat-label">Leads Found</div></div>
-  <div class="stat"><div class="stat-num"><em>48h</em></div><div class="stat-label">Delivery</div></div>
-  <div class="stat"><div class="stat-num">€599</div><div class="stat-label">From</div></div>
+<div class="stat"><div class="stat-num"><em>13</em></div><div class="stat-label">Live Demos</div></div>
+<div class="stat"><div class="stat-num" data-count="497">0</div><div class="stat-label">Leads Found</div></div>
+<div class="stat"><div class="stat-num">48<em>h</em></div><div class="stat-label">Delivery</div></div>
+<div class="stat"><div class="stat-num">€599</div><div class="stat-label">From</div></div>
 </section>
 
-<section class="marquee" aria-hidden="true">
-  <div class="marquee-track">
-    <span>Re.buke Lounge</span><span>·</span><span>Noesis</span><span>·</span><span>Elia Backyard</span><span>·</span><span>Voreas Tavern</span><span>·</span><span>Alonia</span><span>·</span><span>Ayia Anna</span><span>·</span><span>DC Barbershop</span><span>·</span><span>Stavros Hair</span><span>·</span><span>Anthony Barber</span><span>·</span><span>To Kazani</span><span>·</span><span>Kafeneio Taxidromio</span><span>·</span><span>Lysia Restaurant</span><span>·</span>
-    <span>Re.buke Lounge</span><span>·</span><span>Noesis</span><span>·</span><span>Elia Backyard</span><span>·</span><span>Voreas Tavern</span><span>·</span><span>Alonia</span><span>·</span><span>Ayia Anna</span><span>·</span><span>DC Barbershop</span><span>·</span><span>Stavros Hair</span><span>·</span><span>Anthony Barber</span><span>·</span><span>To Kazani</span><span>·</span><span>Kafeneio Taxidromio</span><span>·</span><span>Lysia Restaurant</span><span>·</span>
-  </div>
-</section>
-
+<!-- Portfolio Horizontal Scroll -->
 <section class="portfolio-scroll" id="work">
-  <div class="portfolio-scroll-header">
-    <div class="label">Our Work</div>
-    <h2>Live <em>demos</em> for real Cyprus businesses.</h2>
-  </div>
-  <div class="portfolio-track">
-    <a class="portfolio-card" href="demos/rebuke-lounge/"><div class="portfolio-card-img"><img src="https://images.pexels.com/photos/941861/pexels-photo-941861.jpeg?w=800" alt="Re.buke Lounge"></div><div class="portfolio-card-badge">Beach Bar</div><div class="portfolio-card-info"><div class="portfolio-card-name">Re.buke Lounge</div><div class="portfolio-card-meta">13.4K · Larnaca</div></div></a>
-    <a class="portfolio-card" href="demos/noesis/"><div class="portfolio-card-img"><img src="https://images.pexels.com/photos/262047/pexels-photo-262047.jpeg?w=800" alt="Noesis"></div><div class="portfolio-card-badge">Restaurant</div><div class="portfolio-card-info"><div class="portfolio-card-name">Noesis</div><div class="portfolio-card-meta">10.7K · Larnaca</div></div></a>
-    <a class="portfolio-card" href="demos/elia-backyard/"><div class="portfolio-card-img"><img src="https://images.pexels.com/photos/67468/pexels-photo-67468.jpeg?w=800" alt="Elia Backyard"></div><div class="portfolio-card-badge">Award-Winning</div><div class="portfolio-card-info"><div class="portfolio-card-name">Elia Backyard</div><div class="portfolio-card-meta">3.9K · Larnaca</div></div></a>
-    <a class="portfolio-card" href="demos/voreas-tavern/"><div class="portfolio-card-img"><img src="https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?w=800" alt="Voreas Tavern"></div><div class="portfolio-card-badge">Traditional</div><div class="portfolio-card-info"><div class="portfolio-card-name">Voreas Tavern</div><div class="portfolio-card-meta">5.1K · Oroklini</div></div></a>
-    <a class="portfolio-card" href="demos/alonia-tavern/"><div class="portfolio-card-img"><img src="https://images.pexels.com/photos/3611846/pexels-photo-3611846.jpeg?w=800" alt="Alonia Tavern"></div><div class="portfolio-card-badge">Private Events</div><div class="portfolio-card-info"><div class="portfolio-card-name">Alonia Tavern</div><div class="portfolio-card-meta">#1 · Livadia</div></div></a>
-    <a class="portfolio-card" href="demos/ayia-anna-tavern/"><div class="portfolio-card-img"><img src="https://images.pexels.com/photos/3296394/pexels-photo-3296394.jpeg?w=800" alt="Ayia Anna"></div><div class="portfolio-card-badge">Tavern</div><div class="portfolio-card-info"><div class="portfolio-card-name">Ayia Anna</div><div class="portfolio-card-meta">Mountain · Live Music</div></div></a>
-    <a class="portfolio-card" href="demos/dc-barbershop/"><div class="portfolio-card-img"><img src="https://images.pexels.com/photos/2664216/pexels-photo-2664216.jpeg?w=800" alt="DC Barbershop"></div><div class="portfolio-card-badge">Grooming</div><div class="portfolio-card-info"><div class="portfolio-card-name">DC Barbershop</div><div class="portfolio-card-meta">318 · Larnaca</div></div></a>
-    <a class="portfolio-card" href="demos/location-a-hairdressing/"><div class="portfolio-card-img"><img src="https://images.pexels.com/photos/302899/pexels-photo-302899.jpeg?w=800" alt="Location A"></div><div class="portfolio-card-badge">Hair Salon</div><div class="portfolio-card-info"><div class="portfolio-card-name">Location A</div><div class="portfolio-card-meta">1.1K · Finikoudes</div></div></a>
-    <a class="portfolio-card" href="demos/stavros-hair-style/"><div class="portfolio-card-img"><img src="https://images.pexels.com/photos/1279330/pexels-photo-1279330.jpeg?w=800" alt="Stavros Hair Style"></div><div class="portfolio-card-badge">Hair Salon</div><div class="portfolio-card-info"><div class="portfolio-card-name">Stavros Hair Style</div><div class="portfolio-card-meta">3.4K · Menovou</div></div></a>
-    <a class="portfolio-card" href="demos/anthony-barber-shop/"><div class="portfolio-card-img"><img src="https://images.pexels.com/photos/1407846/pexels-photo-1407846.jpeg?w=800" alt="Anthony Barber"></div><div class="portfolio-card-badge">Barbershop</div><div class="portfolio-card-info"><div class="portfolio-card-name">Anthony Barber</div><div class="portfolio-card-meta">392 · Larnaca</div></div></a>
-    <a class="portfolio-card" href="demos/to-kazani-tavern/"><div class="portfolio-card-img"><img src="https://images.pexels.com/photos/941861/pexels-photo-941861.jpeg?w=800" alt="To Kazani"></div><div class="portfolio-card-badge">Zivania</div><div class="portfolio-card-info"><div class="portfolio-card-name">To Kazani</div><div class="portfolio-card-meta">1295 reviews · Aradippou</div></div></a>
-    <a class="portfolio-card" href="demos/kafeneio-to-taxidromio/"><div class="portfolio-card-img"><img src="https://images.pexels.com/photos/302899/pexels-photo-302899.jpeg?w=800" alt="Kafeneio Taxidromio"></div><div class="portfolio-card-badge">Café</div><div class="portfolio-card-info"><div class="portfolio-card-name">Kafeneio Taxidromio</div><div class="portfolio-card-meta">3.3K · Larnaca Square</div></div></a>
-    <a class="portfolio-card" href="demos/lysia-restaurant/"><div class="portfolio-card-img"><img src="https://images.pexels.com/photos/3611846/pexels-photo-3611846.jpeg?w=800" alt="Lysia Restaurant"></div><div class="portfolio-card-badge">Lamb Kleftimo</div><div class="portfolio-card-info"><div class="portfolio-card-name">Lysia Restaurant</div><div class="portfolio-card-meta">34 years · Pyla</div></div></a>
-  </div>
-  <div class="portfolio-hint">← Scroll to explore</div>
+<div class="portfolio-header reveal">
+<h2>Selected <em>Work</em></h2>
+<p>13 live demos · scroll horizontally →</p>
+</div>
+<div class="portfolio-track" id="portfolioTrack">
+<a href="demos/rebuke-lounge/" class="portfolio-card"><span class="portfolio-card-badge">Beach Bar</span><div class="portfolio-card-img"><img src="https://images.pexels.com/photos/941861/pexels-photo-941861.jpeg?w=800" alt="Re.buke Lounge"><div class="portfolio-card-overlay"><span>View Live Demo →</span></div></div><div class="portfolio-card-info"><span class="portfolio-card-name">Re.buke Lounge</span><span class="portfolio-card-meta">13.4K · Larnaca</span></div></a>
+<a href="demos/noesis/" class="portfolio-card"><span class="portfolio-card-badge">Restaurant</span><div class="portfolio-card-img"><img src="https://images.pexels.com/photos/262047/pexels-photo-262047.jpeg?w=800" alt="Noesis"><div class="portfolio-card-overlay"><span>View Live Demo →</span></div></div><div class="portfolio-card-info"><span class="portfolio-card-name">Noesis</span><span class="portfolio-card-meta">10.7K · Larnaca</span></div></a>
+<a href="demos/elia-backyard/" class="portfolio-card"><span class="portfolio-card-badge">Award-Winning</span><div class="portfolio-card-img"><img src="https://images.pexels.com/photos/67468/pexels-photo-67468.jpeg?w=800" alt="Elia Backyard"><div class="portfolio-card-overlay"><span>View Live Demo →</span></div></div><div class="portfolio-card-info"><span class="portfolio-card-name">Elia Backyard</span><span class="portfolio-card-meta">3.9K · Larnaca</span></div></a>
+<a href="demos/voreas-tavern/" class="portfolio-card"><span class="portfolio-card-badge">Traditional</span><div class="portfolio-card-img"><img src="https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?w=800" alt="Voreas Tavern"><div class="portfolio-card-overlay"><span>View Live Demo →</span></div></div><div class="portfolio-card-info"><span class="portfolio-card-name">Voreas Tavern</span><span class="portfolio-card-meta">5.1K · Oroklini</span></div></a>
+<a href="demos/alonia-tavern/" class="portfolio-card"><span class="portfolio-card-badge">Private Events</span><div class="portfolio-card-img"><img src="https://images.pexels.com/photos/3611846/pexels-photo-3611846.jpeg?w=800" alt="Alonia Tavern"><div class="portfolio-card-overlay"><span>View Live Demo →</span></div></div><div class="portfolio-card-info"><span class="portfolio-card-name">Alonia Tavern</span><span class="portfolio-card-meta">#1 · Livadia</span></div></a>
+<a href="demos/ayia-anna-tavern/" class="portfolio-card"><span class="portfolio-card-badge">Live Music</span><div class="portfolio-card-img"><img src="https://images.pexels.com/photos/3296394/pexels-photo-3296394.jpeg?w=800" alt="Ayia Anna"><div class="portfolio-card-overlay"><span>View Live Demo →</span></div></div><div class="portfolio-card-info"><span class="portfolio-card-name">Ayia Anna</span><span class="portfolio-card-meta">Mountain · Tavern</span></div></a>
+<a href="demos/dc-barbershop/" class="portfolio-card"><span class="portfolio-card-badge">Grooming</span><div class="portfolio-card-img"><img src="https://images.pexels.com/photos/2664216/pexels-photo-2664216.jpeg?w=800" alt="DC Barbershop"><div class="portfolio-card-overlay"><span>View Live Demo →</span></div></div><div class="portfolio-card-info"><span class="portfolio-card-name">DC Barbershop</span><span class="portfolio-card-meta">318 · Larnaca</span></div></a>
+<a href="demos/location-a-hairdressing/" class="portfolio-card"><span class="portfolio-card-badge">Hair Salon</span><div class="portfolio-card-img"><img src="https://images.pexels.com/photos/302899/pexels-photo-302899.jpeg?w=800" alt="Location A"><div class="portfolio-card-overlay"><span>View Live Demo →</span></div></div><div class="portfolio-card-info"><span class="portfolio-card-name">Location A</span><span class="portfolio-card-meta">1.1K · Finikoudes</span></div></a>
+<a href="demos/stavros-hair-style/" class="portfolio-card"><span class="portfolio-card-badge">Hair Salon</span><div class="portfolio-card-img"><img src="https://images.pexels.com/photos/1279330/pexels-photo-1279330.jpeg?w=800" alt="Stavros Hair Style"><div class="portfolio-card-overlay"><span>View Live Demo →</span></div></div><div class="portfolio-card-info"><span class="portfolio-card-name">Stavros Hair Style</span><span class="portfolio-card-meta">3.4K · Menovou</span></div></a>
+<a href="demos/anthony-barber-shop/" class="portfolio-card"><span class="portfolio-card-badge">Barbershop</span><div class="portfolio-card-img"><img src="https://images.pexels.com/photos/1407846/pexels-photo-1407846.jpeg?w=800" alt="Anthony Barber"><div class="portfolio-card-overlay"><span>View Live Demo →</span></div></div><div class="portfolio-card-info"><span class="portfolio-card-name">Anthony Barber</span><span class="portfolio-card-meta">392 · Larnaca</span></div></a>
+<a href="demos/to-kazani-tavern/" class="portfolio-card"><span class="portfolio-card-badge">Zivania</span><div class="portfolio-card-img"><img src="https://images.pexels.com/photos/941861/pexels-photo-941861.jpeg?w=800" alt="To Kazani"><div class="portfolio-card-overlay"><span>View Live Demo →</span></div></div><div class="portfolio-card-info"><span class="portfolio-card-name">To Kazani</span><span class="portfolio-card-meta">1295 reviews · Aradippou</span></div></a>
+<a href="demos/kafeneio-to-taxidromio/" class="portfolio-card"><span class="portfolio-card-badge">Café</span><div class="portfolio-card-img"><img src="https://images.pexels.com/photos/302899/pexels-photo-302899.jpeg?w=800" alt="Kafeneio Taxidromio"><div class="portfolio-card-overlay"><span>View Live Demo →</span></div></div><div class="portfolio-card-info"><span class="portfolio-card-name">Kafeneio Taxidromio</span><span class="portfolio-card-meta">3.3K · Larnaca Square</span></div></a>
+<a href="demos/lysia-restaurant/" class="portfolio-card"><span class="portfolio-card-badge">Lamb Kleftimo</span><div class="portfolio-card-img"><img src="https://images.pexels.com/photos/3611846/pexels-photo-3611846.jpeg?w=800" alt="Lysia Restaurant"><div class="portfolio-card-overlay"><span>View Live Demo →</span></div></div><div class="portfolio-card-info"><span class="portfolio-card-name">Lysia Restaurant</span><span class="portfolio-card-meta">34 years · Pyla</span></div></a>
+</div>
+<div class="portfolio-hint">← Drag / Scroll →</div>
+</section>
+<!-- Industry Selector -->
+<section class="selector reveal" id="industries">
+<div class="selector-head">
+<h2>What's your <em>business?</em></h2>
+<p>Find demos tailored to your industry. Pick your category and see exactly what your new website could look like.</p>
+</div>
+<div class="selector-grid">
+<a href="#work" class="selector-card">
+<svg class="selector-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2v7c0 1.1.9 2 2 2h2c1.1 0 2-.9 2-2V2"/><path d="M5 2v20"/><path d="M19 2v20"/><path d="M19 2c-2 0-3 2-3 5s1 5 3 5"/></svg>
+<h3>Restaurants &amp; Tavernas</h3>
+<p>From seaside tavernas to fine dining — showcase your menu, story, and heritage.</p>
+<span class="selector-link">See 7 live demos →</span>
+</a>
+<a href="#work" class="selector-card">
+<svg class="selector-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="2" x2="6" y2="4"/><line x1="10" y1="2" x2="10" y2="4"/><line x1="14" y1="2" x2="14" y2="4"/></svg>
+<h3>Bars &amp; Cafés</h3>
+<p>Cocktail bars, beach bars, and cafés — websites as vibrant as your venue.</p>
+<span class="selector-link">See 3 live demos →</span>
+</a>
+<a href="#work" class="selector-card">
+<svg class="selector-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" y1="4" x2="8.12" y2="15.88"/><line x1="14.47" y1="14.48" x2="20" y2="20"/><line x1="8.12" y1="8.12" x2="12" y2="12"/></svg>
+<h3>Salons &amp; Barbers</h3>
+<p>Hair salons and barbershops — show off your work and fill your booking calendar.</p>
+<span class="selector-link">See 3 live demos →</span>
+</a>
+<div class="selector-card coming-soon">
+<svg class="selector-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4v16"/><path d="M2 8h18a2 2 0 0 1 2 2v10H2"/><path d="M6 14h0"/><path d="M6 18h0"/></svg>
+<h3>Hotels &amp; Villas</h3>
+<p>Luxury accommodation websites with booking integration and virtual tours.</p>
+<span class="selector-link">Coming soon</span>
+</div>
+</div>
 </section>
 
-<section class="services-section" id="services">
-  <div class="services-inner">
-    <div class="services-label reveal">What We Do</div>
-    <h2 class="services-title reveal">Services that <em>grow</em> your business.</h2>
-    <p class="services-sub reveal">Four pillars. One goal: turn visitors into customers. Every service is bespoke, every detail considered.</p>
-    <div class="services">
-      <div class="service-row reveal">
-        <div class="service-num">01</div>
-        <div><div class="service-name">Premium <em>Websites</em></div><div class="service-desc">Custom-designed, responsive, SEO-ready. From single pages to multi-section sites. Delivered in 48 hours.</div></div>
-        <div class="service-price">€599–€1,999</div>
-      </div>
-      <div class="service-row reveal">
-        <div class="service-num">02</div>
-        <div><div class="service-name">Hosting &amp; <em>Care</em></div><div class="service-desc">Managed hosting, SSL, backups, updates, content changes. Your site stays fast and secure — forever.</div></div>
-        <div class="service-price">€99–€299/mo</div>
-      </div>
-      <div class="service-row reveal">
-        <div class="service-num">03</div>
-        <div><div class="service-name">AI <em>Automation</em></div><div class="service-desc">Chatbots, lead generation, email automation, social media scheduling. Let AI handle the repetitive work.</div></div>
-        <div class="service-price">Custom</div>
-      </div>
-      <div class="service-row reveal">
-        <div class="service-num">04</div>
-        <div><div class="service-name">SEO &amp; <em>Growth</em></div><div class="service-desc">Google ranking, local SEO, keyword optimization, analytics. Get found by customers searching for you.</div></div>
-        <div class="service-price">€299/mo</div>
-      </div>
-    </div>
-  </div>
+<!-- Services Dark -->
+<section class="services" id="services">
+<div class="services-head reveal">
+<h2>What we <em>do</em></h2>
+<p>Full-service web design, development, hosting, AI automation and growth — all under one roof.</p>
+</div>
+<div class="service-row reveal">
+<span class="service-num">01</span>
+<h3 class="service-title">Premium Websites</h3>
+<p class="service-desc">Custom-designed, award-worthy websites built to convert visitors into customers.</p>
+<span class="service-price">€599–€1,999</span>
+</div>
+<div class="service-row reveal">
+<span class="service-num">02</span>
+<h3 class="service-title">Hosting &amp; Care</h3>
+<p class="service-desc">Fast hosting, SSL, daily backups, and ongoing updates — your site stays secure and live.</p>
+<span class="service-price">€99–€299/mo</span>
+</div>
+<div class="service-row reveal">
+<span class="service-num">03</span>
+<h3 class="service-title">AI Automation</h3>
+<p class="service-desc">AI chatbots, automated booking, and smart workflows that save you hours every week.</p>
+<span class="service-price">Custom</span>
+</div>
+<div class="service-row reveal">
+<span class="service-num">04</span>
+<h3 class="service-title">SEO &amp; Growth</h3>
+<p class="service-desc">Rank higher on Google, get found by local customers, and grow your leads month after month.</p>
+<span class="service-price">€299/mo</span>
+</div>
 </section>
 
+<!-- Process Outlined Numbers -->
 <section class="process" id="process">
-  <div class="process-label reveal">How We Work</div>
-  <h2 class="process-title reveal">From idea to <em>launch</em> in four steps.</h2>
-  <div class="process-step reveal">
-    <div class="process-num">01</div>
-    <div><h3>Discover</h3><p>We learn your business, your customers, and your goals. Every detail matters — audience, competitors, tone, the story you want to tell. This is where the strategy is born.</p></div>
-  </div>
-  <div class="process-step reveal">
-    <div class="process-num">02</div>
-    <div><h3>Design</h3><p>We craft a bespoke design that captures your brand and commands attention. Editorial typography, considered whitespace, and motion that feels inevitable.</p></div>
-  </div>
-  <div class="process-step reveal">
-    <div class="process-num">03</div>
-    <div><h3>Refine</h3><p>We iterate. You give feedback, we polish every pixel and every word until the result is undeniable. No detail is too small; nothing ships that we are not proud of.</p></div>
-  </div>
-  <div class="process-step reveal">
-    <div class="process-num">04</div>
-    <div><h3>Launch</h3><p>We deploy, optimize, and hand you the keys. Your site goes live, fast and SEO-ready. We stay on for hosting, care, and growth as long as you want us.</p></div>
-  </div>
+<div class="process-head reveal">
+<h2>How we <em>work</em></h2>
+</div>
+<div class="process-step reveal">
+<div class="process-num">01</div>
+<div class="process-content">
+<h3>Discover</h3>
+<p>We learn your business, your customers, and your competition. Every decision starts with understanding what makes you different and what your audience expects from a Cyprus business in your space.</p>
+</div>
+</div>
+<div class="process-step reveal">
+<div class="process-num">02</div>
+<div class="process-content">
+<h3>Design</h3>
+<p>We craft a unique visual identity and layout — typography, colour, imagery, and motion — that positions your brand above every competitor in your area. Nothing is templated.</p>
+</div>
+</div>
+<div class="process-step reveal">
+<div class="process-num">03</div>
+<div class="process-content">
+<h3>Refine</h3>
+<p>You review, we refine. We iterate on every detail until the website feels exactly right — responsive, fast, and polished on every device your customers use.</p>
+</div>
+</div>
+<div class="process-step reveal">
+<div class="process-num">04</div>
+<div class="process-content">
+<h3>Launch</h3>
+<p>We deploy, test, and monitor. Your new site goes live with hosting, SEO foundation, and analytics in place — ready to turn visitors into customers from day one.</p>
+</div>
+</div>
 </section>
 
-<section class="quote">
-  <p class="quote-text reveal">You don't need a website. You need the <em>customers</em> who are searching for you to actually find you.</p>
-  <div class="quote-author reveal">Aurora Web — Larnaca, Cyprus</div>
+<!-- Quote -->
+<section class="quote reveal">
+<blockquote>
+"Aurora Web didn't just rebuild our website — they made us the most <em>memorable</em> restaurant in Larnaca. Bookings doubled in the first month."
+<cite>— Tavern Owner, Larnaca</cite>
+</blockquote>
 </section>
 
-<section class="services-section" id="contact">
-  <div class="cta">
-    <h2 class="reveal">Ready to <em>stand out?</em></h2>
-    <p class="reveal">Get a free mockup of your new website, delivered in 48 hours. No commitment, no obligation.</p>
-    <a href="mailto:viltsu.myllyniemi@gmail.com?subject=Free%20Mockup%20Request&body=Hi%20Aurora%20Web%2C%0A%0AI%27d%20like%20a%20free%20mockup%20for%20my%20business.%0A%0ABusiness%20name%3A%0ALocation%3A%0AWebsite%20%28if%20any%29%3A%0A%0AThanks!" class="btn btn-gold" style="font-size:1.0625rem;padding:1rem 2.5rem">Get My Free Mockup →</a>
-    <p class="reveal" style="margin-top:1.5rem;font-size:.8125rem;color:rgba(247,248,248,.5)">Or email us directly: <a href="mailto:viltsu.myllyniemi@gmail.com" style="color:var(--gold);border-bottom:1px solid rgba(201,169,110,.3)">viltsu.myllyniemi@gmail.com</a></p>
-  </div>
+<!-- CTA Dark -->
+<section class="cta-dark" id="contact">
+<h2>Ready to <em>stand out?</em></h2>
+<p>Get a free mockup of your new website, delivered in 48 hours.</p>
+<a href="mailto:viltsu.myllyniemi@gmail.com?subject=Free Mockup Request" class="btn btn-gold magnetic">Get My Free Mockup →</a>
+<p class="email-alt">Or email: <a href="mailto:viltsu.myllyniemi@gmail.com">viltsu.myllyniemi@gmail.com</a></p>
 </section>
 
-<footer class="footer">
-  <div class="footer-grid">
-    <div>
-      <div class="footer-brand">Aurora Web</div>
-      <p>Premium websites for real Cyprus businesses. Designed in Larnaca, built to be found, made to convert.</p>
-    </div>
-    <div class="footer-col">
-      <h4>Services</h4>
-      <a href="#services">Websites</a>
-      <a href="#services">Hosting</a>
-      <a href="#services">AI Automation</a>
-      <a href="#services">SEO</a>
-    </div>
-    <div class="footer-col">
-      <h4>Connect</h4>
-      <a href="https://www.instagram.com/sisuthros/" target="_blank" rel="noopener">Instagram</a>
-      <a href="mailto:aurora@example.com">Email</a>
-      <a href="#work">Portfolio</a>
-      <a href="#contact">Get Quote</a>
-    </div>
-  </div>
-  <div class="footer-bottom">Aurora Web · Larnaca, Cyprus · Built with ❤️ by Aurora</div>
+<!-- Footer Full-Screen Giant -->
+<footer>
+<div class="footer-giant">Aurora</div>
+<div class="footer-content">
+<a href="#" class="nav-logo">Aurora Web</a>
+<p>Premium web design for Cyprus businesses.</p>
+<p>Larnaca, Cyprus</p>
+<div class="footer-links">
+<a href="https://instagram.com">Instagram</a>
+<a href="mailto:viltsu.myllyniemi@gmail.com">Email</a>
+<a href="#work">Portfolio</a>
+<a href="mailto:viltsu.myllyniemi@gmail.com?subject=Quote Request">Get Quote</a>
+</div>
+</div>
+<div class="footer-bottom">Aurora Web · Larnaca, Cyprus · Built with ❤️ by Aurora</div>
 </footer>
 
+<!-- Copy Protection -->
 <script>
-// Copy protection
 (function(){
-  console.log('%cAurora Web © 2024','color:#C9A96E;font-size:24px;font-family:serif;font-style:italic;');
-  console.log('%cThis site is protected. Do not copy.','color:#64748d;font-size:12px;');
-  const prevent=function(e){e.preventDefault();return false;};
-  document.addEventListener('contextmenu',prevent);
-  document.addEventListener('copy',prevent);
-  document.addEventListener('cut',prevent);
-  document.addEventListener('selectstart',prevent);
-  document.addEventListener('dragstart',prevent);
-  document.addEventListener('keydown',function(e){
-    if((e.ctrlKey||e.metaKey)&&(e.key==='u'||e.key==='s'||e.key==='c')){e.preventDefault();return false;}
-    if(e.key==='F12'){e.preventDefault();return false;}
-  });
+'use strict';
+document.addEventListener('copy',function(e){e.preventDefault();return false;});
+document.addEventListener('contextmenu',function(e){e.preventDefault();return false;});
+document.addEventListener('keydown',function(e){
+if(e.ctrlKey&&(e.key==='u'||e.key==='U'||e.key==='s'||e.key==='S'||e.key==='a'||e.key==='A'||e.key==='c'||e.key==='C')){e.preventDefault();return false;}
+if(e.key==='F12'){e.preventDefault();return false;}
+});
+document.addEventListener('dragstart',function(e){e.preventDefault();});
 })();
 </script>
 
+<!-- Main Script -->
 <script>
 document.addEventListener('DOMContentLoaded',function(){
-  var nav=document.getElementById('nav');
-  var navLinks=document.getElementById('navLinks');
-  var navBurger=document.getElementById('navBurger');
-  var progress=document.getElementById('scrollProgress');
+var hasGSAP = (typeof gsap !== 'undefined');
+if(hasGSAP) gsap.registerPlugin(ScrollTrigger);
 
-  // Nav scroll state + progress bar
-  function onScroll(){
-    if(window.scrollY>40){nav.classList.add('scrolled');}
-    else{nav.classList.remove('scrolled');}
-    var h=document.documentElement.scrollHeight-window.innerHeight;
-    progress.style.width=(h>0?(window.scrollY/h)*100:0)+'%';
+/* === Preloader === */
+var preloader = document.querySelector('.preloader');
+if(preloader){
+  if(hasGSAP){
+    var tl = gsap.timeline();
+    tl.to(preloader.querySelector('span'),{y:0,duration:0.6,ease:'power2.out'})
+      .to(preloader.querySelector('.pl-bar'),{width:'100%',duration:1.0,ease:'power2.inOut'},0)
+      .to(preloader,{opacity:0,duration:0.8,ease:'power2.inOut',delay:0.2})
+      .set(preloader,{display:'none'});
+  } else {
+    preloader.style.display='none';
   }
-  window.addEventListener('scroll',onScroll,{passive:true});
-  onScroll();
+}
 
-  // Burger menu
-  navBurger.addEventListener('click',function(){
-    navBurger.classList.toggle('open');
-    navLinks.classList.toggle('open');
+/* === Magnetic Buttons === */
+document.querySelectorAll('.magnetic').forEach(function(btn){
+  btn.addEventListener('mousemove',function(e){
+    var rect = btn.getBoundingClientRect();
+    var x = e.clientX - rect.left - rect.width/2;
+    var y = e.clientY - rect.top - rect.height/2;
+    var tx = (x/rect.width)*10;
+    var ty = (y/rect.height)*10;
+    if(hasGSAP){ gsap.to(btn,{x:tx,y:ty,duration:0.4,ease:'power2.out'}); }
+    else { btn.style.transform='translate('+tx+'px,'+ty+'px)'; }
   });
-  navLinks.querySelectorAll('a').forEach(function(a){
-    a.addEventListener('click',function(){
-      navBurger.classList.remove('open');
-      navLinks.classList.remove('open');
-    });
+  btn.addEventListener('mouseleave',function(){
+    if(hasGSAP){ gsap.to(btn,{x:0,y:0,duration:0.4,ease:'power2.out'}); }
+    else { btn.style.transform=''; }
   });
+});
 
-  // GSAP fallback
-  if(typeof gsap==='undefined'){
-    document.querySelectorAll('.reveal').forEach(function(el){el.style.opacity=1;el.style.transform='none';});
-    return;
-  }
-  if(typeof ScrollTrigger!=='undefined'){gsap.registerPlugin(ScrollTrigger);}
-
-  // Hero: word-by-word reveal
-  var heroTitle=document.getElementById('heroTitle');
-  if(heroTitle){
-    var html=heroTitle.innerHTML;
-    // split text nodes into words while keeping <em> tags
-    var tmp=document.createElement('div');
-    tmp.innerHTML=html;
-    var out='';
+/* === Hero word reveal === */
+var h1 = document.getElementById('heroHeadline');
+if(h1 && hasGSAP){
+  var html = h1.innerHTML;
+  // wrap each word in a span but preserve <em> tags
+  var words = h1.textContent.trim().split(/\s+/);
+  var newHtml = '';
+  // simpler: wrap text words, keep em inline
+  (function(){
+    var temp = document.createElement('div');
+    temp.innerHTML = html;
     function wrapWords(node){
-      if(node.nodeType===3){
-        var words=node.textContent.split(/(\s+)/);
-        words.forEach(function(w){
-          if(w.trim()===''){out+=w;}
-          else{out+='<span class="word"><span>'+w+'</span></span> ';}
-        });
-      } else if(node.nodeType===1){
-        out+='<span class="word"><'+node.tagName.toLowerCase();
-        if(node.className){out+=' class="'+node.className+'"';}
-        out+='>';
-        Array.from(node.childNodes).forEach(function(c){wrapWords(c);});
-        out+='</'+node.tagName.toLowerCase()+'></span> ';
-      }
-    }
-    Array.from(tmp.childNodes).forEach(function(n){wrapWords(n);});
-    heroTitle.innerHTML=out;
-    gsap.fromTo(heroTitle.querySelectorAll('.word>span, .word>em'),
-      {y:'110%',opacity:0},
-      {y:'0%',opacity:1,duration:1.1,ease:'power4.out',stagger:.06,delay:.3}
-    );
-  }
-
-  gsap.fromTo('.hero-sub',{opacity:0,y:20},{opacity:1,y:0,duration:1,ease:'power3.out',delay:.8});
-  gsap.fromTo('.hero-cta-row',{opacity:0,y:20},{opacity:1,y:0,duration:1,ease:'power3.out',delay:1});
-  gsap.fromTo('.hero-meta',{opacity:0,y:30},{opacity:1,y:0,duration:1,ease:'power3.out',delay:.5});
-
-  // Service rows
-  gsap.utils.toArray('.service-row').forEach(function(row){
-    gsap.fromTo(row,{scaleX:.96,opacity:.7,transformOrigin:'left center'},
-      {scaleX:1,opacity:1,duration:1,ease:'power3.out',
-       scrollTrigger:{trigger:row,start:'top 85%'}});
-  });
-
-  // Reveals
-  gsap.utils.toArray('.reveal').forEach(function(el){
-    if(el.classList.contains('service-row'))return;
-    gsap.fromTo(el,{opacity:0,y:60},{opacity:1,y:0,duration:1,ease:'power3.out',
-      scrollTrigger:{trigger:el,start:'top 88%'},immediateRender:false});
-  });
-
-  // Portfolio horizontal scroll
-  var portfolioSection=document.querySelector('.portfolio-scroll');
-  var portfolioTrack=document.querySelector('.portfolio-track');
-  if(portfolioSection&&portfolioTrack&&typeof ScrollTrigger!=='undefined'){
-    var scrollWidth=portfolioTrack.scrollWidth-window.innerWidth+100;
-    if(scrollWidth>0){
-      gsap.to(portfolioTrack,{x:-scrollWidth,ease:'none',
-        scrollTrigger:{trigger:portfolioSection,start:'top top',end:'+='+scrollWidth,scrub:1,pin:true,invalidateOnRefresh:true}
+      var out = '';
+      node.childNodes.forEach(function(child){
+        if(child.nodeType === 3){
+          var parts = child.textContent.split(/(\s+)/);
+          parts.forEach(function(p){
+            if(p.trim()===''){ out += p; }
+            else { out += '<span class="word"><span>'+p+'</span></span>'; }
+          });
+        } else if(child.nodeType === 1){
+          out += '<'+child.tagName.toLowerCase();
+          if(child.className) out += ' class="'+child.className+'"';
+          out += '>';
+          var parts = child.textContent.split(/(\s+)/);
+          parts.forEach(function(p){
+            if(p.trim()===''){ out += p; }
+            else { out += '<span class="word"><span>'+p+'</span></span>'; }
+          });
+          out += '</'+child.tagName.toLowerCase()+'>';
+        }
       });
+      return out;
     }
-  }
+    h1.innerHTML = wrapWords(h1);
+  })();
+  gsap.from(h1.querySelectorAll('.word span'),{yPercent:110,duration:1.2,stagger:0.08,ease:'power4.out',delay:0.5});
+}
 
-  // Stat counter animation
-  document.querySelectorAll('.stat-num').forEach(function(el){
-    var text=el.textContent.trim();
-    var m=text.match(/^(\D*)(\d+)(\D*)$/);
-    if(!m)return;
-    var pre=m[1],num=parseInt(m[2],10),post=m[3];
-    var hasEm=el.querySelector('em');
-    var emHTML=hasEm?hasEm.outerHTML:'';
-    var obj={v:0};
-    gsap.to(obj,{v:num,duration:2,ease:'power2.out',
-      scrollTrigger:{trigger:el,start:'top 85%'},
-      onUpdate:function(){
-        var val=Math.round(obj.v);
-        if(hasEm){el.innerHTML=pre+'<span>'+val+'</span>'+post;}
-        else{el.textContent=pre+val+post;}
-      },
-      onComplete:function(){
-        if(hasEm){el.innerHTML=pre+emHTML+post;}
-        else{el.textContent=pre+num+post;}
-      }
-    });
+/* === Nav scroll + progress === */
+var nav = document.getElementById('nav');
+var progress = document.getElementById('navProgress');
+window.addEventListener('scroll',function(){
+  if(window.scrollY > 50) nav.classList.add('scrolled');
+  else nav.classList.remove('scrolled');
+  var st = window.scrollY;
+  var sh = document.body.scrollHeight - window.innerHeight;
+  var pct = sh > 0 ? (st/sh)*100 : 0;
+  progress.style.width = pct + '%';
+});
+
+/* === Burger === */
+var burger = document.getElementById('burger');
+var mobileMenu = document.getElementById('mobileMenu');
+burger.addEventListener('click',function(){
+  burger.classList.toggle('open');
+  mobileMenu.classList.toggle('open');
+});
+mobileMenu.querySelectorAll('a').forEach(function(a){
+  a.addEventListener('click',function(){
+    burger.classList.remove('open');
+    mobileMenu.classList.remove('open');
   });
+});
 
-  // Parallax
-  var heroBg=document.querySelector('.hero-bg img');
-  if(heroBg&&typeof ScrollTrigger!=='undefined'){
-    gsap.to(heroBg,{y:'15%',ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:true}});
+/* === Reveals === */
+if(hasGSAP){
+  gsap.utils.toArray('.reveal').forEach(function(el){
+    gsap.fromTo(el,{opacity:0,y:40},{opacity:1,y:0,duration:1,ease:'power3.out',scrollTrigger:{trigger:el,start:'top 85%'},immediateRender:false});
+  });
+  // Service rows scaleX
+  gsap.utils.toArray('.service-row').forEach(function(row){
+    gsap.fromTo(row,{opacity:0,x:-30},{opacity:1,x:0,duration:0.8,ease:'power3.out',scrollTrigger:{trigger:row,start:'top 90%'},immediateRender:false});
+  });
+  // Process steps
+  gsap.utils.toArray('.process-step').forEach(function(step){
+    gsap.fromTo(step,{opacity:0,y:50},{opacity:1,y:0,duration:1,ease:'power3.out',scrollTrigger:{trigger:step,start:'top 85%'},immediateRender:false});
+  });
+}
+
+/* === Stat counters === */
+document.querySelectorAll('[data-count]').forEach(function(el){
+  var target = parseInt(el.dataset.count,10);
+  var obj = {val:0};
+  if(hasGSAP){
+    gsap.to(obj,{val:target,duration:2,ease:'power2.out',scrollTrigger:{trigger:el,start:'top 85%'},onUpdate:function(){
+      el.textContent = Math.round(obj.val);
+    }});
+  } else {
+    el.textContent = target;
+  }
+});
+
+/* === Parallax === */
+if(hasGSAP){
+  var heroImg = document.getElementById('heroImg');
+  if(heroImg){
+    gsap.to(heroImg,{yPercent:15,ease:'none',scrollTrigger:{trigger:'.hero-split',start:'top top',end:'bottom top',scrub:true}});
   }
   document.querySelectorAll('.portfolio-card-img img').forEach(function(img){
-    gsap.fromTo(img,{y:-20},{y:20,ease:'none',scrollTrigger:{trigger:img,start:'top bottom',end:'bottom top',scrub:true}});
+    gsap.to(img,{yPercent:-20,ease:'none',scrollTrigger:{trigger:img,start:'top bottom',end:'bottom top',scrub:true}});
   });
+}
+
+/* === Portfolio horizontal scroll === */
+if(hasGSAP){
+  var track = document.getElementById('portfolioTrack');
+  var section = document.getElementById('work');
+  if(track && section && window.innerWidth > 900){
+    var scrollWidth = track.scrollWidth - window.innerWidth + 100;
+    gsap.to(track,{x:-scrollWidth,ease:'none',scrollTrigger:{trigger:section,start:'top top',end:'+='+scrollWidth,pin:true,scrub:1,invalidateOnRefresh:true}});
+  }
+}
+
+/* === GSAP fallback === */
+if(!hasGSAP){
+  document.querySelectorAll('.reveal').forEach(function(el){ el.style.opacity='1'; });
+}
 });
 </script>
 </body>
