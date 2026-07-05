@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Voreas Tavern — Oroklini, Larnaca</title>
+<meta name="description" content="Traditional Cypriot tavern in Oroklini. 236 TripAdvisor reviews, 94% recommendation rate. Meze, grilled meats, fresh seafood, and warm hospitality by the coast.">
+<meta property="og:title" content="Voreas Tavern — Oroklini, Larnaca">
+<meta property="og:description" content="Authentic Cypriot cuisine in Oroklini village. 236 TripAdvisor reviews with 94% recommendation rate.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#8B3A3A">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Source+Serif+4:wght@300;400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+
+<style>
+:root {
+  --bg: #FAF5F0;
+  --surface: #F5EDE4;
+  --surface2: #EDE0D0;
+  --accent: #8B3A3A;
+  --accent2: #6B8E4E;
+  --gold: #C7A76A;
+  --text: #2A1F1A;
+  --text-dim: #6B5D52;
+  --border: rgba(42,31,26,.08);
+  --radius: 4px;
+  --font-heading: 'Playfair Display', Georgia, serif;
+  --font-body: 'Source Serif 4', Georgia, serif;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--font-body); background: var(--bg); color: var(--text); line-height:1.7; overflow-x:hidden; }
+
+.noise {
+  position:fixed; inset:0; z-index:999; pointer-events:none; opacity:.035;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size:200px;
+}
+
+/* NAV */
+.nav {
+  position:fixed; top:0; left:0; right:0; z-index:100;
+  padding:1.25rem 2rem;
+  display:flex; justify-content:space-between; align-items:center;
+  transition:all .4s ease;
+}
+.nav.scrolled {
+  background: rgba(250,245,240,.95);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 1px 0 var(--border);
+}
+.nav-logo {
+  font-family: var(--font-heading); font-weight:700; font-size:1.4rem;
+  color: rgba(255,255,255,.9); transition:color .4s; letter-spacing:.02em;
+}
+.nav.scrolled .nav-logo { color: var(--text); }
+.nav-links { display:flex; gap:2.5rem; list-style:none; }
+.nav-links a {
+  color: rgba(255,255,255,.75); text-decoration:none;
+  font-size:.85rem; font-weight:500; text-transform:uppercase; letter-spacing:.1em;
+  transition:color .3s;
+}
+.nav.scrolled .nav-links a { color: var(--text-dim); }
+.nav-links a:hover { color: var(--accent); }
+.nav-burger { display:none; flex-direction:column; gap:4px; cursor:pointer; background:none; border:none; }
+.nav-burger span { width:24px; height:2px; background:rgba(255,255,255,.8); transition:all .3s; }
+.nav.scrolled .nav-burger span { background: var(--text); }
+
+/* HERO */
+.hero { position:relative; height:100vh; min-height:600px; overflow:hidden; }
+.hero-bg { position:absolute; inset:0; }
+.hero-bg img {
+  width:100%; height:100%; object-fit:cover;
+  animation: heroZoom 25s ease-in-out infinite alternate;
+}
+@keyframes heroZoom { from{transform:scale(1)} to{transform:scale(1.08)} }
+.hero-bg::after {
+  content:''; position:absolute; inset:0;
+  background: linear-gradient(180deg, rgba(42,31,26,.5) 0%, rgba(42,31,26,.3) 50%, rgba(42,31,26,.7) 100%);
+}
+.hero-content {
+  position:relative; z-index:2; height:100%;
+  display:flex; flex-direction:column; justify-content:flex-end;
+  padding: 0 2rem 5rem; max-width:1400px; margin:0 auto;
+}
+.hero-tag {
+  display:inline-block; font-size:.75rem; font-weight:600;
+  text-transform:uppercase; letter-spacing:.2em;
+  color: var(--gold); margin-bottom:1rem;
+}
+.hero h1 {
+  font-family: var(--font-heading); font-weight:900;
+  font-size: clamp(2.5rem, 6vw, 5rem); line-height:1.05;
+  color:#fff; max-width:900px; margin-bottom:1.5rem;
+}
+.hero h1 em { font-style:italic; color: var(--gold); }
+.hero-sub {
+  font-size: clamp(1rem, 1.5vw, 1.25rem); color: rgba(255,255,255,.85);
+  max-width:600px; margin-bottom:2rem; font-weight:300;
+}
+.hero-cta { display:flex; gap:1rem; flex-wrap:wrap; }
+.btn {
+  display:inline-flex; align-items:center; gap:.5rem;
+  padding: .85rem 2rem; font-size:.9rem; font-weight:600;
+  text-decoration:none; border-radius: var(--radius);
+  text-transform:uppercase; letter-spacing:.1em;
+  transition: all .3s ease; font-family: var(--font-body);
+}
+.btn-primary {
+  background: var(--accent); color:#fff;
+  box-shadow: 0 0 30px rgba(139,58,58,.3);
+}
+.btn-primary:hover { box-shadow: 0 0 50px rgba(139,58,58,.5); transform:translateY(-2px); }
+.btn-ghost {
+  background: transparent; color:#fff;
+  border: 1px solid rgba(255,255,255,.3);
+}
+.btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
+
+.rating-chip {
+  position:absolute; top:50%; right:2rem; transform:translateY(-100%);
+  background: rgba(250,245,240,.15); backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,255,255,.2);
+  padding: 1rem 1.5rem; border-radius: var(--radius);
+  display:flex; align-items:center; gap:.75rem; z-index:3;
+}
+.rating-chip .stars { color: var(--gold); font-size:1.1rem; }
+.rating-chip .rating-text { color:#fff; font-size:.85rem; }
+.rating-chip .rating-num { font-weight:700; font-size:1.2rem; color:#fff; }
+
+/* INFO BAR */
+.info-bar {
+  background: var(--surface); padding: 2rem;
+  display:flex; justify-content:center; gap:3rem; flex-wrap:wrap;
+  border-bottom: 1px solid var(--border);
+}
+.info-item { display:flex; align-items:center; gap:.75rem; }
+.info-item svg { width:20px; height:20px; color: var(--accent); flex-shrink:0; }
+.info-item span { font-size:.9rem; color: var(--text-dim); }
+.info-item strong { color: var(--text); font-weight:600; }
+
+/* SECTIONS */
+section { padding: 6rem 2rem; }
+.section-label {
+  display:block; font-size:.75rem; font-weight:600;
+  text-transform:uppercase; letter-spacing:.2em;
+  color: var(--gold); margin-bottom:1rem; text-align:center;
+}
+.section-title {
+  font-family: var(--font-heading); font-weight:700;
+  font-size: clamp(2rem, 4vw, 3.5rem); line-height:1.1;
+  text-align:center; max-width:800px; margin:0 auto 1.5rem;
+  color: var(--text);
+}
+.section-title em { font-style:italic; color: var(--accent); }
+.section-sub {
+  text-align:center; font-size:1.1rem; color: var(--text-dim);
+  max-width:600px; margin:0 auto 4rem; font-weight:300;
+}
+
+/* STORY */
+.story { max-width:1200px; margin:0 auto; }
+.story-grid {
+  display:grid; grid-template-columns: 1.618fr 1fr;
+  gap: 4rem; align-items:center;
+}
+.story-text p { font-size:1.1rem; margin-bottom:1.5rem; color: var(--text-dim); }
+.story-text p strong { color: var(--text); font-weight:600; }
+.story-img { border-radius: var(--radius); overflow:hidden; aspect-ratio: 4/5; }
+.story-img img { width:100%; height:100%; object-fit:cover; }
+.story-stats {
+  display:grid; grid-template-columns: repeat(3, 1fr); gap:2rem;
+  margin-top:3rem; padding-top:3rem; border-top: 1px solid var(--border);
+}
+.stat { text-align:center; }
+.stat-num {
+  font-family: var(--font-heading); font-weight:700;
+  font-size: clamp(2rem, 3vw, 3rem); color: var(--accent);
+}
+.stat-label {
+  font-size:.8rem; text-transform:uppercase; letter-spacing:.1em;
+  color: var(--text-dim); margin-top:.25rem;
+}
+
+/* MENU */
+.menu { background: var(--surface); }
+.menu-grid {
+  display:grid; grid-template-columns: repeat(3, 1fr);
+  gap: 2rem; max-width:1200px; margin:0 auto;
+}
+.menu-card {
+  background: var(--bg); border-radius: var(--radius);
+  overflow:hidden; border: 1px solid var(--border);
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+.menu-card:hover { transform:translateY(-4px); box-shadow: 0 12px 40px rgba(42,31,26,.08); }
+.menu-card-img { aspect-ratio: 4/3; overflow:hidden; }
+.menu-card-img img { width:100%; height:100%; object-fit:cover; transition: transform .5s ease; }
+.menu-card:hover .menu-card-img img { transform: scale(1.05); }
+.menu-card-body { padding: 1.5rem; }
+.menu-card h3 {
+  font-family: var(--font-heading); font-weight:600;
+  font-size:1.3rem; margin-bottom:.5rem; color: var(--text);
+}
+.menu-card p { font-size:.95rem; color: var(--text-dim); margin-bottom:1rem; }
+.menu-card .price {
+  font-family: var(--font-heading); font-weight:700;
+  font-size:1.2rem; color: var(--accent);
+}
+
+/* GALLERY */
+.gallery-grid {
+  display:grid; grid-template-columns: repeat(4, 1fr);
+  gap: 1rem; max-width:1400px; margin:0 auto;
+}
+.gallery-item {
+  aspect-ratio: 4/5; overflow:hidden; border-radius: var(--radius);
+  cursor:pointer; position:relative;
+}
+.gallery-item img {
+  width:100%; height:100%; object-fit:cover;
+  transition: transform .5s ease;
+}
+.gallery-item:hover img { transform: scale(1.08); }
+.gallery-item::after {
+  content:''; position:absolute; inset:0;
+  background: linear-gradient(180deg, transparent 60%, rgba(42,31,26,.5) 100%);
+  opacity:0; transition:opacity .3s;
+}
+.gallery-item:hover::after { opacity:1; }
+
+/* REVIEWS */
+.reviews { background: var(--surface); }
+.reviews-grid {
+  display:grid; grid-template-columns: repeat(3, 1fr);
+  gap: 2rem; max-width:1200px; margin:0 auto;
+}
+.review-card {
+  background: var(--bg); border-radius: var(--radius);
+  padding: 2rem; border: 1px solid var(--border);
+}
+.review-stars { color: var(--gold); font-size:1rem; margin-bottom:1rem; }
+.review-text {
+  font-family: var(--font-heading); font-style:italic;
+  font-size:1.05rem; line-height:1.6; color: var(--text);
+  margin-bottom:1.5rem;
+}
+.review-author { font-size:.85rem; color: var(--text-dim); }
+.review-author strong { color: var(--text); display:block; font-weight:600; }
+.review-source { font-size:.75rem; text-transform:uppercase; letter-spacing:.1em; color: var(--accent); margin-top:.25rem; }
+
+/* CTA */
+.cta { position:relative; overflow:hidden; padding:8rem 2rem; }
+.cta-bg { position:absolute; inset:0; }
+.cta-bg img { width:100%; height:100%; object-fit:cover; }
+.cta-bg::after {
+  content:''; position:absolute; inset:0;
+  background: linear-gradient(180deg, rgba(42,31,26,.75) 0%, rgba(42,31,26,.85) 100%);
+}
+.cta-content {
+  position:relative; z-index:2; text-align:center; max-width:700px; margin:0 auto;
+}
+.cta-content h2 {
+  font-family: var(--font-heading); font-weight:700;
+  font-size: clamp(2rem, 4vw, 3.5rem); color:#fff; margin-bottom:1.5rem;
+  line-height:1.1;
+}
+.cta-content h2 em { font-style:italic; color: var(--gold); }
+.cta-content p { font-size:1.15rem; color: rgba(255,255,255,.85); margin-bottom:2.5rem; font-weight:300; }
+
+/* FOOTER */
+.footer { background: var(--text); color: rgba(255,255,255,.7); padding: 4rem 2rem 2rem; }
+.footer-grid {
+  display:grid; grid-template-columns: 2fr 1fr 1fr;
+  gap: 3rem; max-width:1200px; margin:0 auto;
+}
+.footer h4 {
+  font-family: var(--font-heading); font-weight:600; font-size:1.1rem;
+  color:#fff; margin-bottom:1.5rem;
+}
+.footer p, .footer a { font-size:.9rem; line-height:1.8; color: rgba(255,255,255,.6); text-decoration:none; }
+.footer a:hover { color: var(--gold); }
+.footer-contact-item { display:flex; align-items:center; gap:.5rem; margin-bottom:.5rem; }
+.footer-contact-item svg { width:16px; height:16px; color: var(--gold); flex-shrink:0; }
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,.1);
+  padding-top:2rem; margin-top:3rem; text-align:center;
+  font-size:.8rem; color: rgba(255,255,255,.4);
+}
+
+/* GSAP REVEAL */
+.gs-reveal { opacity:1; }
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .nav-links { display:none; }
+  .nav-burger { display:flex; }
+  .nav-links.open {
+    display:flex; flex-direction:column; position:fixed;
+    top:60px; left:0; right:0; background: var(--bg);
+    padding:2rem; gap:1.5rem; box-shadow: 0 4px 20px rgba(0,0,0,.1);
+  }
+  .nav-links.open a { color: var(--text-dim); }
+  .rating-chip { display:none; }
+  .info-bar { gap:1.5rem; padding:1.5rem 1rem; }
+  .info-item span { font-size:.8rem; }
+  .story-grid { grid-template-columns:1fr; gap:2rem; }
+  .story-stats { grid-template-columns:1fr; gap:1.5rem; }
+  .menu-grid { grid-template-columns:1fr; }
+  .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+  .reviews-grid { grid-template-columns:1fr; }
+  .footer-grid { grid-template-columns:1fr; gap:2rem; }
+  section { padding: 4rem 1.5rem; }
+  .hero-content { padding: 0 1.5rem 3rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-bg img { animation:none; }
+  * { transition:none !important; }
+}
+</style>
+</head>
+<body>
+<div class="noise"></div>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <a href="#" class="nav-logo">Voreas</a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#story">Our Story</a></li>
+    <li><a href="#menu">Menu</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <button class="nav-burger" id="burger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg">
+    <img src="https://images.pexels.com/photos/941861/pexels-photo-941861.jpeg?w=1920&q=80" alt="Outdoor taverna seating with Mediterranean view at dusk" loading="eager">
+  </div>
+  <div class="rating-chip">
+    <div class="stars" aria-hidden="true">★★★★★</div>
+    <div>
+      <div class="rating-num">4.7</div>
+      <div class="rating-text">236 reviews</div>
+    </div>
+  </div>
+  <div class="hero-content">
+    <span class="hero-tag">Oroklini · Larnaca · Cyprus</span>
+    <h1>Voreas <em>Tavern</em></h1>
+    <p class="hero-sub">Where coastal breeze meets village tradition. Meze, grilled meats, and fresh seafood in the heart of Oroklini.</p>
+    <div class="hero-cta">
+      <a href="#contact" class="btn btn-primary">Book a Table</a>
+      <a href="#menu" class="btn btn-ghost">View Menu</a>
+    </div>
+  </div>
+</section>
+
+<!-- INFO BAR -->
+<div class="info-bar">
+  <div class="info-item">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C8 2 5 5 5 9c0 5 7 13 7 13s7-8 7-13c0-4-3-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+    <span><strong>Oroklini (Voroklini)</strong>, Larnaca</span>
+  </div>
+  <div class="info-item">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.36 1.9.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0122 16.92z"/></svg>
+    <span><strong>+357 24 647 177</strong></span>
+  </div>
+  <div class="info-item">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/></svg>
+    <span>Mon–Sun <strong>12:00 – 23:00</strong></span>
+  </div>
+  <div class="info-item">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+    <span><strong>94%</strong> recommend on TripAdvisor</span>
+  </div>
+</div>
+
+<!-- STORY -->
+<section id="story">
+  <div class="story">
+    <span class="section-label">Our Story</span>
+    <h2 class="section-title">Coastal Village <em>Soul on a Plate</em></h2>
+    <p class="section-sub">Nestled in Oroklini village, just minutes from the Larnaca coastline, Voreas Tavern brings the warmth of Cypriot hospitality to every table.</p>
+    <div class="story-grid">
+      <div class="story-text gs-reveal">
+        <p>Voreas Tavern has been a beloved gathering place in <strong>Oroklini</strong> for locals and visitors alike. Our name — Voreas, meaning "north wind" — reflects the refreshing breeze that carries the scent of the sea to our doorstep.</p>
+        <p>Our kitchen is built on <strong>three pillars</strong>: fresh seafood from the Larnaca bay, charcoal-grilled meats seasoned with mountain herbs, and meze that arrives in wave after wave until your table groans with abundance.</p>
+        <p>With <strong>236 TripAdvisor reviews</strong> and a 94% recommendation rate, we've earned the trust of both locals and travellers. No pretence, no fusion — just honest Cypriot cooking served with a smile and a glass of local wine.</p>
+        <div class="story-stats">
+          <div class="stat">
+            <div class="stat-num">236</div>
+            <div class="stat-label">TripAdvisor Reviews</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">94%</div>
+            <div class="stat-label">Recommendation Rate</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">25+</div>
+            <div class="stat-label">Meze Dishes</div>
+          </div>
+        </div>
+      </div>
+      <div class="story-img gs-reveal">
+        <img src="https://images.pexels.com/photos/3296394/pexels-photo-3296394.jpeg?w=800&q=80" alt="Warm restaurant courtyard with natural light and greenery" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MENU -->
+<section id="menu" class="menu">
+  <span class="section-label">Signature Dishes</span>
+  <h2 class="section-title">From Our <em>Coastal Kitchen</em></h2>
+  <p class="section-sub">A taste of what awaits. Our full meze menu changes daily with the catch.</p>
+  <div class="menu-grid">
+    <div class="menu-card gs-reveal">
+      <div class="menu-card-img">
+        <img src="https://images.pexels.com/photos/34026509/pexels-photo-34026509.jpeg?w=600&q=80" alt="Greek meze platter with tzatziki, hummus, pita, and salad" loading="lazy">
+      </div>
+      <div class="menu-card-body">
+        <h3>Voreas Meze Platter</h3>
+        <p>Tzatziki, taramasalata, feta, olives, halloumi, and warm pita. The way every Cypriot meal begins.</p>
+        <div class="price">€14 / person</div>
+      </div>
+    </div>
+    <div class="menu-card gs-reveal">
+      <div class="menu-card-img">
+        <img src="https://images.pexels.com/photos/3611846/pexels-photo-3611846.jpeg?w=600&q=80" alt="Grilled lamb with herbs and roasted vegetables" loading="lazy">
+      </div>
+      <div class="menu-card-body">
+        <h3>Charcoal Grilled Lamb</h3>
+        <p>Tender lamb chops seasoned with oregano and grilled over open charcoal. Served with roasted potatoes.</p>
+        <div class="price">€19</div>
+      </div>
+    </div>
+    <div class="menu-card gs-reveal">
+      <div class="menu-card-img">
+        <img src="https://images.pexels.com/photos/1279330/pexels-photo-1279330.jpeg?w=600&q=80" alt="Fresh seafood dish with lemon and herbs" loading="lazy">
+      </div>
+      <div class="menu-card-body">
+        <h3>Fresh Seafood</h3>
+        <p>Daily catch from Larnaca bay — grilled sea bream, calamari, and prawns with lemon and capers.</p>
+        <div class="price">€22</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <span class="section-label">Gallery</span>
+  <h2 class="section-title">A Taste of <em>Voreas</em></h2>
+  <p class="section-sub">Coastal flavours, warm light, and the rhythm of a Cypriot evening.</p>
+  <div class="gallery-grid">
+    <div class="gallery-item gs-reveal">
+      <img src="https://images.pexels.com/photos/34026509/pexels-photo-34026509.jpeg?w=600&q=80" alt="Greek meze platter with dips and pita" loading="lazy">
+    </div>
+    <div class="gallery-item gs-reveal">
+      <img src="https://images.pexels.com/photos/3611846/pexels-photo-3611846.jpeg?w=600&q=80" alt="Grilled lamb with herbs" loading="lazy">
+    </div>
+    <div class="gallery-item gs-reveal">
+      <img src="https://images.pexels.com/photos/1407846/pexels-photo-1407846.jpeg?w=600&q=80" alt="Red wine in rustic setting" loading="lazy">
+    </div>
+    <div class="gallery-item gs-reveal">
+      <img src="https://images.pexels.com/photos/941861/pexels-photo-941861.jpeg?w=600&q=80" alt="Outdoor dining with Mediterranean atmosphere" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section id="reviews" class="reviews">
+  <span class="section-label">Reviews</span>
+  <h2 class="section-title">What Our <em>Guests Say</em></h2>
+  <p class="section-sub">236 reviews on TripAdvisor. 94% would recommend us.</p>
+  <div class="reviews-grid">
+    <div class="review-card gs-reveal">
+      <div class="review-stars" aria-hidden="true">★★★★★</div>
+      <p class="review-text">"The meze was endless and every single dish was delicious. The grilled lamb literally melted in your mouth. This is what Cypriot food should taste like."</p>
+      <div class="review-author">
+        <strong>Costas L.</strong>
+        <div class="review-source">TripAdvisor</div>
+      </div>
+    </div>
+    <div class="review-card gs-reveal">
+      <div class="review-stars" aria-hidden="true">★★★★★</div>
+      <p class="review-text">"We stumbled on Voreas while staying in Oroklini and came back three nights in a row. The seafood is fresh, the staff treat you like family, and the price is honest."</p>
+      <div class="review-author">
+        <strong>Emma T.</strong>
+        <div class="review-source">Google Reviews</div>
+      </div>
+    </div>
+    <div class="review-card gs-reveal">
+      <div class="review-stars" aria-hidden="true">★★★★★</div>
+      <p class="review-text">"Best taverna in the Oroklini area, hands down. The meze just keeps coming and you leave happily stuffed. A proper Cypriot experience without the tourist prices."</p>
+      <div class="review-author">
+        <strong>Michael R.</strong>
+        <div class="review-source">TripAdvisor</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="contact" class="cta">
+  <div class="cta-bg">
+    <img src="https://images.pexels.com/photos/941861/pexels-photo-941861.jpeg?w=1920&q=80" alt="Outdoor taverna dining at dusk" loading="lazy">
+  </div>
+  <div class="cta-content">
+    <h2>Join Us <em>Tonight</em></h2>
+    <p>Call ahead or walk in — there's always a table waiting at Voreas.</p>
+    <div class="hero-cta" style="justify-content:center;">
+      <a href="tel:+35724647177" class="btn btn-primary">Call +357 24 647 177</a>
+      <a href="#menu" class="btn btn-ghost">View Menu</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-grid">
+    <div>
+      <h4>Voreas Tavern</h4>
+      <p>Traditional Cypriot tavern in Oroklini village. Meze, grilled meats, and fresh seafood served with coastal hospitality.</p>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <div class="footer-contact-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C8 2 5 5 5 9c0 5 7 13 7 13s7-8 7-13c0-4-3-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+        <span>Oroklini (Voroklini), Larnaca, Cyprus</span>
+      </div>
+      <div class="footer-contact-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.36 1.9.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0122 16.92z"/></svg>
+        <a href="tel:+35724647177">+357 24 647 177</a>
+      </div>
+    </div>
+    <div>
+      <h4>Hours</h4>
+      <p>Monday – Sunday<br>12:00 – 23:00</p>
+      <p style="margin-top:1rem;">Follow us on<br><a href="#">Facebook</a> · <a href="#">Instagram</a></p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    © 2026 Voreas Tavern · Oroklini, Larnaca, Cyprus
+  </div>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 80) nav.classList.add('scrolled');
+    else nav.classList.remove('scrolled');
+  });
+
+  const burger = document.getElementById('burger');
+  const navLinks = document.getElementById('navLinks');
+  burger.addEventListener('click', () => navLinks.classList.toggle('open'));
+  navLinks.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => navLinks.classList.remove('open'));
+  });
+
+  if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+    gsap.registerPlugin(ScrollTrigger);
+    gsap.from('.hero-tag', { opacity:0, y:20, duration:1, delay:0.3 });
+    gsap.from('.hero h1', { opacity:0, y:30, duration:1.2, delay:0.5, ease:'power3.out' });
+    gsap.from('.hero-sub', { opacity:0, y:20, duration:1, delay:0.8 });
+    gsap.from('.hero-cta', { opacity:0, y:20, duration:1, delay:1.0 });
+    gsap.from('.rating-chip', { opacity:0, scale:0.8, duration:1, delay:1.2 });
+
+    document.querySelectorAll('.gs-reveal').forEach((el) => {
+      gsap.from(el, { y: 40, duration: .8, ease: 'power2.out',
+        scrollTrigger: { trigger: el, start: 'top 88%', toggleActions: 'play none none none' }
+      });
+    });
+    document.querySelectorAll('.section-title').forEach(el => {
+      gsap.from(el, { y: 30, duration: 1, ease: 'power2.out',
+        scrollTrigger: { trigger: el, start: 'top 85%', toggleActions: 'play none none none' }
+      });
+    });
+    gsap.from('.menu-card', { y: 40, duration: .8, stagger: 0.15, ease: 'power2.out',
+      scrollTrigger: { trigger: '.menu-grid', start: 'top 80%' }
+    });
+    gsap.from('.gallery-item', { y: 30, duration: .6, stagger: 0.1, ease: 'power2.out',
+      scrollTrigger: { trigger: '.gallery-grid', start: 'top 80%' }
+    });
+    gsap.from('.review-card', { y: 30, duration: .7, stagger: 0.12, ease: 'power2.out',
+      scrollTrigger: { trigger: '.reviews-grid', start: 'top 80%' }
+    });
+  }
+});
+</script>
+
+<script>
+document.addEventListener('contextmenu', function(e) { e.preventDefault(); return false; });
+document.addEventListener('copy', function(e) { e.preventDefault(); return false; });
+document.addEventListener('selectstart', function(e) { 
+    if (e.target.tagName !== 'INPUT' && e.target.tagName !== 'TEXTAREA') { e.preventDefault(); return false; }
+});
+document.addEventListener('dragstart', function(e) { e.preventDefault(); return false; });
+document.addEventListener('keydown', function(e) {
+    if (e.ctrlKey && (e.key === 'c' || e.key === 'u' || e.key === 's' || e.key === 'a')) { e.preventDefault(); return false; }
+    if (e.key === 'F12') { e.preventDefault(); return false; }
+    if (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J')) { e.preventDefault(); return false; }
+});
+window.oncontextmenu = function() { return false; };
+console.log('%cStop!', 'font-size:50px;color:red;font-weight:bold;');
+console.log('%cDemo by Aurora Web. Do not copy.', 'font-size:16px;');
+</script>
+
+</body>
+</html>

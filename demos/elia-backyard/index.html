@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Elia Backyard Restaurant | Award-Winning Dining in Larnaca</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--warm:#e76f51;--dark:#1a1a2e;--green:#2d6a4f;--cream:#f4f1de}
+body{font-family:'Georgia',serif;background:var(--dark);color:var(--cream);overflow-x:hidden}
+.hero{height:100vh;background:linear-gradient(135deg,rgba(26,26,46,0.5),rgba(26,26,46,0.85)),url('https://images.pexels.com/photos/67468/pexels-photo-67468.jpeg?w=1200') center/cover fixed;display:flex;align-items:center;justify-content:center;text-align:center}
+.hero h1{font-size:4rem;letter-spacing:0.15em;color:var(--warm);text-shadow:0 4px 30px rgba(0,0,0,0.8)}
+.hero p{font-size:1.1rem;letter-spacing:0.2em;margin-top:0.5rem;color:var(--cream);opacity:0.9;text-transform:uppercase}
+.hero .cta{margin-top:2rem;display:inline-block;padding:1rem 3rem;border:2px solid var(--warm);color:var(--warm);text-decoration:none;font-size:1rem;letter-spacing:0.15em;transition:all 0.3s}
+.hero .cta:hover{background:var(--warm);color:var(--dark)}
+section{padding:5rem 2rem;max-width:1200px;margin:0 auto}
+.section-title{text-align:center;font-size:2.5rem;color:var(--warm);margin-bottom:0.5rem;letter-spacing:0.1em}
+.section-sub{text-align:center;font-size:0.9rem;color:var(--green);margin-bottom:3rem;letter-spacing:0.2em;text-transform:uppercase}
+.story{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center}
+.story p{line-height:1.8;font-size:1.1rem;opacity:0.85}
+.info-bar{display:flex;justify-content:center;gap:3rem;flex-wrap:wrap;padding:2rem;background:rgba(231,111,81,0.05);border-top:1px solid rgba(231,111,81,0.2);border-bottom:1px solid rgba(231,111,81,0.2)}
+.info-item{text-align:center}
+.info-item .label{font-size:0.7rem;letter-spacing:0.2em;color:var(--warm);text-transform:uppercase}
+.info-item .value{font-size:1.3rem;margin-top:0.3rem;color:var(--cream)}
+.menu-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2rem}
+.menu-card{background:rgba(255,255,255,0.03);border:1px solid rgba(231,111,81,0.2);padding:2rem;border-radius:4px;transition:all 0.3s}
+.menu-card:hover{border-color:var(--warm);transform:translateY(-5px)}
+.menu-card h3{color:var(--warm);font-size:1.3rem;margin-bottom:0.5rem}
+.menu-card .price{color:var(--green);float:right;font-size:1.1rem}
+.menu-card p{opacity:0.7;line-height:1.6;margin-top:0.5rem}
+.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1rem}
+.gallery img{width:100%;height:250px;object-fit:cover;border-radius:4px;filter:brightness(0.85);transition:all 0.3s}
+.gallery img:hover{filter:brightness(1);transform:scale(1.02)}
+.reviews{background:rgba(231,111,81,0.03);padding:5rem 2rem}
+.review{text-align:center;max-width:700px;margin:0 auto 2rem}
+.review .stars{color:var(--warm);font-size:1.2rem;margin-bottom:0.5rem}
+.review p{font-size:1.1rem;line-height:1.7;opacity:0.85;font-style:italic}
+.review .author{margin-top:0.5rem;color:var(--green);font-size:0.9rem}
+.cta-section{text-align:center;padding:5rem 2rem;background:linear-gradient(135deg,rgba(45,106,79,0.2),rgba(26,26,46,0.5))}
+.cta-section h2{font-size:2.5rem;color:var(--warm);margin-bottom:1rem}
+.cta-section p{font-size:1.1rem;opacity:0.7;margin-bottom:2rem}
+.cta-section a{display:inline-block;padding:1.2rem 3rem;background:var(--warm);color:var(--dark);text-decoration:none;font-size:1.1rem;letter-spacing:0.1em;font-weight:bold;transition:all 0.3s}
+.cta-section a:hover{transform:scale(1.05);box-shadow:0 5px 30px rgba(231,111,81,0.4)}
+footer{padding:3rem 2rem;text-align:center;border-top:1px solid rgba(231,111,81,0.15)}
+footer p{opacity:0.5;font-size:0.9rem}
+footer .social{margin-top:1rem}
+footer .social a{color:var(--warm);text-decoration:none;margin:0 1rem}
+@media(max-width:768px){.hero h1{font-size:2rem}.story{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div class="hero">
+<div>
+<h1>ELIA BACKYARD</h1>
+<p>Award-Winning Restaurant · Heart of Larnaca</p>
+<p style="font-size:0.85rem;margin-top:0.5rem;color:var(--cream);opacity:0.7">Sat & Sun: 12:30-22:30</p>
+<a href="#contact" class="cta">BOOK YOUR TABLE</a>
+</div>
+</div>
+
+<div class="info-bar">
+<div class="info-item"><div class="label">Followers</div><div class="value">3,888+</div></div>
+<div class="info-item"><div class="label">Instagram</div><div class="value">@elia.backyard.restaurant</div></div>
+<div class="info-item"><div class="label">Posts</div><div class="value">129</div></div>
+<div class="info-item"><div class="label">Award</div><div class="value">Award-Winning</div></div>
+</div>
+
+<section>
+<div class="section-title">OUR STORY</div>
+<div class="section-sub">INDULGE IN CULINARY EXCELLENCE</div>
+<div class="story">
+<p>Elia Backyard Restaurant is an award-winning dining destination in the heart of Larnaca. "Good wine. Great food. Even better company." — that's the Elia philosophy. With 3,888 Instagram followers and 129 posts, Elia has built a reputation for comfort food elevated: rich flavours, premium ingredients, and every detail crafted with care. Your summer evenings begin at Elia.</p>
+<img src="https://images.pexels.com/photos/2664216/pexels-photo-2664216.jpeg?w=600" style="border-radius:8px;width:100%" alt="Elia Backyard cooking">
+</div>
+</section>
+
+<section>
+<div class="section-title">SIGNATURE MENU</div>
+<div class="section-sub">COMFORT FOOD, ELEVATED</div>
+<div class="menu-grid">
+<div class="menu-card"><h3>Premium Comfort Food <span class="price">€32</span></h3><p>Rich flavours, premium ingredients, and every detail crafted with care. The Elia signature.</p></div>
+<div class="menu-card"><h3>Wine Selection <span class="price">€9</span></h3><p>"Good wine. Great food. Even better company." Curated selection of Cypriot and international wines.</p></div>
+<div class="menu-card"><h3>Summer Evening Menu <span class="price">€38</span></h3><p>"Your summer evenings begin at Elia." Seasonal dishes designed for warm Mediterranean nights.</p></div>
+<div class="menu-card"><h3>Lovely Nights Special <span class="price">€25</span></h3><p>Curated tasting menu — small plates, big flavours. Perfect for sharing.</p></div>
+<div class="menu-card"><h3>Weekend Brunch <span class="price">€20</span></h3><p>Saturday & Sunday from 12:30. Eggs, salads, and Elia's signature twists.</p></div>
+<div class="menu-card"><h3>Dessert Artistry <span class="price">€11</span></h3><p>Homemade desserts crafted with the same attention as every other plate.</p></div>
+</div>
+</section>
+
+<section>
+<div class="section-title">GALLERY</div>
+<div class="section-sub">LOVELY NIGHTS AT ELIA</div>
+<div class="gallery">
+<img src="https://images.pexels.com/photos/67468/pexels-photo-67468.jpeg?w=600" alt="Rustic interior">
+<img src="https://images.pexels.com/photos/2664216/pexels-photo-2664216.jpeg?w=600" alt="Food preparation">
+<img src="https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?w=600" alt="Food spread">
+<img src="https://images.pexels.com/photos/1407846/pexels-photo-1407846.jpeg?w=600" alt="Wine">
+<img src="https://images.pexels.com/photos/3611846/pexels-photo-3611846.jpeg?w=600" alt="Grilled specialty">
+<img src="https://images.pexels.com/photos/302899/pexels-photo-302899.jpeg?w=600" alt="Coffee">
+</div>
+</section>
+
+<div class="reviews">
+<div class="section-title">GUEST EXPERIENCES</div>
+<div class="section-sub">3,888+ FOLLOWERS · AWARD-WINNING</div>
+<div class="review">
+<div class="stars">★★★★★</div>
+<p>"Comfort food, elevated. Rich flavours, premium ingredients and every detail crafted with care."</p>
+<div class="author">— Elia Backyard Instagram</div>
+</div>
+<div class="review">
+<div class="stars">★★★★★</div>
+<p>"Lovely nights! Good wine, great food, even better company. Our favourite restaurant in Larnaca."</p>
+<div class="author">— Instagram Follower</div>
+</div>
+<div class="review">
+<div class="stars">★★★★★</div>
+<p>"Your summer evenings begin at Elia. An award-winning gem in the heart of Larnaca."</p>
+<div class="author">— TripAdvisor Reviewer</div>
+</div>
+</div>
+
+<div class="cta-section" id="contact">
+<h2>EXPERIENCE ELIA</h2>
+<p>Award-Winning Restaurant · Heart of Larnaca</p>
+<p>📷 @elia.backyard.restaurant · 3,888+ followers · Sat & Sun: 12:30-22:30</p>
+<a href="https://www.instagram.com/elia.backyard.restaurant/">FIND US ON INSTAGRAM</a>
+</div>
+
+<footer>
+<p>Elia Backyard Restaurant · Larnaca, Cyprus</p>
+<p>Demo by Aurora Web · This is a preview website</p>
+<div class="social"><a href="https://www.instagram.com/elia.backyard.restaurant/">Instagram</a></div>
+</footer>
+
+
+<script>
+// Copy protection
+document.addEventListener('contextmenu', function(e) { e.preventDefault(); return false; });
+document.addEventListener('copy', function(e) { e.preventDefault(); return false; });
+document.addEventListener('cut', function(e) { e.preventDefault(); return false; });
+document.addEventListener('selectstart', function(e) { 
+    if (e.target.tagName !== 'INPUT' && e.target.tagName !== 'TEXTAREA') { e.preventDefault(); return false; }
+});
+document.addEventListener('dragstart', function(e) { e.preventDefault(); return false; });
+document.addEventListener('keydown', function(e) {
+    if (e.ctrlKey && (e.key === 'c' || e.key === 'u' || e.key === 's' || e.key === 'a')) { e.preventDefault(); return false; }
+    if (e.key === 'F12') { e.preventDefault(); return false; }
+    if (e.ctrlKey && e.shiftKey && e.key === 'I') { e.preventDefault(); return false; }
+    if (e.ctrlKey && e.shiftKey && e.key === 'J') { e.preventDefault(); return false; }
+});
+// Disable view source via right-click
+window.oncontextmenu = function() { return false; };
+// Clear console warning
+console.log('%cStop!', 'font-size:50px;color:red;font-weight:bold;');
+console.log('%cThis is a demo website by Aurora Web. Do not copy.', 'font-size:16px;color:#d4af37;');
+</script>
+
+</body>
+</html>
