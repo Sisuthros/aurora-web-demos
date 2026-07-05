@@ -99,9 +99,8 @@ body{background:var(--bg);color:var(--text);font-family:var(--fb);overflow-x:hid
   padding:.4rem 1rem;border:1px solid var(--border2);border-radius:var(--r)}
 #hero-title{font-family:var(--fd);font-size:var(--step-7);font-weight:700;
   line-height:1.0;letter-spacing:-.03em;max-width:900px;margin:0 auto 1.5rem;
-  background:linear-gradient(135deg,var(--text) 0%,var(--gold) 60%,var(--teal) 100%);
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-#hero-title em{font-family:var(--fs);font-style:italic;font-weight:400}
+  color:var(--text)}
+#hero-title em{font-family:var(--fs);font-style:italic;font-weight:400;color:var(--gold)}
 #hero-lead{font-size:var(--step-1);color:var(--text-dim);max-width:600px;
   margin:0 auto 2.5rem;line-height:1.6}
 #hero-cta{display:flex;gap:1rem;flex-wrap:wrap;justify-content:center}
@@ -216,11 +215,8 @@ footer{padding:4rem 2rem 2rem;border-top:1px solid var(--border);position:relati
   border-top:1px solid var(--border);color:var(--muted);font-size:.8rem}
 @media(max-width:768px){.footer-grid{grid-template-columns:1fr;gap:2rem}}
 
-/* Reveal animations — default visible, GSAP animates from hidden */
-.reveal{opacity:1}
-@media(prefers-reduced-motion:no-preference){
-  .reveal{opacity:0;transform:translateY(40px)}
-}
+/* Reveal animations — default VISIBLE, GSAP animates from hidden */
+.reveal{opacity:1;transform:none}
 </style>
 </head>
 <body>
