@@ -530,13 +530,8 @@ document.addEventListener('DOMContentLoaded',function(){
     navlinks.classList.toggle('open');
   });
 
-  // Lenis smooth scroll
-  if(typeof Lenis!=='undefined'){
-    const lenis=new Lenis({lerp:0.06,wheelMultiplier:1});
-    if(typeof ScrollTrigger!=='undefined'){lenis.on('scroll',ScrollTrigger.update)}
-    if(typeof gsap!=='undefined'){gsap.ticker.add(function(time){lenis.raf(time*1000)})}
-    gsap.ticker.lagSmoothing(0);
-  }
+  // Smooth scroll (native, no Lenis — Playwright/cloud browser compatible)
+  // Lenis removed for compatibility
 
   // GSAP animations
   if(typeof gsap==='undefined'||typeof ScrollTrigger==='undefined'){
