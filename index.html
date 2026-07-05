@@ -254,7 +254,7 @@ footer{padding:4rem 2.5rem 2rem;border-top:1px solid var(--line-dark)}
   <h2 class="sec-title reveal">Live <em>demos</em> for real Cyprus businesses.</h2>
   <p class="sec-sub reveal">Every site below is a real, working demo — built specifically for a local Cyprus business. Click any card to explore.</p>
   <div class="portfolio" style="margin-top:4rem">
-    <a href="demos/rebuke-lounge/" class="portfolio-item reveal">
+    <a href="demos/rebuke-lounge/" class="portfolio-item">
       <div class="portfolio-img"><img src="https://images.pexels.com/photos/941861/pexels-photo-941861.jpeg?w=600" alt="Re.buke Lounge" loading="lazy"></div>
       <div class="portfolio-info"><div class="portfolio-name">Re.buke Lounge</div><div class="portfolio-meta">13.4K · Larnaca</div></div>
       <span class="portfolio-badge">Beach Bar</span>
@@ -479,16 +479,18 @@ document.addEventListener('DOMContentLoaded',function(){
   gsap.fromTo('.hero-cta-row',{opacity:0,y:20},{opacity:1,y:0,duration:.8,delay:.7,ease:'power2.out'});
   gsap.fromTo('.hero-meta',{opacity:0,y:20},{opacity:1,y:0,duration:.8,delay:.1,ease:'power2.out'});
 
-  // General reveals
+  // General reveals — fromTo with immediateRender:false so elements stay visible until scroll triggers
   gsap.utils.toArray('.reveal').forEach(function(el){
     if(el.closest('.hero'))return;
     gsap.fromTo(el,{opacity:0,y:50},{opacity:1,y:0,duration:1,ease:'power3.out',
+      immediateRender:false,
       scrollTrigger:{trigger:el,start:'top 88%',toggleActions:'play none none none'}});
   });
 
-  // Portfolio stagger
+  // Portfolio items — no .reveal class, always visible. Animate on scroll if possible.
   gsap.utils.toArray('.portfolio-item').forEach(function(el,i){
     gsap.fromTo(el,{opacity:0,y:60},{opacity:1,y:0,duration:.8,delay:(i%3)*0.1,ease:'power3.out',
+      immediateRender:false,
       scrollTrigger:{trigger:el,start:'top 90%',toggleActions:'play none none none'}});
   });
 
