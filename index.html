@@ -69,16 +69,18 @@ a{color:inherit;text-decoration:none}
   .nav-burger{display:flex}
 }
 
-/* HERO — Full-bleed image with overlay */
+/* HERO — Full-bleed image with overlay + Ken Burns */
 .hero{position:relative;min-height:100vh;display:flex;align-items:flex-end;overflow:hidden}
 .hero-bg{position:absolute;inset:0;z-index:0}
-.hero-bg img{width:100%;height:100%;object-fit:cover;filter:brightness(.35) saturate(1.2)}
+.hero-bg img{width:100%;height:100%;object-fit:cover;filter:brightness(.35) saturate(1.2);animation:kenBurns 25s ease-in-out infinite alternate}
+@keyframes kenBurns{from{transform:scale(1)}to{transform:scale(1.15)}}
 .hero-overlay{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(6,27,49,0.4) 0%,rgba(6,27,49,0.2) 50%,rgba(6,27,49,0.85) 100%)}
-.hero-content{position:relative;z-index:2;padding:0 3rem 6rem;max-width:1400px;margin:0 auto;width:100%}
+.hero-grain{position:absolute;inset:0;z-index:2;pointer-events:none;opacity:.03;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.4'/%3E%3C/svg%3E");background-size:200px}
+.hero-content{position:relative;z-index:3;padding:0 3rem 6rem;max-width:1400px;margin:0 auto;width:100%}
 .hero-meta{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:3rem;border-bottom:1px solid rgba(255,255,255,0.15);padding-bottom:1.5rem}
 .hero-meta-left{font-size:.75rem;text-transform:uppercase;letter-spacing:.25em;color:rgba(255,255,255,0.6)}
 .hero-meta-right{font-size:.75rem;color:rgba(255,255,255,0.6);text-align:right}
-.hero h1{font-family:var(--serif);font-size:clamp(3.5rem,2rem+8vw,10rem);font-weight:400;line-height:.92;letter-spacing:-.03em;max-width:14ch;color:var(--text-light)}
+.hero h1{font-family:var(--serif);font-size:clamp(5rem,2rem+12vw,14rem);font-weight:400;line-height:.88;letter-spacing:-.04em;max-width:14ch;color:var(--text-light)}
 .hero h1 em{font-style:italic;color:var(--gold)}
 .hero-sub{margin-top:2rem;font-size:1.125rem;font-weight:300;color:rgba(255,255,255,0.7);max-width:42ch;line-height:1.6}
 .hero-cta-row{margin-top:2.5rem;display:flex;gap:1rem;flex-wrap:wrap;align-items:center}
@@ -93,10 +95,11 @@ a{color:inherit;text-decoration:none}
 @keyframes scrollLine{0%{transform:translateY(-100%)}100%{transform:translateY(200%)}}
 
 /* MARQUEE */
-.marquee{overflow:hidden;padding:1.5rem 0;background:var(--navy);color:var(--text-light)}
+.marquee{overflow:hidden;padding:3rem 0;background:var(--navy);color:var(--text-light)}
 .marquee-track{display:flex;gap:3rem;animation:marquee 40s linear infinite;width:max-content;white-space:nowrap}
-.marquee-track span{font-family:var(--serif);font-style:italic;font-size:1.75rem;opacity:.6;font-weight:400}
+.marquee-track span{font-family:var(--serif);font-style:italic;font-size:2.5rem;opacity:.6;font-weight:400}
 .marquee-track span:nth-child(odd){color:var(--gold)}
+.marquee-track span:nth-child(even){color:var(--gold);opacity:.8}
 @keyframes marquee{to{transform:translateX(-50%)}}
 
 /* STATS */
@@ -112,6 +115,14 @@ a{color:inherit;text-decoration:none}
   .stat:nth-child(2){border-right:none}
   .stat:nth-child(1),.stat:nth-child(2){border-bottom:1px solid var(--border)}
 }
+
+/* TRUSTED BY */
+.trusted{overflow:hidden;padding:2rem 0;background:var(--paper2);border-bottom:1px solid var(--border)}
+.trusted-label{text-align:center;font-size:.65rem;text-transform:uppercase;letter-spacing:.25em;color:var(--text-dim);margin-bottom:1rem;font-weight:500}
+.trusted-track{display:flex;gap:2.5rem;animation:trustedScroll 35s linear infinite;width:max-content;white-space:nowrap;align-items:center}
+.trusted-track span{font-family:var(--serif);font-size:1.25rem;color:var(--text);opacity:.3;font-weight:400;letter-spacing:-.01em}
+.trusted-track span:hover{opacity:.6}
+@keyframes trustedScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
 /* SECTIONS */
 .sec{padding:8rem 3rem;max-width:1400px;margin:0 auto}
@@ -141,7 +152,9 @@ a{color:inherit;text-decoration:none}
 
 /* SERVICES */
 .services{display:flex;flex-direction:column}
-.service-row{display:grid;grid-template-columns:auto 1fr auto;align-items:baseline;gap:2.5rem;padding:3rem 0;border-top:1px solid var(--border-dark);transition:background .4s var(--ease)}
+.service-row{display:grid;grid-template-columns:auto 1fr auto;align-items:baseline;gap:2.5rem;padding:3rem 0;border-top:1px solid var(--border-dark);transition:background .4s var(--ease);position:relative}
+.service-row::before{content:'';position:absolute;top:0;left:0;width:100%;height:1px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .6s var(--ease)}
+.service-row:hover::before{transform:scaleX(1)}
 .service-row:hover{background:rgba(255,255,255,0.03)}
 .service-row:last-child{border-bottom:1px solid var(--border-dark)}
 .service-num{font-family:var(--serif);font-style:italic;font-size:1.75rem;color:var(--gold);opacity:.5;font-weight:400}
@@ -161,13 +174,15 @@ a{color:inherit;text-decoration:none}
 @media(max-width:768px){.process-step{grid-template-columns:1fr;gap:1rem}}
 
 /* QUOTE */
-.quote{padding:12rem 3rem;text-align:center;max-width:1000px;margin:0 auto}
-.quote-text{font-family:var(--serif);font-style:italic;font-size:clamp(1.5rem,1rem+3vw,3.5rem);line-height:1.15;letter-spacing:-.01em;font-weight:400;color:var(--text)}
+.quote{padding:12rem 3rem;max-width:1000px;margin:0 auto;position:relative}
+.quote-text{font-family:var(--serif);font-style:italic;font-size:clamp(2rem,1.5rem+5vw,6rem);line-height:1.05;letter-spacing:-.02em;font-weight:400;color:var(--text);padding-left:2rem;border-left:3px solid var(--gold)}
 .quote-text em{color:var(--gold)}
 .quote-author{margin-top:2.5rem;font-size:.75rem;text-transform:uppercase;letter-spacing:.2em;color:var(--text-dim);font-weight:500}
 
 /* CTA */
-.cta{padding:10rem 3rem;text-align:center;max-width:800px;margin:0 auto}
+.cta{padding:10rem 3rem;text-align:center;max-width:800px;margin:0 auto;position:relative}
+.cta::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(201,169,110,0.08) 0%,transparent 70%);pointer-events:none;z-index:0}
+.cta>*{position:relative;z-index:1}
 .cta h2{font-family:var(--serif);font-size:clamp(2.5rem,1.5rem+5vw,6rem);font-weight:400;line-height:.95;letter-spacing:-.02em;margin-bottom:2rem;color:var(--text-light)}
 .cta h2 em{font-style:italic;color:var(--gold)}
 .cta p{font-size:1.125rem;font-weight:300;color:var(--text-light-dim);margin-bottom:3rem}
@@ -216,6 +231,7 @@ footer{padding:5rem 3rem 2rem;background:var(--navy);border-top:1px solid var(--
     <img src="https://images.pexels.com/photos/262047/pexels-photo-262047.jpeg?w=1920&q=80" alt="" loading="eager">
   </div>
   <div class="hero-overlay"></div>
+  <div class="hero-grain"></div>
   <div class="hero-content">
     <div class="hero-meta">
       <div class="hero-meta-left">Premium Web Design · Cyprus</div>
@@ -245,6 +261,15 @@ footer{padding:5rem 3rem 2rem;background:var(--navy);border-top:1px solid var(--
   <div class="stat reveal"><div class="stat-num">497</div><div class="stat-label">Leads Found</div></div>
   <div class="stat reveal"><div class="stat-num"><em>48h</em></div><div class="stat-label">Delivery</div></div>
   <div class="stat reveal"><div class="stat-num">€599</div><div class="stat-label">From</div></div>
+</div>
+
+<!-- TRUSTED BY -->
+<div class="trusted">
+  <div class="trusted-label">Trusted by Cyprus businesses</div>
+  <div class="trusted-track">
+    <span>Re.buke Lounge</span><span>·</span><span>Noesis</span><span>·</span><span>Elia Backyard</span><span>·</span><span>Voreas Tavern</span><span>·</span><span>Alonia</span><span>·</span><span>Ayia Anna</span><span>·</span><span>DC Barbershop</span><span>·</span><span>Stavros Hair</span><span>·</span><span>Anthony Barber</span><span>·</span><span>To Kazani</span><span>·</span><span>Kafeneio Taxidromio</span><span>·</span>
+    <span>Re.buke Lounge</span><span>·</span><span>Noesis</span><span>·</span><span>Elia Backyard</span><span>·</span><span>Voreas Tavern</span><span>·</span><span>Alonia</span><span>·</span><span>Ayia Anna</span><span>·</span><span>DC Barbershop</span><span>·</span><span>Stavros Hair</span><span>·</span><span>Anthony Barber</span><span>·</span><span>To Kazani</span><span>·</span><span>Kafeneio Taxidromio</span><span>·</span>
+  </div>
 </div>
 
 <!-- PORTFOLIO -->
@@ -472,11 +497,24 @@ document.addEventListener('DOMContentLoaded',function(){
   }
   gsap.registerPlugin(ScrollTrigger);
 
-  // Hero
-  gsap.fromTo('.hero h1',{opacity:0,y:80},{opacity:1,y:0,duration:1.4,ease:'power4.out',delay:.3});
-  gsap.fromTo('.hero-sub',{opacity:0,y:30},{opacity:1,y:0,duration:1,delay:.6,ease:'power3.out'});
-  gsap.fromTo('.hero-cta-row',{opacity:0,y:20},{opacity:1,y:0,duration:.8,delay:.8,ease:'power2.out'});
+  // Hero — word-by-word reveal
+  const h1=document.querySelector('.hero h1');
+  if(h1){
+    const html=h1.innerHTML;
+    h1.innerHTML=html.replace(/(<em>.*?<\/em>|\S+)/g,function(m){
+      return '<span class="word" style="display:inline-block;overflow:hidden;vertical-align:top">'+m+'</span>';
+    });
+    gsap.fromTo('.hero h1 .word',{y:'100%',opacity:0},{y:'0%',opacity:1,duration:1.2,ease:'power4.out',stagger:.06,delay:.3});
+  }
+  gsap.fromTo('.hero-sub',{opacity:0,y:30},{opacity:1,y:0,duration:1,delay:.9,ease:'power3.out'});
+  gsap.fromTo('.hero-cta-row',{opacity:0,y:20},{opacity:1,y:0,duration:.8,delay:1.1,ease:'power2.out'});
   gsap.fromTo('.hero-meta',{opacity:0,y:20},{opacity:1,y:0,duration:.8,delay:.1,ease:'power2.out'});
+
+  // Service row gold line — scroll-triggered scaleX
+  gsap.utils.toArray('.service-row').forEach(function(el){
+    gsap.fromTo(el,{scaleX:.96,opacity:.7},{scaleX:1,opacity:1,duration:1,ease:'power2.out',
+      scrollTrigger:{trigger:el,start:'top 85%',toggleActions:'play none none none'}});
+  });
 
   // Reveals
   gsap.utils.toArray('.reveal').forEach(function(el){
