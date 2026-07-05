@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Noesis Restaurant & Lounge Bar | Mediterranean Fusion by the Sea</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--teal:#2a9d8f;--dark:#0d1b2a;--cream:#e9c46a;--light:#f4f1de}
+body{font-family:'Georgia',serif;background:var(--dark);color:var(--light);overflow-x:hidden}
+.hero{height:100vh;background:linear-gradient(135deg,rgba(13,27,42,0.5),rgba(13,27,42,0.85)),url('https://images.pexels.com/photos/262047/pexels-photo-262047.jpeg?w=1200') center/cover fixed;display:flex;align-items:center;justify-content:center;text-align:center}
+.hero h1{font-size:4.5rem;letter-spacing:0.25em;color:var(--cream);text-shadow:0 4px 30px rgba(0,0,0,0.8)}
+.hero p{font-size:1.2rem;letter-spacing:0.3em;margin-top:0.5rem;color:var(--teal);text-transform:uppercase}
+.hero .cta{margin-top:2rem;display:inline-block;padding:1rem 3rem;border:2px solid var(--cream);color:var(--cream);text-decoration:none;font-size:1rem;letter-spacing:0.15em;transition:all 0.3s}
+.hero .cta:hover{background:var(--cream);color:var(--dark)}
+section{padding:5rem 2rem;max-width:1200px;margin:0 auto}
+.section-title{text-align:center;font-size:2.5rem;color:var(--cream);margin-bottom:0.5rem;letter-spacing:0.1em}
+.section-sub{text-align:center;font-size:0.9rem;color:var(--teal);margin-bottom:3rem;letter-spacing:0.2em;text-transform:uppercase}
+.story{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center}
+.story p{line-height:1.8;font-size:1.1rem;opacity:0.85}
+.info-bar{display:flex;justify-content:center;gap:3rem;flex-wrap:wrap;padding:2rem;background:rgba(42,157,143,0.08);border-top:1px solid rgba(42,157,143,0.3);border-bottom:1px solid rgba(42,157,143,0.3)}
+.info-item{text-align:center}
+.info-item .label{font-size:0.7rem;letter-spacing:0.2em;color:var(--teal);text-transform:uppercase}
+.info-item .value{font-size:1.3rem;margin-top:0.3rem;color:var(--cream)}
+.menu-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2rem}
+.menu-card{background:rgba(255,255,255,0.03);border:1px solid rgba(233,196,106,0.2);padding:2rem;border-radius:4px;transition:all 0.3s}
+.menu-card:hover{border-color:var(--cream);transform:translateY(-5px)}
+.menu-card h3{color:var(--cream);font-size:1.3rem;margin-bottom:0.5rem}
+.menu-card .price{color:var(--teal);float:right;font-size:1.1rem}
+.menu-card p{opacity:0.7;line-height:1.6;margin-top:0.5rem}
+.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1rem}
+.gallery img{width:100%;height:250px;object-fit:cover;border-radius:4px;filter:brightness(0.85);transition:all 0.3s}
+.gallery img:hover{filter:brightness(1);transform:scale(1.02)}
+.reviews{background:rgba(42,157,143,0.05);padding:5rem 2rem}
+.review{text-align:center;max-width:700px;margin:0 auto 2rem}
+.review .stars{color:var(--cream);font-size:1.2rem;margin-bottom:0.5rem}
+.review p{font-size:1.1rem;line-height:1.7;opacity:0.85;font-style:italic}
+.review .author{margin-top:0.5rem;color:var(--teal);font-size:0.9rem}
+.cta-section{text-align:center;padding:5rem 2rem;background:linear-gradient(135deg,rgba(42,157,143,0.2),rgba(13,27,42,0.5))}
+.cta-section h2{font-size:2.5rem;color:var(--cream);margin-bottom:1rem}
+.cta-section p{font-size:1.1rem;opacity:0.7;margin-bottom:2rem}
+.cta-section a{display:inline-block;padding:1.2rem 3rem;background:var(--cream);color:var(--dark);text-decoration:none;font-size:1.1rem;letter-spacing:0.1em;font-weight:bold;transition:all 0.3s}
+.cta-section a:hover{transform:scale(1.05);box-shadow:0 5px 30px rgba(233,196,106,0.4)}
+footer{padding:3rem 2rem;text-align:center;border-top:1px solid rgba(233,196,106,0.15)}
+footer p{opacity:0.5;font-size:0.9rem}
+footer .social{margin-top:1rem}
+footer .social a{color:var(--cream);text-decoration:none;margin:0 1rem}
+@media(max-width:768px){.hero h1{font-size:2.2rem}.story{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div class="hero">
+<div>
+<h1>NOESIS</h1>
+<p>Temple of Taste · Mediterranean Fusion by the Sea</p>
+<p style="font-size:0.85rem;margin-top:0.5rem;color:var(--cream);opacity:0.7">Larnaca · Cyprus</p>
+<a href="#contact" class="cta">RESERVE A TABLE</a>
+</div>
+</div>
+
+<div class="info-bar">
+<div class="info-item"><div class="label">Followers</div><div class="value">10,700+</div></div>
+<div class="info-item"><div class="label">Instagram</div><div class="value">@noesis_larnaca</div></div>
+<div class="info-item"><div class="label">Posts</div><div class="value">194</div></div>
+<div class="info-item"><div class="label">Cuisine</div><div class="value">Mediterranean Fusion</div></div>
+</div>
+
+<section>
+<div class="section-title">THE NOESIS EXPERIENCE</div>
+<div class="section-sub">WHERE MEDITERRANEAN FLAVOURS MEET THE SEA</div>
+<div class="story">
+<p>Noesis is a Temple of Taste — Mediterranean fusion by the sea, where every dish tells a story. With over 10,700 Instagram followers and 194 posts showcasing culinary excellence, Noesis has earned its place as one of Larnaca's most beloved dining destinations. From 450gr USDA prime beef fillet to orange cream & yogurt desserts, every plate is crafted with passion.</p>
+<img src="https://images.pexels.com/photos/3296394/pexels-photo-3296394.jpeg?w=600" style="border-radius:8px;width:100%" alt="Noesis dining">
+</div>
+</section>
+
+<section>
+<div class="section-title">SIGNATURE MENU</div>
+<div class="section-sub">CRAFTED WITH PASSION</div>
+<div class="menu-grid">
+<div class="menu-card"><h3>USDA Prime Beef Fillet <span class="price">€45</span></h3><p>450gr fire-grilled beef fillet, seasonal vegetables, red wine reduction. "Some things are worth every bite."</p></div>
+<div class="menu-card"><h3>Orange Cream & Yogurt <span class="price">€12</span></h3><p>A love letter to the Mediterranean — layered between crisp pastry and fresh citrus.</p></div>
+<div class="menu-card"><h3>Wedding Menu Available <span class="price">€POA</span></h3><p>"Your love story deserves a setting as beautiful as the moment itself." Full catering for special events.</p></div>
+<div class="menu-card"><h3>Mediterranean Fusion <span class="price">€28</span></h3><p>Fresh seafood, local ingredients, and Cypriot flavours with a modern twist.</p></div>
+<div class="menu-card"><h3>Sunset Dining <span class="price">€35</span></h3><p>Three-course evening menu with wine pairing, served by the sea.</p></div>
+<div class="menu-card"><h3>Lounge Cocktails <span class="price">€14</span></h3><p>Premium spirits, fresh ingredients, and Mediterranean-inspired mixology.</p></div>
+</div>
+</section>
+
+<section>
+<div class="section-title">GALLERY</div>
+<div class="section-sub">A FEAST FOR THE SENSES</div>
+<div class="gallery">
+<img src="https://images.pexels.com/photos/262047/pexels-photo-262047.jpeg?w=600" alt="Restaurant interior">
+<img src="https://images.pexels.com/photos/3611846/pexels-photo-3611846.jpeg?w=600" alt="Grilled specialty">
+<img src="https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?w=600" alt="Food spread">
+<img src="https://images.pexels.com/photos/1279330/pexels-photo-1279330.jpeg?w=600" alt="Fine dining">
+<img src="https://images.pexels.com/photos/1407846/pexels-photo-1407846.jpeg?w=600" alt="Wine pairing">
+<img src="https://images.pexels.com/photos/941861/pexels-photo-941861.jpeg?w=600" alt="Outdoor dining">
+</div>
+</section>
+
+<div class="reviews">
+<div class="section-title">GUEST EXPERIENCES</div>
+<div class="section-sub">10,700+ FOLLOWERS · 194 POSTS OF EXCELLENCE</div>
+<div class="review">
+<div class="stars">★★★★★</div>
+<p>"The USDA prime beef was fire-grilled to perfection. Noesis is a true temple of taste in Larnaca."</p>
+<div class="author">— Instagram Follower</div>
+</div>
+<div class="review">
+<div class="stars">★★★★★</div>
+<p>"Mediterranean fusion by the sea — every dish was a work of art. The orange cream dessert was unforgettable."</p>
+<div class="author">— Google Reviews</div>
+</div>
+<div class="review">
+<div class="stars">★★★★★</div>
+<p>"Our wedding dinner at Noesis was magical. 'Your love story deserves a setting as beautiful as the moment itself' — they delivered."</p>
+<div class="author">— TripAdvisor Reviewer</div>
+</div>
+</div>
+
+<div class="cta-section" id="contact">
+<h2>DINE AT NOESIS</h2>
+<p>Mediterranean Fusion by the Sea · Larnaca, Cyprus</p>
+<p>📷 @noesis_larnaca · 10,700+ followers · 194 posts</p>
+<a href="https://www.instagram.com/noesis_larnaca/">FIND US ON INSTAGRAM</a>
+</div>
+
+<footer>
+<p>Noesis Restaurant & Lounge Bar · Larnaca, Cyprus</p>
+<p>Demo by Aurora Web · This is a preview website</p>
+<div class="social"><a href="https://www.instagram.com/noesis_larnaca/">Instagram</a></div>
+</footer>
+
+</body>
+</html>
