@@ -352,23 +352,5 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 </script>
-
-<script>
-document.addEventListener('contextmenu', function(e) { e.preventDefault(); return false; });
-document.addEventListener('copy', function(e) { e.preventDefault(); return false; });
-document.addEventListener('selectstart', function(e) { 
-    if (e.target.tagName !== 'INPUT' && e.target.tagName !== 'TEXTAREA') { e.preventDefault(); return false; }
-});
-document.addEventListener('dragstart', function(e) { e.preventDefault(); return false; });
-document.addEventListener('keydown', function(e) {
-    if (e.ctrlKey && (e.key === 'c' || e.key === 'u' || e.key === 's' || e.key === 'a')) { e.preventDefault(); return false; }
-    if (e.key === 'F12') { e.preventDefault(); return false; }
-    if (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J')) { e.preventDefault(); return false; }
-});
-window.oncontextmenu = function() { return false; };
-console.log('%cStop!', 'font-size:50px;color:red;font-weight:bold;');
-console.log('%cDemo by Aurora Web. Do not copy.', 'font-size:16px;');
-</script>
-
 </body>
 </html>

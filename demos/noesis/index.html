@@ -134,28 +134,16 @@ footer .social a{color:var(--cream);text-decoration:none;margin:0 1rem}
 <div class="social"><a href="https://www.instagram.com/noesis_larnaca/">Instagram</a></div>
 </footer>
 
-
 <script>
-// Copy protection
 document.addEventListener('contextmenu', function(e) { e.preventDefault(); return false; });
 document.addEventListener('copy', function(e) { e.preventDefault(); return false; });
 document.addEventListener('cut', function(e) { e.preventDefault(); return false; });
-document.addEventListener('selectstart', function(e) { 
-    if (e.target.tagName !== 'INPUT' && e.target.tagName !== 'TEXTAREA') { e.preventDefault(); return false; }
-});
+document.addEventListener('selectstart', function(e) { if (e.target.tagName !== 'INPUT' && e.target.tagName !== 'TEXTAREA') { e.preventDefault(); return false; } });
 document.addEventListener('dragstart', function(e) { e.preventDefault(); return false; });
-document.addEventListener('keydown', function(e) {
-    if (e.ctrlKey && (e.key === 'c' || e.key === 'u' || e.key === 's' || e.key === 'a')) { e.preventDefault(); return false; }
-    if (e.key === 'F12') { e.preventDefault(); return false; }
-    if (e.ctrlKey && e.shiftKey && e.key === 'I') { e.preventDefault(); return false; }
-    if (e.ctrlKey && e.shiftKey && e.key === 'J') { e.preventDefault(); return false; }
-});
-// Disable view source via right-click
+document.addEventListener('keydown', function(e) { if (e.ctrlKey && (e.key==='c'||e.key==='u'||e.key==='s'||e.key==='a')) { e.preventDefault(); return false; } if (e.key==='F12') { e.preventDefault(); return false; } if (e.ctrlKey && e.shiftKey && (e.key==='I'||e.key==='J')) { e.preventDefault(); return false; } });
 window.oncontextmenu = function() { return false; };
-// Clear console warning
 console.log('%cStop!', 'font-size:50px;color:red;font-weight:bold;');
-console.log('%cThis is a demo website by Aurora Web. Do not copy.', 'font-size:16px;color:#d4af37;');
+console.log('%cDemo by Aurora Web. Do not copy.', 'font-size:16px;color:gold;');
 </script>
-
 </body>
 </html>
