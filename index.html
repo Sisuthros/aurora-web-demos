@@ -3,18 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Aurora Web — Premium Websites for Cyprus</title>
-<meta name="description" content="Premium websites, AI automation, and digital growth for businesses in Cyprus. 48-hour delivery. Free mockup before payment.">
-<meta property="og:title" content="Aurora Web — Premium Websites for Cyprus">
-<meta property="og:description" content="Premium multilingual websites for Cyprus businesses. 48h delivery. Free mockup.">
+<title>Aurora Web — Premium Websites for Cyprus Businesses</title>
+<meta name="description" content="Aurora Web builds premium, high-converting websites for real Cyprus businesses. AI automation, SEO, 48h delivery. From €599.">
+<meta property="og:title" content="Aurora Web — Premium Websites for Cyprus Businesses">
+<meta property="og:description" content="We build websites that make your competition irrelevant. 13 live demos for real Cyprus businesses.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://sisuthros.github.io/aurora-web-demos/">
+<meta property="og:image" content="https://images.pexels.com/photos/262047/pexels-photo-262047.jpeg?w=1200">
 <meta name="theme-color" content="#061b31">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='4' fill='%23061b31'/%3E%3Ctext x='50' y='72' font-family='Georgia,serif' font-size='56' font-weight='400' text-anchor='middle' fill='%23C9A96E' font-style='italic'%3EA%3C/text%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='16' fill='%23061b31'/%3E%3Ctext x='50' y='72' font-family='Georgia,serif' font-size='64' font-style='italic' text-anchor='middle' fill='%23C9A96E'%3EA%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-<noscript><link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet"></noscript>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" media="print" onload="this.media='all'">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
 <style>
@@ -31,8 +30,7 @@
   --text-light-dim:rgba(247,248,248,0.6);
   --border:rgba(17,27,49,0.08);
   --border-dark:rgba(255,255,255,0.08);
-  --shadow:rgba(50,50,93,0.25) 0px 30px 45px -30px, rgba(0,0,0,0.1) 0px 18px 36px -18px;
-  --shadow-ambient:rgba(23,23,23,0.08) 0px 15px 35px 0px;
+  --shadow:rgba(50,50,93,0.25) 0px 30px 45px -30px,rgba(0,0,0,0.1) 0px 18px 36px -18px;
   --r:4px;
   --ease:cubic-bezier(.22,1,.36,1);
   --serif:'Instrument Serif',serif;
@@ -44,411 +42,328 @@ body{font-family:var(--sans);background:var(--paper);color:var(--text);line-heig
 img{display:block;max-width:100%;height:auto}
 a{color:inherit;text-decoration:none}
 
-/* SCROLL PROGRESS */
-.scroll-progress{position:fixed;top:0;left:0;height:2px;width:0;background:var(--gold);z-index:9999;transition:width .1s}
+/* Scroll progress */
+.scroll-progress{position:fixed;top:0;left:0;height:2px;width:0;background:var(--gold);z-index:9999;transition:width .1s linear}
 
-/* NAV */
-.nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:1.5rem 3rem;transition:all .4s var(--ease)}
-.nav.scrolled{background:rgba(248,246,240,0.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
-.nav-logo{font-family:var(--serif);font-size:1.5rem;font-style:italic;color:var(--text);letter-spacing:-.02em}
-.nav-logo span{color:var(--gold)}
+/* Nav */
+.nav{position:fixed;top:0;left:0;right:0;display:flex;justify-content:space-between;align-items:center;padding:1.5rem 3rem;z-index:100;transition:background .4s var(--ease),backdrop-filter .4s var(--ease),border-color .4s var(--ease),padding .4s var(--ease);border-bottom:1px solid transparent}
+.nav.scrolled{background:rgba(248,246,240,0.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:1rem 3rem}
+.nav-logo{font-family:var(--serif);font-style:italic;font-size:1.5rem;color:var(--text);letter-spacing:-.01em}
+.nav.scrolled .nav-logo{color:var(--text)}
 .nav-links{display:flex;gap:2.5rem;align-items:center}
-.nav-links a{font-size:.875rem;font-weight:500;color:var(--text-dim);transition:color .3s}
+.nav-links a{font-size:.875rem;font-weight:500;color:var(--text-dim);transition:color .3s var(--ease);position:relative}
+.nav-links a::after{content:'';position:absolute;left:0;bottom:-4px;width:0;height:1px;background:var(--gold);transition:width .4s var(--ease)}
 .nav-links a:hover{color:var(--text)}
-.nav-cta{padding:.5rem 1.4rem;border:1px solid var(--text);border-radius:var(--r);color:var(--text)!important;font-weight:600;transition:all .3s}
-.nav-cta:hover{background:var(--text);color:var(--paper)!important}
-.nav-burger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none}
-.nav-burger span{width:22px;height:1.5px;background:var(--text);transition:.3s}
-.nav-burger.open span:nth-child(1){transform:rotate(45deg) translate(4px,4px)}
+.nav-links a:hover::after{width:100%}
+.nav-cta{font-size:.8125rem;font-weight:600;padding:.7rem 1.4rem;border:1px solid var(--text);border-radius:var(--r);color:var(--text);transition:background .3s var(--ease),color .3s var(--ease)}
+.nav-cta:hover{background:var(--text);color:var(--paper)}
+.nav-burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:.5rem;background:none;border:none}
+.nav-burger span{width:24px;height:2px;background:var(--text);transition:transform .3s var(--ease),opacity .3s var(--ease)}
+.nav-burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
 .nav-burger.open span:nth-child(2){opacity:0}
-.nav-burger.open span:nth-child(3){transform:rotate(-45deg) translate(4px,-4px)}
-@media(max-width:768px){
-  .nav{padding:1.2rem 1.5rem}
-  .nav-links{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;background:var(--paper);padding:2rem;gap:1.5rem;border-bottom:1px solid var(--border)}
-  .nav-links.open{display:flex}
-  .nav-burger{display:flex}
-}
+.nav-burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
 
-/* HERO — Full-bleed image with overlay + Ken Burns */
+/* Hero */
 .hero{position:relative;min-height:100vh;display:flex;align-items:flex-end;overflow:hidden}
 .hero-bg{position:absolute;inset:0;z-index:0}
 .hero-bg img{width:100%;height:100%;object-fit:cover;filter:brightness(.35) saturate(1.2);animation:kenBurns 25s ease-in-out infinite alternate}
 @keyframes kenBurns{from{transform:scale(1)}to{transform:scale(1.15)}}
-.hero-overlay{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(6,27,49,0.4) 0%,rgba(6,27,49,0.2) 50%,rgba(6,27,49,0.85) 100%)}
-.hero-grain{position:absolute;inset:0;z-index:2;pointer-events:none;opacity:.03;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.4'/%3E%3C/svg%3E");background-size:200px}
+.hero-overlay{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(6,27,49,0.4) 0%,rgba(6,27,49,0.2) 40%,rgba(6,27,49,0.85) 100%)}
+.hero-grain{position:absolute;inset:0;z-index:2;opacity:.03;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
 .hero-content{position:relative;z-index:3;padding:0 3rem 6rem;max-width:1400px;margin:0 auto;width:100%}
-.hero-meta{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:3rem;border-bottom:1px solid rgba(255,255,255,0.15);padding-bottom:1.5rem}
-.hero-meta-left{font-size:.75rem;text-transform:uppercase;letter-spacing:.25em;color:rgba(255,255,255,0.6)}
-.hero-meta-right{font-size:.75rem;color:rgba(255,255,255,0.6);text-align:right}
-.hero h1{font-family:var(--serif);font-size:clamp(5rem,2rem+12vw,14rem);font-weight:400;line-height:.88;letter-spacing:-.04em;max-width:14ch;color:var(--text-light)}
+.hero-meta{display:flex;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,0.15);padding-bottom:1.5rem;margin-bottom:3rem}
+.hero-meta span{font-size:.75rem;text-transform:uppercase;letter-spacing:.25em;color:rgba(255,255,255,0.6)}
+.hero h1{font-family:var(--serif);font-size:clamp(5rem,2rem + 12vw,14rem);font-weight:400;line-height:.88;letter-spacing:-.04em;max-width:14ch;color:var(--text-light)}
 .hero h1 em{font-style:italic;color:var(--gold)}
-.hero-sub{margin-top:2rem;font-size:1.25rem;font-weight:400;color:rgba(255,255,255,0.85);max-width:42ch;line-height:1.6}
-.hero-cta-row{margin-top:2.5rem;display:flex;gap:1.5rem;flex-wrap:wrap;align-items:center}
-.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.875rem 1.75rem;font-size:.9375rem;font-weight:600;border-radius:var(--r);transition:all .3s var(--ease);border:none;cursor:pointer;letter-spacing:-.01em}
+.hero h1 .word{display:inline-block;overflow:hidden}
+.hero h1 .word span{display:inline-block}
+.hero-sub{margin-top:2rem;font-size:1.25rem;color:rgba(255,255,255,0.85);max-width:42ch;font-weight:400}
+.hero-cta-row{margin-top:2.5rem;display:flex;gap:1.5rem;flex-wrap:wrap}
+.btn{font-size:.875rem;padding:1rem 1.75rem;font-weight:600;border-radius:var(--r);transition:transform .4s var(--ease),box-shadow .4s var(--ease),background .3s var(--ease),border-color .3s var(--ease);display:inline-flex;align-items:center;gap:.5rem;cursor:pointer;border:none}
 .btn-gold{background:var(--gold);color:var(--navy)}
-.btn-gold:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(201,169,110,0.5)}
-.btn-ghost{background:transparent;color:var(--text-light);border:1px solid rgba(255,255,255,0.2)}
-.btn-ghost:hover{border-color:rgba(255,255,255,0.5);background:rgba(255,255,255,0.05)}
-.hero-scroll{position:absolute;bottom:2rem;right:3rem;font-size:.75rem;color:rgba(255,255,255,0.7);display:flex;align-items:center;gap:.5rem;letter-spacing:.1em;text-transform:uppercase;z-index:3}
-.hero-scroll-line{width:1px;height:40px;background:rgba(255,255,255,0.2);position:relative;overflow:hidden}
-.hero-scroll-line::after{content:'';position:absolute;top:0;left:0;width:100%;height:50%;background:var(--gold);animation:scrollLine 2s ease-in-out infinite}
+.btn-gold:hover{transform:translateY(-2px);box-shadow:0 10px 30px -10px rgba(201,169,110,0.6)}
+.btn-ghost{background:transparent;border:1px solid rgba(255,255,255,0.2);color:var(--text-light)}
+.btn-ghost:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-2px)}
+.hero-scroll{position:absolute;bottom:2rem;right:3rem;font-size:.75rem;color:rgba(255,255,255,0.7);text-transform:uppercase;letter-spacing:.2em;display:flex;flex-direction:column;align-items:center;gap:1rem;z-index:3}
+.hero-scroll-line{width:1px;height:50px;background:rgba(255,255,255,0.2);position:relative;overflow:hidden}
+.hero-scroll-line::after{content:'';position:absolute;top:0;left:0;width:100%;height:50%;background:var(--gold);animation:scrollLine 2s var(--ease) infinite}
 @keyframes scrollLine{0%{transform:translateY(-100%)}100%{transform:translateY(200%)}}
 
-/* MARQUEE */
+/* Marquee */
 .marquee{overflow:hidden;padding:3rem 0;background:var(--navy);color:var(--text-light)}
-.marquee-track{display:flex;gap:3rem;animation:marquee 40s linear infinite;width:max-content;white-space:nowrap}
-.marquee-track span{font-family:var(--serif);font-style:italic;font-size:2.5rem;opacity:.6;font-weight:400}
+.marquee-track{display:flex;gap:3rem;animation:marquee 40s linear infinite;width:max-content}
+.marquee-track span{font-family:var(--serif);font-style:italic;font-size:2.5rem;opacity:.6;white-space:nowrap}
 .marquee-track span:nth-child(odd){color:var(--gold)}
-.marquee-track span:nth-child(even){color:var(--gold);opacity:.8}
-@keyframes marquee{to{transform:translateX(-50%)}}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
-/* STATS */
-.stats{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--border);border-bottom:1px solid var(--border);margin-top:3rem}
+/* Stats */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
 .stat{padding:3.5rem 2.5rem;border-right:1px solid var(--border)}
 .stat:last-child{border-right:none}
-.stat-num{font-family:var(--serif);font-size:clamp(2.5rem,1.5rem+4vw,5.5rem);font-weight:400;line-height:1;letter-spacing:-.03em;color:var(--text)}
+.stat-num{font-family:var(--serif);font-size:clamp(2.5rem,1.5rem + 4vw,5.5rem);font-weight:400;line-height:1;letter-spacing:-.02em}
 .stat-num em{font-style:italic;color:var(--gold)}
-.stat-label{font-size:.8rem;text-transform:uppercase;letter-spacing:.2em;color:var(--text-dim);margin-top:1rem;font-weight:500}
-@media(max-width:768px){
-  .stats{grid-template-columns:repeat(2,1fr)}
-  .stat{padding:2rem 1.5rem}
-  .stat:nth-child(2){border-right:none}
-  .stat:nth-child(1),.stat:nth-child(2){border-bottom:1px solid var(--border)}
-}
+.stat-label{margin-top:1rem;font-size:.8rem;text-transform:uppercase;letter-spacing:.2em;color:var(--text-dim);font-weight:500}
 
-/* TRUSTED BY */
-.trusted{overflow:hidden;padding:3rem 0;background:var(--paper2);border-bottom:1px solid var(--border)}
-.trusted-label{text-align:center;font-size:.7rem;text-transform:uppercase;letter-spacing:.3em;color:var(--text-dim);margin-bottom:1.5rem;font-weight:500}
-.trusted-track{display:flex;gap:2.5rem;animation:trustedScroll 35s linear infinite;width:max-content;white-space:nowrap;align-items:center}
-.trusted-track span{font-family:var(--serif);font-size:1.25rem;color:var(--text);opacity:.3;font-weight:400;letter-spacing:-.01em}
-.trusted-track span:hover{opacity:.6}
-@keyframes trustedScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+/* Portfolio horizontal scroll */
+.portfolio-scroll{height:100vh;display:flex;align-items:center;overflow:hidden;background:var(--paper);position:relative}
+.portfolio-scroll-header{position:absolute;top:5rem;left:3rem;z-index:10;max-width:600px}
+.portfolio-scroll-header .label{font-size:.75rem;text-transform:uppercase;letter-spacing:.25em;color:var(--gold);font-weight:600;margin-bottom:1rem}
+.portfolio-scroll-header h2{font-family:var(--serif);font-size:clamp(2rem,1.5rem + 3vw,5rem);font-weight:400;line-height:.95;letter-spacing:-.03em}
+.portfolio-scroll-header h2 em{font-style:italic;color:var(--gold)}
+.portfolio-track{display:flex;gap:2rem;padding:0 3rem;will-change:transform;margin-left:600px}
+.portfolio-card{flex:0 0 380px;display:flex;flex-direction:column;gap:1rem}
+.portfolio-card-img{aspect-ratio:4/3;overflow:hidden;border-radius:var(--r);box-shadow:var(--shadow);position:relative}
+.portfolio-card-img img{width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease)}
+.portfolio-card:hover .portfolio-card-img img{transform:scale(1.06)}
+.portfolio-card-info{display:flex;justify-content:space-between;align-items:baseline}
+.portfolio-card-name{font-family:var(--serif);font-size:1.5rem;font-weight:400;line-height:1.1}
+.portfolio-card-meta{font-size:.8125rem;color:var(--text);opacity:.6}
+.portfolio-card-badge{font-size:.7rem;padding:.25rem .8rem;border:1px solid var(--gold);color:var(--gold);letter-spacing:.15em;text-transform:uppercase;font-weight:600;background:var(--gold-soft);border-radius:2px;align-self:flex-start}
+.portfolio-hint{position:absolute;bottom:3rem;right:3rem;font-size:.75rem;text-transform:uppercase;letter-spacing:.1em;color:var(--text-dim);font-weight:500}
 
-/* SECTIONS */
-.sec{padding:8rem 3rem;max-width:1400px;margin:0 auto}
-.sec-dark{background:var(--navy);color:var(--text-light)}
-.sec-dark-inner{max-width:1400px;margin:0 auto;padding:8rem 3rem}
-.sec-label{font-size:.75rem;text-transform:uppercase;letter-spacing:.25em;color:var(--gold);margin-bottom:1.5rem;font-weight:500}
-.sec-title{font-family:var(--serif);font-size:clamp(2rem,1.5rem+3vw,5rem);font-weight:400;line-height:1;letter-spacing:-.02em;margin-bottom:1.5rem}
-.sec-title em{font-style:italic;color:var(--gold)}
-.sec-sub{font-size:1.125rem;font-weight:400;color:var(--text);max-width:50ch;line-height:1.6;opacity:.7}
-.sec-dark .sec-sub{color:var(--text-light-dim)}
-
-/* PORTFOLIO — Asymmetric bento */
-.portfolio{display:grid;grid-template-columns:repeat(6,1fr);gap:1.5rem 2rem}
-.portfolio-item{display:flex;flex-direction:column;gap:1rem;cursor:pointer}
-.portfolio-item:nth-child(1),.portfolio-item:nth-child(6),.portfolio-item:nth-child(9){grid-column:span 4}
-.portfolio-item:nth-child(2),.portfolio-item:nth-child(3),.portfolio-item:nth-child(4),.portfolio-item:nth-child(5),.portfolio-item:nth-child(7),.portfolio-item:nth-child(8),.portfolio-item:nth-child(10),.portfolio-item:nth-child(11),.portfolio-item:nth-child(12){grid-column:span 2}
-.portfolio-img{aspect-ratio:16/10;overflow:hidden;background:var(--paper2);border-radius:var(--r);box-shadow:var(--shadow-ambient)}
-.portfolio-item:nth-child(1) .portfolio-img,.portfolio-item:nth-child(6) .portfolio-img,.portfolio-item:nth-child(9) .portfolio-img{aspect-ratio:21/9}
-.portfolio-img img{width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease)}
-.portfolio-item:hover .portfolio-img img{transform:scale(1.06)}
-.portfolio-info{display:flex;justify-content:space-between;align-items:baseline;gap:1rem}
-.portfolio-name{font-family:var(--serif);font-size:1.5rem;font-weight:400;line-height:1.1;letter-spacing:-.01em}
-.portfolio-meta{font-size:.8125rem;color:var(--text);text-align:right;white-space:nowrap;font-weight:400;opacity:.6}
-.portfolio-badge{display:inline-block;font-size:.7rem;padding:.25rem .8rem;border:1px solid var(--gold);color:var(--gold);letter-spacing:.15em;text-transform:uppercase;font-weight:600;align-self:flex-start;margin-top:.3rem;border-radius:2px;background:var(--gold-soft)}
-@media(max-width:900px){.portfolio{grid-template-columns:repeat(2,1fr)}.portfolio-item,.portfolio-item:nth-child(1),.portfolio-item:nth-child(6),.portfolio-item:nth-child(9),.portfolio-item:nth-child(2),.portfolio-item:nth-child(3),.portfolio-item:nth-child(4),.portfolio-item:nth-child(5),.portfolio-item:nth-child(7),.portfolio-item:nth-child(8),.portfolio-item:nth-child(10),.portfolio-item:nth-child(11),.portfolio-item:nth-child(12){grid-column:span 1}.portfolio-item:nth-child(1) .portfolio-img,.portfolio-item:nth-child(6) .portfolio-img,.portfolio-item:nth-child(9) .portfolio-img{aspect-ratio:16/10}}
-@media(max-width:600px){.portfolio{grid-template-columns:1fr;gap:3rem}}
-
-/* SERVICES */
+/* Services dark */
+.services-section{background:var(--navy);color:var(--text-light)}
+.services-inner{max-width:1400px;margin:0 auto;padding:8rem 3rem}
+.services-label{font-size:.75rem;text-transform:uppercase;letter-spacing:.25em;color:var(--gold);font-weight:600;margin-bottom:1.5rem}
+.services-title{font-family:var(--serif);font-size:clamp(2rem,1.5rem + 3vw,5rem);font-weight:400;line-height:.95;letter-spacing:-.03em;margin-bottom:2rem}
+.services-title em{font-style:italic;color:var(--gold)}
+.services-sub{font-size:1.125rem;opacity:.7;max-width:55ch;margin-bottom:4rem}
 .services{display:flex;flex-direction:column}
-.service-row{display:grid;grid-template-columns:auto 1fr auto;align-items:baseline;gap:2.5rem;padding:3rem 0;border-top:1px solid var(--border-dark);transition:background .4s var(--ease);position:relative}
-.service-row::before{content:'';position:absolute;top:0;left:0;width:100%;height:1px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .6s var(--ease)}
-.service-row:hover::before{transform:scaleX(1)}
+.service-row{display:grid;grid-template-columns:auto 1fr auto;gap:2.5rem;padding:3rem 0;border-top:1px solid var(--border-dark);position:relative;transition:background .4s var(--ease);align-items:start}
+.service-row::before{content:'';position:absolute;left:0;top:0;width:2px;height:100%;background:var(--gold);transform:scaleX(0);transform-origin:top;transition:transform .5s var(--ease)}
 .service-row:hover{background:rgba(255,255,255,0.03)}
+.service-row:hover::before{transform:scaleX(1)}
 .service-row:last-child{border-bottom:1px solid var(--border-dark)}
-.service-num{font-family:var(--serif);font-style:italic;font-size:1.75rem;color:var(--gold);opacity:.5;font-weight:400}
-.service-name{font-family:var(--serif);font-size:1.75rem;font-weight:400;line-height:1.1;letter-spacing:-.01em;color:var(--text-light)}
+.service-num{font-family:var(--serif);font-style:italic;font-size:1.75rem;color:var(--gold);opacity:.5}
+.service-name{font-family:var(--serif);font-size:1.75rem;font-weight:400;color:var(--text-light);line-height:1.1}
 .service-name em{font-style:italic;color:var(--gold)}
-.service-desc{font-size:.875rem;color:rgba(247,248,248,.7);margin-top:.5rem;max-width:45ch;font-weight:400;line-height:1.6}
-.service-price{font-family:var(--sans);font-size:1.125rem;font-weight:600;color:var(--gold);white-space:nowrap;text-align:right;letter-spacing:-.01em}
-@media(max-width:768px){.service-row{grid-template-columns:1fr;gap:.5rem}.service-price{text-align:left}}
+.service-desc{font-size:.875rem;color:rgba(247,248,248,.7);max-width:45ch;margin-top:.75rem;font-weight:400}
+.service-price{font-size:1.125rem;font-weight:600;color:var(--gold);white-space:nowrap;align-self:center}
 
-/* PROCESS */
-.process{display:flex;flex-direction:column}
-.process-step{display:grid;grid-template-columns:auto 1fr;gap:3rem;align-items:start;padding:4rem 0;border-top:1px solid rgba(17,27,49,0.15)}
+/* Process */
+.process{padding:8rem 3rem;max-width:1400px;margin:0 auto}
+.process-label{font-size:.75rem;text-transform:uppercase;letter-spacing:.25em;color:var(--gold);font-weight:600;margin-bottom:1.5rem}
+.process-title{font-family:var(--serif);font-size:clamp(2rem,1.5rem + 3vw,5rem);font-weight:400;line-height:.95;letter-spacing:-.03em;margin-bottom:5rem}
+.process-title em{font-style:italic;color:var(--gold)}
+.process-step{display:grid;grid-template-columns:auto 1fr;gap:3rem;padding:4rem 0;border-top:1px solid var(--border);align-items:start}
 .process-step:last-child{border-bottom:1px solid var(--border)}
-.process-num{font-family:var(--serif);font-style:italic;font-size:clamp(2rem,1.5rem+2vw,4rem);color:var(--gold);opacity:.7;line-height:1;font-weight:400}
-.process-content h3{font-family:var(--serif);font-size:1.75rem;font-weight:400;margin-bottom:.8rem;letter-spacing:-.01em}
-.process-content p{font-size:.9375rem;font-weight:400;color:var(--text);max-width:50ch;line-height:1.6}
-@media(max-width:768px){.process-step{grid-template-columns:1fr;gap:1rem}}
+.process-num{font-family:var(--serif);font-style:italic;font-size:clamp(2rem,1.5rem + 2vw,4rem);color:var(--gold);opacity:.7;line-height:1}
+.process-step h3{font-family:var(--serif);font-size:1.75rem;font-weight:400;margin-bottom:1rem;letter-spacing:-.01em}
+.process-step p{font-size:.9375rem;max-width:50ch;color:var(--text-dim)}
 
-/* QUOTE */
-.quote{padding:12rem 3rem;max-width:1000px;margin:0 auto;position:relative}
-.quote-text{font-family:var(--serif);font-style:italic;font-size:clamp(2rem,1.5rem+5vw,6rem);line-height:1.05;letter-spacing:-.02em;font-weight:400;color:var(--text);padding-left:2rem;border-left:3px solid var(--gold)}
-.quote-text em{color:var(--gold)}
-.quote-author{margin-top:2.5rem;font-size:.75rem;text-transform:uppercase;letter-spacing:.2em;color:var(--text-dim);font-weight:500}
+/* Quote */
+.quote{padding:12rem 3rem;max-width:1000px;margin:0 auto}
+.quote-text{font-family:var(--serif);font-style:italic;font-size:clamp(2rem,1.5rem + 5vw,6rem);line-height:1.05;letter-spacing:-.02em;border-left:3px solid var(--gold);padding-left:2rem}
+.quote-text em{color:var(--gold);font-style:italic}
+.quote-author{margin-top:3rem;font-size:.75rem;text-transform:uppercase;letter-spacing:.2em;color:var(--text-dim);font-weight:600;padding-left:2rem}
 
-/* CTA */
+/* CTA dark */
 .cta{padding:10rem 3rem;text-align:center;max-width:800px;margin:0 auto;position:relative}
-.cta::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(201,169,110,0.08) 0%,transparent 70%);pointer-events:none;z-index:0}
-.cta>*{position:relative;z-index:1}
-.cta h2{font-family:var(--serif);font-size:clamp(2.5rem,1.5rem+5vw,6rem);font-weight:400;line-height:.95;letter-spacing:-.02em;margin-bottom:2rem;color:var(--text-light)}
+.cta::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:600px;height:600px;background:radial-gradient(circle,rgba(201,169,110,0.08) 0%,transparent 70%);z-index:0}
+.cta h2,.cta p,.cta form{position:relative;z-index:1}
+.cta h2{font-family:var(--serif);font-size:clamp(2.5rem,1.5rem + 5vw,6rem);font-weight:400;line-height:.95;letter-spacing:-.03em;color:var(--text-light);margin-bottom:1.5rem}
 .cta h2 em{font-style:italic;color:var(--gold)}
-.cta p{font-size:1.125rem;font-weight:400;color:rgba(247,248,248,.7);margin-bottom:3rem}
-.cta-form{display:flex;gap:1rem;max-width:500px;margin:0 auto;flex-wrap:wrap;justify-content:center}
-.cta-input{flex:1;min-width:200px;padding:1rem 1.5rem;background:rgba(255,255,255,0.05);border:1px solid var(--border-dark);border-radius:var(--r);color:var(--text-light);font-size:.9375rem;font-family:var(--sans);font-weight:400}
-.cta-input::placeholder{color:rgba(247,248,248,.3)}
-.cta-input:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(201,169,110,0.15)}
+.cta p{font-size:1.125rem;color:rgba(247,248,248,.7);margin-bottom:2.5rem}
+.cta-form{display:flex;gap:1rem;max-width:500px;margin:0 auto;flex-wrap:wrap}
+.cta-input{flex:1;min-width:220px;padding:1rem 1.25rem;background:rgba(255,255,255,0.05);border:1px solid var(--border-dark);border-radius:var(--r);color:var(--text-light);font-family:var(--sans);font-size:.9375rem;outline:none;transition:border-color .3s var(--ease),box-shadow .3s var(--ease)}
+.cta-input::placeholder{color:rgba(247,248,248,0.4)}
+.cta-input:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(201,169,110,0.15)}
 
-/* FOOTER — DARK to match CTA */
-footer{padding:5rem 3rem 2rem;background:var(--navy);border-top:1px solid var(--border-dark)}
-.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:3rem;max-width:1400px;margin:0 auto}
-.footer-brand .nav-logo{font-size:1.5rem;margin-bottom:1.5rem;display:block;color:var(--text-light)}
-.footer-brand p{color:rgba(247,248,248,.6);font-size:.875rem;line-height:1.7;max-width:35ch;font-weight:400}
-.footer-col h4{font-size:.75rem;text-transform:uppercase;letter-spacing:.15em;color:var(--gold);margin-bottom:1rem;font-weight:500}
-.footer-col a{display:block;color:rgba(247,248,248,.6);font-size:.875rem;margin-bottom:.6rem;transition:color .3s;font-weight:400}
+/* Footer */
+.footer{padding:5rem 3rem 2rem;background:var(--navy);border-top:1px solid var(--border-dark)}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:4rem;max-width:1400px;margin:0 auto}
+.footer-brand{font-family:var(--serif);font-style:italic;font-size:1.5rem;color:var(--text-light);margin-bottom:1rem}
+.footer p{color:rgba(247,248,248,.6);font-size:.875rem;max-width:35ch}
+.footer-col h4{font-size:.75rem;text-transform:uppercase;letter-spacing:.15em;color:var(--gold);font-weight:600;margin-bottom:1.5rem}
+.footer-col a{display:block;color:rgba(247,248,248,.6);font-size:.875rem;margin-bottom:.75rem;transition:color .3s var(--ease)}
 .footer-col a:hover{color:var(--text-light)}
-.footer-bottom{text-align:center;padding:2rem 0 0;margin-top:3rem;border-top:1px solid var(--border-dark);color:rgba(247,248,248,.5);font-size:.75rem;font-weight:400}
-@media(max-width:768px){.footer-grid{grid-template-columns:1fr;gap:2rem}}
+.footer-bottom{text-align:center;border-top:1px solid var(--border-dark);margin-top:4rem;padding-top:2rem;color:rgba(247,248,248,.5);font-size:.75rem}
 
-/* REVEAL */
+/* Reveal — always visible by default */
 .reveal{opacity:1;transform:none}
 
-/* COPY PROTECTION */
 @media print{*{display:none!important}body:after{content:"© Aurora Web";display:block;font-size:2rem;padding:2rem}}
+
+/* Responsive */
+@media(max-width:900px){
+  .nav{padding:1.25rem 1.5rem}
+  .nav-links{display:none}
+  .nav-links.open{display:flex;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:var(--paper);padding:2rem 1.5rem;gap:1.5rem;border-bottom:1px solid var(--border)}
+  .nav-burger{display:flex}
+  .hero-content{padding:0 1.5rem 4rem}
+  .hero-scroll{display:none}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .stat:nth-child(2){border-right:none}
+  .stat:nth-child(1),.stat:nth-child(2){border-bottom:1px solid var(--border)}
+  .portfolio-scroll{height:auto}
+  .portfolio-track{flex-direction:column;padding:2rem 1.5rem;margin-left:0;gap:2rem}
+  .portfolio-card{flex:0 0 auto;width:100%}
+  .portfolio-scroll-header{position:relative;top:auto;left:auto;max-width:100%;padding:3rem 1.5rem 0}
+  .portfolio-hint{display:none}
+  .services-inner{padding:5rem 1.5rem}
+  .service-row{grid-template-columns:1fr;gap:1rem;padding:2rem 0}
+  .service-price{align-self:flex-start}
+  .process{padding:5rem 1.5rem}
+  .process-step{grid-template-columns:1fr;gap:1rem}
+  .quote{padding:6rem 1.5rem}
+  .quote-text{padding-left:1.25rem}
+  .quote-author{padding-left:1.25rem}
+  .cta{padding:6rem 1.5rem}
+  .cta::before{width:100%;height:100%}
+  .footer{padding:4rem 1.5rem 2rem}
+  .footer-grid{grid-template-columns:1fr;gap:2.5rem}
+}
 </style>
 </head>
 <body>
+<div class="scroll-progress" id="scrollProgress"></div>
 
-<div class="scroll-progress" id="progress"></div>
-
-<!-- NAV -->
 <nav class="nav" id="nav">
-  <a href="/" class="nav-logo">Aurora<span> Web</span></a>
-  <button class="nav-burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
-  <div class="nav-links" id="navlinks">
+  <a href="#" class="nav-logo">Aurora Web</a>
+  <div class="nav-links" id="navLinks">
     <a href="#work">Work</a>
     <a href="#services">Services</a>
     <a href="#process">Process</a>
     <a href="#contact" class="nav-cta">Get a Quote</a>
   </div>
+  <button class="nav-burger" id="navBurger" aria-label="Menu"><span></span><span></span><span></span></button>
 </nav>
 
-<!-- HERO — Full-bleed image -->
 <section class="hero">
-  <div class="hero-bg">
-    <img src="https://images.pexels.com/photos/262047/pexels-photo-262047.jpeg?w=1920&q=80" alt="" loading="eager">
-  </div>
+  <div class="hero-bg"><img src="https://images.pexels.com/photos/262047/pexels-photo-262047.jpeg?w=1920&q=80" alt="Cyprus coastline"></div>
   <div class="hero-overlay"></div>
   <div class="hero-grain"></div>
   <div class="hero-content">
-    <div class="hero-meta">
-      <div class="hero-meta-left">Premium Web Design · Cyprus</div>
-      <div class="hero-meta-right">Est. 2026 — Larnaca</div>
+    <div class="hero-meta reveal">
+      <span>Aurora Web · Est. 2024</span>
+      <span>Larnaca · Cyprus</span>
     </div>
-    <h1 class="reveal">We build websites that make your <em>competition</em> irrelevant.</h1>
-    <p class="hero-sub reveal">Premium websites, AI automation, and digital growth for businesses in Cyprus and Europe. Delivered in 48 hours. Free mockup before payment.</p>
+    <h1 id="heroTitle">We build websites that make your <em>competition</em> irrelevant.</h1>
+    <p class="hero-sub reveal">Premium, high-converting websites for real Cyprus businesses. AI automation, SEO, and design that commands attention — delivered in 48 hours.</p>
     <div class="hero-cta-row reveal">
-      <a href="#contact" class="btn btn-gold">Get a Free Mockup →</a>
-      <a href="#work" class="btn btn-ghost">See Our Work</a>
+      <a href="#work" class="btn btn-gold">View Our Work →</a>
+      <a href="#contact" class="btn btn-ghost">Get a Free Mockup</a>
     </div>
   </div>
-  <div class="hero-scroll">Scroll<div class="hero-scroll-line"></div></div>
+  <div class="hero-scroll">Scroll<span class="hero-scroll-line"></span></div>
 </section>
 
-<!-- MARQUEE -->
-<div class="marquee" aria-hidden="true">
+<section class="marquee" aria-hidden="true">
   <div class="marquee-track">
     <span>Premium Websites</span><span>·</span><span>Cyprus</span><span>·</span><span>AI Automation</span><span>·</span><span>SEO</span><span>·</span><span>48h Delivery</span><span>·</span>
     <span>Premium Websites</span><span>·</span><span>Cyprus</span><span>·</span><span>AI Automation</span><span>·</span><span>SEO</span><span>·</span><span>48h Delivery</span><span>·</span>
   </div>
-</div>
+</section>
 
-<!-- STATS -->
-<div class="stats">
-  <div class="stat reveal"><div class="stat-num">13</div><div class="stat-label">Live Demos</div></div>
-  <div class="stat reveal"><div class="stat-num">497</div><div class="stat-label">Leads Found</div></div>
-  <div class="stat reveal"><div class="stat-num"><em>48h</em></div><div class="stat-label">Delivery</div></div>
-  <div class="stat reveal"><div class="stat-num">€599</div><div class="stat-label">From</div></div>
-</div>
+<section class="stats reveal">
+  <div class="stat"><div class="stat-num">13</div><div class="stat-label">Live Demos</div></div>
+  <div class="stat"><div class="stat-num">497</div><div class="stat-label">Leads Found</div></div>
+  <div class="stat"><div class="stat-num"><em>48h</em></div><div class="stat-label">Delivery</div></div>
+  <div class="stat"><div class="stat-num">€599</div><div class="stat-label">From</div></div>
+</section>
 
-<!-- TRUSTED BY -->
-<div class="trusted">
-  <div class="trusted-label">Trusted by Cyprus businesses</div>
-  <div class="trusted-track">
-    <span>Re.buke Lounge</span><span>·</span><span>Noesis</span><span>·</span><span>Elia Backyard</span><span>·</span><span>Voreas Tavern</span><span>·</span><span>Alonia</span><span>·</span><span>Ayia Anna</span><span>·</span><span>DC Barbershop</span><span>·</span><span>Stavros Hair</span><span>·</span><span>Anthony Barber</span><span>·</span><span>To Kazani</span><span>·</span><span>Kafeneio Taxidromio</span><span>·</span>
-    <span>Re.buke Lounge</span><span>·</span><span>Noesis</span><span>·</span><span>Elia Backyard</span><span>·</span><span>Voreas Tavern</span><span>·</span><span>Alonia</span><span>·</span><span>Ayia Anna</span><span>·</span><span>DC Barbershop</span><span>·</span><span>Stavros Hair</span><span>·</span><span>Anthony Barber</span><span>·</span><span>To Kazani</span><span>·</span><span>Kafeneio Taxidromio</span><span>·</span>
-  </div>
-</div>
-
-<!-- PORTFOLIO -->
-<section class="sec" id="work">
-  <div class="sec-label reveal">Our Work</div>
-  <h2 class="sec-title reveal">Live <em>demos</em> for real Cyprus businesses.</h2>
-  <p class="sec-sub reveal">Every site below is a real, working demo — built specifically for a local Cyprus business. Click any card to explore.</p>
-  <div class="portfolio" style="margin-top:5rem">
-    <a href="demos/rebuke-lounge/" class="portfolio-item">
-      <div class="portfolio-img"><img src="https://images.pexels.com/photos/941861/pexels-photo-941861.jpeg?w=1200" alt="Re.buke Lounge" loading="lazy"></div>
-      <div class="portfolio-info"><div class="portfolio-name">Re.buke Lounge</div><div class="portfolio-meta">13.4K · Larnaca</div></div>
-      <span class="portfolio-badge">Beach Bar</span>
-    </a>
-    <a href="demos/noesis/" class="portfolio-item">
-      <div class="portfolio-img"><img src="https://images.pexels.com/photos/262047/pexels-photo-262047.jpeg?w=800" alt="Noesis" loading="lazy"></div>
-      <div class="portfolio-info"><div class="portfolio-name">Noesis</div><div class="portfolio-meta">10.7K · Larnaca</div></div>
-      <span class="portfolio-badge">Restaurant</span>
-    </a>
-    <a href="demos/elia-backyard/" class="portfolio-item">
-      <div class="portfolio-img"><img src="https://images.pexels.com/photos/67468/pexels-photo-67468.jpeg?w=800" alt="Elia Backyard" loading="lazy"></div>
-      <div class="portfolio-info"><div class="portfolio-name">Elia Backyard</div><div class="portfolio-meta">3.9K · Larnaca</div></div>
-      <span class="portfolio-badge">Award-Winning</span>
-    </a>
-    <a href="demos/voreas-tavern/" class="portfolio-item">
-      <div class="portfolio-img"><img src="https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?w=800" alt="Voreas Tavern" loading="lazy"></div>
-      <div class="portfolio-info"><div class="portfolio-name">Voreas Tavern</div><div class="portfolio-meta">5.1K · Oroklini</div></div>
-      <span class="portfolio-badge">Traditional</span>
-    </a>
-    <a href="demos/alonia-tavern/" class="portfolio-item">
-      <div class="portfolio-img"><img src="https://images.pexels.com/photos/3611846/pexels-photo-3611846.jpeg?w=800" alt="Alonia Tavern" loading="lazy"></div>
-      <div class="portfolio-info"><div class="portfolio-name">Alonia Tavern</div><div class="portfolio-meta">#1 · Livadia</div></div>
-      <span class="portfolio-badge">Private Events</span>
-    </a>
-    <a href="demos/ayia-anna-tavern/" class="portfolio-item">
-      <div class="portfolio-img"><img src="https://images.pexels.com/photos/3296394/pexels-photo-3296394.jpeg?w=1200" alt="Ayia Anna" loading="lazy"></div>
-      <div class="portfolio-info"><div class="portfolio-name">Ayia Anna</div><div class="portfolio-meta">Mountain · Live Music</div></div>
-      <span class="portfolio-badge">Tavern</span>
-    </a>
-    <a href="demos/dc-barbershop/" class="portfolio-item">
-      <div class="portfolio-img"><img src="https://images.pexels.com/photos/2664216/pexels-photo-2664216.jpeg?w=800" alt="DC Barbershop" loading="lazy"></div>
-      <div class="portfolio-info"><div class="portfolio-name">DC Barbershop</div><div class="portfolio-meta">318 · Larnaca</div></div>
-      <span class="portfolio-badge">Grooming</span>
-    </a>
-    <a href="demos/location-a-hairdressing/" class="portfolio-item">
-      <div class="portfolio-img"><img src="https://images.pexels.com/photos/302899/pexels-photo-302899.jpeg?w=800" alt="Location A" loading="lazy"></div>
-      <div class="portfolio-info"><div class="portfolio-name">Location A</div><div class="portfolio-meta">1.1K · Finikoudes</div></div>
-      <span class="portfolio-badge">Hair Salon</span>
-    </a>
-    <a href="demos/stavros-hair-style/" class="portfolio-item">
-      <div class="portfolio-img"><img src="https://images.pexels.com/photos/1279330/pexels-photo-1279330.jpeg?w=1200" alt="Stavros Hair" loading="lazy"></div>
-      <div class="portfolio-info"><div class="portfolio-name">Stavros Hair Style</div><div class="portfolio-meta">3.4K · Menovou</div></div>
-      <span class="portfolio-badge">Hair Salon</span>
-    </a>
-    <a href="demos/anthony-barber-shop/" class="portfolio-item">
-      <div class="portfolio-img"><img src="https://images.pexels.com/photos/1407846/pexels-photo-1407846.jpeg?w=800" alt="Anthony Barber" loading="lazy"></div>
-      <div class="portfolio-info"><div class="portfolio-name">Anthony Barber Shop</div><div class="portfolio-meta">392 · Larnaca</div></div>
-      <span class="portfolio-badge">Barbershop</span>
-    </a>
-    <a href="demos/to-kazani-tavern/" class="portfolio-item">
-      <div class="portfolio-img"><img src="https://images.pexels.com/photos/941861/pexels-photo-941861.jpeg?w=800" alt="To Kazani" loading="lazy"></div>
-      <div class="portfolio-info"><div class="portfolio-name">To Kazani</div><div class="portfolio-meta">1295 reviews · Aradippou</div></div>
-      <span class="portfolio-badge">Zivania</span>
-    </a>
-    <a href="demos/kafeneio-to-taxidromio/" class="portfolio-item">
-      <div class="portfolio-img"><img src="https://images.pexels.com/photos/302899/pexels-photo-302899.jpeg?w=800" alt="Kafeneio" loading="lazy"></div>
-      <div class="portfolio-info"><div class="portfolio-name">Kafeneio Taxidromio</div><div class="portfolio-meta">3.3K · Larnaca Square</div></div>
-      <span class="portfolio-badge">Café</span>
-    </a>
-    <a href="demos/lysia-restaurant/" class="portfolio-item">
-      <div class="portfolio-img"><img src="https://images.pexels.com/photos/3611846/pexels-photo-3611846.jpeg?w=800" alt="Lysia Restaurant" loading="lazy"></div>
-      <div class="portfolio-info"><div class="portfolio-name">Lysia Restaurant</div><div class="portfolio-meta">34 years · Pyla</div></div>
-      <span class="portfolio-badge">Lamb Kleftimo</span>
-    </a>
+<section class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>Re.buke Lounge</span><span>·</span><span>Noesis</span><span>·</span><span>Elia Backyard</span><span>·</span><span>Voreas Tavern</span><span>·</span><span>Alonia</span><span>·</span><span>Ayia Anna</span><span>·</span><span>DC Barbershop</span><span>·</span><span>Stavros Hair</span><span>·</span><span>Anthony Barber</span><span>·</span><span>To Kazani</span><span>·</span><span>Kafeneio Taxidromio</span><span>·</span><span>Lysia Restaurant</span><span>·</span>
+    <span>Re.buke Lounge</span><span>·</span><span>Noesis</span><span>·</span><span>Elia Backyard</span><span>·</span><span>Voreas Tavern</span><span>·</span><span>Alonia</span><span>·</span><span>Ayia Anna</span><span>·</span><span>DC Barbershop</span><span>·</span><span>Stavros Hair</span><span>·</span><span>Anthony Barber</span><span>·</span><span>To Kazani</span><span>·</span><span>Kafeneio Taxidromio</span><span>·</span><span>Lysia Restaurant</span><span>·</span>
   </div>
 </section>
 
-<!-- SERVICES (DARK) -->
-<section class="sec-dark" id="services">
-  <div class="sec-dark-inner">
-    <div class="sec-label reveal">What We Do</div>
-    <h2 class="sec-title reveal">Four ways we <em>grow</em> your business.</h2>
-    <p class="sec-sub reveal">From a single landing page to full AI-powered automation — we handle your entire digital presence.</p>
-    <div class="services" style="margin-top:5rem">
+<section class="portfolio-scroll" id="work">
+  <div class="portfolio-scroll-header">
+    <div class="label">Our Work</div>
+    <h2>Live <em>demos</em> for real Cyprus businesses.</h2>
+  </div>
+  <div class="portfolio-track">
+    <a class="portfolio-card" href="demos/rebuke-lounge/"><div class="portfolio-card-img"><img src="https://images.pexels.com/photos/941861/pexels-photo-941861.jpeg?w=800" alt="Re.buke Lounge"></div><div class="portfolio-card-badge">Beach Bar</div><div class="portfolio-card-info"><div class="portfolio-card-name">Re.buke Lounge</div><div class="portfolio-card-meta">13.4K · Larnaca</div></div></a>
+    <a class="portfolio-card" href="demos/noesis/"><div class="portfolio-card-img"><img src="https://images.pexels.com/photos/262047/pexels-photo-262047.jpeg?w=800" alt="Noesis"></div><div class="portfolio-card-badge">Restaurant</div><div class="portfolio-card-info"><div class="portfolio-card-name">Noesis</div><div class="portfolio-card-meta">10.7K · Larnaca</div></div></a>
+    <a class="portfolio-card" href="demos/elia-backyard/"><div class="portfolio-card-img"><img src="https://images.pexels.com/photos/67468/pexels-photo-67468.jpeg?w=800" alt="Elia Backyard"></div><div class="portfolio-card-badge">Award-Winning</div><div class="portfolio-card-info"><div class="portfolio-card-name">Elia Backyard</div><div class="portfolio-card-meta">3.9K · Larnaca</div></div></a>
+    <a class="portfolio-card" href="demos/voreas-tavern/"><div class="portfolio-card-img"><img src="https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?w=800" alt="Voreas Tavern"></div><div class="portfolio-card-badge">Traditional</div><div class="portfolio-card-info"><div class="portfolio-card-name">Voreas Tavern</div><div class="portfolio-card-meta">5.1K · Oroklini</div></div></a>
+    <a class="portfolio-card" href="demos/alonia-tavern/"><div class="portfolio-card-img"><img src="https://images.pexels.com/photos/3611846/pexels-photo-3611846.jpeg?w=800" alt="Alonia Tavern"></div><div class="portfolio-card-badge">Private Events</div><div class="portfolio-card-info"><div class="portfolio-card-name">Alonia Tavern</div><div class="portfolio-card-meta">#1 · Livadia</div></div></a>
+    <a class="portfolio-card" href="demos/ayia-anna-tavern/"><div class="portfolio-card-img"><img src="https://images.pexels.com/photos/3296394/pexels-photo-3296394.jpeg?w=800" alt="Ayia Anna"></div><div class="portfolio-card-badge">Tavern</div><div class="portfolio-card-info"><div class="portfolio-card-name">Ayia Anna</div><div class="portfolio-card-meta">Mountain · Live Music</div></div></a>
+    <a class="portfolio-card" href="demos/dc-barbershop/"><div class="portfolio-card-img"><img src="https://images.pexels.com/photos/2664216/pexels-photo-2664216.jpeg?w=800" alt="DC Barbershop"></div><div class="portfolio-card-badge">Grooming</div><div class="portfolio-card-info"><div class="portfolio-card-name">DC Barbershop</div><div class="portfolio-card-meta">318 · Larnaca</div></div></a>
+    <a class="portfolio-card" href="demos/location-a-hairdressing/"><div class="portfolio-card-img"><img src="https://images.pexels.com/photos/302899/pexels-photo-302899.jpeg?w=800" alt="Location A"></div><div class="portfolio-card-badge">Hair Salon</div><div class="portfolio-card-info"><div class="portfolio-card-name">Location A</div><div class="portfolio-card-meta">1.1K · Finikoudes</div></div></a>
+    <a class="portfolio-card" href="demos/stavros-hair-style/"><div class="portfolio-card-img"><img src="https://images.pexels.com/photos/1279330/pexels-photo-1279330.jpeg?w=800" alt="Stavros Hair Style"></div><div class="portfolio-card-badge">Hair Salon</div><div class="portfolio-card-info"><div class="portfolio-card-name">Stavros Hair Style</div><div class="portfolio-card-meta">3.4K · Menovou</div></div></a>
+    <a class="portfolio-card" href="demos/anthony-barber-shop/"><div class="portfolio-card-img"><img src="https://images.pexels.com/photos/1407846/pexels-photo-1407846.jpeg?w=800" alt="Anthony Barber"></div><div class="portfolio-card-badge">Barbershop</div><div class="portfolio-card-info"><div class="portfolio-card-name">Anthony Barber</div><div class="portfolio-card-meta">392 · Larnaca</div></div></a>
+    <a class="portfolio-card" href="demos/to-kazani-tavern/"><div class="portfolio-card-img"><img src="https://images.pexels.com/photos/941861/pexels-photo-941861.jpeg?w=800" alt="To Kazani"></div><div class="portfolio-card-badge">Zivania</div><div class="portfolio-card-info"><div class="portfolio-card-name">To Kazani</div><div class="portfolio-card-meta">1295 reviews · Aradippou</div></div></a>
+    <a class="portfolio-card" href="demos/kafeneio-to-taxidromio/"><div class="portfolio-card-img"><img src="https://images.pexels.com/photos/302899/pexels-photo-302899.jpeg?w=800" alt="Kafeneio Taxidromio"></div><div class="portfolio-card-badge">Café</div><div class="portfolio-card-info"><div class="portfolio-card-name">Kafeneio Taxidromio</div><div class="portfolio-card-meta">3.3K · Larnaca Square</div></div></a>
+    <a class="portfolio-card" href="demos/lysia-restaurant/"><div class="portfolio-card-img"><img src="https://images.pexels.com/photos/3611846/pexels-photo-3611846.jpeg?w=800" alt="Lysia Restaurant"></div><div class="portfolio-card-badge">Lamb Kleftimo</div><div class="portfolio-card-info"><div class="portfolio-card-name">Lysia Restaurant</div><div class="portfolio-card-meta">34 years · Pyla</div></div></a>
+  </div>
+  <div class="portfolio-hint">← Scroll to explore</div>
+</section>
+
+<section class="services-section" id="services">
+  <div class="services-inner">
+    <div class="services-label reveal">What We Do</div>
+    <h2 class="services-title reveal">Services that <em>grow</em> your business.</h2>
+    <p class="services-sub reveal">Four pillars. One goal: turn visitors into customers. Every service is bespoke, every detail considered.</p>
+    <div class="services">
       <div class="service-row reveal">
         <div class="service-num">01</div>
-        <div>
-          <div class="service-name">Premium <em>Websites</em></div>
-          <div class="service-desc">Custom-designed, responsive, SEO-ready. From single pages to multi-section sites. Delivered in 48 hours.</div>
-        </div>
+        <div><div class="service-name">Premium <em>Websites</em></div><div class="service-desc">Custom-designed, responsive, SEO-ready. From single pages to multi-section sites. Delivered in 48 hours.</div></div>
         <div class="service-price">€599–€1,999</div>
       </div>
       <div class="service-row reveal">
         <div class="service-num">02</div>
-        <div>
-          <div class="service-name">Hosting & <em>Care</em></div>
-          <div class="service-desc">Managed hosting, SSL, backups, updates, content changes. Your site stays fast and secure — forever.</div>
-        </div>
+        <div><div class="service-name">Hosting &amp; <em>Care</em></div><div class="service-desc">Managed hosting, SSL, backups, updates, content changes. Your site stays fast and secure — forever.</div></div>
         <div class="service-price">€99–€299/mo</div>
       </div>
       <div class="service-row reveal">
         <div class="service-num">03</div>
-        <div>
-          <div class="service-name">AI <em>Automation</em></div>
-          <div class="service-desc">Chatbots, lead generation, email automation, social media scheduling. Let AI handle the repetitive work.</div>
-        </div>
+        <div><div class="service-name">AI <em>Automation</em></div><div class="service-desc">Chatbots, lead generation, email automation, social media scheduling. Let AI handle the repetitive work.</div></div>
         <div class="service-price">Custom</div>
       </div>
       <div class="service-row reveal">
         <div class="service-num">04</div>
-        <div>
-          <div class="service-name">SEO & <em>Growth</em></div>
-          <div class="service-desc">Google ranking, local SEO, keyword optimization, analytics. Get found by customers searching for you.</div>
-        </div>
+        <div><div class="service-name">SEO &amp; <em>Growth</em></div><div class="service-desc">Google ranking, local SEO, keyword optimization, analytics. Get found by customers searching for you.</div></div>
         <div class="service-price">€299/mo</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- PROCESS -->
-<section class="sec" id="process">
-  <div class="sec-label reveal">How It Works</div>
-  <h2 class="sec-title reveal">From idea to <em>launch</em> in four steps.</h2>
-  <p class="sec-sub reveal">No surprises, no hidden costs. You see exactly what you get before paying anything.</p>
-  <div class="process" style="margin-top:5rem">
-    <div class="process-step reveal">
-      <div class="process-num">01</div>
-      <div class="process-content">
-        <h3>Discover</h3>
-        <p>We study your business, competitors, and customers. You tell us what you need — we tell you what works.</p>
-      </div>
-    </div>
-    <div class="process-step reveal">
-      <div class="process-num">02</div>
-      <div class="process-content">
-        <h3>Design</h3>
-        <p>We build a custom demo website for your business. Free. You see exactly what you get before paying anything.</p>
-      </div>
-    </div>
-    <div class="process-step reveal">
-      <div class="process-num">03</div>
-      <div class="process-content">
-        <h3>Refine</h3>
-        <p>We iterate based on your feedback. Colors, content, images, layout — everything is adjustable until you love it.</p>
-      </div>
-    </div>
-    <div class="process-step reveal">
-      <div class="process-num">04</div>
-      <div class="process-content">
-        <h3>Launch</h3>
-        <p>Your site goes live on your own domain. We handle hosting, SSL, SEO setup, and ongoing support.</p>
-      </div>
-    </div>
+<section class="process" id="process">
+  <div class="process-label reveal">How We Work</div>
+  <h2 class="process-title reveal">From idea to <em>launch</em> in four steps.</h2>
+  <div class="process-step reveal">
+    <div class="process-num">01</div>
+    <div><h3>Discover</h3><p>We learn your business, your customers, and your goals. Every detail matters — audience, competitors, tone, the story you want to tell. This is where the strategy is born.</p></div>
+  </div>
+  <div class="process-step reveal">
+    <div class="process-num">02</div>
+    <div><h3>Design</h3><p>We craft a bespoke design that captures your brand and commands attention. Editorial typography, considered whitespace, and motion that feels inevitable.</p></div>
+  </div>
+  <div class="process-step reveal">
+    <div class="process-num">03</div>
+    <div><h3>Refine</h3><p>We iterate. You give feedback, we polish every pixel and every word until the result is undeniable. No detail is too small; nothing ships that we are not proud of.</p></div>
+  </div>
+  <div class="process-step reveal">
+    <div class="process-num">04</div>
+    <div><h3>Launch</h3><p>We deploy, optimize, and hand you the keys. Your site goes live, fast and SEO-ready. We stay on for hosting, care, and growth as long as you want us.</p></div>
   </div>
 </section>
 
-<!-- QUOTE -->
 <section class="quote">
-  <p class="quote-text reveal">"You don't need a website. You need the <em>customers</em> who are searching for you to actually find you."</p>
-  <p class="quote-author reveal">Aurora Web — Larnaca, Cyprus</p>
+  <p class="quote-text reveal">You don't need a website. You need the <em>customers</em> who are searching for you to actually find you.</p>
+  <div class="quote-author reveal">Aurora Web — Larnaca, Cyprus</div>
 </section>
 
-<!-- CTA + FOOTER (both dark, seamless) -->
-<section class="sec-dark" id="contact">
+<section class="services-section" id="contact">
   <div class="cta">
     <h2 class="reveal">Ready to <em>stand out?</em></h2>
-    <p class="reveal">Get a free mockup website for your business — no payment, no commitment. See what you'd look like online.</p>
-    <form class="cta-form reveal" action="https://formspree.io/f/xyz" method="POST">
-      <input type="email" class="cta-input" name="email" placeholder="your@email.com" required>
-      <button type="submit" class="btn btn-gold">Get My Free Mockup →</button>
+    <p class="reveal">Get a free mockup of your new website, delivered in 48 hours. No commitment, no obligation.</p>
+    <form class="cta-form reveal" onsubmit="event.preventDefault();this.querySelector('button').textContent='✓ Sent — check your inbox';">
+      <input class="cta-input" type="email" placeholder="your@email.com" required>
+      <button class="btn btn-gold" type="submit">Get My Free Mockup →</button>
     </form>
   </div>
 </section>
 
-<footer>
+<footer class="footer">
   <div class="footer-grid">
-    <div class="footer-brand">
-      <a href="/" class="nav-logo">Aurora<span> Web</span></a>
-      <p>Premium web design, AI automation, and digital growth for businesses in Cyprus and Europe. Based in Larnaca. Founded 2026.</p>
+    <div>
+      <div class="footer-brand">Aurora Web</div>
+      <p>Premium websites for real Cyprus businesses. Designed in Larnaca, built to be found, made to convert.</p>
     </div>
     <div class="footer-col">
       <h4>Services</h4>
@@ -459,106 +374,160 @@ footer{padding:5rem 3rem 2rem;background:var(--navy);border-top:1px solid var(--
     </div>
     <div class="footer-col">
       <h4>Connect</h4>
-      <a href="https://www.instagram.com/sisuthros/">Instagram</a>
+      <a href="https://www.instagram.com/sisuthros/" target="_blank" rel="noopener">Instagram</a>
       <a href="mailto:aurora@example.com">Email</a>
       <a href="#work">Portfolio</a>
       <a href="#contact">Get Quote</a>
     </div>
   </div>
-  <div class="footer-bottom">
-    <p>Aurora Web · Larnaca, Cyprus · Built with ❤️ by Aurora</p>
-  </div>
+  <div class="footer-bottom">Aurora Web · Larnaca, Cyprus · Built with ❤️ by Aurora</div>
 </footer>
 
-<!-- COPY PROTECTION -->
 <script>
-document.addEventListener('contextmenu',function(e){e.preventDefault();return false});
-document.addEventListener('copy',function(e){e.preventDefault();return false});
-document.addEventListener('cut',function(e){e.preventDefault();return false});
-document.addEventListener('selectstart',function(e){if(e.target.tagName!=='INPUT'&&e.target.tagName!=='TEXTAREA'){e.preventDefault();return false}});
-document.addEventListener('dragstart',function(e){e.preventDefault();return false});
-document.addEventListener('keydown',function(e){if(e.ctrlKey&&(e.key==='c'||e.key==='u'||e.key==='s'||e.key==='a')){e.preventDefault();return false}if(e.key==='F12'){e.preventDefault();return false}if(e.ctrlKey&&e.shiftKey&&(e.key==='I'||e.key==='J')){e.preventDefault();return false}});
-console.log('%cStop!','font-size:50px;color:red;font-weight:bold');
-console.log('%cThis is Aurora Web. Do not copy.','font-size:16px;color:#C9A96E');
+// Copy protection
+(function(){
+  console.log('%cAurora Web © 2024','color:#C9A96E;font-size:24px;font-family:serif;font-style:italic;');
+  console.log('%cThis site is protected. Do not copy.','color:#64748d;font-size:12px;');
+  const prevent=function(e){e.preventDefault();return false;};
+  document.addEventListener('contextmenu',prevent);
+  document.addEventListener('copy',prevent);
+  document.addEventListener('cut',prevent);
+  document.addEventListener('selectstart',prevent);
+  document.addEventListener('dragstart',prevent);
+  document.addEventListener('keydown',function(e){
+    if((e.ctrlKey||e.metaKey)&&(e.key==='u'||e.key==='s'||e.key==='c')){e.preventDefault();return false;}
+    if(e.key==='F12'){e.preventDefault();return false;}
+  });
+})();
 </script>
 
-<!-- GSAP -->
 <script>
 document.addEventListener('DOMContentLoaded',function(){
-  const nav=document.getElementById('nav');
-  const progress=document.getElementById('progress');
-  window.addEventListener('scroll',function(){
-    if(window.scrollY>50){nav.classList.add('scrolled')}else{nav.classList.remove('scrolled')}
-    const h=document.documentElement.scrollHeight-window.innerHeight;
-    progress.style.width=(window.scrollY/h*100)+'%';
-  });
-  const burger=document.getElementById('burger');
-  const navlinks=document.getElementById('navlinks');
-  burger.addEventListener('click',function(){burger.classList.toggle('open');navlinks.classList.toggle('open')});
+  var nav=document.getElementById('nav');
+  var navLinks=document.getElementById('navLinks');
+  var navBurger=document.getElementById('navBurger');
+  var progress=document.getElementById('scrollProgress');
 
-  if(typeof gsap==='undefined'||typeof ScrollTrigger==='undefined'){
-    document.querySelectorAll('.reveal').forEach(function(el){el.style.opacity='1';el.style.transform='none'});
+  // Nav scroll state + progress bar
+  function onScroll(){
+    if(window.scrollY>40){nav.classList.add('scrolled');}
+    else{nav.classList.remove('scrolled');}
+    var h=document.documentElement.scrollHeight-window.innerHeight;
+    progress.style.width=(h>0?(window.scrollY/h)*100:0)+'%';
+  }
+  window.addEventListener('scroll',onScroll,{passive:true});
+  onScroll();
+
+  // Burger menu
+  navBurger.addEventListener('click',function(){
+    navBurger.classList.toggle('open');
+    navLinks.classList.toggle('open');
+  });
+  navLinks.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click',function(){
+      navBurger.classList.remove('open');
+      navLinks.classList.remove('open');
+    });
+  });
+
+  // GSAP fallback
+  if(typeof gsap==='undefined'){
+    document.querySelectorAll('.reveal').forEach(function(el){el.style.opacity=1;el.style.transform='none';});
     return;
   }
-  gsap.registerPlugin(ScrollTrigger);
+  if(typeof ScrollTrigger!=='undefined'){gsap.registerPlugin(ScrollTrigger);}
 
-  // Hero — word-by-word reveal
-  const h1=document.querySelector('.hero h1');
-  if(h1){
-    const html=h1.innerHTML;
-    h1.innerHTML=html.replace(/(<em>.*?<\/em>|\S+)/g,function(m){
-      return '<span class="word" style="display:inline-block;overflow:hidden;vertical-align:top">'+m+'</span>';
-    });
-    gsap.fromTo('.hero h1 .word',{y:'100%',opacity:0},{y:'0%',opacity:1,duration:1.2,ease:'power4.out',stagger:.06,delay:.3});
+  // Hero: word-by-word reveal
+  var heroTitle=document.getElementById('heroTitle');
+  if(heroTitle){
+    var html=heroTitle.innerHTML;
+    // split text nodes into words while keeping <em> tags
+    var tmp=document.createElement('div');
+    tmp.innerHTML=html;
+    var out='';
+    function wrapWords(node){
+      if(node.nodeType===3){
+        var words=node.textContent.split(/(\s+)/);
+        words.forEach(function(w){
+          if(w.trim()===''){out+=w;}
+          else{out+='<span class="word"><span>'+w+'</span></span> ';}
+        });
+      } else if(node.nodeType===1){
+        out+='<span class="word"><'+node.tagName.toLowerCase();
+        if(node.className){out+=' class="'+node.className+'"';}
+        out+='>';
+        Array.from(node.childNodes).forEach(function(c){wrapWords(c);});
+        out+='</'+node.tagName.toLowerCase()+'></span> ';
+      }
+    }
+    Array.from(tmp.childNodes).forEach(function(n){wrapWords(n);});
+    heroTitle.innerHTML=out;
+    gsap.fromTo(heroTitle.querySelectorAll('.word>span, .word>em'),
+      {y:'110%',opacity:0},
+      {y:'0%',opacity:1,duration:1.1,ease:'power4.out',stagger:.06,delay:.3}
+    );
   }
-  gsap.fromTo('.hero-sub',{opacity:0,y:30},{opacity:1,y:0,duration:1,delay:.9,ease:'power3.out'});
-  gsap.fromTo('.hero-cta-row',{opacity:0,y:20},{opacity:1,y:0,duration:.8,delay:1.1,ease:'power2.out'});
-  gsap.fromTo('.hero-meta',{opacity:0,y:20},{opacity:1,y:0,duration:.8,delay:.1,ease:'power2.out'});
 
-  // Service row gold line — scroll-triggered scaleX
-  gsap.utils.toArray('.service-row').forEach(function(el){
-    gsap.fromTo(el,{scaleX:.96,opacity:.7},{scaleX:1,opacity:1,duration:1,ease:'power2.out',
-      scrollTrigger:{trigger:el,start:'top 85%',toggleActions:'play none none none'}});
+  gsap.fromTo('.hero-sub',{opacity:0,y:20},{opacity:1,y:0,duration:1,ease:'power3.out',delay:.8});
+  gsap.fromTo('.hero-cta-row',{opacity:0,y:20},{opacity:1,y:0,duration:1,ease:'power3.out',delay:1});
+  gsap.fromTo('.hero-meta',{opacity:0,y:30},{opacity:1,y:0,duration:1,ease:'power3.out',delay:.5});
+
+  // Service rows
+  gsap.utils.toArray('.service-row').forEach(function(row){
+    gsap.fromTo(row,{scaleX:.96,opacity:.7,transformOrigin:'left center'},
+      {scaleX:1,opacity:1,duration:1,ease:'power3.out',
+       scrollTrigger:{trigger:row,start:'top 85%'}});
   });
 
   // Reveals
   gsap.utils.toArray('.reveal').forEach(function(el){
-    if(el.closest('.hero'))return;
+    if(el.classList.contains('service-row'))return;
     gsap.fromTo(el,{opacity:0,y:60},{opacity:1,y:0,duration:1,ease:'power3.out',
-      immediateRender:false,
-      scrollTrigger:{trigger:el,start:'top 88%',toggleActions:'play none none none'}});
+      scrollTrigger:{trigger:el,start:'top 88%'},immediateRender:false});
   });
 
-  // Portfolio stagger
-  gsap.utils.toArray('.portfolio-item').forEach(function(el,i){
-    gsap.fromTo(el,{opacity:0,y:80},{opacity:1,y:0,duration:1,delay:(i%3)*0.08,ease:'power3.out',
-      immediateRender:false,
-      scrollTrigger:{trigger:el,start:'top 90%',toggleActions:'play none none none'}});
-  });
+  // Portfolio horizontal scroll
+  var portfolioSection=document.querySelector('.portfolio-scroll');
+  var portfolioTrack=document.querySelector('.portfolio-track');
+  if(portfolioSection&&portfolioTrack&&typeof ScrollTrigger!=='undefined'){
+    var scrollWidth=portfolioTrack.scrollWidth-window.innerWidth+100;
+    if(scrollWidth>0){
+      gsap.to(portfolioTrack,{x:-scrollWidth,ease:'none',
+        scrollTrigger:{trigger:portfolioSection,start:'top top',end:'+='+scrollWidth,scrub:1,pin:true,invalidateOnRefresh:true}
+      });
+    }
+  }
 
-  // Stat counter
-  gsap.utils.toArray('.stat').forEach(function(el){
-    const num=el.querySelector('.stat-num');
-    if(!num)return;
-    const text=num.textContent;
-    const match=text.match(/\d+/);
-    if(!match)return;
-    const target=parseInt(match[0]);
-    const prefix=text.match(/^[^\d]*/)?.[0]||'';
-    const suffix=text.match(/[^\d]*$/)?.[0]||'';
-    gsap.fromTo({val:0},{val:target},{val:target,duration:2,ease:'power2.out',
-      scrollTrigger:{trigger:el,start:'top 80%',toggleActions:'play none none none'},
+  // Stat counter animation
+  document.querySelectorAll('.stat-num').forEach(function(el){
+    var text=el.textContent.trim();
+    var m=text.match(/^(\D*)(\d+)(\D*)$/);
+    if(!m)return;
+    var pre=m[1],num=parseInt(m[2],10),post=m[3];
+    var hasEm=el.querySelector('em');
+    var emHTML=hasEm?hasEm.outerHTML:'';
+    var obj={v:0};
+    gsap.to(obj,{v:num,duration:2,ease:'power2.out',
+      scrollTrigger:{trigger:el,start:'top 85%'},
       onUpdate:function(){
-        const hasEm=num.querySelector('em');
-        if(hasEm){num.innerHTML=prefix+'<em>'+Math.round(this.targets()[0].val)+'</em>'+suffix}
-        else{num.textContent=prefix+Math.round(this.targets()[0].val)+suffix}
-      }});
+        var val=Math.round(obj.v);
+        if(hasEm){el.innerHTML=pre+'<span>'+val+'</span>'+post;}
+        else{el.textContent=pre+val+post;}
+      },
+      onComplete:function(){
+        if(hasEm){el.innerHTML=pre+emHTML+post;}
+        else{el.textContent=pre+num+post;}
+      }
+    });
   });
 
   // Parallax
-  gsap.to('.hero-bg img',{y:'15%',ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:true}});
-  gsap.utils.toArray('.portfolio-img').forEach(function(el){
-    gsap.to(el,{y:-20,ease:'none',scrollTrigger:{trigger:el,start:'top bottom',end:'bottom top',scrub:true}});
+  var heroBg=document.querySelector('.hero-bg img');
+  if(heroBg&&typeof ScrollTrigger!=='undefined'){
+    gsap.to(heroBg,{y:'15%',ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:true}});
+  }
+  document.querySelectorAll('.portfolio-card-img img').forEach(function(img){
+    gsap.fromTo(img,{y:-20},{y:20,ease:'none',scrollTrigger:{trigger:img,start:'top bottom',end:'bottom top',scrub:true}});
   });
 });
 </script>
