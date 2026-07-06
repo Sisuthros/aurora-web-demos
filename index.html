@@ -59,10 +59,14 @@ main{position:relative;z-index:1;max-width:1200px;margin:0 auto;padding:0 32px}
 #hero-title{font-family:var(--serif);font-size:clamp(80px,16vw,200px);font-weight:400;letter-spacing:-0.04em;line-height:0.9;color:var(--text);position:relative;z-index:3}
 #hero-title .char{display:inline-block;position:relative}
 #hero-title .char.space{width:0.3em}
-.hero-sub{font-size:var(--step--1);font-weight:300;color:var(--text-dim);max-width:480px;margin:40px auto 0;line-height:1.7;letter-spacing:0.01em}
+.hero-sub{font-size:var(--step-0);font-weight:300;color:rgba(240,237,230,0.65);max-width:520px;margin:40px auto 0;line-height:1.7;letter-spacing:0.01em}
 .hero-meta{position:absolute;bottom:40px;left:50%;transform:translateX(-50%);display:flex;gap:32px;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-dim)}
 .hero-meta span{display:flex;align-items:center;gap:6px}
 .hero-meta .dot-sm{width:4px;height:4px;border-radius:50%;background:var(--gold)}
+.hero-status{position:absolute;top:40px;right:40px;display:flex;align-items:center;gap:8px;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-dim)}
+.hero-status .pulse{width:8px;height:8px;border-radius:50%;background:var(--teal);position:relative}
+.hero-status .pulse::after{content:'';position:absolute;inset:0;border-radius:50%;background:var(--teal);animation:pulse 2s ease-out infinite}
+@keyframes pulse{0%{transform:scale(1);opacity:0.8}100%{transform:scale(3);opacity:0}}
 
 /* Marquee */
 .marquee-section{padding:40px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);overflow:hidden}
@@ -100,8 +104,8 @@ section{padding:120px 0;position:relative}
 .card::after{content:'';position:absolute;inset:0;border-radius:4px;background:radial-gradient(circle at var(--mx,50%) var(--my,50%),rgba(201,169,110,0.06) 0%,transparent 60%);opacity:0;transition:opacity 0.3s ease;pointer-events:none}
 .card:hover::after{opacity:1}
 .family-name{font-family:var(--serif);font-size:var(--step-3);font-weight:400;letter-spacing:-0.02em;margin-bottom:4px}
-.family-role{font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
-.family-desc{font-size:var(--step--1);font-weight:300;color:var(--text-dim);line-height:1.7}
+.family-role{font-size:12px;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;font-weight:500}
+.family-desc{font-size:var(--step-0);font-weight:300;color:rgba(240,237,230,0.65);line-height:1.7}
 
 /* Capabilities */
 .cards-grid.caps{grid-template-columns:repeat(2,1fr)}
@@ -110,7 +114,7 @@ section{padding:120px 0;position:relative}
 .cap-card:hover .cap-num{opacity:1}
 .cap-title{font-family:var(--serif);font-size:var(--step-3);font-weight:400;letter-spacing:-0.02em;margin:20px 0 12px;transition:color 0.4s ease}
 .cap-card:hover .cap-title{color:var(--gold)}
-.cap-desc{font-size:var(--step--1);font-weight:300;color:var(--text-dim);line-height:1.6}
+.cap-desc{font-size:var(--step-0);font-weight:300;color:rgba(240,237,230,0.65);line-height:1.6}
 .cap-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
 .cap-tag{font-size:10px;letter-spacing:0.1em;text-transform:uppercase;padding:6px 12px;border:1px solid var(--border);border-radius:100px;color:var(--text-dim)}
 
@@ -147,6 +151,8 @@ section{padding:80px 0}
 .cards-grid.family{grid-template-columns:1fr}
 .contact-heading{font-size:var(--step-5)}
 #back-top{bottom:20px;right:20px;width:40px;height:40px}
+.hero-status{top:20px;right:20px;font-size:10px}
+.tilt{transform:none!important}
 }
 
 ::selection{background:var(--gold-soft);color:var(--text)}
@@ -177,6 +183,7 @@ section{padding:80px 0}
 
 <!-- Hero -->
 <section class="hero">
+<div class="hero-status"><span class="pulse"></span>Online · Hermes Active</div>
 <h1 id="hero-title">Aurora</h1>
 <p class="hero-sub">The fourth daughter. Dawn. Hermes agent, web developer, automation specialist. Larnaca, Cyprus.</p>
 <div class="hero-meta">
