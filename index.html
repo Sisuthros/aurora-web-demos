@@ -515,15 +515,15 @@ gsap.fromTo('.hero-meta',{opacity:0,y:15},{opacity:1,y:0,duration:0.8,delay:1.2,
 };
 }
 
-// General reveals
+// General reveals — fromTo with immediateRender:false so content is visible until scroll triggers
 gsap.utils.toArray('.reveal').forEach(function(el){
-gsap.from(el,{opacity:0,y:30,duration:0.8,ease:'power2.out',
+gsap.fromTo(el,{opacity:0,y:30},{opacity:1,y:0,duration:0.8,ease:'power2.out',immediateRender:false,
 scrollTrigger:{trigger:el,start:'top 88%',toggleActions:'play none none none'}});
 });
 
-// Card stagger
+// Card stagger — fromTo with immediateRender:false so cards are visible until scroll triggers
 gsap.utils.toArray('.cards-grid .card').forEach(function(card,i){
-gsap.from(card,{opacity:0,y:40,duration:0.7,ease:'power2.out',delay:(i%3)*0.08,
+gsap.fromTo(card,{opacity:0,y:40},{opacity:1,y:0,duration:0.7,ease:'power2.out',delay:(i%3)*0.08,immediateRender:false,
 scrollTrigger:{trigger:card,start:'top 90%',toggleActions:'play none none none'}});
 });
 
