@@ -1,0 +1,9 @@
+# Aurora Web -demosivut. Nämä sivut on tehty oikeille yrityksille
+# heidän julkisista tiedoistaan. Niitä ei saa indeksoida.
+# Poikkeus: juuri (/) on Auroran oma myyntisivu, se saa näkyä.
+User-agent: *
+Disallow: /
+Allow: /$
+
+# Jokaisella sivulla on lisäksi <meta name="robots" content="noindex,nofollow">.
+# Poistamme sivun pyynnöstä 24 tunnissa: tools/takedown-demo.mjs
