@@ -319,6 +319,11 @@ section{padding:7rem 0;position:relative}
   line-height:1.35;color:var(--text);margin-bottom:2rem;font-weight:400}
 .testimonial-quote::before{content:'\201C';font-size:var(--step-6);color:var(--gold);
   line-height:0;vertical-align:-0.4em;margin-right:.2em}
+/* Scenario cards are not customer quotes — drop the quotation mark, keep the gold accent. */
+.testimonial.scenario .testimonial-quote::before{content:none}
+.scenario-tag{display:inline-block;font-family:var(--fb);font-size:.7rem;font-weight:600;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--gold-dark);
+  border:1px solid var(--border2);border-radius:50px;padding:.3rem .8rem;margin-bottom:1.25rem}
 .faq-item{background:var(--white);border:1px solid var(--border);border-radius:var(--r-lg);margin-bottom:1rem;overflow:hidden}
 .faq-q{width:100%;display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:1.5rem;
   background:none;border:none;font-family:var(--fd);font-size:var(--step-1);font-weight:600;text-align:left;cursor:pointer}
@@ -1042,34 +1047,37 @@ footer{padding:3rem 0 2rem;border-top:1px solid var(--border);background:var(--s
   <div class="container">
     <div class="sec-label gs-reveal">Example Outcomes</div>
     <h2 class="sec-title gs-reveal">The kind of results <em>we design for</em>.</h2>
-      <p style="margin-bottom:2rem;color:var(--text-dim);font-size:.9rem">These demo scenarios show the business outcomes Aurora sites are built to support — faster trust, clearer offers, stronger local search visibility, and more direct leads.</p>
-    <div class="testimonial gs-reveal">
-      <p class="testimonial-quote">The mockup landed in my inbox before I even finished my coffee. By the end of the week I had a website that looks better than my competitors who spent five times more. Aurora just gets it.</p>
+      <p style="margin-bottom:2rem;color:var(--text-dim);font-size:.9rem">Aurora Web has no client testimonials to show yet — so there are none here. The scenarios below describe the outcome each build is designed to produce. They are illustrations, not customer quotes.</p>
+    <div class="testimonial scenario gs-reveal">
+      <span class="scenario-tag">Illustrative scenario</span>
+      <p class="testimonial-quote">A retreat owner sends a one-line brief in the evening and opens a working homepage mockup the next morning — before the first booking enquiry of the day lands.</p>
       <div class="testimonial-author">
-        <div class="testimonial-avatar">R</div>
+        <div class="testimonial-avatar">W</div>
         <div>
-          <div class="name">ReLove Retreats</div>
-          <div class="role">Wellness Retreat · Kos, Greece</div>
+          <div class="name">Wellness retreat</div>
+          <div class="role">Kos, Greece · illustrative scenario</div>
         </div>
       </div>
     </div>
-    <div class="testimonial gs-reveal" style="margin-top:1.5rem">
-      <p class="testimonial-quote">We needed a site in Greek, English, and Russian — fast. Aurora delivered in three days, and our Google traffic doubled in the first month. The fixed-price model meant no surprises on the invoice.</p>
+    <div class="testimonial scenario gs-reveal" style="margin-top:1.5rem">
+      <span class="scenario-tag">Illustrative scenario</span>
+      <p class="testimonial-quote">A firm needs Greek, English and Russian on one domain, with a secure intake form and clean local schema — built as a static site, so it loads in under a second on a phone in a waiting room.</p>
       <div class="testimonial-author">
-        <div class="testimonial-avatar" style="background:var(--gold-light);color:var(--white)">V</div>
+        <div class="testimonial-avatar" style="background:var(--gold-light);color:var(--white)">L</div>
         <div>
-          <div class="name">Vasiliou &amp; Co LLC</div>
-          <div class="role">Law Firm · Larnaca, Cyprus</div>
+          <div class="name">Law firm</div>
+          <div class="role">Larnaca, Cyprus · illustrative scenario</div>
         </div>
       </div>
     </div>
-    <div class="testimonial gs-reveal" style="margin-top:1.5rem">
-      <p class="testimonial-quote">I was skeptical about the 'free mockup' promise — but they actually did it. The demo looked so good I approved it same day. My bookings are up 40% since launch. Best investment I ever made.</p>
+    <div class="testimonial scenario gs-reveal" style="margin-top:1.5rem">
+      <span class="scenario-tag">Illustrative scenario</span>
+      <p class="testimonial-quote">A café approves the free mockup the same day and launches with a menu, map and reservation link that work on the phone of someone standing on the street outside.</p>
       <div class="testimonial-author">
-        <div class="testimonial-avatar" style="background:var(--sage);color:var(--white)">M</div>
+        <div class="testimonial-avatar" style="background:var(--sage);color:var(--white)">C</div>
         <div>
-          <div class="name">Mingle Cafe</div>
-          <div class="role">Café · Larnaca, Cyprus</div>
+          <div class="name">Café</div>
+          <div class="role">Larnaca, Cyprus · illustrative scenario</div>
         </div>
       </div>
     </div>
@@ -1091,7 +1099,7 @@ footer{padding:3rem 0 2rem;border-top:1px solid var(--border);background:var(--s
         </p>
         <div style="display:flex;gap:2rem;margin-top:2rem;flex-wrap:wrap">
           <div>
-            <div class="stat-counter" data-target="12">12</div>
+            <div class="stat-counter" data-target="16">16</div>
             <div style="font-size:.85rem;color:var(--muted)">Live demos</div>
           </div>
           <div>
@@ -1099,8 +1107,10 @@ footer{padding:3rem 0 2rem;border-top:1px solid var(--border);background:var(--s
             <div style="font-size:.85rem;color:var(--muted)">Languages</div>
           </div>
           <div>
-            <div class="stat-counter" data-target="100">100</div>
-            <div style="font-size:.85rem;color:var(--muted)">% on-time delivery</div>
+            <!-- Was "100 % on-time delivery" — unverifiable with no clients yet.
+                 40 = demo concepts actually in the repo, matching the "40+" copy above. -->
+            <div class="stat-counter" data-target="40">40</div>
+            <div style="font-size:.85rem;color:var(--muted)">Demo concepts built</div>
           </div>
         </div>
       </div>
@@ -1196,7 +1206,7 @@ footer{padding:3rem 0 2rem;border-top:1px solid var(--border);background:var(--s
 <!-- ═════════════ MOBILE CTA ═════════════ -->
 <div class="mobile-cta">
   <a href="#contact" class="btn btn-primary" style="font-size:.82rem;padding:.7rem 1.4rem">Get a free mockup</a>
-  <a href="https://wa.me/357" class="btn btn-ghost" style="font-size:.82rem;padding:.7rem 1.4rem">WhatsApp</a>
+  <a href="https://wa.me/35796306748?text=Hi%20Aurora%20Web!%20I%20want%20a%20website%20for%20my%20business" class="btn btn-ghost" style="font-size:.82rem;padding:.7rem 1.4rem">WhatsApp</a>
 </div>
 
 <footer>
@@ -1207,15 +1217,153 @@ footer{padding:3rem 0 2rem;border-top:1px solid var(--border);background:var(--s
         Aurora Web
       </div>
       <div class="footer-links">
-        <a href="mailto:hello@auroraweb.fi">hello@auroraweb.fi</a>
+        <!-- auroraweb.fi is not a registered domain — mail to it bounces.
+             Restore hello@auroraweb.fi here the day the domain is live. -->
+        <a href="mailto:viltsu.myllyniemi@gmail.com">viltsu.myllyniemi@gmail.com</a>
         <a href="https://wa.me/35796306748">WhatsApp</a>
         <a href="#work">Work</a>
         <a href="#pricing">Pricing</a>
+        <a href="privacy.html">Privacy</a>
       </div>
     </div>
     <div class="footer-copy">&copy; 2026 Aurora Web Design · Helsinki · Larnaca · Cyprus · Built with sisu &#10084; &nbsp;<span style="display:inline-flex;align-items:center;gap:4px;padding:2px 10px;background:rgba(37,211,102,.1);border:1px solid rgba(37,211,102,.25);border-radius:50px;font-size:.72rem;color:#1a9e4a;font-weight:600">⚡ Lighthouse 98</span></div>
   </div>
 </footer>
+
+<!-- ═════════════ CORE INTERACTIONS ═════════════
+     Nav, burger, FAQ, portfolio filter and lead capture live here on purpose:
+     they must keep working even if the GSAP/Lenis CDNs are blocked or down. -->
+<script defer>
+/* Contact routing — single source of truth.
+   NOTE: auroraweb.fi is not registered yet. Until it is, leads must go to a mailbox
+   that actually exists, or they are lost silently. Set AURORA_LEAD_ENDPOINT to a
+   Formspree / Web3Forms URL to capture leads server-side instead of via mail client. */
+var AURORA_CONTACT_EMAIL = 'viltsu.myllyniemi@gmail.com';
+var AURORA_LEAD_ENDPOINT = '';
+
+document.addEventListener('DOMContentLoaded', function() {
+
+  /* Nav scroll state */
+  var nav = document.getElementById('nav');
+  var scrollProg = document.getElementById('scrollProg');
+  if (nav && scrollProg) {
+    window.addEventListener('scroll', function() {
+      var scrolled = window.scrollY;
+      var height = document.documentElement.scrollHeight - window.innerHeight;
+      if (scrolled > 50) nav.classList.add('scrolled');
+      else nav.classList.remove('scrolled');
+      scrollProg.style.width = (scrolled / height * 100) + '%';
+    });
+  }
+
+  /* Burger menu */
+  var burger = document.getElementById('burger');
+  if (burger) {
+    burger.addEventListener('click', function() {
+      document.getElementById('navLinks').classList.toggle('open');
+    });
+  }
+
+  /* FAQ Accordion */
+  document.querySelectorAll('.faq-q').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var item = btn.closest('.faq-item');
+      var answer = item.querySelector('.faq-a');
+      var isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(function(faq) {
+        faq.classList.remove('open');
+        faq.querySelector('.faq-a').style.maxHeight = null;
+      });
+      if (!isOpen) {
+        item.classList.add('open');
+        answer.style.maxHeight = answer.scrollHeight + 'px';
+      }
+    });
+  });
+
+  /* Portfolio filter */
+  document.querySelectorAll('.work-filter button').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      document.querySelectorAll('.work-filter button').forEach(function(b) { b.classList.remove('active'); });
+      this.classList.add('active');
+      var filter = this.dataset.filter;
+      document.querySelectorAll('.work-card').forEach(function(card) {
+        card.style.display = (filter === 'all' || card.dataset.cat === filter) ? '' : 'none';
+      });
+    });
+  });
+
+  /* ── Lead capture ──
+     #emailForm is a <div>, so it never fires a 'submit' event. Bind the button and
+     Enter key directly, and make sure the address actually goes somewhere. */
+  var emailInput  = document.getElementById('emailInput');
+  var emailMsg    = document.getElementById('emailMsg');
+  var emailSubmit = document.getElementById('emailSubmit');
+
+  function validEmail(v) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); }
+
+  function showError(text) {
+    emailInput.classList.add('error');
+    emailMsg.className = 'email-msg error';
+    emailMsg.textContent = text;
+  }
+
+  function mailHandoff(email) {
+    var subject = 'Free mockup request';
+    var body = 'Hi Aurora Web,\n\nI would like a free mockup for my business.\n\n'
+             + 'My email: ' + email + '\n'
+             + 'Business / one-line brief: ';
+    window.location.href = 'mailto:' + AURORA_CONTACT_EMAIL
+      + '?subject=' + encodeURIComponent(subject)
+      + '&body=' + encodeURIComponent(body);
+  }
+
+  function submitLead() {
+    var email = emailInput.value.trim();
+    if (!email) { showError('Please enter your email address.'); return; }
+    if (!validEmail(email)) { showError('Please enter a valid email address.'); return; }
+    emailInput.classList.remove('error');
+
+    if (AURORA_LEAD_ENDPOINT) {
+      emailMsg.className = 'email-msg';
+      emailMsg.textContent = 'Sending…';
+      fetch(AURORA_LEAD_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: email, source: 'auroraweb-landing' })
+      }).then(function(r) {
+        if (!r.ok) throw new Error('lead endpoint returned ' + r.status);
+        emailInput.value = '';
+        emailMsg.className = 'email-msg success';
+        emailMsg.textContent = 'Thanks! We\'ll be in touch within 24 hours.';
+      }).catch(function() {
+        emailMsg.className = 'email-msg';
+        emailMsg.textContent = 'Opening your email app instead…';
+        mailHandoff(email);
+      });
+    } else {
+      emailMsg.className = 'email-msg success';
+      emailMsg.textContent = 'Opening your email app — or message us on WhatsApp.';
+      mailHandoff(email);
+    }
+  }
+
+  if (emailSubmit) {
+    emailSubmit.addEventListener('click', function(e) { e.preventDefault(); submitLead(); });
+  }
+  if (emailInput) {
+    emailInput.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') { e.preventDefault(); submitLead(); }
+    });
+    emailInput.addEventListener('input', function() {
+      if (this.classList.contains('error')) {
+        this.classList.remove('error');
+        emailMsg.textContent = '';
+      }
+    });
+  }
+});
+</script>
 
 <script defer>
 document.addEventListener('DOMContentLoaded', function() {
@@ -1284,21 +1432,8 @@ gsap.utils.toArray('.work-card').forEach(function(card, i) {
   });
 });
 
-/* Nav scroll state */
-const nav = document.getElementById('nav');
-const scrollProg = document.getElementById('scrollProg');
-window.addEventListener('scroll', function() {
-  const scrolled = window.scrollY;
-  const height = document.documentElement.scrollHeight - window.innerHeight;
-  if (scrolled > 50) nav.classList.add('scrolled');
-  else nav.classList.remove('scrolled');
-  scrollProg.style.width = (scrolled / height * 100) + '%';
-});
-
-/* Burger menu */
-document.getElementById('burger').addEventListener('click', function() {
-  document.getElementById('navLinks').classList.toggle('open');
-});
+/* Nav scroll state, burger menu, FAQ, portfolio filter and lead capture
+   moved to the dependency-free block above. */
 
 /* Custom cursor */
 const cursor = document.getElementById('cursor');
@@ -1315,35 +1450,6 @@ document.querySelectorAll('a, button, .work-card, .svc').forEach(function(el) {
 
 /* Marquee — duplicate for seamless loop (already done in markup) */
 
-/* FAQ Accordion */
-document.querySelectorAll('.faq-q').forEach(function(btn) {
-  btn.addEventListener('click', function() {
-    var item = btn.closest('.faq-item');
-    var answer = item.querySelector('.faq-a');
-    var isOpen = item.classList.contains('open');
-    document.querySelectorAll('.faq-item').forEach(function(faq) {
-      faq.classList.remove('open');
-      faq.querySelector('.faq-a').style.maxHeight = null;
-    });
-    if (!isOpen) {
-      item.classList.add('open');
-      answer.style.maxHeight = answer.scrollHeight + 'px';
-    }
-  });
-});
-
-/* Portfolio filter */
-document.querySelectorAll('.work-filter button').forEach(function(btn) {
-  btn.addEventListener('click', function() {
-    document.querySelectorAll('.work-filter button').forEach(function(b) { b.classList.remove('active'); });
-    this.classList.add('active');
-    var filter = this.dataset.filter;
-    document.querySelectorAll('.work-card').forEach(function(card) {
-      card.style.display = (filter === 'all' || card.dataset.cat === filter) ? '' : 'none';
-    });
-  });
-});
-
 /* Stat counters */
 document.querySelectorAll('.stat-counter').forEach(function(el) {
   var target = parseInt(el.dataset.target);
@@ -1356,45 +1462,9 @@ document.querySelectorAll('.stat-counter').forEach(function(el) {
   }
 });
 
-/* Email form validation */
-var emailForm = document.getElementById('emailForm');
-var emailInput = document.getElementById('emailInput');
-var emailMsg = document.getElementById('emailMsg');
+}); /* end DOMContentLoaded — this closing brace was missing, which made the whole
+       block a syntax error, so none of it ever ran on the live site. */
 
-function validateEmail(email) {
-  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-}
-
-emailForm.addEventListener('submit', function(e) {
-  e.preventDefault();
-  var email = emailInput.value.trim();
-
-  if (!email) {
-    emailInput.classList.add('error');
-    emailMsg.className = 'email-msg error';
-    emailMsg.textContent = 'Please enter your email address.';
-    return;
-  }
-
-  if (!validateEmail(email)) {
-    emailInput.classList.add('error');
-    emailMsg.className = 'email-msg error';
-    emailMsg.textContent = 'Please enter a valid email address.';
-    return;
-  }
-
-  emailInput.classList.remove('error');
-  emailInput.value = '';
-  emailMsg.className = 'email-msg success';
-  emailMsg.textContent = 'Thanks! We\'ll be in touch within 24 hours.';
-});
-
-emailInput.addEventListener('input', function() {
-  if (this.classList.contains('error')) {
-    this.classList.remove('error');
-    emailMsg.textContent = '';
-  }
-});
 </script>
 </body>
 </html>
