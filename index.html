@@ -391,12 +391,9 @@ footer{padding:3rem 0 2rem;border-top:1px solid var(--border);background:var(--s
   z-index:9999;width:0%;transition:width .1s}
 
 /* ═══════════════════ CUSTOM CURSOR ═══════════════════ */
-.cursor{position:fixed;width:10px;height:10px;border-radius:50%;background:var(--gold);
-  pointer-events:none;mix-blend-mode:difference;z-index:10000;
-  transition:width .3s,height .3s,background .3s}
-.cursor.hover{width:44px;height:44px;background:transparent;
-  border:1.5px solid var(--gold)}
-@media(max-width:768px){.cursor{display:none}}
+
+
+
 
 /* ═══════════════════ ACCESSIBILITY ═══════════════════ */
 .skip-link{position:absolute;top:-100px;left:1rem;z-index:10001;
@@ -428,7 +425,6 @@ footer{padding:3rem 0 2rem;border-top:1px solid var(--border);background:var(--s
 
 <div class="noise"></div>
 <div class="scroll-prog" id="scrollProg"></div>
-<div class="cursor" id="cursor"></div>
 
 <!-- ═════════════ NAV ═════════════ -->
 <nav class="nav" id="nav" role="navigation" aria-label="Main">
@@ -890,7 +886,7 @@ footer{padding:3rem 0 2rem;border-top:1px solid var(--border);background:var(--s
         <div class="svc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></div>
         <h3>Business Website</h3>
         <p>3–5 page custom site with mobile-first design, technical SEO, contact forms, and fast Cloudflare hosting. Your digital storefront.</p>
-        <span class="svc-badge">From &euro;1,800</span>
+        <span class="svc-badge">From &euro;599</span>
       </div>
       <div class="svc gs-reveal">
         <div class="svc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 002-2V2M7 2v20M17 2v20M21 15V2a4 4 0 00-4 4v8a2 2 0 002 2"/></svg></div>
@@ -908,13 +904,13 @@ footer{padding:3rem 0 2rem;border-top:1px solid var(--border);background:var(--s
         <div class="svc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg></div>
         <h3>Trades &amp; Services</h3>
         <p>Emergency call buttons, service areas, before/after gallery, and lead-capture forms. Built to get the phone ringing.</p>
-        <span class="svc-badge">From &euro;1,800</span>
+        <span class="svc-badge">From &euro;599</span>
       </div>
       <div class="svc gs-reveal">
         <div class="svc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg></div>
         <h3>E-Commerce</h3>
         <p>Online store with cart, checkout, payment processing, inventory management, and order tracking — all custom built.</p>
-        <span class="svc-badge">From &euro;4,500</span>
+        <span class="svc-badge">From &euro;1,499</span>
       </div>
       <div class="svc gs-reveal">
         <div class="svc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M18 17V9M13 17V5M8 17v-3"/></svg></div>
@@ -950,7 +946,7 @@ footer{padding:3rem 0 2rem;border-top:1px solid var(--border);background:var(--s
         <div class="svc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
         <h3>Real Estate &amp; Tourism</h3>
         <p>New developments and seasonal campaigns need landing pages fast. We produce conversion-optimised landing pages in hours, with A/B testing ready, booking integrations and direct lead capture.</p>
-        <span class="svc-badge">Budget &euro;2,000–&euro;4,500+</span>
+        <span class="svc-badge">From &euro;2,999</span>
       </div>
     </div>
   </div>
@@ -1004,58 +1000,57 @@ footer{padding:3rem 0 2rem;border-top:1px solid var(--border);background:var(--s
   <div class="container">
     <div class="sec-label gs-reveal">Pricing</div>
     <h2 class="sec-title gs-reveal">Fixed price. <em>No surprises.</em></h2>
-    <p class="sec-desc gs-reveal">No hourly invoices. Pay once after you approve the free mockup. Optional monthly retainers keep your site fast and visible.</p>
+    <p class="sec-desc gs-reveal">No hourly invoices. Free mockup first — pay once after you approve. Simple packages for local businesses.</p>
 
     <div class="price-grid">
       <div class="pcard gs-reveal">
-        <h3>Local Starter</h3>
-        <div class="price">&euro;1,800<small> one-time</small></div>
-        <div class="pdesc">Modern digital presence for small local businesses in Cyprus.</div>
+        <h3>Starter</h3>
+        <div class="price">&euro;599<small> one-time</small></div>
+        <div class="pdesc">One sharp page for a local business — ready to take enquiries.</div>
         <ul>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>3–5 page custom website</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>English + Greek structure</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Technical SEO + Cloudflare CDN</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Mobile-first responsive design</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Contact form + Google Maps</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>48-hour delivery</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>1-page custom site (or tight landing)</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Mobile-first, fast load</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Contact / WhatsApp CTA</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Basic SEO + Google-ready</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Free mockup before you pay</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>~48h after approval</li>
         </ul>
         <a href="#contact" class="btn btn-ghost">Get started</a>
       </div>
       <div class="pcard featured gs-reveal">
         <span class="badge">MOST POPULAR</span>
-        <h3>Substance &amp; Trust</h3>
-        <div class="price">&euro;4,500<small> one-time</small></div>
-        <div class="pdesc">For relocated companies, lawyers, accountants and premium services.</div>
+        <h3>Business</h3>
+        <div class="price">&euro;1,499<small> one-time</small></div>
+        <div class="pdesc">Full small-business site: services, trust, booking path.</div>
         <ul>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>5–10 page multilingual site (EN/EL/RU/PL)</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Google Business Profile setup</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Local Schema.org + GEO-SEO</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>GDPR cookie + privacy infrastructure</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Secure consultation intake forms</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>5-day delivery SLA</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Up to ~5 pages</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>EN (and EL structure if needed)</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Service / menu / gallery sections</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Contact form + map</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Technical SEO basics</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Free mockup · ~1 week delivery</li>
         </ul>
         <a href="#contact" class="btn btn-primary">Get started
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
       </div>
       <div class="pcard gs-reveal">
-        <h3>Full Digital</h3>
-        <div class="price">&euro;4,500–&euro;10,000+<small> one-time</small></div>
-        <div class="pdesc">Custom scope for growth companies, e-commerce, real estate platforms and web apps.</div>
+        <h3>Premium</h3>
+        <div class="price">&euro;2,999<small> one-time</small></div>
+        <div class="pdesc">Heavier brand, booking, or multi-language when you need more.</div>
         <ul>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Unlimited pages + design system</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>E-commerce / Shopify / WooCommerce</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Custom animations, WebGL, API integrations</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Advanced SEO, analytics, A/B testing</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Unlimited revisions during build</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>1 month free maintenance</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Larger site / design system</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Booking or e-commerce path</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Richer motion (still no gimmicks)</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Multi-language if needed</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Analytics + SEO setup</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Scoped quote if bigger than this</li>
         </ul>
         <a href="#contact" class="btn btn-ghost">Get a quote</a>
       </div>
     </div>
     <p style="text-align:center;margin-top:2.5rem;color:var(--text-dim);font-size:.85rem">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px;display:inline;vertical-align:-3px;margin-right:4px"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
-      All plans include free mockup before payment. Monthly retainers: Astro Care &euro;150–250/mo · Local SEO &amp; Growth &euro;600–1,200/mo
+      Free mockup first — you only pay after you like the direction. Optional care from &euro;99/mo.
     </p>
   </div>
 </section>
@@ -1439,19 +1434,7 @@ gsap.utils.toArray('.work-card').forEach(function(card, i) {
 /* Nav scroll state, burger menu, FAQ, portfolio filter and lead capture
    moved to the dependency-free block above. */
 
-/* Custom cursor */
-const cursor = document.getElementById('cursor');
-let cursorX = 0, cursorY = 0;
-document.addEventListener('mousemove', function(e) {
-  cursorX = e.clientX; cursorY = e.clientY;
-  cursor.style.left = cursorX + 'px';
-  cursor.style.top = cursorY + 'px';
-});
-document.querySelectorAll('a, button, .work-card, .svc').forEach(function(el) {
-  el.addEventListener('mouseenter', function() { cursor.classList.add('hover'); });
-  el.addEventListener('mouseleave', function() { cursor.classList.remove('hover'); });
-});
-
+/* Native cursor — no custom follower */
 /* Marquee — duplicate for seamless loop (already done in markup) */
 
 /* Stat counters */
