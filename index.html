@@ -50,8 +50,12 @@
   --step-7:clamp(4.768rem,4.46rem + 1.51vw,5.96rem);
 }
 *{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior: auto;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
-body{background:var(--cream);color:var(--text);font-family:var(--fb);font-size:var(--step-0);line-height:1.6;overflow-x:hidden}
+html{scroll-behavior:auto;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
+  overflow-x:hidden;max-width:100%;}
+body{background:var(--cream);color:var(--text);font-family:var(--fb);font-size:var(--step-0);line-height:1.6;
+  overflow-x:hidden;max-width:100%;width:100%;position:relative;}
+/* Kill horizontal rubber-band from animated marquees on mobile */
+.trusted-bar,.marquee{overflow:hidden;max-width:100%;width:100%;position:relative}
 img{max-width:100%;display:block}
 a{color:inherit;text-decoration:none}
 
@@ -158,16 +162,16 @@ a{color:inherit;text-decoration:none}
 .info-item svg{width:18px;height:18px;color:var(--gold-dark);flex-shrink:0}
 
 /* ═══════════════════ TRUSTED BY / LOGO SLIDER ═══════════════════ */
-.trusted-bar{padding:2.5rem 0;background:var(--white);border-bottom:1px solid var(--border);overflow:hidden}
+.trusted-bar{padding:2.5rem 0;background:var(--white);border-bottom:1px solid var(--border);overflow:hidden;max-width:100%;width:100%;position:relative}
 .trusted-bar .sec-label{text-align:center;margin-bottom:2rem}
-.trusted-track{display:flex;gap:4rem;animation:trustedScroll 30s linear infinite;align-items:center;width:max-content}
+.trusted-track{display:flex;gap:4rem;animation:trustedScroll 30s linear infinite;align-items:center;width:max-content;max-width:none}
 .trusted-track:hover{animation-play-state:paused}
 .trusted-logo{height:28px;opacity:.35;filter:grayscale(1);transition:all .3s}
 .trusted-logo:hover{opacity:.7;filter:grayscale(0)}
 @keyframes trustedScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
 /* ═══════════════════ MARQUEE ═══════════════════ */
-.marquee{overflow:hidden;white-space:nowrap;padding:1rem 0;
+.marquee{overflow:hidden;white-space:nowrap;padding:1rem 0;max-width:100%;width:100%;position:relative;
   border-bottom:1px solid var(--border);background:var(--cream)}
 .marquee-track{display:inline-flex;gap:3rem;animation:mq 35s linear infinite;align-items:center}
 .marquee-item{font-family:var(--fs);font-size:var(--step-2);font-style:italic;
@@ -176,8 +180,18 @@ a{color:inherit;text-decoration:none}
 .marquee-sep svg{width:10px;height:10px;fill:var(--gold)}
 @keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
+
+/* ═══ MOBILE HORIZONTAL SCROLL LOCK ═══ */
+html,body{overflow-x:hidden!important;max-width:100vw;}
+body > *{max-width:100%;}
+.trusted-bar > .trusted-track,
+.marquee > .marquee-track{/* tracks may be wider; parents MUST clip */}
+@supports (overflow:clip){
+  html,body,.trusted-bar,.marquee{overflow-x:clip;}
+}
+
 /* Sticky mobile CTA */
-.mobile-cta{display:none;position:fixed;bottom:0;left:0;right:0;z-index:99;
+.mobile-cta{display:none;position:fixed;bottom:0;left:0;right:0;width:100%;max-width:100%;z-index:99;
   background:rgba(248,246,242,.96);backdrop-filter:blur(20px);
   border-top:1px solid var(--border);padding:.8rem 1rem;
   justify-content:center;gap:.6rem}
