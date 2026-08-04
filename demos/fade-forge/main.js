@@ -35,21 +35,17 @@ if (!isTouchDevice && cursor) {
   animateCursor();
 }
 
-/* ===== LENIS SMOOTH SCROLL ===== */
-let lenis;
-if (!isTouchDevice) {
-  lenis = new Lenis({ duration: 1.2, easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)) });
-  gsap.ticker.add((time) => { lenis.raf(time * 1000); });
-  gsap.ticker.lagSmoothing(0);
-  // Anchor clicks via Lenis
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', (e) => {
-      e.preventDefault();
-      const target = document.querySelector(anchor.getAttribute('href'));
-      if (target) lenis.scrollTo(target);
-    });
+/* ===== NATIVE SCROLL (Lenis removed — fought CSS smooth scroll) ===== */
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', (e) => {
+    const href = anchor.getAttribute('href');
+    if (!href || href === '#') return;
+    const target = document.querySelector(href);
+    if (!target) return;
+    e.preventDefault();
+    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
   });
-}
+});
 
 /* ===== MAGNETIC BUTTONS ===== */
 document.querySelectorAll('.magnetic-btn').forEach(btn => {
