@@ -352,9 +352,10 @@ section{padding:7rem 0;position:relative}
 .testimonial-author .role{font-size:.82rem;color:var(--muted)}
 
 /* ═══════════════════ CTA ═══════════════════ */
-.cta{padding:8rem 0;text-align:center;position:relative;overflow:hidden}
+.cta{padding:8rem 0;text-align:center;position:relative;overflow:hidden;max-width:100%}
 .cta::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
-  width:700px;height:700px;background:radial-gradient(circle,rgba(199,167,106,.1),transparent 60%)}
+  width:min(700px,140vw);height:min(700px,140vw);max-width:none;pointer-events:none;
+  background:radial-gradient(circle,rgba(199,167,106,.1),transparent 60%)}
 .cta-content{position:relative;z-index:1}
 .cta h2{font-family:var(--fd);font-size:var(--step-6);font-weight:600;
   line-height:1.02;letter-spacing:-.035em;margin-bottom:1.5rem}
@@ -367,6 +368,10 @@ section{padding:7rem 0;position:relative}
 .wa-btn:hover{transform:translateY(-3px);box-shadow:0 12px 40px rgba(37,211,102,.3)}
 .wa-btn svg{width:20px;height:20px}
 
+/* ═══════════════════ ABOUT ═══════════════════ */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+@media(max-width:800px){.about-grid{grid-template-columns:1fr;gap:2rem}}
+
 /* ═══════════════════ FOOTER ═══════════════════ */
 footer{padding:3rem 0 2rem;border-top:1px solid var(--border);background:var(--surface)}
 .footer-grid{display:flex;justify-content:space-between;align-items:center;
@@ -374,7 +379,8 @@ footer{padding:3rem 0 2rem;border-top:1px solid var(--border);background:var(--s
 .footer-logo{display:flex;align-items:center;gap:.5rem;font-family:var(--fd);
   font-size:1.2rem;font-weight:600}
 .footer-logo svg{width:24px;height:24px}
-.footer-links{display:flex;gap:2rem}
+.footer-links{display:flex;flex-wrap:wrap;gap:1rem 1.5rem;justify-content:flex-end;max-width:100%}
+@media(max-width:600px){.footer-grid{flex-direction:column;align-items:flex-start}.footer-links{justify-content:flex-start;gap:.85rem 1.1rem}}
 .footer-links a{color:var(--text-dim);font-size:.85rem;transition:color .2s}
 .footer-links a:hover{color:var(--gold-dark)}
 .footer-copy{font-size:.78rem;color:var(--text-dim);text-align:center;
@@ -927,7 +933,7 @@ footer{padding:3rem 0 2rem;border-top:1px solid var(--border);background:var(--s
     <h2 class="sec-title gs-reveal">Built for the businesses that <em>need to be trusted fast.</em></h2>
     <p class="sec-desc gs-reveal">We focus on three segments where speed, multilingual precision and local SEO create immediate revenue impact.</p>
 
-    <div class="svc-grid" style="grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem">
+    <div class="svc-grid" style="grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:1.5rem">
       <div class="svc gs-reveal" style="border-color:var(--border2)">
         <div class="svc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
         <h3>Relocated Companies</h3>
@@ -1099,7 +1105,7 @@ footer{padding:3rem 0 2rem;border-top:1px solid var(--border);background:var(--s
 <!-- ═════════════ ABOUT / TRUST ═════════════ -->
 <section id="about" style="background:var(--white)">
   <div class="container">
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center">
+    <div class="about-grid">
       <div class="gs-reveal">
         <div class="sec-label">Why Aurora</div>
         <h2 class="sec-title" style="max-width:none">A small agency with <em>family-grade standards.</em></h2>
