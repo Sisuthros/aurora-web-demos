@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,70 +10,264 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700;800&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 <style>
-:root{--primary:#00A4C8;--secondary:#0A2540;--bg:#FFFFFF;--ink:#2B2620;--muted:#8A7F70;--card:#fff;--r:22px;--shadow:0 18px 50px rgba(0,0,0,.12)}
-*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}
-body{font-family:'Inter','Source Sans 3',sans-serif;background:var(--bg);color:var(--ink);line-height:1.55;overflow-x:hidden}
+:root{
+  --primary:#00A4C8;
+  --secondary:#0A2540;
+  --bg:#FFFFFF;
+  --ink:#2B2620;
+  --muted:#8A7F70;
+  --card:#fff;
+  --r:22px;
+  --shadow:0 18px 50px rgba(0,0,0,.12);
+}
+*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{font-family:'Inter','Source Sans 3',sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;overflow-x:hidden}
 h1,h2,h3{font-family:'Playfair Display',serif;font-weight:700;line-height:1.08}
 a{color:inherit;text-decoration:none}img{max-width:100%;display:block}
-.container{width:min(1120px,92%);margin:0 auto}
+.container{width:min(1160px,92%);margin:0 auto}
 nav{position:fixed;inset:0 0 auto 0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.1rem 4%;transition:.3s}
-nav.scrolled{background:rgba(253,248,242,.94);backdrop-filter:blur(16px);box-shadow:0 2px 20px rgba(0,0,0,.08)}
-.logo{font-family:'Playfair Display',serif;font-size:1.35rem;color:var(--primary);font-weight:700}
-.nav-links{display:flex;gap:1.8rem;font-size:.85rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em}.nav-links a:hover{color:var(--primary)}
-.burger{display:none;flex-direction:column;gap:5px;cursor:pointer}.burger span{width:26px;height:2px;background:var(--ink)}
-.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:3rem;padding:8rem 4% 5rem}
-.hero-text{max-width:560px}.label{font-size:.72rem;text-transform:uppercase;letter-spacing:.22em;color:var(--primary);font-weight:700;margin-bottom:1.2rem}
-.hero h1{font-size:clamp(2.8rem,5.5vw,4.8rem);margin-bottom:1.4rem}.hero p{font-size:1.15rem;color:var(--muted);margin-bottom:2.2rem}
+nav.scrolled{background:rgba(255,255,255,.94);backdrop-filter:blur(16px);box-shadow:0 2px 20px rgba(0,0,0,.08)}
+.logo{font-family:'Playfair Display',serif;font-size:1.35rem;color:var(--primary);font-weight:700;display:flex;align-items:center;gap:.5rem}
+.logo .mark{width:38px;height:38px;border-radius:50%;background:var(--primary);color:#fff;display:grid;place-items:center;font-size:1.2rem}
+.nav-links{display:flex;gap:1.4rem;font-size:.85rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em}.nav-links a:hover{color:var(--primary)}
+.burger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:8px}.burger span{width:26px;height:2px;background:var(--ink);transition:.25s}
+.burger.active span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.burger.active span:nth-child(2){opacity:0}
+.burger.active span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:3.5rem;padding:8rem 4% 5rem;background:linear-gradient(135deg,var(--bg) 0%,#fff 100%)}
+.hero-text{max-width:580px}.label{font-size:.72rem;text-transform:uppercase;letter-spacing:.22em;color:var(--primary);font-weight:700;margin-bottom:1.2rem}
+.hero h1{font-size:clamp(2.6rem,5vw,4.2rem);margin-bottom:1.4rem}
+.hero p{font-size:1.15rem;color:var(--muted);margin-bottom:2.4rem}
+.hero-img{position:relative;border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow);transform:rotate(1.5deg)}.hero-img img{width:100%;height:520px;object-fit:cover}
 .btn{display:inline-flex;align-items:center;gap:.6rem;padding:1rem 2rem;border-radius:50px;font-weight:600;font-size:.92rem;transition:.25s;cursor:pointer;border:none}
 .btn-primary{background:var(--primary);color:#fff}.btn-primary:hover{filter:brightness(.9);transform:translateY(-2px)}
-.btn-ghost{border:1px solid var(--secondary);color:var(--secondary);margin-left:.8rem}
-.hero-img{position:relative;border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow);transform:rotate(1.5deg)}.hero-img img{width:100%;height:520px;object-fit:cover}
-.section{padding:6rem 0}.sec-head{text-align:center;max-width:640px;margin:0 auto 3.5rem}.sec-head h2{font-size:clamp(2.2rem,4vw,3.2rem)}.sec-head p{color:var(--muted);margin-top:.8rem}
+.btn-ghost{border:1px solid var(--secondary);color:var(--secondary);margin-left:.8rem}.btn-ghost:hover{background:var(--secondary);color:#fff}
+.section{padding:6.5rem 0}.sec-head{text-align:center;max-width:700px;margin:0 auto 3.5rem}.sec-head h2{font-size:clamp(2.2rem,4vw,3rem)}.sec-head p{color:var(--muted);margin-top:.8rem}
 .story{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
-.story-img{border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow);transform:rotate(1.5deg)}.story-img img{height:420px;object-fit:cover;width:100%}
+.story-img{border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow);transform:rotate(1.5deg)}.story-img img{height:460px;object-fit:cover;width:100%}
 .story-text h2{font-size:clamp(2rem,3.5vw,2.8rem);margin-bottom:1rem}.story-text p{color:var(--muted);margin-bottom:1rem}
+.badges{display:flex;flex-wrap:wrap;gap:1rem;margin-top:1.5rem}.badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(0,0,0,.03);padding:.6rem 1rem;border-radius:50px;font-size:.82rem;font-weight:600;color:var(--muted)}
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}.why-card{background:var(--card);border:1px solid rgba(0,0,0,.08);border-radius:var(--r);padding:2rem;transition:.35s}.why-card:hover{transform:translateY(-6px);box-shadow:var(--shadow)}.why-card h3{font-size:1.3rem;margin-bottom:.6rem}.why-card p{font-size:.9rem;color:var(--muted)}
 .menu-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
 .menu-card{background:var(--card);border:1px solid rgba(0,0,0,.08);border-radius:var(--r);padding:1.8rem;transition:.35s}
 .menu-card:hover{transform:translateY(-6px);box-shadow:var(--shadow)}.menu-card h3{color:var(--primary);font-size:1.25rem;margin-bottom:.6rem}.menu-card p{color:var(--muted);font-size:.9rem}
 .menu-card .price{font-family:'Playfair Display',serif;font-size:1.6rem;margin-top:.8rem}
-.gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}.gallery img{height:220px;object-fit:cover;width:100%;border-radius:16px;transition:.4s}.gallery img:hover{transform:scale(1.03)}
-.testimonial{padding:4rem 0}.testimonial-inner{max-width:780px;margin:0 auto;text-align:center}
-.testimonial blockquote{font-family:'Playfair Display',serif;font-size:clamp(1.4rem,3vw,1.9rem);font-style:italic;line-height:1.35}
-.testimonial .author{margin-top:1.5rem;font-weight:700;color:var(--primary);text-transform:uppercase;letter-spacing:.05em;font-size:.9rem}
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}.gallery img{height:260px;object-fit:cover;width:100%;border-radius:16px;transition:.4s}.gallery img:hover{transform:scale(1.03)}
+.testimonials{padding:5rem 0;background:var(--ink);color:var(--bg)}
+.testimonial-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;max-width:1100px;margin:0 auto}
+.testimonial-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:var(--r);padding:2rem;transition:.35s}.testimonial-card:hover{background:rgba(255,255,255,.1)}
+.testimonial-card blockquote{font-family:'Playfair Display',serif;font-size:1.2rem;font-style:italic;line-height:1.4;margin-bottom:1.2rem}
+.testimonial-card .author{font-weight:700;color:var(--primary);font-size:.9rem}
+.faq-item{border-bottom:1px solid rgba(0,0,0,.08);max-width:760px;margin:0 auto}.faq-question{width:100%;display:flex;justify-content:space-between;align-items:center;padding:1.4rem 0;background:none;border:none;font-size:1.05rem;font-weight:600;cursor:pointer;color:var(--ink)}.faq-answer{max-height:0;overflow:hidden;transition:.35s;color:var(--muted)}.faq-answer.open{padding-bottom:1.4rem;max-height:300px}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start;max-width:1000px;margin:0 auto}
+.contact-form{display:grid;gap:1rem}.contact-form input,.contact-form textarea{width:100%;padding:1rem 1.2rem;border:1px solid rgba(0,0,0,.12);border-radius:14px;font-family:inherit;font-size:.95rem}.contact-form textarea{min-height:120px;resize:vertical}
+.contact-info h3{font-size:1.4rem;margin-bottom:1rem}.contact-info p{color:var(--muted);margin-bottom:.6rem}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;max-width:900px;margin:0 auto;text-align:center}.stats div{padding:1.5rem;background:rgba(255,255,255,.08);border-radius:var(--r)}.stats div span{display:block;font-family:'Playfair Display',serif;font-size:2.2rem;color:var(--primary)}
 footer{position:relative;background:var(--secondary);color:#FDF8F2;padding:8rem 0 3rem;overflow:hidden;text-align:center}
-footer .giant{position:absolute;left:50%;top:52%;transform:translate(-50%,-50%);font-family:'Playfair Display',serif;font-size:clamp(5rem,14vw,12rem);opacity:.08;white-space:nowrap;pointer-events:none}
-footer h2{font-size:clamp(2rem,4vw,3rem);margin-bottom:1rem}footer p{opacity:.85;max-width:520px;margin:0 auto 2rem}
-.stats{display:flex;justify-content:center;gap:3rem;margin:2rem 0}.stats div span{display:block;font-family:'Playfair Display',serif;font-size:2.5rem;color:var(--primary)}
-.fab-cta{position:fixed;bottom:1.5rem;right:1.5rem;z-index:101;background:var(--primary);color:#fff;padding:1rem 1.6rem;border-radius:50px;font-weight:700;box-shadow:var(--shadow);transition:.25s}.fab-cta:hover{transform:translateY(-3px)}
-.daynight{display:flex;gap:.5rem;margin-top:1.5rem}.daynight button{padding:.6rem 1.2rem;border-radius:50px;border:1px solid var(--secondary);background:transparent;color:var(--secondary);font-weight:600;cursor:pointer}.daynight button.active{background:var(--secondary);color:#fff}
-@media(max-width:900px){.hero,.story{grid-template-columns:1fr}.hero{padding-top:6.5rem}.hero-img img{height:360px}.menu-grid{grid-template-columns:1fr}.gallery{grid-template-columns:repeat(2,1fr)}.gallery img{height:160px}.nav-links{display:none}.burger{display:flex}.btn{display:flex;width:100%;justify-content:center;margin:.4rem 0}.btn-ghost{margin-left:0!important}.stats{gap:1.2rem}.stats div span{font-size:1.8rem}.fab-cta{left:1rem;right:1rem;bottom:1rem;text-align:center}}
+footer .giant{position:absolute;left:50%;top:62%;transform:translate(-50%,-50%);font-family:'Playfair Display',serif;font-size:clamp(5rem,14vw,12rem);opacity:.05;white-space:nowrap;pointer-events:none;z-index:0}
+footer h2{font-size:clamp(2rem,4vw,3rem);margin-bottom:1rem;position:relative;z-index:1}footer p{opacity:.85;max-width:520px;margin:0 auto 2rem;position:relative;z-index:1}footer a{position:relative;z-index:1}
+.fab-cta{position:fixed;bottom:1.5rem;right:1.5rem;z-index:99;background:var(--primary);color:#fff;padding:1rem 1.6rem;border-radius:50px;font-weight:700;box-shadow:var(--shadow);transition:.25s;display:none}.fab-cta:hover{transform:translateY(-3px)}
+@media(max-width:900px){
+  .hero,.story,.why-grid,.contact-grid{grid-template-columns:1fr}.hero{padding-top:6.5rem}.hero-img img{height:360px}.menu-grid{grid-template-columns:1fr}.gallery{grid-template-columns:repeat(2,1fr)}.gallery img{height:180px}.testimonial-grid{grid-template-columns:1fr}.nav-links{position:fixed;inset:72px 0 auto 0;background:rgba(255,255,255,.96);flex-direction:column;padding:1rem 4%;gap:0;transform:translateY(-120%);transition:.35s;box-shadow:var(--shadow)}.nav-links.open{transform:translateY(0)}.nav-links a{padding:.9rem 0;border-bottom:1px solid rgba(0,0,0,.06)}.burger{display:flex}.btn{display:flex;width:100%;justify-content:center;margin:.4rem 0}.btn-ghost{margin-left:0!important}.stats{grid-template-columns:1fr 1fr;gap:1rem}.stats div span{font-size:1.8rem}.fab-cta{display:block;left:1rem;right:1rem;bottom:1rem;text-align:center}}
 .fade{opacity:0;transform:translateY(24px);transition:opacity .7s,transform .7s}.fade.visible{opacity:1;transform:none}
 </style>
 </head>
 <body>
-<nav id="nav"><div class="logo">A. B. Alayan Limited</div><div class="nav-links"><a href="#about">About</a><a href="#menu">Menu</a><a href="#gallery">Gallery</a><a href="#contact">Contact</a></div><div class="burger"><span></span><span></span><span></span></div></nav>
-<section class="hero"><div class="hero-text fade"><div class="label">Larnaca · Plumbing / HVAC Contractor</div><h1>A plumber who shows up on time and fixes it right.</h1><p>A plumber who shows up on time and fixes it right. A. B. Alayan Limited serves Plumbing / HVAC Contractor in Larnaca. Clear prices, fast service, and a team that takes pride in the work.</p><a href="#contact" class="btn btn-primary">Book now →</a><a href="#menu" class="btn btn-ghost">Explore</a></div><div class="hero-img fade"><img src="img-1484516.jpg" alt="A. B. Alayan Limited team at work"></div></section>
-<section id="about" class="section"><div class="container story"><div class="story-img fade"><img src="img-262959.jpg" alt="Asil Lysis Taverna team at work"></div><div class="story-text fade"><div class="label">About</div><h2>A plumber who shows up on time and fixes it right.</h2><p>A. B. Alayan Limited has been part of Larnaca for years. Plumbing / HVAC Contractor is what we do best — and every customer gets the same careful attention.</p><p>Open Daily. Walk-ins welcome, but calling ahead is always a good idea.</p></div></div></section>
-<section id="menu" class="section" style="background:var(--card)"><div class="container"><div class="sec-head fade"><div class="label">Menu / Services</div><h2>What we offer.</h2><p>Honest pricing, clear descriptions, and the kind of quality that keeps people coming back.</p></div><div class="menu-grid">
-<div class="menu-card fade"><h3>Emergency Repairs</h3><p>Burst pipes, leaks and blockages fixed fast — day or night.</p><div class="price">€80</div></div>
+<nav id="nav">
+  <div class="logo"><span class="mark">🔧</span>A. B. Alayan Limited</div>
+  <div class="nav-links" id="navLinks">
+    <a href="#about" onclick="closeNav()">About</a>
+    <a href="#menu" onclick="closeNav()">Menu</a>
+    <a href="#gallery" onclick="closeNav()">Gallery</a>
+    <a href="#faq" onclick="closeNav()">FAQ</a>
+    <a href="#contact" class="btn btn-primary" style="padding:.7rem 1.4rem;font-size:.8rem;text-transform:none;letter-spacing:0" onclick="closeNav()">Book now →</a>
+  </div>
+  <button class="burger" id="burger" onclick="toggleNav()" aria-label="Open menu"><span></span><span></span><span></span></button>
+</nav>
+
+<section class="hero">
+  <div class="hero-text fade">
+    <div class="label">Larnaca · Plumbing / HVAC Contractor</div>
+    <h1>A plumber who shows up on time and fixes it right.</h1>
+    <p>A plumber who shows up on time and fixes it right. A. B. Alayan Limited serves Plumbing / HVAC Contractor in Larnaca. Clear prices, fast service, and a team that takes pride in the work.</p>
+    <a href="#contact" class="btn btn-primary">Book now →</a>
+    <a href="#menu" class="btn btn-ghost">Explore menu</a>
+  </div>
+  <div class="hero-img fade">
+    <img src="img-1267320.jpg" alt="A. B. Alayan Limited Plumbing / HVAC Contractor">
+  </div>
+</section>
+
+<section id="about" class="section">
+  <div class="container story">
+    <div class="story-img fade">
+      <img src="img-1484516.jpg" alt="A. B. Alayan Limited team at work">
+    </div>
+    <div class="story-text fade">
+      <div class="label">About us</div>
+      <h2>A plumber who shows up on time and fixes it right.</h2>
+      <p>A. B. Alayan Limited has been part of Larnaca for years. Plumbing / HVAC Contractor is what we do best — and every customer gets the same careful attention. We keep things simple: fresh ingredients, honest prices, and a warm welcome.</p>
+      <p>Open Daily. Walk-ins welcome, but calling ahead is always a good idea. Family tables, couples, and large groups — we make room for everyone.</p>
+      <div class="badges">
+        <span class="badge">✓ Family-run since day one</span>
+        <span class="badge">✓ Local ingredients</span>
+        <span class="badge">✓ Free parking nearby</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:var(--card)">
+  <div class="container">
+    <div class="sec-head fade">
+      <div class="label">Why choose us</div>
+      <h2>The difference is in the details.</h2>
+      <p>We do the small things right, so your visit feels effortless from start to finish.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-card fade"><h3>Honest prices</h3><p>No hidden fees, no surprises. Every dish and service is priced clearly before you order.</p></div>
+      <div class="why-card fade"><h3>Fast, friendly service</h3><p>Our team knows regulars by name and treats first-timers like regulars already.</p></div>
+      <div class="why-card fade"><h3>Fresh & local</h3><p>We source close to home and prepare everything with care, the same way every day.</p></div>
+      <div class="why-card fade"><h3>Easy booking</h3><p>One call or message is all it takes. We confirm quickly and hold your table.</p></div>
+      <div class="why-card fade"><h3>Groups welcome</h3><p>From quiet dinners to celebrations, we have space and set menus to match.</p></div>
+      <div class="why-card fade"><h3>Real reviews</h3><p>Our guests come back. Read what locals say about us below.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="menu" class="section">
+  <div class="container">
+    <div class="sec-head fade">
+      <div class="label">Menu / Services</div>
+      <h2>What we offer.</h2>
+      <p>Honest pricing, clear descriptions, and the kind of quality that keeps people coming back.</p>
+    </div>
+    <div class="menu-grid">
+      <div class="menu-card fade"><h3>Emergency Repairs</h3><p>Burst pipes, leaks and blockages fixed fast — day or night.</p><div class="price">€80</div></div>
 <div class="menu-card fade"><h3>Bathroom Installation</h3><p>Full fitting service with fixtures and tiling coordination.</p><div class="price">€600</div></div>
 <div class="menu-card fade"><h3>Boiler Service</h3><p>Annual service, repairs and replacements for all major brands.</p><div class="price">€120</div></div>
 <div class="menu-card fade"><h3>Leak Detection</h3><p>Non-invasive detection to find hidden leaks quickly.</p><div class="price">€150</div></div>
 <div class="menu-card fade"><h3>Drain Cleaning</h3><p>High-pressure jetting to clear even stubborn blockages.</p><div class="price">€90</div></div>
 <div class="menu-card fade"><h3>Maintenance Plan</h3><p>Regular checks to stop small issues becoming big bills.</p><div class="price">€45</div></div>
-</div></div></section>
-<section id="gallery" class="section"><div class="container"><div class="sec-head fade"><div class="label">Gallery</div><h2>The experience.</h2></div><div class="gallery fade">
-<img src="img-1267320.jpg" alt="" loading="lazy">
+<div class="menu-card fade"><h3>Tap Replacement</h3><p>New kitchen or bathroom taps fitted and tested.</p><div class="price">€65</div></div>
+<div class="menu-card fade"><h3>Toilet Repair</h3><p>Cisterns, seals, flush mechanisms and blocked toilets.</p><div class="price">€70</div></div>
+<div class="menu-card fade"><h3>Water Heater Fix</h3><p>Electric or gas water heater repair and replacement.</p><div class="price">€110</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="gallery" class="section" style="background:var(--card)">
+  <div class="container">
+    <div class="sec-head fade">
+      <div class="label">Gallery</div>
+      <h2>The experience.</h2>
+    </div>
+    <div class="gallery fade">
+      <img src="img-1267320.jpg" alt="" loading="lazy">
 <img src="img-1484516.jpg" alt="" loading="lazy">
 <img src="img-262959.jpg" alt="" loading="lazy">
 <img src="img-3754679.jpg" alt="" loading="lazy">
 <img src="img-4253107.jpg" alt="" loading="lazy">
 <img src="img-4553114.jpg" alt="" loading="lazy">
-</div></div></section>
-<section class="testimonial"><div class="container testimonial-inner fade"><blockquote>"A plumber who shows up on time and fixes it right."</blockquote><div class="author">— Happy customer, Larnaca</div></div></section>
-<footer id="contact"><div class="giant">A. B. ALAYAN LIMITED</div><div class="container fade"><h2>Ready when you are.</h2><p>Stravonos 13 Agios Nikolaos, 6035 Larnaca, Cyprus<br>Larnaca · +357 97 900110</p><a href="tel:+35797900110" class="btn btn-primary">Call now</a></div></footer>
+    </div>
+  </div>
+</section>
+
+<section class="testimonials">
+  <div class="container">
+    <div class="sec-head fade" style="color:var(--bg)">
+      <div class="label" style="color:var(--primary)">Testimonials</div>
+      <h2>What our guests say.</h2>
+    </div>
+    <div class="testimonial-grid">
+      <div class="testimonial-card fade">
+        <blockquote>"The kind of place you remember long after the visit. The food, the people, the atmosphere — everything just works."</blockquote>
+        <div class="author">— Maria, Larnaca</div>
+      </div>
+      <div class="testimonial-card fade">
+        <blockquote>"We bring every visitor here. Consistent quality, fair prices, and a team that genuinely cares."</blockquote>
+        <div class="author">— Andreas & family</div>
+      </div>
+      <div class="testimonial-card fade">
+        <blockquote>"Best meze in the area. We booked a table for twelve and the service was flawless from start to finish."</blockquote>
+        <div class="author">— Elena, Larnaca</div>
+      </div>
+    </div>
+    <div class="stats" style="margin-top:3.5rem">
+      <div><span>15+</span>Years open</div>
+      <div><span>50+</span>Menu items</div>
+      <div><span>4.9</span>Average rating</div>
+      <div><span>2k+</span>Happy guests</div>
+    </div>
+  </div>
+</section>
+
+<section id="faq" class="section">
+  <div class="container">
+    <div class="sec-head fade">
+      <div class="label">FAQ</div>
+      <h2>Quick questions.</h2>
+    </div>
+    <div class="faq-item fade">
+      <button class="faq-question" onclick="toggleFaq(this)">Do I need to book a table? <span>+</span></button>
+      <div class="faq-answer"><p>Walk-ins are welcome, but we recommend booking for weekends and groups of six or more.</p></div>
+    </div>
+    <div class="faq-item fade">
+      <button class="faq-question" onclick="toggleFaq(this)">Do you offer vegetarian options? <span>+</span></button>
+      <div class="faq-answer"><p>Yes — several of our meze dishes, salads, and sides are vegetarian. Just ask your server.</p></div>
+    </div>
+    
+    <div class="faq-item fade">
+      <button class="faq-question" onclick="toggleFaq(this)">Is there parking nearby? <span>+</span></button>
+      <div class="faq-answer"><p>There is free street parking nearby and a small lot behind the building.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="section" style="background:var(--card)">
+  <div class="container">
+    <div class="sec-head fade">
+      <div class="label">Contact</div>
+      <h2>Ready when you are.</h2>
+      <p>Send a quick message or call us directly. We reply fast.</p>
+    </div>
+    
+    <div class="contact-grid">
+      <form class="contact-form fade" onsubmit="event.preventDefault(); alert('Thank you — we will be in touch soon.');">
+        <input type="text" placeholder="Your name" required>
+        <input type="email" placeholder="Your email" required>
+        <input type="tel" placeholder="Phone number">
+        <textarea placeholder="How can we help?"></textarea>
+        <button type="submit" class="btn btn-primary" style="justify-content:center">Send message →</button>
+      </form>
+      
+      <div class="contact-info fade">
+        <h3>A. B. Alayan Limited</h3>
+        <p>📍 Stravonos 13 Agios Nikolaos, 6035 Larnaca, Cyprus</p>
+        <p>📞 <a href="tel:+35797900110">+357 97 900110</a></p>
+        <p>🕐 Open daily, 12:00 – 23:00</p>
+        <p>✉️ <a href="mailto:hello@a-b-alayan-limited.com">hello@a-b-alayan-limited.com</a></p>
+        <a href="tel:+35797900110" class="btn btn-primary" style="margin-top:1rem">Call now</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="giant">A. B. ALAYAN LIMITED</div>
+  <div class="container fade">
+    <h2>A. B. Alayan Limited</h2>
+    <p>Stravonos 13 Agios Nikolaos, 6035 Larnaca, Cyprus<br>Larnaca · +357 97 900110</p>
+    <p style="opacity:.5;font-size:.85rem;margin-top:2rem">© 2026 A. B. Alayan Limited. All rights reserved.</p>
+  </div>
+</footer>
+
+<a href="#contact" class="fab-cta">Book now →</a>
 
 <script>
+function toggleNav(){document.getElementById('burger').classList.toggle('active');document.getElementById('navLinks').classList.toggle('open')}
+function closeNav(){document.getElementById('burger').classList.remove('active');document.getElementById('navLinks').classList.remove('open')}
+function toggleFaq(btn){const ans=btn.nextElementSibling;const isOpen=ans.classList.contains('open');document.querySelectorAll('.faq-answer').forEach(a=>a.classList.remove('open'));if(!isOpen)ans.classList.add('open')}
 document.addEventListener('scroll',function(){if(window.scrollY>60)document.getElementById('nav').classList.add('scrolled');else document.getElementById('nav').classList.remove('scrolled');});
 const obs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting)e.target.classList.add('visible')});},{threshold:.12});
 document.querySelectorAll('.fade').forEach(function(el){obs.observe(el)});
