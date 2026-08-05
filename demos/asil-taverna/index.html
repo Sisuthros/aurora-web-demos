@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Asil Lysis Taverna — Traditional Meze & Cypriot Hospitality</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --terracotta:#C17A53;--olive:#5E5A36;--limewash:#FDF8F2;--ink:#2B2620;
+  --muted:#8A7F70;--cream:#F6F1E9;--shadow:0 18px 50px rgba(43,38,32,.12);
+  --ease:cubic-bezier(.25,.1,.25,1);--r-lg:22px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Source Sans 3',sans-serif;background:var(--limewash);color:var(--ink);line-height:1.55;overflow-x:hidden}
+h1,h2,h3{font-family:'Playfair Display',serif;font-weight:700;line-height:1.1}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+.container{width:min(1100px,92%);margin:0 auto}
+
+nav{position:fixed;inset:0 0 auto 0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.1rem 4%;transition:.3s}
+nav.scrolled{background:rgba(253,248,242,.92);backdrop-filter:blur(16px);box-shadow:0 2px 20px rgba(0,0,0,.05)}
+.logo{font-family:'Playfair Display',serif;font-size:1.35rem;color:var(--olive);font-weight:700}
+.nav-links{display:flex;gap:2rem;font-size:.88rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em}
+.nav-links a:hover{color:var(--terracotta)}
+.burger{display:none;flex-direction:column;gap:5px;cursor:pointer}
+.burger span{width:26px;height:2px;background:var(--olive)}
+
+.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:3rem;padding:8rem 4% 5rem}
+.hero-text{max-width:560px}
+.label{font-size:.72rem;text-transform:uppercase;letter-spacing:.22em;color:var(--terracotta);font-weight:700;margin-bottom:1.2rem}
+.hero h1{font-size:clamp(2.8rem,5.5vw,4.8rem);margin-bottom:1.4rem;color:var(--olive)}
+.hero p{font-size:1.15rem;color:var(--muted);margin-bottom:2.2rem}
+.btn{display:inline-flex;align-items:center;gap:.6rem;padding:1rem 2rem;border-radius:50px;font-weight:600;font-size:.92rem;transition:.25s;cursor:pointer;border:none}
+.btn-primary{background:var(--terracotta);color:#fff}
+.btn-primary:hover{background:#A86542}
+.btn-ghost{border:1px solid var(--olive);color:var(--olive)}
+.hero-img{position:relative;border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--shadow);transform:rotate(1.5deg)}
+.hero-img img{width:100%;height:560px;object-fit:cover}
+
+.section{padding:6rem 0}
+.sec-head{text-align:center;max-width:640px;margin:0 auto 3.5rem}
+.sec-head .label{justify-content:center;display:flex}
+.sec-head h2{font-size:clamp(2.2rem,4vw,3.2rem);color:var(--olive)}
+.sec-head p{color:var(--muted);margin-top:.8rem}
+
+.story{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+.story-img{border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--shadow);transform:rotate(-1.5deg)}
+.story-img img{height:420px;object-fit:cover;width:100%}
+.story-text h2{font-size:clamp(2rem,3.5vw,2.8rem);color:var(--olive);margin-bottom:1rem}
+.story-text p{color:var(--muted);margin-bottom:1rem}
+
+.menu-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.menu-card{background:#fff;border:1px solid rgba(94,90,54,.1);border-radius:var(--r-lg);padding:1.8rem;transition:.3s}
+.menu-card:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
+.menu-card h3{color:var(--terracotta);font-size:1.25rem;margin-bottom:.6rem}
+.menu-card p{color:var(--muted);font-size:.9rem}
+.menu-card .price{font-family:'Playfair Display',serif;font-size:1.6rem;color:var(--olive);margin-top:.8rem}
+
+.gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+.gallery img{height:220px;object-fit:cover;width:100%;border-radius:16px}
+
+.testimonial{background:#fff;border-radius:var(--r-lg);padding:2.5rem;max-width:780px;margin:0 auto;text-align:center;box-shadow:var(--shadow)}
+.testimonial p{font-family:'Playfair Display',serif;font-size:1.45rem;color:var(--olive);font-style:italic}
+.testimonial .author{margin-top:1.5rem;font-weight:700;color:var(--terracotta)}
+
+footer{position:relative;background:var(--olive);color:var(--limewash);padding:8rem 0 3rem;overflow:hidden;text-align:center}
+footer .giant{position:absolute;left:50%;top:52%;transform:translate(-50%,-50%);font-family:'Playfair Display',serif;font-size:clamp(5rem,14vw,12rem);opacity:.08;white-space:nowrap;pointer-events:none}
+footer h2{font-size:clamp(2rem,4vw,3rem);margin-bottom:1rem}
+footer p{opacity:.85;max-width:520px;margin:0 auto 2rem}
+footer .btn{background:var(--terracotta);color:#fff}
+
+@media(max-width:900px){
+  .hero,.story{grid-template-columns:1fr}
+  .menu-grid{grid-template-columns:1fr}
+  .gallery{grid-template-columns:repeat(2,1fr)}
+  .nav-links{display:none}
+  .burger{display:flex}
+}
+</style>
+</head>
+<body>
+<nav id="nav">
+  <div class="logo">Asil Lysis</div>
+  <div class="nav-links">
+    <a href="#story">Story</a>
+    <a href="#menu">Meze</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#visit">Visit</a>
+  </div>
+  <div class="burger"><span></span><span></span><span></span></div>
+</nav>
+
+<section class="hero">
+  <div class="hero-text">
+    <div class="label">Since 1989 · Larnaca</div>
+    <h1>Meze, wine &amp; the slow Cypriot table.</h1>
+    <p>Generous plates, local recipes, and the kind of hospitality that turns first-time guests into regulars. Family-run tavern in the heart of Larnaca.</p>
+    <a href="#visit" class="btn btn-primary">Book a table <span>→</span></a>
+    <a href="#menu" class="btn btn-ghost" style="margin-left:.8rem">See the meze</a>
+  </div>
+  <div class="hero-img">
+    <img src="https://images.pexels.com/photos/1484516/pexels-photo-1484516.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Traditional Cypriot meze table">
+  </div>
+</section>
+
+<section id="story" class="section">
+  <div class="container story">
+    <div class="story-img"><img src="https://images.pexels.com/photos/262959/pexels-photo-262959.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Chef preparing grilled halloumi"></div>
+    <div class="story-text">
+      <div class="label">Our Story</div>
+      <h2>Three generations around the grill.</h2>
+      <p>What started as a small kitchen serving neighbours has grown into a gathering place for locals, travellers, and anyone who believes food tastes better when shared.</p>
+      <p>Every dish is made from recipes passed down — souvlaki, grilled halloumi, tahini, fresh village salads, and warm pitta baked in-house.</p>
+    </div>
+  </div>
+</section>
+
+<section id="menu" class="section" style="background:var(--cream)">
+  <div class="container">
+    <div class="sec-head">
+      <div class="label">The Table</div>
+      <h2>Meze made to share.</h2>
+      <p>Choose a small feast or order plate by plate. Everything is prepared fresh, with olive oil from our village and produce from local markets.</p>
+    </div>
+    <div class="menu-grid">
+      <div class="menu-card">
+        <h3>Traditional Meze</h3>
+        <p>18+ small plates — dips, grilled meats, seafood, salads, and sweets. Served for the whole table.</p>
+        <div class="price">€24</div>
+      </div>
+      <div class="menu-card">
+        <h3>Grilled Halloumi</h3>
+        <p>Cyprus cheese seared on the grill, finished with fresh mint and lemon.</p>
+        <div class="price">€9</div>
+      </div>
+      <div class="menu-card">
+        <h3>Lamb Souvlaki</h3>
+        <p>Marinated lamb skewers, chargrilled and served with warm pitta and tzatziki.</p>
+        <div class="price">€16</div>
+      </div>
+      <div class="menu-card">
+        <h3>Seafood Platter</h3>
+        <p>Calamari, octopus, prawns, and seabream — straight from the morning catch.</p>
+        <div class="price">€28</div>
+      </div>
+      <div class="menu-card">
+        <h3>Village Salad</h3>
+        <p>Tomatoes, cucumber, onion, olives, and barrel-aged feta dressed with olive oil.</p>
+        <div class="price">€8</div>
+      </div>
+      <div class="menu-card">
+        <h3>Sticky Dessert</h3>
+        <p>Traditional baklava and loukoumades with honey and crushed walnuts.</p>
+        <div class="price">€7</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="gallery" class="section">
+  <div class="container">
+    <div class="sec-head"><div class="label">The Space</div><h2>Inside the tavern.</h2></div>
+    <div class="gallery">
+      <img src="https://images.pexels.com/photos/262959/pexels-photo-262959.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Grilled fish plate">
+      <img src="https://images.pexels.com/photos/3754679/pexels-photo-3754679.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Meze spread">
+      <img src="https://images.pexels.com/photos/4553114/pexels-photo-4553114.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Shared table">
+      <img src="https://images.pexels.com/photos/4253107/pexels-photo-4253107.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Wine and bread">
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:var(--cream)">
+  <div class="container">
+    <div class="testimonial">
+      <p>"We ate here three times in one week. The meze is endless, the wine is local, and the family makes you feel like you belong."</p>
+      <div class="author">— A guest from Munich, TripAdvisor</div>
+    </div>
+  </div>
+</section>
+
+<footer id="visit">
+  <div class="giant">ASIL LYSIS</div>
+  <div class="container">
+    <h2>Come hungry.</h2>
+    <p>12 Rafail Santi, 6052 Larnaca, Cyprus<br>Open daily 12:00–23:00 · +357 24 634466</p>
+    <a href="tel:+35724634466" class="btn btn-primary">Call to book</a>
+  </div>
+</footer>
+
+<script>
+document.addEventListener('scroll',function(){
+  if(window.scrollY>60)document.getElementById('nav').classList.add('scrolled');
+  else document.getElementById('nav').classList.remove('scrolled');
+});
+</script>
+</body>
+</html>

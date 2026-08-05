@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ispiral Hair Studio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F7F3EC;--ink:#2E2E2E;--accent:#C17A53;--muted:#8A7F70;--card:rgba(247,243,236,.98);--shadow:0 18px 50px rgba(0,0,0,.12);--r:20px}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--ink);line-height:1.55;overflow-x:hidden}
+h1,h2,h3{font-family:'Playfair Display',serif;font-weight:700;line-height:1.1}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+.container{width:min(1100px,92%);margin:0 auto}
+nav{position:fixed;inset:0 0 auto 0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1rem 4%;transition:.3s}
+nav.scrolled{background:rgba(247,243,236,.92);backdrop-filter:blur(16px);box-shadow:0 2px 20px rgba(0,0,0,.08)}
+.logo{font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--ink);font-weight:700}
+.nav-links{display:flex;gap:1.8rem;font-size:.85rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em}
+.nav-links a:hover{color:var(--accent)}
+.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:3rem;padding:8rem 4% 5rem}
+.hero-text{max-width:560px}
+.label{font-size:.7rem;text-transform:uppercase;letter-spacing:.2em;color:var(--accent);font-weight:700;margin-bottom:1.2rem}
+.hero h1{font-size:clamp(2.7rem,5vw,4.5rem);margin-bottom:1.2rem}
+.hero p{font-size:1.1rem;opacity:.75;margin-bottom:2rem}
+.btn{display:inline-flex;align-items:center;gap:.5rem;padding:1rem 2rem;border-radius:50px;font-weight:600;font-size:.9rem;transition:.25s;cursor:pointer;border:none}
+.btn-primary{background:var(--accent);color:#fff}
+.btn-primary:hover{filter:brightness(.9)}
+.btn-ghost{border:1px solid var(--ink);color:var(--ink);margin-left:.6rem}
+.hero-img{border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow);transform:rotate(1.5deg)}
+.hero-img img{width:100%;height:520px;object-fit:cover}
+.section{padding:6rem 0}
+.sec-head{text-align:center;max-width:620px;margin:0 auto 3rem}
+.sec-head h2{font-size:clamp(2rem,3.5vw,3rem)}
+.sec-head p{opacity:.7;margin-top:.6rem}
+.menu-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.menu-card{background:var(--card);border:1px solid rgba(0,0,0,.06);border-radius:var(--r);padding:1.8rem;transition:.3s}
+.menu-card:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
+.menu-card h3{font-size:1.25rem;margin-bottom:.5rem;color:var(--accent)}
+.menu-card p{opacity:.7;font-size:.9rem}
+.menu-card .price{font-family:'Playfair Display',serif;font-size:1.5rem;margin-top:.8rem}
+.gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:2rem}
+.gallery img{height:200px;object-fit:cover;width:100%;border-radius:16px}
+footer{position:relative;background:var(--ink);color:var(--bg);padding:8rem 0 3rem;overflow:hidden;text-align:center}
+footer .giant{position:absolute;left:50%;top:52%;transform:translate(-50%,-50%);font-family:'Playfair Display',serif;font-size:clamp(5rem,14vw,11rem);opacity:.08;white-space:nowrap;pointer-events:none}
+footer h2{font-size:clamp(1.8rem,3.5vw,3rem);margin-bottom:1rem}
+footer p{opacity:.8;max-width:520px;margin:0 auto 2rem}
+@media(max-width:900px){.hero{grid-template-columns:1fr}.menu-grid{grid-template-columns:1fr}.gallery{grid-template-columns:repeat(2,1fr)}.nav-links{display:none}}
+</style>
+</head>
+<body>
+<nav id="nav"><div class="logo">ispiral</div><div class="nav-links"><a href="#about">About</a><a href="#menu">Menu</a><a href="#gallery">Gallery</a><a href="#contact">Contact</a></div></nav>
+<section class="hero">
+  <div class="hero-text">
+    <div class="label">Larnaca · Cyprus</div>
+    <h1>Colour, cut, confidence.</h1>
+    <p>A clean, modern website built for ispiral Hair Studio. This is a demo — imagine your own business here.</p>
+    <a href="#contact" class="btn btn-primary">Book now →</a>
+    <a href="#menu" class="btn btn-ghost">Explore</a>
+  </div>
+  <div class="hero-img"><img src="https://images.pexels.com/photos/3065209/pexels-photo-3065209.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="ispiral Hair Studio hero"></div>
+</section>
+<section id="about" class="section"><div class="container"><div class="sec-head"><div class="label">About</div><h2>Built to bring customers through your door.</h2><p>Clear hours, easy contact, and a menu that sells — without the clutter of social-media-only presence.</p></div></div></section>
+<section id="menu" class="section" style="background:var(--card)"><div class="container"><div class="sec-head"><div class="label">Menu / Services</div><h2>What you offer.</h2></div><div class="menu-grid"><div class='menu-card'><h3>Signature</h3><p>Our most-loved order.</p><div class='price'>€45</div></div><div class='menu-card'><h3>Fresh daily</h3><p>Made from seasonal ingredients.</p><div class='price'>Seasonal</div></div><div class='menu-card'><h3>Family serve</h3><p>Perfect for sharing.</p><div class='price'>Shared</div></div></div></div></section>
+<section id="gallery" class="section"><div class="container"><div class="sec-head"><div class="label">Gallery</div><h2>The experience.</h2></div><div class="gallery">
+      <img src="https://images.pexels.com/photos/3065209/pexels-photo-3065209.jpeg?auto=compress&cs=tinysrgb&w=600" alt="" loading="lazy">
+      <img src="https://images.pexels.com/photos/3993449/pexels-photo-3993449.jpeg?auto=compress&cs=tinysrgb&w=600" alt="" loading="lazy">
+      <img src="https://images.pexels.com/photos/3065171/pexels-photo-3065171.jpeg?auto=compress&cs=tinysrgb&w=600" alt="" loading="lazy">
+      <img src="https://images.pexels.com/photos/3065148/pexels-photo-3065148.jpeg?auto=compress&cs=tinysrgb&w=600" alt="" loading="lazy">
+    </div></div></section>
+<footer id="contact"><div class="giant">ISPIRAL HAIR STUDIO</div><div class="container"><h2>Ready when you are.</h2><p>Demo location: Larnaca, Cyprus<br>Call to book · Open daily</p><a href="tel:+35724634466" class="btn btn-primary">Call now</a></div></footer>
+<script>document.addEventListener('scroll',function(){if(window.scrollY>60)document.getElementById('nav').classList.add('scrolled');else document.getElementById('nav').classList.remove('scrolled');});</script>
+</body>
+</html>
