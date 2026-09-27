@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Old Barber House — Old school barbering, Paphos</title>
+<meta name="description" content="Hot towel shaves, skin fades and classic cuts at Alfredou 2, Paphos. Rated 5.0 by 71 verified visitors. Call +357 99 371344.">
+<link rel="canonical" href="https://sisuthros.github.io/aurora-web-demos/demos/old-barber-house/">
+<meta property="og:title" content="The Old Barber House — Old school barbering, Paphos">
+<meta property="og:description" content="Hot towel shaves, skin fades and classic cuts. Alfredou 2, Paphos.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,400;0,500;0,600;1,400;1,500&family=IBM+Plex+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f4efe4; --paper2:#ece5d5; --ink:#1c1611; --ink2:#3a2f24;
+  --cu:#a4652a; --cu-deep:#7c4d1f; --hairline:rgba(28,22,17,.18); --hairline2:rgba(28,22,17,.32);
+  --faint:rgba(28,22,17,.55);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font-family:'Cormorant',serif;overflow-x:hidden}
+/* paper grain */
+body::before{content:'';position:fixed;inset:0;z-index:50;pointer-events:none;opacity:.055;mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E")}
+.mono{font-family:'IBM Plex Mono',monospace}
+.wrap{max-width:1120px;margin:0 auto;padding:0 32px}
+
+/* masthead */
+.masthead{border-bottom:2px solid var(--ink)}
+.mastbar{display:flex;justify-content:space-between;align-items:baseline;padding:18px 0 0;max-width:1120px;margin:0 auto;width:100%;padding-left:32px;padding-right:32px}
+.mastbar .est{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.26em;text-transform:uppercase;color:var(--faint)}
+.mastbar .est b{color:var(--cu-deep);font-weight:400}
+nav.rail{display:flex;gap:34px;padding:14px 0 18px;max-width:1120px;margin:0 auto;width:100%;padding-left:32px;padding-right:32px}
+nav.rail a{font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--ink2);text-decoration:none;position:relative}
+nav.rail a::after{content:'';position:absolute;left:0;right:100%;bottom:-4px;height:1px;background:var(--cu);transition:right .3s}
+nav.rail a:hover::after{right:0}
+
+/* hero — editorial, asymmetric */
+.hero{display:grid;grid-template-columns:1.35fr 1fr;gap:0;border-bottom:1px solid var(--hairline2);min-height:78vh}
+.hero-l{padding:96px 56px 80px 32px;position:relative}
+.hero-r{border-left:1px solid var(--hairline2);background:var(--paper2);position:relative;overflow:hidden}
+.kicker{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.34em;text-transform:uppercase;color:var(--cu-deep);display:flex;align-items:center;gap:14px}
+.kicker::before{content:'';width:44px;height:1px;background:var(--cu)}
+h1{font-weight:500;font-size:clamp(52px,7.6vw,110px);line-height:.98;letter-spacing:-.01em;margin-top:34px;color:var(--ink)}
+h1 em{font-style:italic;font-weight:400;color:var(--cu-deep)}
+.dek{margin-top:30px;font-size:19px;font-style:italic;color:var(--ink2);max-width:38ch;line-height:1.6}
+.hero-cta{margin-top:44px;display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+.btn{background:var(--ink);color:var(--paper);font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.22em;text-transform:uppercase;padding:16px 34px;text-decoration:none;transition:background .25s}
+.btn:hover{background:var(--cu-deep)}
+.link{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink2);text-decoration:none;border-bottom:1px solid var(--hairline2);padding-bottom:4px}
+.link:hover{color:var(--cu-deep);border-color:var(--cu)}
+/* the right plate: a barber's price frame */
+.plate{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;padding:40px 34px}
+.plate .stamp{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--faint);text-align:center}
+.pole{margin:0 auto;width:3px;height:40%;min-height:180px;
+  background:repeating-linear-gradient(180deg,var(--cu) 0 22px,var(--paper2) 22px 44px,var(--ink) 44px 66px,var(--paper2) 66px 88px);
+  border:1px solid var(--hairline)}
+.plate .five{text-align:center}
+.five .n{font-size:96px;font-weight:500;font-style:italic;color:var(--ink);line-height:1}
+.five small{display:block;font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.3em;text-transform:uppercase;color:var(--faint);margin-top:8px}
+
+/* section head pattern */
+section{padding:96px 0;border-bottom:1px solid var(--hairline2)}
+.shead{display:flex;align-items:baseline;gap:24px;margin-bottom:64px}
+.shead .no{font-size:15px;font-style:italic;color:var(--cu);white-space:nowrap}
+.shead h2{font-weight:500;font-size:clamp(34px,4.4vw,54px);letter-spacing:-.005em}
+.shead h2 em{font-style:italic;font-weight:400;color:var(--cu-deep)}
+.shead .tag{margin-left:auto;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.26em;text-transform:uppercase;color:var(--faint);white-space:nowrap}
+
+/* price list — the menu board */
+.menu{max-width:840px;margin:0 auto}
+.dish{display:flex;align-items:baseline;gap:16px;padding:22px 0;border-bottom:1px dotted var(--hairline)}
+.dish:last-child{border:none}
+.dish .name{font-size:26px;font-weight:500;white-space:nowrap}
+.dish .dots{flex:1;border-bottom:1px dotted var(--hairline2);transform:translateY(-6px)}
+.dish .desc{width:44%;font-style:italic;font-size:15.5px;color:var(--ink2);line-height:1.5}
+.dish .price{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--cu-deep);white-space:nowrap}
+.menu-note{margin-top:40px;text-align:center;font-style:italic;font-size:15px;color:var(--faint)}
+
+/* story — asymmetric two col */
+.story{display:grid;grid-template-columns:1fr 1.2fr;gap:72px;align-items:start}
+.story .drop{font-size:clamp(26px,3.2vw,36px);font-style:italic;line-height:1.4;color:var(--ink)}
+.story .drop::first-letter{font-size:1.6em;font-style:italic;color:var(--cu-deep)}
+.story .body p{font-size:16.5px;color:var(--ink2);margin-top:20px;line-height:1.7}
+.story .body b{font-weight:600;color:var(--ink)}
+.sig{margin-top:34px;font-style:italic;font-size:20px;color:var(--cu-deep)}
+.sig small{display:block;font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.28em;text-transform:uppercase;color:var(--faint);margin-top:6px;font-style:normal}
+
+/* reviews — ledger rows, not cards */
+.ledger{max-width:840px;margin:0 auto}
+.entry{display:grid;grid-template-columns:70px 1fr;gap:26px;padding:30px 0;border-bottom:1px solid var(--hairline)}
+.entry:last-child{border:none}
+.entry .marks{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--cu-deep);letter-spacing:.1em}
+.entry .marks small{display:block;color:var(--faint);margin-top:6px;letter-spacing:.2em}
+.entry p{font-size:21px;font-style:italic;line-height:1.5;color:var(--ink)}
+.entry span{display:block;margin-top:10px;font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.26em;text-transform:uppercase;color:var(--faint)}
+
+/* visit — bold ink strip */
+.visit{background:var(--ink);color:var(--paper);border:none;padding:96px 0}
+.visit .shead h2{color:var(--paper)}
+.visit .shead h2 em{color:var(--cu)}
+.visit .shead .no{color:var(--cu)}
+.visit .shead .tag{color:rgba(244,239,228,.5)}
+.vgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:0;border:1px solid rgba(244,239,228,.22)}
+.v{padding:38px 30px;border-right:1px solid rgba(244,239,228,.22)}
+.v:last-child{border-right:none}
+.v .k{font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.3em;text-transform:uppercase;color:rgba(244,239,228,.55)}
+.v .val{font-size:24px;font-weight:500;margin-top:12px;line-height:1.3}
+.v a{color:var(--paper);text-decoration:none;border-bottom:1px solid rgba(164,101,42,.6)}
+.v a:hover{border-color:var(--cu);color:#f4d4ab}
+
+/* final */
+.final{border:none;text-align:center;padding:110px 0 90px}
+.final h2{font-weight:500;font-size:clamp(40px,6vw,72px)}
+.final h2 em{font-style:italic;font-weight:400;color:var(--cu-deep)}
+.final p{font-style:italic;font-size:17px;color:var(--ink2);margin-top:18px}
+.final .btn{display:inline-block;margin-top:36px;background:var(--ink);color:var(--paper)}
+.final .btn:hover{background:var(--cu-deep)}
+
+footer{padding:34px 0 46px;border-top:2px solid var(--ink)}
+.fbar{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.26em;text-transform:uppercase;color:var(--faint)}
+.fbar a{color:var(--cu-deep);text-decoration:none}
+.fbar a:hover{color:var(--ink)}
+
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1)}
+.reveal.in{opacity:1;transform:translateY(0)}
+
+@media(max-width:860px){
+  .hero{grid-template-columns:1fr;min-height:0}
+  .hero-r{border-left:none;border-top:1px solid var(--hairline2);min-height:420px}
+  .hero-l{padding:64px 32px}
+  .story{grid-template-columns:1fr;gap:40px}
+  .dish .desc{width:100%;order:3}
+  .dish{flex-wrap:wrap;gap:8px}
+  .dish .dots{display:none}
+  .shead .tag{display:none}
+  nav.rail{gap:22px;flex-wrap:wrap}
+}
+@media (prefers-reduced-motion: reduce){*{transition:none!important}.reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<div class="masthead">
+  <div class="mastbar">
+    <span class="est">Est. Paphos · <b>Alfredou 2</b></span>
+    <span class="est">5.0 ★ · 71 verified</span>
+  </div>
+  <nav class="rail">
+    <a href="#menu">The menu</a>
+    <a href="#craft">The craft</a>
+    <a href="#ledger">The ledger</a>
+    <a href="#visit">Visit</a>
+  </nav>
+</div>
+
+<header class="hero wrap" style="padding:0">
+  <div class="hero-l">
+    <div class="kicker">Old school barbering</div>
+    <h1>Where a shave<br>is still a <em>ritual.</em></h1>
+    <p class="dek">Hot towels. Straight razors. Skin fades worth the walk. The Old Barber House keeps the craft alive on Alfredou street.</p>
+    <div class="hero-cta">
+      <a class="btn" href="tel:+35799371344">Book a chair — 99 371344</a>
+      <a class="link" href="#menu">Read the menu</a>
+    </div>
+  </div>
+  <div class="hero-r">
+    <div class="plate">
+      <div class="stamp">The pole still turns</div>
+      <div class="pole" aria-hidden="true"></div>
+      <div class="five">
+        <div class="n">5.0</div>
+        <small>seventy-one verified voices</small>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+<section id="menu" class="reveal">
+  <div class="shead">
+    <span class="no">No. 1</span>
+    <h2>The <em>menu</em></h2>
+    <span class="tag">Prices on the board</span>
+  </div>
+  <div class="menu">
+    <div class="dish"><span class="name">Hot towel shave</span><span class="dots"></span><span class="desc">Steamed towels, straight razor, cold finish and balm. The full ritual, as it was done.</span><span class="price">from €15</span></div>
+    <div class="dish"><span class="name">Skin fade</span><span class="dots"></span><span class="desc">Sharp, blended, built to hold. Bring a photo or trust the chair.</span><span class="price">from €15</span></div>
+    <div class="dish"><span class="name">Classic cut</span><span class="dots"></span><span class="desc">Timeless haircuts that still look right a week later.</span><span class="price">from €15</span></div>
+    <div class="dish"><span class="name">Beard shaping</span><span class="dots"></span><span class="desc">Sculpted, lined, finished with oil. Detail work done properly.</span><span class="price">from €10</span></div>
+    <div class="dish"><span class="name">The detail work</span><span class="dots"></span><span class="desc">Eyebrows, ear and nose waxing. The parts that finish the picture.</span><span class="price">on the board</span></div>
+  </div>
+  <p class="menu-note">— walk in, or call ahead and the chair waits —</p>
+</section>
+
+<section id="craft" class="reveal">
+  <div class="shead">
+    <span class="no">No. 2</span>
+    <h2>The <em>craft</em></h2>
+    <span class="tag">House rules</span>
+  </div>
+  <div class="story">
+    <div class="drop">We reimagine the past with a forward-looking perspective — the towel is hot, the razor is straight, the standard is old.</div>
+    <div class="body">
+      <p><b>Old school</b> is not nostalgia here. It is technique: the hot towel that softens the beard properly, the straight razor that no cartridge imitates, the fade cut against the grain of fashion.</p>
+      <p>What has moved forward is everything around the chair — the booking, the welcome, the consistency. <b>Seventy-one visitors</b> have rated that standard 5.0, and the pole keeps turning.</p>
+      <div class="sig">— The House<small>Alfredou 2, Paphos</small></div>
+    </div>
+  </div>
+</section>
+
+<section id="ledger" class="reveal">
+  <div class="shead">
+    <span class="no">No. 3</span>
+    <h2>The <em>ledger</em></h2>
+    <span class="tag">What clients say</span>
+  </div>
+  <div class="ledger">
+    <div class="entry">
+      <div class="marks">★★★★★<small>verified</small></div>
+      <div><p>"Best hot towel shave I've had in years. Proper old school."</p><span>Client ledger</span></div>
+    </div>
+    <div class="entry">
+      <div class="marks">★★★★★<small>verified</small></div>
+      <div><p>"Skin fade was razor sharp, exactly as asked. These guys care."</p><span>Client ledger</span></div>
+    </div>
+    <div class="entry">
+      <div class="marks">★★★★★<small>verified</small></div>
+      <div><p>"Relaxed place, real craft, fair price. My regular spot in Paphos."</p><span>Client ledger</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="visit" class="visit reveal">
+  <div class="shead">
+    <span class="no">No. 4</span>
+    <h2>Find the <em>door.</em></h2>
+    <span class="tag">Paphos, Cyprus</span>
+  </div>
+  <div class="vgrid">
+    <div class="v"><div class="k">Address</div><div class="val">Alfredou 2<br>Paphos 8010</div></div>
+    <div class="v"><div class="k">Call / WhatsApp</div><div class="val"><a href="tel:+35799371344">+357 99 371344</a></div></div>
+    <div class="v"><div class="k">Hours</div><div class="val">Walk-ins welcome<br>Call for evening cuts</div></div>
+    <div class="v"><div class="k">Follow</div><div class="val">@theold<br>barberhouse</div></div>
+  </div>
+</section>
+
+<div class="final reveal">
+  <h2>Take a <em>seat.</em></h2>
+  <p>Five minutes in the chair and you'll understand the seventy-one.</p>
+  <a class="btn" href="tel:+35799371344">Call 99 371344</a>
+</div>
+
+</main>
+
+<footer>
+  <div class="wrap fbar">
+    <span>© 2026 The Old Barber House · Paphos</span>
+    <span>Demo forged by <a href="mailto:aurora@sisuthros.com">Dawnforge</a></span>
+  </div>
+</footer>
+
+<script>
+const ro=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');ro.unobserve(e.target)}}),{threshold:.08});
+document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
+</script>
+</body>
+</html>
