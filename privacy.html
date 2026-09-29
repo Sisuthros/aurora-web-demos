@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy — Aurora Web</title>
+<meta name="robots" content="noindex, follow">
+<meta name="description" content="How Aurora Web handles your data: local-first by default, no tracking pixels, no analytics cookies, contact by email or WhatsApp only.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=Inter:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23F8F6F2'/%3E%3Ctext x='50' y='72' font-family='Georgia,serif' font-size='56' font-weight='700' text-anchor='middle' fill='%23C7A76A'%3EA%3C/text%3E%3C/svg%3E">
+<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23F8F6F2'/%3E%3Ctext x='50' y='72' font-family='Georgia,serif' font-size='56' font-weight='700' text-anchor='middle' fill='%23C7A76A'%3EA%3C/text%3E%3C/svg%3E">
+<style>
+:root{
+  --cream:#F8F6F2; --sand:#ECE7DD; --sand2:#E4DCCD; --surface:#F1EDE5;
+  --text:#2F3133; --text-dim:#5A544F; --muted:#7D766B;
+  --gold:#C7A76A; --gold-dark:#B09150; --gold-light:#D9BD7E;
+  --sage:#A8B3A0; --white:#FFFFFF; --border:rgba(47,49,51,.08);
+  --border2:rgba(199,167,106,.30); --shadow:0 4px 30px rgba(47,49,51,.06);
+  --shadow-lg:0 12px 50px rgba(47,49,51,.1);
+  --r:4px; --r-lg:6px; --ease:cubic-bezier(.22,1,.36,1);
+  --fd:'Bricolage Grotesque',sans-serif; --fs:'Instrument Serif',serif; --fb:'Inter',sans-serif;
+  --step--1:clamp(.8rem,.75rem + .25vw,1rem);
+  --step-0:clamp(1rem,.94rem + .31vw,1.25rem);
+  --step-1:clamp(1.25rem,1.17rem + .39vw,1.563rem);
+  --step-2:clamp(1.563rem,1.46rem + .49vw,1.953rem);
+  --step-3:clamp(1.953rem,1.83rem + .61vw,2.441rem);
+  --step-5:clamp(3.052rem,2.71rem + 1.7vw,4.768rem);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--cream);color:var(--text);font-family:var(--fb);font-size:var(--step-0);line-height:1.7;
+  overflow-x:hidden;max-width:100%;width:100%;position:relative;-webkit-font-smoothing:antialiased}
+::selection{background:rgba(199,167,106,.25)}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+a{color:var(--text);text-decoration:none}
+.container{max-width:1120px;margin:0 auto;padding:0 clamp(1.2rem,4vw,2.5rem)}
+
+/* ── top bar ─────────────────────────────── */
+.pbar{display:flex;align-items:center;justify-content:space-between;gap:1rem;
+  padding:1.1rem 0;border-bottom:1px solid var(--border);background:var(--cream);
+  position:sticky;top:0;z-index:20}
+.pbar-logo{display:flex;align-items:center;gap:.5rem;font-family:var(--fd);
+  font-size:1.1rem;font-weight:600;letter-spacing:-.02em}
+.pbar-logo svg{width:24px;height:24px}
+.pbar a.back{display:inline-flex;align-items:center;gap:.4rem;font-size:.88rem;color:var(--text-dim);
+  border:1px solid var(--border2);border-radius:50px;padding:.5rem 1.1rem;transition:color .2s,border-color .2s,background .2s}
+.pbar a.back:hover{color:var(--gold-dark);border-color:var(--gold);background:rgba(199,167,106,.06)}
+.pbar a.back svg{width:14px;height:14px;transition:transform .25s var(--ease)}
+.pbar a.back:hover svg{transform:translateX(-3px)}
+
+/* ── hero ───────────────────────────────── */
+.priv-hero{padding:clamp(3.5rem,8vw,6rem) 0 clamp(1rem,3vw,2rem);position:relative}
+.priv-hero .eyebrow{font-size:var(--step--1);text-transform:uppercase;letter-spacing:.12em;
+  color:var(--gold-dark);font-weight:700;display:flex;align-items:center;gap:.5rem;margin-bottom:1.4rem}
+.priv-hero .eyebrow::before{content:'';width:28px;height:1px;background:var(--gold)}
+h1{font-family:var(--fd);font-size:var(--step-3);font-weight:600;line-height:1.08;
+  letter-spacing:-.03em;max-width:18ch;margin-bottom:1.2rem}
+h1 em{font-family:var(--fs);font-style:italic;font-weight:400;color:var(--gold-dark)}
+.priv-hero p.lede{font-size:var(--step-1);color:var(--text-dim);max-width:52ch;line-height:1.6;font-weight:300}
+
+/* ── content ────────────────────────────── */
+.priv-body{padding:clamp(2rem,5vw,4rem) 0 clamp(3rem,7vw,5rem)}
+.priv-body h2{font-family:var(--fd);font-size:var(--step-1);font-weight:600;
+  letter-spacing:-.02em;margin:3rem 0 .8rem;display:flex;align-items:baseline;gap:.9rem}
+.priv-body h2:first-child{margin-top:0}
+.priv-body h2 .n{font-size:.72rem;font-weight:600;letter-spacing:.14em;color:var(--gold-dark);
+  font-variant-numeric:tabular-nums;flex:none}
+.priv-body p{color:var(--text-dim);max-width:64ch;margin-bottom:1rem}
+.priv-body strong{color:var(--text);font-weight:600}
+.priv-body ul{list-style:none;margin:0 0 1.4rem;max-width:64ch}
+.priv-body ul li{position:relative;padding-left:1.4rem;color:var(--text-dim);margin-bottom:.55rem}
+.priv-body ul li::before{content:'';position:absolute;left:0;top:.72em;width:8px;height:1px;background:var(--gold-dark)}
+
+/* verified-chip */
+.chip{display:inline-flex;align-items:center;gap:.45rem;font-size:.78rem;font-weight:600;
+  color:#1a7a3c;background:rgba(40,140,70,.08);border:1px solid rgba(40,140,70,.22);
+  border-radius:50px;padding:.35rem .85rem;margin-top:.4rem}
+.chip .dot{width:7px;height:7px;border-radius:50%;background:#28a05e;box-shadow:0 0 6px rgba(40,160,94,.5)}
+
+/* ── footer (mirror of index) ───────────── */
+.pfoot{padding:2.5rem 0 2rem;border-top:1px solid var(--border);background:var(--surface)}
+.pfoot-in{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1.5rem}
+.pfoot-logo{display:flex;align-items:center;gap:.5rem;font-family:var(--fd);font-size:1.1rem;font-weight:600}
+.pfoot-logo svg{width:22px;height:22px}
+.pfoot-links{display:flex;flex-wrap:wrap;gap:.85rem 1.1rem}
+.pfoot-links a{color:var(--text-dim);font-size:.85rem;transition:color .2s}
+.pfoot-links a:hover{color:var(--gold-dark)}
+.pfoot-copy{color:var(--muted);font-size:.8rem;margin-top:1.6rem}
+@media(max-width:720px){.pfoot-in{flex-direction:column;align-items:flex-start}.pfoot-links{justify-content:flex-start}}
+
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<div class="pbar">
+  <div class="container" style="display:flex;align-items:center;justify-content:space-between;gap:1rem">
+    <a class="pbar-logo" href="index.html">
+      <svg viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="14" stroke="currentColor" stroke-width="2"/><path d="M8 20Q12 8 16 16T24 12" stroke="var(--gold)" stroke-width="2.5" stroke-linecap="round" fill="none"/></svg>
+      Aurora Web
+    </a>
+    <a class="back" href="index.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      Back to site
+    </a>
+  </div>
+</div>
+
+<header class="priv-hero">
+  <div class="container">
+    <div class="eyebrow">Privacy</div>
+    <h1>Short, readable, and <em>local-first.</em></h1>
+    <p class="lede">This page fits on one screen because there is very little to hide. No trackers, no cookies banner, no data brokerage.</p>
+    <span class="chip"><span class="dot"></span>No tracking pixels · no analytics</span>
+  </div>
+</header>
+
+<main class="priv-body">
+  <div class="container">
+
+    <h2><span class="n">01</span>What we collect</h2>
+    <p>The only personal data Aurora Web receives is what you type yourself when you contact us: your name, email address, phone number, and the content of your message. Nothing else is collected — there are no tracking pixels, no analytics scripts, no advertising cookies, and no third-party trackers on this site.</p>
+
+    <h2><span class="n">02</span>Where it goes</h2>
+    <p>Your message is delivered straight to our mailbox or WhatsApp. We read it, reply to it, and keep it in our inbox for as long as the conversation is active. We do not sell, rent, or share your data with anyone — <strong>ever</strong>. There is no CRM export, no lead-list resale, no "carefully selected partners."</p>
+
+    <h2><span class="n">03</span>What we build runs local-first</h2>
+    <ul>
+      <li>Client sites we deliver load fonts and assets directly — no third-party font CDN harvesting visitor data.</li>
+      <li>Our own tools (such as the CRA 24h Clock) run entirely in your browser and phone home to nobody.</li>
+      <li>We never add analytics or tracking pixels to a client site unless the client explicitly asks for them.</li>
+    </ul>
+
+    <h2><span class="n">04</span>Demos and placeholders</h2>
+    <p>The business demos on this site are original concept sites. Prices, opening hours, reviews, and photos in them are placeholders, not real business data — each demo says so on its own page.</p>
+
+    <h2><span class="n">05</span>Your rights</h2>
+    <p>You can ask us to show, correct, or delete anything you have sent us — just reply to any of our emails or message us on WhatsApp. Under GDPR (EU 2016/679) you also have the right to lodge a complaint with a supervisory authority. We handle requests within 30 days, and deletion is immediate on request since the data lives in one mailbox.</p>
+
+    <h2><span class="n">06</span>Changes to this page</h2>
+    <p>If this policy ever materially changes, we will update this page with a new revision date rather than silently editing it.</p>
+
+  </div>
+</main>
+
+<footer class="pfoot">
+  <div class="container">
+    <div class="pfoot-in">
+      <span class="pfoot-logo">
+        <svg viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="14" stroke="currentColor" stroke-width="2"/><path d="M8 20Q12 8 16 16T24 12" stroke="var(--gold)" stroke-width="2.5" stroke-linecap="round" fill="none"/></svg>
+        Aurora Web
+      </span>
+      <div class="pfoot-links">
+        <a href="index.html">Back to site</a>
+        <a href="index.html#contact">Contact</a>
+      </div>
+    </div>
+    <div class="pfoot-copy">© 2026 Aurora Web Design · Last revised 29 Sep 2026</div>
+  </div>
+</footer>
+
+</body>
+</html>
