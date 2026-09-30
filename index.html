@@ -115,11 +115,15 @@ a{color:inherit;text-decoration:none}
   color:var(--text-dim);margin-bottom:2rem;font-weight:500}
 .hero-tag svg{width:14px;height:14px;color:var(--gold-dark)}
 .hero h1{font-family:var(--fd);font-size:var(--step-6);font-weight:600;
-  line-height:1.02;letter-spacing:-.035em;margin-bottom:1.5rem;
-  background:linear-gradient(135deg,var(--text) 0%,var(--text) 50%,var(--gold-dark) 100%);
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+  line-height:1.02;letter-spacing:-.035em;margin-bottom:1.5rem;color:var(--text)}
 .hero h1 em{font-family:var(--fs);font-style:italic;font-weight:400;
-  -webkit-text-fill-color:var(--gold)}
+  -webkit-text-fill-color:var(--gold);color:var(--gold)}
+/* kinetic word-mask reveal: each word rides up out of its own clip box.
+   Masks carry NO hidden-by-default state — GSAP from() sets the start frame,
+   so words stay fully visible when GSAP/CDN is unavailable. */
+.hero h1 .w{display:inline-block;overflow:hidden;vertical-align:top;
+  padding-bottom:.12em;margin-bottom:-.12em}
+.hero h1 .w>span{display:inline-block;will-change:transform}
 .hero p.lead{font-size:var(--step-1);color:var(--text-dim);max-width:520px;
   margin-bottom:3rem;font-weight:300;line-height:1.6}
 .hero-cta{display:flex;gap:1rem;flex-wrap:wrap;align-items:center}
@@ -457,6 +461,34 @@ footer{padding:3rem 0 2rem;border-top:1px solid var(--border);background:var(--s
       Websites · AI Automation · SEO · Apps — Helsinki · Larnaca · Cyprus
     </div>
     <h1 id="hero-title">We build the digital <em>presence</em> your business deserves.</h1>
+    <script>/* Kinetic H1: wrap each word in a mask span (em stays inside its word).
+       Ten words, runs before first paint — and since words start visible,
+       nothing is hidden if this script never runs. */
+      (function () {
+        var h1 = document.getElementById('hero-title');
+        if (!h1) return;
+        var frag = document.createDocumentFragment();
+        h1.childNodes.forEach(function (node) {
+          var isEm = node.nodeType === 1;
+          (node.textContent || '').split(/\s+/).forEach(function (w) {
+            if (!w) return;
+            var mask = document.createElement('span');
+            mask.className = 'w';
+            var inner = document.createElement('span');
+            if (isEm) {
+              var em = document.createElement('em');
+              em.textContent = w;
+              inner.appendChild(em);
+            } else inner.textContent = w;
+            mask.appendChild(inner);
+            frag.appendChild(mask);
+            frag.appendChild(document.createTextNode(' '));
+          });
+        });
+        while (h1.firstChild) h1.removeChild(h1.firstChild);
+        h1.appendChild(frag);
+      })();
+    </script>
     <p class="lead" id="hero-lead">Premium websites, AI automation, SEO &amp; growth for businesses in Cyprus and Europe. Free mockup in 24 hours. Full site delivered in 48 hours. No templates, no shortcuts.</p>
     <div class="hero-cta" id="hero-cta">
       <a href="#contact" class="btn btn-primary">
@@ -1407,7 +1439,16 @@ gsap.utils.toArray('.gs-reveal').forEach(function(el) {
 
 /* Hero: sequential entrance (NO gs-reveal class — dedicated IDs to avoid double animation) */
 gsap.from('#hero-tag', {opacity: 0, y: 20, duration: 0.6, delay: 0.1, ease: 'power2.out'});
-gsap.from('#hero-title', {opacity: 0, y: 30, duration: 1.0, delay: 0.2, ease: 'power3.out'});
+/* H1 kinetic word-mask reveal — each word rides up out of its clip box on a
+   stagger. Replaces the old whole-heading fade. If the mask-wrapper script
+   didn't run, this selector list is empty and GSAP simply does nothing. */
+gsap.from('#hero-title .w > span', {
+  yPercent: 115,
+  duration: 1.0,
+  ease: 'power3.out',
+  stagger: 0.06,
+  delay: 0.2
+});
 gsap.from('#hero-lead', {opacity: 0, y: 20, duration: 0.8, delay: 0.4, ease: 'power2.out'});
 gsap.from('#hero-cta', {opacity: 0, y: 20, duration: 0.7, delay: 0.6, ease: 'power2.out'});
 gsap.from('#hero-stats', {opacity: 0, y: 20, duration: 0.7, delay: 0.8, ease: 'power2.out'});
